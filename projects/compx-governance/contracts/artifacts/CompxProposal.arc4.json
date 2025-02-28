@@ -1,0 +1,26 @@
+{
+  "name": "CompxProposal",
+  "desc": "",
+  "methods": [
+    {
+      "name": "createApplication",
+      "args": [
+        {
+          "name": "proposalTitle",
+          "type": "string"
+        },
+        {
+          "name": "proposalDescription",
+          "type": "string"
+        },
+        {
+          "name": "expires_in",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    }
+  ]
+}

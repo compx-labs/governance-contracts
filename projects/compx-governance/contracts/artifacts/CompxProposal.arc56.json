@@ -1,0 +1,774 @@
+{
+  "name": "CompxProposal",
+  "desc": "",
+  "methods": [
+    {
+      "name": "createApplication",
+      "args": [
+        {
+          "name": "proposalTitle",
+          "type": "string"
+        },
+        {
+          "name": "proposalDescription",
+          "type": "string"
+        },
+        {
+          "name": "expires_in",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      },
+      "actions": {
+        "create": [
+          "NoOp"
+        ],
+        "call": []
+      }
+    }
+  ],
+  "arcs": [
+    4,
+    56
+  ],
+  "structs": {},
+  "state": {
+    "schema": {
+      "global": {
+        "bytes": 3,
+        "ints": 4
+      },
+      "local": {
+        "bytes": 0,
+        "ints": 0
+      }
+    },
+    "keys": {
+      "global": {
+        "total_votes": {
+          "key": "dG90YWxfdm90ZXM=",
+          "keyType": "AVMBytes",
+          "valueType": "uint64"
+        },
+        "compx_governance_main_address": {
+          "key": "VEdJUEVPS1VGQzVKRlRQRk1YR1NaV09HT0ZBN1RIRlpYVVRSTFFFT0gzUkQzTEdJNlFFRVdKTk1MNA==",
+          "keyType": "AVMBytes",
+          "valueType": "address"
+        },
+        "proposal_title": {
+          "key": "cHJvcG9zYWxfdGl0bGU=",
+          "keyType": "AVMBytes",
+          "valueType": "string"
+        },
+        "proposal_description": {
+          "key": "cHJvcG9zYWxfZGVzY3JpcHRpb24=",
+          "keyType": "AVMBytes",
+          "valueType": "string"
+        },
+        "expiry_timestamp": {
+          "key": "ZXhwaXJ5X3RpbWVzdGFtcA==",
+          "keyType": "AVMBytes",
+          "valueType": "uint64"
+        },
+        "created_at": {
+          "key": "Y3JlYXRlZF9hdA==",
+          "keyType": "AVMBytes",
+          "valueType": "uint64"
+        },
+        "yes_votes": {
+          "key": "eWVzX3ZvdGVz",
+          "keyType": "AVMBytes",
+          "valueType": "uint64"
+        }
+      },
+      "local": {},
+      "box": {}
+    },
+    "maps": {
+      "global": {},
+      "local": {},
+      "box": {}
+    }
+  },
+  "bareActions": {
+    "create": [],
+    "call": []
+  },
+  "sourceInfo": {
+    "approval": {
+      "sourceInfo": [
+        {
+          "teal": 1,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            0
+          ]
+        },
+        {
+          "teal": 2,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "teal": 14,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            4,
+            5
+          ]
+        },
+        {
+          "teal": 15,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            6
+          ]
+        },
+        {
+          "teal": 16,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            7,
+            8
+          ]
+        },
+        {
+          "teal": 17,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            9
+          ]
+        },
+        {
+          "teal": 18,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            10,
+            11
+          ]
+        },
+        {
+          "teal": 19,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            12
+          ]
+        },
+        {
+          "teal": 20,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38
+          ]
+        },
+        {
+          "teal": 24,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "errorMessage": "The requested action is not implemented in this contract. Are you using the correct OnComplete? Did you set your app ID?",
+          "pc": [
+            39
+          ]
+        },
+        {
+          "teal": 29,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            40,
+            41,
+            42
+          ]
+        },
+        {
+          "teal": 30,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            43
+          ]
+        },
+        {
+          "teal": 33,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            44,
+            45,
+            46
+          ]
+        },
+        {
+          "teal": 34,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            47,
+            48,
+            49
+          ]
+        },
+        {
+          "teal": 37,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            50,
+            51,
+            52
+          ]
+        },
+        {
+          "teal": 38,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            53,
+            54,
+            55
+          ]
+        },
+        {
+          "teal": 41,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            56,
+            57,
+            58
+          ]
+        },
+        {
+          "teal": 42,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            59,
+            60
+          ]
+        },
+        {
+          "teal": 43,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            61
+          ]
+        },
+        {
+          "teal": 47,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            62,
+            63,
+            64
+          ]
+        },
+        {
+          "teal": 54,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
+            65,
+            66
+          ]
+        },
+        {
+          "teal": 55,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126
+          ]
+        },
+        {
+          "teal": 56,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
+            127
+          ]
+        },
+        {
+          "teal": 57,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
+            128
+          ]
+        },
+        {
+          "teal": 60,
+          "source": "contracts/CompxProposal.algo.ts:40",
+          "errorMessage": "Only the governance main address can create a proposal",
+          "pc": [
+            129
+          ]
+        },
+        {
+          "teal": 64,
+          "source": "contracts/CompxProposal.algo.ts:45",
+          "pc": [
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142
+          ]
+        },
+        {
+          "teal": 65,
+          "source": "contracts/CompxProposal.algo.ts:45",
+          "pc": [
+            143
+          ]
+        },
+        {
+          "teal": 66,
+          "source": "contracts/CompxProposal.algo.ts:45",
+          "pc": [
+            144
+          ]
+        },
+        {
+          "teal": 70,
+          "source": "contracts/CompxProposal.algo.ts:46",
+          "pc": [
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160
+          ]
+        },
+        {
+          "teal": 71,
+          "source": "contracts/CompxProposal.algo.ts:46",
+          "pc": [
+            161,
+            162
+          ]
+        },
+        {
+          "teal": 72,
+          "source": "contracts/CompxProposal.algo.ts:46",
+          "pc": [
+            163
+          ]
+        },
+        {
+          "teal": 73,
+          "source": "contracts/CompxProposal.algo.ts:46",
+          "pc": [
+            164
+          ]
+        },
+        {
+          "teal": 74,
+          "source": "contracts/CompxProposal.algo.ts:46",
+          "pc": [
+            165
+          ]
+        },
+        {
+          "teal": 75,
+          "source": "contracts/CompxProposal.algo.ts:46",
+          "pc": [
+            166,
+            167,
+            168
+          ]
+        },
+        {
+          "teal": 76,
+          "source": "contracts/CompxProposal.algo.ts:46",
+          "pc": [
+            169
+          ]
+        },
+        {
+          "teal": 77,
+          "source": "contracts/CompxProposal.algo.ts:46",
+          "pc": [
+            170
+          ]
+        },
+        {
+          "teal": 78,
+          "source": "contracts/CompxProposal.algo.ts:46",
+          "pc": [
+            171
+          ]
+        },
+        {
+          "teal": 82,
+          "source": "contracts/CompxProposal.algo.ts:47",
+          "pc": [
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193
+          ]
+        },
+        {
+          "teal": 83,
+          "source": "contracts/CompxProposal.algo.ts:47",
+          "pc": [
+            194,
+            195
+          ]
+        },
+        {
+          "teal": 84,
+          "source": "contracts/CompxProposal.algo.ts:47",
+          "pc": [
+            196
+          ]
+        },
+        {
+          "teal": 85,
+          "source": "contracts/CompxProposal.algo.ts:47",
+          "pc": [
+            197
+          ]
+        },
+        {
+          "teal": 86,
+          "source": "contracts/CompxProposal.algo.ts:47",
+          "pc": [
+            198
+          ]
+        },
+        {
+          "teal": 87,
+          "source": "contracts/CompxProposal.algo.ts:47",
+          "pc": [
+            199,
+            200,
+            201
+          ]
+        },
+        {
+          "teal": 88,
+          "source": "contracts/CompxProposal.algo.ts:47",
+          "pc": [
+            202
+          ]
+        },
+        {
+          "teal": 89,
+          "source": "contracts/CompxProposal.algo.ts:47",
+          "pc": [
+            203
+          ]
+        },
+        {
+          "teal": 90,
+          "source": "contracts/CompxProposal.algo.ts:47",
+          "pc": [
+            204
+          ]
+        },
+        {
+          "teal": 94,
+          "source": "contracts/CompxProposal.algo.ts:48",
+          "pc": [
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222
+          ]
+        },
+        {
+          "teal": 95,
+          "source": "contracts/CompxProposal.algo.ts:48",
+          "pc": [
+            223,
+            224
+          ]
+        },
+        {
+          "teal": 96,
+          "source": "contracts/CompxProposal.algo.ts:48",
+          "pc": [
+            225,
+            226
+          ]
+        },
+        {
+          "teal": 97,
+          "source": "contracts/CompxProposal.algo.ts:48",
+          "pc": [
+            227
+          ]
+        },
+        {
+          "teal": 98,
+          "source": "contracts/CompxProposal.algo.ts:48",
+          "pc": [
+            228
+          ]
+        },
+        {
+          "teal": 102,
+          "source": "contracts/CompxProposal.algo.ts:49",
+          "pc": [
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            237,
+            238,
+            239,
+            240
+          ]
+        },
+        {
+          "teal": 103,
+          "source": "contracts/CompxProposal.algo.ts:49",
+          "pc": [
+            241,
+            242
+          ]
+        },
+        {
+          "teal": 104,
+          "source": "contracts/CompxProposal.algo.ts:49",
+          "pc": [
+            243
+          ]
+        },
+        {
+          "teal": 108,
+          "source": "contracts/CompxProposal.algo.ts:50",
+          "pc": [
+            244,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254
+          ]
+        },
+        {
+          "teal": 109,
+          "source": "contracts/CompxProposal.algo.ts:50",
+          "pc": [
+            255
+          ]
+        },
+        {
+          "teal": 110,
+          "source": "contracts/CompxProposal.algo.ts:50",
+          "pc": [
+            256
+          ]
+        },
+        {
+          "teal": 111,
+          "source": "contracts/CompxProposal.algo.ts:39",
+          "pc": [
+            257
+          ]
+        },
+        {
+          "teal": 114,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            258,
+            259,
+            260,
+            261,
+            262,
+            263
+          ]
+        },
+        {
+          "teal": 115,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            264,
+            265,
+            266
+          ]
+        },
+        {
+          "teal": 116,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "pc": [
+            267,
+            268,
+            269,
+            270
+          ]
+        },
+        {
+          "teal": 119,
+          "source": "contracts/CompxProposal.algo.ts:26",
+          "errorMessage": "this contract does not implement the given ABI method for create NoOp",
+          "pc": [
+            271
+          ]
+        }
+      ],
+      "pcOffsetMethod": "none"
+    },
+    "clear": {
+      "sourceInfo": [],
+      "pcOffsetMethod": "none"
+    }
+  },
+  "source": {
+    "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCmludGNibG9jayAwCgovLyBUaGlzIFRFQUwgd2FzIGdlbmVyYXRlZCBieSBURUFMU2NyaXB0IHYwLjEwNi4yCi8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hbGdvcmFuZGZvdW5kYXRpb24vVEVBTFNjcmlwdAoKLy8gVGhpcyBjb250cmFjdCBpcyBjb21wbGlhbnQgd2l0aCBhbmQvb3IgaW1wbGVtZW50cyB0aGUgZm9sbG93aW5nIEFSQ3M6IFsgQVJDNCBdCgovLyBUaGUgZm9sbG93aW5nIHRlbiBsaW5lcyBvZiBURUFMIGhhbmRsZSBpbml0aWFsIHByb2dyYW0gZmxvdwovLyBUaGlzIHBhdHRlcm4gaXMgdXNlZCB0byBtYWtlIGl0IGVhc3kgZm9yIGFueW9uZSB0byBwYXJzZSB0aGUgc3RhcnQgb2YgdGhlIHByb2dyYW0gYW5kIGRldGVybWluZSBpZiBhIHNwZWNpZmljIGFjdGlvbiBpcyBhbGxvd2VkCi8vIEhlcmUsIGFjdGlvbiByZWZlcnMgdG8gdGhlIE9uQ29tcGxldGUgaW4gY29tYmluYXRpb24gd2l0aCB3aGV0aGVyIHRoZSBhcHAgaXMgYmVpbmcgY3JlYXRlZCBvciBjYWxsZWQKLy8gRXZlcnkgcG9zc2libGUgYWN0aW9uIGZvciB0aGlzIGNvbnRyYWN0IGlzIHJlcHJlc2VudGVkIGluIHRoZSBzd2l0Y2ggc3RhdGVtZW50Ci8vIElmIHRoZSBhY3Rpb24gaXMgbm90IGltcGxlbWVudGVkIGluIHRoZSBjb250cmFjdCwgaXRzIHJlc3BlY3RpdmUgYnJhbmNoIHdpbGwgYmUgIipOT1RfSU1QTEVNRU5URUQiIHdoaWNoIGp1c3QgY29udGFpbnMgImVyciIKdHhuIEFwcGxpY2F0aW9uSUQKIQpwdXNoaW50IDYKKgp0eG4gT25Db21wbGV0aW9uCisKc3dpdGNoICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpjcmVhdGVfTm9PcCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQKCipOT1RfSU1QTEVNRU5URUQ6CgkvLyBUaGUgcmVxdWVzdGVkIGFjdGlvbiBpcyBub3QgaW1wbGVtZW50ZWQgaW4gdGhpcyBjb250cmFjdC4gQXJlIHlvdSB1c2luZyB0aGUgY29ycmVjdCBPbkNvbXBsZXRlPyBEaWQgeW91IHNldCB5b3VyIGFwcCBJRD8KCWVycgoKLy8gY3JlYXRlQXBwbGljYXRpb24oc3RyaW5nLHN0cmluZyx1aW50NjQpdm9pZAoqYWJpX3JvdXRlX2NyZWF0ZUFwcGxpY2F0aW9uOgoJLy8gZXhwaXJlc19pbjogdWludDY0Cgl0eG5hIEFwcGxpY2F0aW9uQXJncyAzCglidG9pCgoJLy8gcHJvcG9zYWxEZXNjcmlwdGlvbjogc3RyaW5nCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAyCglleHRyYWN0IDIgMAoKCS8vIHByb3Bvc2FsVGl0bGU6IHN0cmluZwoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQoJZXh0cmFjdCAyIDAKCgkvLyBleGVjdXRlIGNyZWF0ZUFwcGxpY2F0aW9uKHN0cmluZyxzdHJpbmcsdWludDY0KXZvaWQKCWNhbGxzdWIgY3JlYXRlQXBwbGljYXRpb24KCXB1c2hpbnQgMQoJcmV0dXJuCgovLyBjcmVhdGVBcHBsaWNhdGlvbihwcm9wb3NhbFRpdGxlOiBzdHJpbmcsIHByb3Bvc2FsRGVzY3JpcHRpb246IHN0cmluZywgZXhwaXJlc19pbjogdWludDY0KTogdm9pZApjcmVhdGVBcHBsaWNhdGlvbjoKCXByb3RvIDMgMAoKCS8vIGNvbnRyYWN0cy9Db21weFByb3Bvc2FsLmFsZ28udHM6NDAKCS8vIGFzc2VydCgKCS8vICAgICAgIHRoaXMudHhuLnNlbmRlciA9PT0gdGhpcy5jb21weF9nb3Zlcm5hbmNlX21haW5fYWRkcmVzcy52YWx1ZSwKCS8vICAgICAgICdPbmx5IHRoZSBnb3Zlcm5hbmNlIG1haW4gYWRkcmVzcyBjYW4gY3JlYXRlIGEgcHJvcG9zYWwnCgkvLyAgICAgKQoJdHhuIFNlbmRlcgoJcHVzaGJ5dGVzIDB4NTQ0NzQ5NTA0NTRmNGI1NTQ2NDMzNTRhNDY1NDUwNDY0ZDU4NDc1MzVhNTc0ZjQ3NGY0NjQxMzc1NDQ4NDY1YTU4NTU1NDUyNGM1MTQ1NGY0ODMzNTI0NDMzNGM0NzQ5MzY1MTQ1NDU1NzRhNGU0ZDRjMzQgLy8gIlRHSVBFT0tVRkM1SkZUUEZNWEdTWldPR09GQTdUSEZaWFVUUkxRRU9IM1JEM0xHSTZRRUVXSk5NTDQiCglhcHBfZ2xvYmFsX2dldAoJPT0KCgkvLyBPbmx5IHRoZSBnb3Zlcm5hbmNlIG1haW4gYWRkcmVzcyBjYW4gY3JlYXRlIGEgcHJvcG9zYWwKCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weFByb3Bvc2FsLmFsZ28udHM6NDUKCS8vIHRoaXMudG90YWxfdm90ZXMudmFsdWUgPSAwCglwdXNoYnl0ZXMgMHg3NDZmNzQ2MTZjNWY3NjZmNzQ2NTczIC8vICJ0b3RhbF92b3RlcyIKCWludGMgMCAvLyAwCglhcHBfZ2xvYmFsX3B1dAoKCS8vIGNvbnRyYWN0cy9Db21weFByb3Bvc2FsLmFsZ28udHM6NDYKCS8vIHRoaXMucHJvcG9zYWxfdGl0bGUudmFsdWUgPSBwcm9wb3NhbFRpdGxlCglwdXNoYnl0ZXMgMHg3MDcyNmY3MDZmNzM2MTZjNWY3NDY5NzQ2YzY1IC8vICJwcm9wb3NhbF90aXRsZSIKCWZyYW1lX2RpZyAtMSAvLyBwcm9wb3NhbFRpdGxlOiBzdHJpbmcKCWR1cAoJbGVuCglpdG9iCglleHRyYWN0IDYgMgoJc3dhcAoJY29uY2F0CglhcHBfZ2xvYmFsX3B1dAoKCS8vIGNvbnRyYWN0cy9Db21weFByb3Bvc2FsLmFsZ28udHM6NDcKCS8vIHRoaXMucHJvcG9zYWxfZGVzY3JpcHRpb24udmFsdWUgPSBwcm9wb3NhbERlc2NyaXB0aW9uCglwdXNoYnl0ZXMgMHg3MDcyNmY3MDZmNzM2MTZjNWY2NDY1NzM2MzcyNjk3MDc0Njk2ZjZlIC8vICJwcm9wb3NhbF9kZXNjcmlwdGlvbiIKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbERlc2NyaXB0aW9uOiBzdHJpbmcKCWR1cAoJbGVuCglpdG9iCglleHRyYWN0IDYgMgoJc3dhcAoJY29uY2F0CglhcHBfZ2xvYmFsX3B1dAoKCS8vIGNvbnRyYWN0cy9Db21weFByb3Bvc2FsLmFsZ28udHM6NDgKCS8vIHRoaXMuZXhwaXJ5X3RpbWVzdGFtcC52YWx1ZSA9IGdsb2JhbHMubGF0ZXN0VGltZXN0YW1wICsgZXhwaXJlc19pbgoJcHVzaGJ5dGVzIDB4NjU3ODcwNjk3Mjc5NWY3NDY5NmQ2NTczNzQ2MTZkNzAgLy8gImV4cGlyeV90aW1lc3RhbXAiCglnbG9iYWwgTGF0ZXN0VGltZXN0YW1wCglmcmFtZV9kaWcgLTMgLy8gZXhwaXJlc19pbjogdWludDY0CgkrCglhcHBfZ2xvYmFsX3B1dAoKCS8vIGNvbnRyYWN0cy9Db21weFByb3Bvc2FsLmFsZ28udHM6NDkKCS8vIHRoaXMuY3JlYXRlZF9hdC52YWx1ZSA9IGdsb2JhbHMubGF0ZXN0VGltZXN0YW1wCglwdXNoYnl0ZXMgMHg2MzcyNjU2MTc0NjU2NDVmNjE3NCAvLyAiY3JlYXRlZF9hdCIKCWdsb2JhbCBMYXRlc3RUaW1lc3RhbXAKCWFwcF9nbG9iYWxfcHV0CgoJLy8gY29udHJhY3RzL0NvbXB4UHJvcG9zYWwuYWxnby50czo1MAoJLy8gdGhpcy55ZXNfdm90ZXMudmFsdWUgPSAwCglwdXNoYnl0ZXMgMHg3OTY1NzM1Zjc2NmY3NDY1NzMgLy8gInllc192b3RlcyIKCWludGMgMCAvLyAwCglhcHBfZ2xvYmFsX3B1dAoJcmV0c3ViCgoqY3JlYXRlX05vT3A6CglwdXNoYnl0ZXMgMHhjMDRiNzVmNCAvLyBtZXRob2QgImNyZWF0ZUFwcGxpY2F0aW9uKHN0cmluZyxzdHJpbmcsdWludDY0KXZvaWQiCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAwCgltYXRjaCAqYWJpX3JvdXRlX2NyZWF0ZUFwcGxpY2F0aW9uCgoJLy8gdGhpcyBjb250cmFjdCBkb2VzIG5vdCBpbXBsZW1lbnQgdGhlIGdpdmVuIEFCSSBtZXRob2QgZm9yIGNyZWF0ZSBOb09wCgllcnI=",
+    "clear": "I3ByYWdtYSB2ZXJzaW9uIDEw"
+  },
+  "byteCode": {
+    "approval": "CiABADEYFIEGCzEZCI0MAAAAAAAAAAAAAAAAANsAAAAAAAAAAAAAADYaAxc2GgJXAgA2GgFXAgCIAAOBAUOKAwAxAIA6VEdJUEVPS1VGQzVKRlRQRk1YR1NaV09HT0ZBN1RIRlpYVVRSTFFFT0gzUkQzTEdJNlFFRVdKTk1MNGQSRIALdG90YWxfdm90ZXMiZ4AOcHJvcG9zYWxfdGl0bGWL/0kVFlcGAkxQZ4AUcHJvcG9zYWxfZGVzY3JpcHRpb26L/kkVFlcGAkxQZ4AQZXhwaXJ5X3RpbWVzdGFtcDIHi/0IZ4AKY3JlYXRlZF9hdDIHZ4AJeWVzX3ZvdGVzImeJgATAS3X0NhoAjgH/GQA=",
+    "clear": "Cg=="
+  },
+  "compilerInfo": {
+    "compiler": "algod",
+    "compilerVersion": {
+      "major": 3,
+      "minor": 25,
+      "patch": 0,
+      "commitHash": "9855f57c"
+    }
+  }
+}

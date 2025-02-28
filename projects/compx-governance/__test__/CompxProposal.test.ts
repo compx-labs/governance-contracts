@@ -1,46 +1,47 @@
 import { describe, test, expect, beforeAll, beforeEach } from '@jest/globals';
 import { algorandFixture } from '@algorandfoundation/algokit-utils/testing';
-import { Config } from '@algorandfoundation/algokit-utils';
-import { CompxProposalClient, CompxProposalFactory } from '../contracts/clients/CompxProposalClient';
+import * as algokit from '@algorandfoundation/algokit-utils';
+import { CompxProposalClient } from '../contracts/clients/CompxProposalClient';
+import algosdk, { Algodv2 } from 'algosdk';
 
 const fixture = algorandFixture();
-Config.configure({ populateAppCallResources: true });
+algokit.Config.configure({ populateAppCallResources: true });
 
 let appClient: CompxProposalClient;
+let algodClient: Algodv2;
+
+const proposalTitle = 'Test Proposal';
+const proposalDescription = 'This is a test proposal';
+const expiresIn = 1000;
 
 describe('CompxProposal', () => {
   beforeEach(fixture.beforeEach);
+  let proposalCreator: algosdk.Account;
 
   beforeAll(async () => {
     await fixture.beforeEach();
     const { testAccount } = fixture.context;
-    const { algorand } = fixture;
+    proposalCreator = testAccount;
 
-    const factory = new CompxProposalFactory({
-      algorand,
-      defaultSender: testAccount.addr,
+    const { algorand } = fixture;
+    algodClient = algorand.client.algod;
+
+    appClient = new CompxProposalClient({
+      sender: proposalCreator,
+      resolveBy: 'id',
+      id: 0,
     });
 
-    const createResult = await factory.send.create.createApplication();
-    appClient = createResult.appClient;
+    await appClient.create.createApplication({
+      proposalTitle,
+      proposalDescription,
+      expires_in: expiresIn,
+    });
   });
 
-  test('sum', async () => {
-    const a = 13;
-    const b = 37;
-    const sum = await appClient.send.doMath({ args: { a, b, operation: 'sum' } });
-    expect(sum.return).toBe(BigInt(a + b));
-  });
-
-  test('difference', async () => {
-    const a = 13;
-    const b = 37;
-    const diff = await appClient.send.doMath({ args: { a, b, operation: 'difference' } });
-    expect(diff.return).toBe(BigInt(a >= b ? a - b : b - a));
-  });
-
-  test('hello', async () => {
-    const hello = await appClient.send.hello({ args: { name: 'world!' } });
-    expect(hello.return).toBe('Hello, world!');
+  test('Should create the application successfully', async () => {
+    const appState = await appClient.appClient.getGlobalState();
+    expect(appState.total_votes.value).toBe(0);
+    expect(appState.compx_governance_main_address.value).toBeDefined();
   });
 });

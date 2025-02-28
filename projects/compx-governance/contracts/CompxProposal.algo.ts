@@ -3,32 +3,52 @@ import { Contract } from '@algorandfoundation/tealscript';
 type ProposalId = { nounce: uint64 };
 
 type ProposalInfo = {
-  creator_address: Address;
   total_votes: uint64;
   yes_votes: uint64;
-  no_votes: uint64;
   timestamp: uint64;
   expiry_timestamp: uint64;
   proposal_title: string;
   proposal_description: string;
 };
 
-type ProposalVoteId = { proposal_id: uint64; voter_address: Address };
-type ProposalVoteInfo = { vote_yes: boolean; voter_flux_power: uint64; timestamp: uint64 };
+type ProposalVoteId = { voter_address: Address };
+type ProposalVoteInfo = { vote_yes: boolean };
 
-// -------------------------------------------------------------------------------------------------------------
-//0.0025 Algo per box
-//0.0004 per byte in the box
-//Poll_mbr
-// => (8) => (32 + 8 + 8 + 8 + 8 + 8 + 8 + 8) = 8 + 80 = (88 bits * 0.0004) + 0.00352 = 0.032 + 0.0025 = 0.03450
+//Vote mbr
+//(32)=>8 - total_bits = 40 bits - mbr_value = (40 bits * 0.0004) + 0.00352 = 0.01952
 
-//Proposal MBR
-const proposalMbr = 15_930;
+const vote_mbr = 1_952;
 
 export class CompxProposal extends Contract {
-  total_votes = GlobalStateKey<uint64>;
-  compx_governance_main_address = GlobalStateKey<Address>({ key: '' });
+  compx_governance_address = GlobalStateKey<Address>({
+    key: 'TGIPEOKUFC5JFTPFMXGSZWOGOFA7THFZXUTRLQEOH3RD3LGI6QEEWJNML4',
+  });
+  total_votes = GlobalStateKey<uint64>();
+  compx_governance_main_address = GlobalStateKey<Address>();
+  proposal_title = GlobalStateKey<string>();
+  proposal_description = GlobalStateKey<string>();
+  expiry_timestamp = GlobalStateKey<uint64>();
+  created_at = GlobalStateKey<uint64>();
+  yes_votes = GlobalStateKey<uint64>();
 
-  proposal = BoxMap<ProposalId, ProposalInfo>({ prefix: 'pool_' });
-  proposal_vote = BoxMap<ProposalId, ProposalInfo>({ prefix: 'pool_' });
+  vote = BoxMap<ProposalVoteId, ProposalVoteInfo>();
+
+  createApplication(proposalTitle: string, proposalDescription: string, expires_in: uint64): void {
+    assert(this.txn.sender === this.compx_governance_main_address.value, 'Only governance can create proposal');
+
+    this.total_votes.value = 0;
+    this.yes_votes.value = 0;
+    this.proposal_title.value = proposalTitle;
+    this.proposal_description.value = proposalDescription;
+    this.expiry_timestamp.value = globals.latestTimestamp + expires_in;
+    this.created_at.value = globals.latestTimestamp;
+  }
+
+  voteProposal(voteYes: boolean, mbrTxn: PayTxn): void {
+    assert(globals.latestTimestamp < this.expiry_timestamp.value, 'Proposal has expired');
+    assert(!this.vote({ voter_address: this.txn.sender }).exists, 'User Already voted');
+    if (voteYes) {
+      this.yes_votes.value += 1;
+    }
+  }
 }
