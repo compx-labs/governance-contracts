@@ -1,70 +1,70 @@
 [
   {
     "teal": 1,
-    "source": "contracts/CompxProposal.algo.ts:26",
+    "source": "contracts/CompxProposal.algo.ts:22",
     "pc": [
       0
     ]
   },
   {
     "teal": 2,
-    "source": "contracts/CompxProposal.algo.ts:26",
+    "source": "contracts/CompxProposal.algo.ts:22",
     "pc": [
       1,
       2,
-      3
+      3,
+      4
     ]
   },
   {
     "teal": 14,
-    "source": "contracts/CompxProposal.algo.ts:26",
+    "source": "contracts/CompxProposal.algo.ts:22",
     "pc": [
-      4,
-      5
-    ]
-  },
-  {
-    "teal": 15,
-    "source": "contracts/CompxProposal.algo.ts:26",
-    "pc": [
+      5,
       6
     ]
   },
   {
-    "teal": 16,
-    "source": "contracts/CompxProposal.algo.ts:26",
+    "teal": 15,
+    "source": "contracts/CompxProposal.algo.ts:22",
     "pc": [
-      7,
-      8
+      7
     ]
   },
   {
-    "teal": 17,
-    "source": "contracts/CompxProposal.algo.ts:26",
+    "teal": 16,
+    "source": "contracts/CompxProposal.algo.ts:22",
     "pc": [
+      8,
       9
     ]
   },
   {
-    "teal": 18,
-    "source": "contracts/CompxProposal.algo.ts:26",
+    "teal": 17,
+    "source": "contracts/CompxProposal.algo.ts:22",
     "pc": [
-      10,
-      11
+      10
     ]
   },
   {
-    "teal": 19,
-    "source": "contracts/CompxProposal.algo.ts:26",
+    "teal": 18,
+    "source": "contracts/CompxProposal.algo.ts:22",
     "pc": [
+      11,
       12
     ]
   },
   {
-    "teal": 20,
-    "source": "contracts/CompxProposal.algo.ts:26",
+    "teal": 19,
+    "source": "contracts/CompxProposal.algo.ts:22",
     "pc": [
-      13,
+      13
+    ]
+  },
+  {
+    "teal": 20,
+    "source": "contracts/CompxProposal.algo.ts:22",
+    "pc": [
       14,
       15,
       16,
@@ -89,96 +89,96 @@
       35,
       36,
       37,
-      38
-    ]
-  },
-  {
-    "teal": 24,
-    "source": "contracts/CompxProposal.algo.ts:26",
-    "errorMessage": "The requested action is not implemented in this contract. Are you using the correct OnComplete? Did you set your app ID?",
-    "pc": [
+      38,
       39
     ]
   },
   {
-    "teal": 29,
-    "source": "contracts/CompxProposal.algo.ts:39",
+    "teal": 24,
+    "source": "contracts/CompxProposal.algo.ts:22",
+    "errorMessage": "The requested action is not implemented in this contract. Are you using the correct OnComplete? Did you set your app ID?",
     "pc": [
-      40,
-      41,
-      42
+      40
     ]
   },
   {
-    "teal": 30,
-    "source": "contracts/CompxProposal.algo.ts:39",
+    "teal": 29,
+    "source": "contracts/CompxProposal.algo.ts:36",
     "pc": [
+      41,
+      42,
       43
     ]
   },
   {
-    "teal": 33,
-    "source": "contracts/CompxProposal.algo.ts:39",
+    "teal": 30,
+    "source": "contracts/CompxProposal.algo.ts:36",
     "pc": [
-      44,
+      44
+    ]
+  },
+  {
+    "teal": 33,
+    "source": "contracts/CompxProposal.algo.ts:36",
+    "pc": [
       45,
-      46
+      46,
+      47
     ]
   },
   {
     "teal": 34,
-    "source": "contracts/CompxProposal.algo.ts:39",
+    "source": "contracts/CompxProposal.algo.ts:36",
     "pc": [
-      47,
       48,
-      49
+      49,
+      50
     ]
   },
   {
     "teal": 37,
-    "source": "contracts/CompxProposal.algo.ts:39",
+    "source": "contracts/CompxProposal.algo.ts:36",
     "pc": [
-      50,
       51,
-      52
+      52,
+      53
     ]
   },
   {
     "teal": 38,
-    "source": "contracts/CompxProposal.algo.ts:39",
+    "source": "contracts/CompxProposal.algo.ts:36",
     "pc": [
-      53,
       54,
-      55
+      55,
+      56
     ]
   },
   {
     "teal": 41,
-    "source": "contracts/CompxProposal.algo.ts:39",
+    "source": "contracts/CompxProposal.algo.ts:36",
     "pc": [
-      56,
       57,
-      58
+      58,
+      59
     ]
   },
   {
     "teal": 42,
-    "source": "contracts/CompxProposal.algo.ts:39",
+    "source": "contracts/CompxProposal.algo.ts:36",
     "pc": [
-      59,
       60
     ]
   },
   {
     "teal": 43,
-    "source": "contracts/CompxProposal.algo.ts:39",
+    "source": "contracts/CompxProposal.algo.ts:36",
     "pc": [
       61
     ]
   },
   {
     "teal": 47,
-    "source": "contracts/CompxProposal.algo.ts:39",
+    "source": "contracts/CompxProposal.algo.ts:36",
     "pc": [
       62,
       63,
@@ -186,17 +186,11 @@
     ]
   },
   {
-    "teal": 54,
-    "source": "contracts/CompxProposal.algo.ts:41",
+    "teal": 51,
+    "source": "contracts/CompxProposal.algo.ts:39",
     "pc": [
       65,
-      66
-    ]
-  },
-  {
-    "teal": 55,
-    "source": "contracts/CompxProposal.algo.ts:41",
-    "pc": [
+      66,
       67,
       68,
       69,
@@ -207,9 +201,27 @@
       74,
       75,
       76,
-      77,
-      78,
-      79,
+      77
+    ]
+  },
+  {
+    "teal": 52,
+    "source": "contracts/CompxProposal.algo.ts:39",
+    "pc": [
+      78
+    ]
+  },
+  {
+    "teal": 53,
+    "source": "contracts/CompxProposal.algo.ts:39",
+    "pc": [
+      79
+    ]
+  },
+  {
+    "teal": 57,
+    "source": "contracts/CompxProposal.algo.ts:40",
+    "pc": [
       80,
       81,
       82,
@@ -220,9 +232,27 @@
       87,
       88,
       89,
-      90,
-      91,
-      92,
+      90
+    ]
+  },
+  {
+    "teal": 58,
+    "source": "contracts/CompxProposal.algo.ts:40",
+    "pc": [
+      91
+    ]
+  },
+  {
+    "teal": 59,
+    "source": "contracts/CompxProposal.algo.ts:40",
+    "pc": [
+      92
+    ]
+  },
+  {
+    "teal": 63,
+    "source": "contracts/CompxProposal.algo.ts:41",
+    "pc": [
       93,
       94,
       95,
@@ -238,53 +268,82 @@
       105,
       106,
       107,
-      108,
+      108
+    ]
+  },
+  {
+    "teal": 64,
+    "source": "contracts/CompxProposal.algo.ts:41",
+    "pc": [
       109,
-      110,
-      111,
-      112,
-      113,
+      110
+    ]
+  },
+  {
+    "teal": 65,
+    "source": "contracts/CompxProposal.algo.ts:41",
+    "pc": [
+      111
+    ]
+  },
+  {
+    "teal": 66,
+    "source": "contracts/CompxProposal.algo.ts:41",
+    "pc": [
+      112
+    ]
+  },
+  {
+    "teal": 67,
+    "source": "contracts/CompxProposal.algo.ts:41",
+    "pc": [
+      113
+    ]
+  },
+  {
+    "teal": 68,
+    "source": "contracts/CompxProposal.algo.ts:41",
+    "pc": [
       114,
       115,
-      116,
-      117,
-      118,
-      119,
+      116
+    ]
+  },
+  {
+    "teal": 69,
+    "source": "contracts/CompxProposal.algo.ts:41",
+    "pc": [
+      117
+    ]
+  },
+  {
+    "teal": 70,
+    "source": "contracts/CompxProposal.algo.ts:41",
+    "pc": [
+      118
+    ]
+  },
+  {
+    "teal": 71,
+    "source": "contracts/CompxProposal.algo.ts:41",
+    "pc": [
+      119
+    ]
+  },
+  {
+    "teal": 75,
+    "source": "contracts/CompxProposal.algo.ts:42",
+    "pc": [
       120,
       121,
       122,
       123,
       124,
       125,
-      126
-    ]
-  },
-  {
-    "teal": 56,
-    "source": "contracts/CompxProposal.algo.ts:41",
-    "pc": [
-      127
-    ]
-  },
-  {
-    "teal": 57,
-    "source": "contracts/CompxProposal.algo.ts:41",
-    "pc": [
-      128
-    ]
-  },
-  {
-    "teal": 60,
-    "source": "contracts/CompxProposal.algo.ts:40",
-    "errorMessage": "Only the governance main address can create a proposal",
-    "pc": [
-      129
-    ]
-  },
-  {
-    "teal": 64,
-    "source": "contracts/CompxProposal.algo.ts:45",
-    "pc": [
+      126,
+      127,
+      128,
+      129,
       130,
       131,
       132,
@@ -296,36 +355,72 @@
       138,
       139,
       140,
-      141,
-      142
+      141
     ]
   },
   {
-    "teal": 65,
-    "source": "contracts/CompxProposal.algo.ts:45",
+    "teal": 76,
+    "source": "contracts/CompxProposal.algo.ts:42",
     "pc": [
+      142,
       143
     ]
   },
   {
-    "teal": 66,
-    "source": "contracts/CompxProposal.algo.ts:45",
+    "teal": 77,
+    "source": "contracts/CompxProposal.algo.ts:42",
     "pc": [
       144
     ]
   },
   {
-    "teal": 70,
-    "source": "contracts/CompxProposal.algo.ts:46",
+    "teal": 78,
+    "source": "contracts/CompxProposal.algo.ts:42",
     "pc": [
-      145,
-      146,
+      145
+    ]
+  },
+  {
+    "teal": 79,
+    "source": "contracts/CompxProposal.algo.ts:42",
+    "pc": [
+      146
+    ]
+  },
+  {
+    "teal": 80,
+    "source": "contracts/CompxProposal.algo.ts:42",
+    "pc": [
       147,
       148,
-      149,
-      150,
-      151,
-      152,
+      149
+    ]
+  },
+  {
+    "teal": 81,
+    "source": "contracts/CompxProposal.algo.ts:42",
+    "pc": [
+      150
+    ]
+  },
+  {
+    "teal": 82,
+    "source": "contracts/CompxProposal.algo.ts:42",
+    "pc": [
+      151
+    ]
+  },
+  {
+    "teal": 83,
+    "source": "contracts/CompxProposal.algo.ts:42",
+    "pc": [
+      152
+    ]
+  },
+  {
+    "teal": 87,
+    "source": "contracts/CompxProposal.algo.ts:43",
+    "pc": [
       153,
       154,
       155,
@@ -333,77 +428,53 @@
       157,
       158,
       159,
-      160
-    ]
-  },
-  {
-    "teal": 71,
-    "source": "contracts/CompxProposal.algo.ts:46",
-    "pc": [
+      160,
       161,
-      162
-    ]
-  },
-  {
-    "teal": 72,
-    "source": "contracts/CompxProposal.algo.ts:46",
-    "pc": [
-      163
-    ]
-  },
-  {
-    "teal": 73,
-    "source": "contracts/CompxProposal.algo.ts:46",
-    "pc": [
-      164
-    ]
-  },
-  {
-    "teal": 74,
-    "source": "contracts/CompxProposal.algo.ts:46",
-    "pc": [
-      165
-    ]
-  },
-  {
-    "teal": 75,
-    "source": "contracts/CompxProposal.algo.ts:46",
-    "pc": [
+      162,
+      163,
+      164,
+      165,
       166,
       167,
-      168
-    ]
-  },
-  {
-    "teal": 76,
-    "source": "contracts/CompxProposal.algo.ts:46",
-    "pc": [
-      169
-    ]
-  },
-  {
-    "teal": 77,
-    "source": "contracts/CompxProposal.algo.ts:46",
-    "pc": [
+      168,
+      169,
       170
     ]
   },
   {
-    "teal": 78,
-    "source": "contracts/CompxProposal.algo.ts:46",
+    "teal": 88,
+    "source": "contracts/CompxProposal.algo.ts:43",
     "pc": [
-      171
+      171,
+      172
     ]
   },
   {
-    "teal": 82,
-    "source": "contracts/CompxProposal.algo.ts:47",
+    "teal": 89,
+    "source": "contracts/CompxProposal.algo.ts:43",
     "pc": [
-      172,
       173,
-      174,
-      175,
-      176,
+      174
+    ]
+  },
+  {
+    "teal": 90,
+    "source": "contracts/CompxProposal.algo.ts:43",
+    "pc": [
+      175
+    ]
+  },
+  {
+    "teal": 91,
+    "source": "contracts/CompxProposal.algo.ts:43",
+    "pc": [
+      176
+    ]
+  },
+  {
+    "teal": 95,
+    "source": "contracts/CompxProposal.algo.ts:44",
+    "pc": [
       177,
       178,
       179,
@@ -415,235 +486,205 @@
       185,
       186,
       187,
-      188,
-      189,
-      190,
-      191,
-      192,
-      193
+      188
     ]
   },
   {
-    "teal": 83,
-    "source": "contracts/CompxProposal.algo.ts:47",
+    "teal": 96,
+    "source": "contracts/CompxProposal.algo.ts:44",
     "pc": [
-      194,
+      189,
+      190
+    ]
+  },
+  {
+    "teal": 97,
+    "source": "contracts/CompxProposal.algo.ts:44",
+    "pc": [
+      191
+    ]
+  },
+  {
+    "teal": 98,
+    "source": "contracts/CompxProposal.algo.ts:36",
+    "pc": [
+      192
+    ]
+  },
+  {
+    "teal": 103,
+    "source": "contracts/CompxProposal.algo.ts:57",
+    "pc": [
+      193,
+      194
+    ]
+  },
+  {
+    "teal": 104,
+    "source": "contracts/CompxProposal.algo.ts:57",
+    "pc": [
       195
     ]
   },
   {
-    "teal": 84,
-    "source": "contracts/CompxProposal.algo.ts:47",
+    "teal": 105,
+    "source": "contracts/CompxProposal.algo.ts:57",
     "pc": [
       196
     ]
   },
   {
-    "teal": 85,
-    "source": "contracts/CompxProposal.algo.ts:47",
+    "teal": 106,
+    "source": "contracts/CompxProposal.algo.ts:57",
     "pc": [
       197
     ]
   },
   {
-    "teal": 86,
-    "source": "contracts/CompxProposal.algo.ts:47",
+    "teal": 107,
+    "source": "contracts/CompxProposal.algo.ts:57",
     "pc": [
-      198
+      198,
+      199
     ]
   },
   {
-    "teal": 87,
-    "source": "contracts/CompxProposal.algo.ts:47",
+    "teal": 108,
+    "source": "contracts/CompxProposal.algo.ts:57",
     "pc": [
-      199,
-      200,
+      200
+    ]
+  },
+  {
+    "teal": 109,
+    "source": "contracts/CompxProposal.algo.ts:57",
+    "pc": [
       201
     ]
   },
   {
-    "teal": 88,
-    "source": "contracts/CompxProposal.algo.ts:47",
+    "teal": 112,
+    "source": "contracts/CompxProposal.algo.ts:57",
+    "errorMessage": "argument 0 (mbrTxn) for makeProposalVote must be a pay transaction",
     "pc": [
       202
     ]
   },
   {
-    "teal": 89,
-    "source": "contracts/CompxProposal.algo.ts:47",
+    "teal": 115,
+    "source": "contracts/CompxProposal.algo.ts:57",
     "pc": [
-      203
+      203,
+      204,
+      205
     ]
   },
   {
-    "teal": 90,
-    "source": "contracts/CompxProposal.algo.ts:47",
+    "teal": 116,
+    "source": "contracts/CompxProposal.algo.ts:57",
     "pc": [
-      204
+      206
     ]
   },
   {
-    "teal": 94,
-    "source": "contracts/CompxProposal.algo.ts:48",
+    "teal": 117,
+    "source": "contracts/CompxProposal.algo.ts:57",
     "pc": [
-      205,
-      206,
-      207,
+      207
+    ]
+  },
+  {
+    "teal": 121,
+    "source": "contracts/CompxProposal.algo.ts:57",
+    "pc": [
       208,
       209,
-      210,
-      211,
+      210
+    ]
+  },
+  {
+    "teal": 122,
+    "source": "contracts/CompxProposal.algo.ts:57",
+    "pc": [
+      211
+    ]
+  },
+  {
+    "teal": 125,
+    "source": "contracts/CompxProposal.algo.ts:22",
+    "pc": [
       212,
       213,
       214,
       215,
       216,
-      217,
-      218,
-      219,
-      220,
-      221,
-      222
+      217
     ]
   },
   {
-    "teal": 95,
-    "source": "contracts/CompxProposal.algo.ts:48",
+    "teal": 126,
+    "source": "contracts/CompxProposal.algo.ts:22",
     "pc": [
+      218,
+      219,
+      220
+    ]
+  },
+  {
+    "teal": 127,
+    "source": "contracts/CompxProposal.algo.ts:22",
+    "pc": [
+      221,
+      222,
       223,
       224
     ]
   },
   {
-    "teal": 96,
-    "source": "contracts/CompxProposal.algo.ts:48",
+    "teal": 130,
+    "source": "contracts/CompxProposal.algo.ts:22",
+    "errorMessage": "this contract does not implement the given ABI method for create NoOp",
     "pc": [
-      225,
-      226
+      225
     ]
   },
   {
-    "teal": 97,
-    "source": "contracts/CompxProposal.algo.ts:48",
+    "teal": 133,
+    "source": "contracts/CompxProposal.algo.ts:22",
     "pc": [
-      227
-    ]
-  },
-  {
-    "teal": 98,
-    "source": "contracts/CompxProposal.algo.ts:48",
-    "pc": [
-      228
-    ]
-  },
-  {
-    "teal": 102,
-    "source": "contracts/CompxProposal.algo.ts:49",
-    "pc": [
+      226,
+      227,
+      228,
       229,
       230,
-      231,
+      231
+    ]
+  },
+  {
+    "teal": 134,
+    "source": "contracts/CompxProposal.algo.ts:22",
+    "pc": [
       232,
       233,
-      234,
+      234
+    ]
+  },
+  {
+    "teal": 135,
+    "source": "contracts/CompxProposal.algo.ts:22",
+    "pc": [
       235,
       236,
       237,
-      238,
-      239,
-      240
+      238
     ]
   },
   {
-    "teal": 103,
-    "source": "contracts/CompxProposal.algo.ts:49",
+    "teal": 138,
+    "source": "contracts/CompxProposal.algo.ts:22",
+    "errorMessage": "this contract does not implement the given ABI method for call NoOp",
     "pc": [
-      241,
-      242
-    ]
-  },
-  {
-    "teal": 104,
-    "source": "contracts/CompxProposal.algo.ts:49",
-    "pc": [
-      243
-    ]
-  },
-  {
-    "teal": 108,
-    "source": "contracts/CompxProposal.algo.ts:50",
-    "pc": [
-      244,
-      245,
-      246,
-      247,
-      248,
-      249,
-      250,
-      251,
-      252,
-      253,
-      254
-    ]
-  },
-  {
-    "teal": 109,
-    "source": "contracts/CompxProposal.algo.ts:50",
-    "pc": [
-      255
-    ]
-  },
-  {
-    "teal": 110,
-    "source": "contracts/CompxProposal.algo.ts:50",
-    "pc": [
-      256
-    ]
-  },
-  {
-    "teal": 111,
-    "source": "contracts/CompxProposal.algo.ts:39",
-    "pc": [
-      257
-    ]
-  },
-  {
-    "teal": 114,
-    "source": "contracts/CompxProposal.algo.ts:26",
-    "pc": [
-      258,
-      259,
-      260,
-      261,
-      262,
-      263
-    ]
-  },
-  {
-    "teal": 115,
-    "source": "contracts/CompxProposal.algo.ts:26",
-    "pc": [
-      264,
-      265,
-      266
-    ]
-  },
-  {
-    "teal": 116,
-    "source": "contracts/CompxProposal.algo.ts:26",
-    "pc": [
-      267,
-      268,
-      269,
-      270
-    ]
-  },
-  {
-    "teal": 119,
-    "source": "contracts/CompxProposal.algo.ts:26",
-    "errorMessage": "this contract does not implement the given ABI method for create NoOp",
-    "pc": [
-      271
+      239
     ]
   }
 ]

@@ -7,22 +7,16 @@
     ]
   },
   {
-    "teal": 13,
+    "teal": 2,
     "source": "contracts/ProposalRegistry.algo.ts:10",
     "pc": [
       1,
-      2
-    ]
-  },
-  {
-    "teal": 14,
-    "source": "contracts/ProposalRegistry.algo.ts:10",
-    "pc": [
+      2,
       3
     ]
   },
   {
-    "teal": 15,
+    "teal": 14,
     "source": "contracts/ProposalRegistry.algo.ts:10",
     "pc": [
       4,
@@ -30,14 +24,14 @@
     ]
   },
   {
-    "teal": 16,
+    "teal": 15,
     "source": "contracts/ProposalRegistry.algo.ts:10",
     "pc": [
       6
     ]
   },
   {
-    "teal": 17,
+    "teal": 16,
     "source": "contracts/ProposalRegistry.algo.ts:10",
     "pc": [
       7,
@@ -45,19 +39,31 @@
     ]
   },
   {
-    "teal": 18,
+    "teal": 17,
     "source": "contracts/ProposalRegistry.algo.ts:10",
     "pc": [
       9
     ]
   },
   {
-    "teal": 19,
+    "teal": 18,
     "source": "contracts/ProposalRegistry.algo.ts:10",
     "pc": [
       10,
-      11,
-      12,
+      11
+    ]
+  },
+  {
+    "teal": 19,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "pc": [
+      12
+    ]
+  },
+  {
+    "teal": 20,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "pc": [
       13,
       14,
       15,
@@ -80,69 +86,211 @@
       32,
       33,
       34,
-      35
-    ]
-  },
-  {
-    "teal": 23,
-    "source": "contracts/ProposalRegistry.algo.ts:10",
-    "errorMessage": "The requested action is not implemented in this contract. Are you using the correct OnComplete? Did you set your app ID?",
-    "pc": [
-      36
-    ]
-  },
-  {
-    "teal": 26,
-    "source": "contracts/ProposalRegistry.algo.ts:10",
-    "pc": [
+      35,
+      36,
       37,
       38
     ]
   },
   {
-    "teal": 27,
+    "teal": 24,
     "source": "contracts/ProposalRegistry.algo.ts:10",
+    "errorMessage": "The requested action is not implemented in this contract. Are you using the correct OnComplete? Did you set your app ID?",
     "pc": [
       39
     ]
   },
   {
-    "teal": 30,
-    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "teal": 29,
+    "source": "contracts/ProposalRegistry.algo.ts:30",
     "pc": [
       40,
       41,
-      42,
-      43,
+      42
+    ]
+  },
+  {
+    "teal": 30,
+    "source": "contracts/ProposalRegistry.algo.ts:30",
+    "pc": [
+      43
+    ]
+  },
+  {
+    "teal": 33,
+    "source": "contracts/ProposalRegistry.algo.ts:30",
+    "pc": [
       44,
-      45
+      45,
+      46
     ]
   },
   {
-    "teal": 31,
-    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "teal": 34,
+    "source": "contracts/ProposalRegistry.algo.ts:30",
     "pc": [
-      46,
-      47,
-      48
-    ]
-  },
-  {
-    "teal": 32,
-    "source": "contracts/ProposalRegistry.algo.ts:10",
-    "pc": [
-      49,
-      50,
-      51,
-      52
+      47
     ]
   },
   {
     "teal": 35,
+    "source": "contracts/ProposalRegistry.algo.ts:30",
+    "pc": [
+      48
+    ]
+  },
+  {
+    "teal": 39,
+    "source": "contracts/ProposalRegistry.algo.ts:30",
+    "pc": [
+      49,
+      50,
+      51
+    ]
+  },
+  {
+    "teal": 43,
+    "source": "contracts/ProposalRegistry.algo.ts:31",
+    "pc": [
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76
+    ]
+  },
+  {
+    "teal": 44,
+    "source": "contracts/ProposalRegistry.algo.ts:31",
+    "pc": [
+      77,
+      78
+    ]
+  },
+  {
+    "teal": 45,
+    "source": "contracts/ProposalRegistry.algo.ts:31",
+    "pc": [
+      79
+    ]
+  },
+  {
+    "teal": 46,
+    "source": "contracts/ProposalRegistry.algo.ts:30",
+    "pc": [
+      80
+    ]
+  },
+  {
+    "teal": 49,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "pc": [
+      81
+    ]
+  },
+  {
+    "teal": 50,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "pc": [
+      82
+    ]
+  },
+  {
+    "teal": 53,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "pc": [
+      83,
+      84,
+      85,
+      86,
+      87,
+      88
+    ]
+  },
+  {
+    "teal": 54,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "pc": [
+      89,
+      90,
+      91
+    ]
+  },
+  {
+    "teal": 55,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "pc": [
+      92,
+      93,
+      94,
+      95
+    ]
+  },
+  {
+    "teal": 58,
     "source": "contracts/ProposalRegistry.algo.ts:10",
     "errorMessage": "this contract does not implement the given ABI method for create NoOp",
     "pc": [
-      53
+      96
+    ]
+  },
+  {
+    "teal": 61,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "pc": [
+      97,
+      98,
+      99,
+      100,
+      101,
+      102
+    ]
+  },
+  {
+    "teal": 62,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "pc": [
+      103,
+      104,
+      105
+    ]
+  },
+  {
+    "teal": 63,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "pc": [
+      106,
+      107,
+      108,
+      109
+    ]
+  },
+  {
+    "teal": 66,
+    "source": "contracts/ProposalRegistry.algo.ts:10",
+    "errorMessage": "this contract does not implement the given ABI method for call NoOp",
+    "pc": [
+      110
     ]
   }
 ]

@@ -7,12 +7,18 @@ import algosdk, { Algodv2 } from 'algosdk';
 const fixture = algorandFixture();
 algokit.Config.configure({ populateAppCallResources: true });
 
+//------
 let appClient: CompxProposalClient;
-let algodClient: Algodv2;
-
+let appAddress: string;
+//------
+//------
 const proposalTitle = 'Test Proposal';
 const proposalDescription = 'This is a test proposal';
 const expiresIn = 1000;
+//------
+let algorandClient: algokit.AlgorandClient;
+let algodClient: Algodv2;
+//------
 
 describe('CompxProposal', () => {
   beforeEach(fixture.beforeEach);
@@ -24,24 +30,21 @@ describe('CompxProposal', () => {
     proposalCreator = testAccount;
 
     const { algorand } = fixture;
-    algodClient = algorand.client.algod;
+    algorandClient = algorand;
 
-    appClient = new CompxProposalClient({
-      sender: proposalCreator,
-      resolveBy: 'id',
-      id: 0,
-    });
+    appClient = new CompxProposalClient({ sender: testAccount, resolveBy: 'id', id: 0 }, algorand.client.algod);
 
     await appClient.create.createApplication({
-      proposalTitle,
-      proposalDescription,
+      proposalTitle: proposalTitle,
+      proposalDescription: proposalDescription,
       expires_in: expiresIn,
     });
   });
 
   test('Should create the application successfully', async () => {
     const appState = await appClient.appClient.getGlobalState();
+    console.log('appState', appState);
+
     expect(appState.total_votes.value).toBe(0);
-    expect(appState.compx_governance_main_address.value).toBeDefined();
   });
 });

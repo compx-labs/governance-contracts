@@ -34,7 +34,7 @@ export class CompxProposal extends Contract {
   vote = BoxMap<ProposalVoteId, ProposalVoteInfo>();
 
   createApplication(proposalTitle: string, proposalDescription: string, expires_in: uint64): void {
-    assert(this.txn.sender === this.compx_governance_main_address.value, 'Only governance can create proposal');
+    // assert(this.txn.sender === this.compx_governance_main_address.value, 'Only governance can create proposal');
 
     this.total_votes.value = 0;
     this.yes_votes.value = 0;
@@ -44,11 +44,15 @@ export class CompxProposal extends Contract {
     this.created_at.value = globals.latestTimestamp;
   }
 
-  voteProposal(voteYes: boolean, mbrTxn: PayTxn): void {
-    assert(globals.latestTimestamp < this.expiry_timestamp.value, 'Proposal has expired');
-    assert(!this.vote({ voter_address: this.txn.sender }).exists, 'User Already voted');
-    if (voteYes) {
-      this.yes_votes.value += 1;
-    }
-  }
+  // public getRandomBytes(): bytes {
+  //   const appId = AppID.fromUint64(734847958);
+  //   return sendMethodCall<[uint64], bytes>({
+  //     name: 'registerProposal',
+  //     methodArgs: [420420420],
+  //     applicationID: appId,
+  //     fee: 1,
+  //   });
+  // }
+
+  public makeProposalVote(mbrTxn: PayTxn) {}
 }

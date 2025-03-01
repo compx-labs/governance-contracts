@@ -3,6 +3,24 @@
   "desc": "",
   "methods": [
     {
+      "name": "registerProposal",
+      "args": [
+        {
+          "name": "appId",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      },
+      "actions": {
+        "create": [],
+        "call": [
+          "NoOp"
+        ]
+      }
+    },
+    {
       "name": "createApplication",
       "args": [],
       "returns": {
@@ -41,8 +59,8 @@
   "state": {
     "schema": {
       "global": {
-        "bytes": 1,
-        "ints": 0
+        "bytes": 0,
+        "ints": 1
       },
       "local": {
         "bytes": 0,
@@ -54,7 +72,7 @@
         "compx_proposal_contract": {
           "key": "Y29tcHhfcHJvcG9zYWxfY29udHJhY3Q=",
           "keyType": "AVMBytes",
-          "valueType": "address"
+          "valueType": "uint64"
         }
       },
       "local": {},
@@ -87,22 +105,16 @@
           ]
         },
         {
-          "teal": 13,
+          "teal": 2,
           "source": "contracts/ProposalRegistry.algo.ts:10",
           "pc": [
             1,
-            2
-          ]
-        },
-        {
-          "teal": 14,
-          "source": "contracts/ProposalRegistry.algo.ts:10",
-          "pc": [
+            2,
             3
           ]
         },
         {
-          "teal": 15,
+          "teal": 14,
           "source": "contracts/ProposalRegistry.algo.ts:10",
           "pc": [
             4,
@@ -110,14 +122,14 @@
           ]
         },
         {
-          "teal": 16,
+          "teal": 15,
           "source": "contracts/ProposalRegistry.algo.ts:10",
           "pc": [
             6
           ]
         },
         {
-          "teal": 17,
+          "teal": 16,
           "source": "contracts/ProposalRegistry.algo.ts:10",
           "pc": [
             7,
@@ -125,19 +137,31 @@
           ]
         },
         {
-          "teal": 18,
+          "teal": 17,
           "source": "contracts/ProposalRegistry.algo.ts:10",
           "pc": [
             9
           ]
         },
         {
-          "teal": 19,
+          "teal": 18,
           "source": "contracts/ProposalRegistry.algo.ts:10",
           "pc": [
             10,
-            11,
-            12,
+            11
+          ]
+        },
+        {
+          "teal": 19,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "pc": [
+            12
+          ]
+        },
+        {
+          "teal": 20,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "pc": [
             13,
             14,
             15,
@@ -160,69 +184,211 @@
             32,
             33,
             34,
-            35
-          ]
-        },
-        {
-          "teal": 23,
-          "source": "contracts/ProposalRegistry.algo.ts:10",
-          "errorMessage": "The requested action is not implemented in this contract. Are you using the correct OnComplete? Did you set your app ID?",
-          "pc": [
-            36
-          ]
-        },
-        {
-          "teal": 26,
-          "source": "contracts/ProposalRegistry.algo.ts:10",
-          "pc": [
+            35,
+            36,
             37,
             38
           ]
         },
         {
-          "teal": 27,
+          "teal": 24,
           "source": "contracts/ProposalRegistry.algo.ts:10",
+          "errorMessage": "The requested action is not implemented in this contract. Are you using the correct OnComplete? Did you set your app ID?",
           "pc": [
             39
           ]
         },
         {
-          "teal": 30,
-          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "teal": 29,
+          "source": "contracts/ProposalRegistry.algo.ts:30",
           "pc": [
             40,
             41,
-            42,
-            43,
+            42
+          ]
+        },
+        {
+          "teal": 30,
+          "source": "contracts/ProposalRegistry.algo.ts:30",
+          "pc": [
+            43
+          ]
+        },
+        {
+          "teal": 33,
+          "source": "contracts/ProposalRegistry.algo.ts:30",
+          "pc": [
             44,
-            45
+            45,
+            46
           ]
         },
         {
-          "teal": 31,
-          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "teal": 34,
+          "source": "contracts/ProposalRegistry.algo.ts:30",
           "pc": [
-            46,
-            47,
-            48
-          ]
-        },
-        {
-          "teal": 32,
-          "source": "contracts/ProposalRegistry.algo.ts:10",
-          "pc": [
-            49,
-            50,
-            51,
-            52
+            47
           ]
         },
         {
           "teal": 35,
+          "source": "contracts/ProposalRegistry.algo.ts:30",
+          "pc": [
+            48
+          ]
+        },
+        {
+          "teal": 39,
+          "source": "contracts/ProposalRegistry.algo.ts:30",
+          "pc": [
+            49,
+            50,
+            51
+          ]
+        },
+        {
+          "teal": 43,
+          "source": "contracts/ProposalRegistry.algo.ts:31",
+          "pc": [
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76
+          ]
+        },
+        {
+          "teal": 44,
+          "source": "contracts/ProposalRegistry.algo.ts:31",
+          "pc": [
+            77,
+            78
+          ]
+        },
+        {
+          "teal": 45,
+          "source": "contracts/ProposalRegistry.algo.ts:31",
+          "pc": [
+            79
+          ]
+        },
+        {
+          "teal": 46,
+          "source": "contracts/ProposalRegistry.algo.ts:30",
+          "pc": [
+            80
+          ]
+        },
+        {
+          "teal": 49,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "pc": [
+            81
+          ]
+        },
+        {
+          "teal": 50,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "pc": [
+            82
+          ]
+        },
+        {
+          "teal": 53,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "pc": [
+            83,
+            84,
+            85,
+            86,
+            87,
+            88
+          ]
+        },
+        {
+          "teal": 54,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "pc": [
+            89,
+            90,
+            91
+          ]
+        },
+        {
+          "teal": 55,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "pc": [
+            92,
+            93,
+            94,
+            95
+          ]
+        },
+        {
+          "teal": 58,
           "source": "contracts/ProposalRegistry.algo.ts:10",
           "errorMessage": "this contract does not implement the given ABI method for create NoOp",
           "pc": [
-            53
+            96
+          ]
+        },
+        {
+          "teal": 61,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "pc": [
+            97,
+            98,
+            99,
+            100,
+            101,
+            102
+          ]
+        },
+        {
+          "teal": 62,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "pc": [
+            103,
+            104,
+            105
+          ]
+        },
+        {
+          "teal": 63,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "pc": [
+            106,
+            107,
+            108,
+            109
+          ]
+        },
+        {
+          "teal": 66,
+          "source": "contracts/ProposalRegistry.algo.ts:10",
+          "errorMessage": "this contract does not implement the given ABI method for call NoOp",
+          "pc": [
+            110
           ]
         }
       ],
@@ -234,11 +400,11 @@
     }
   },
   "source": {
-    "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCgovLyBUaGlzIFRFQUwgd2FzIGdlbmVyYXRlZCBieSBURUFMU2NyaXB0IHYwLjEwNi4yCi8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hbGdvcmFuZGZvdW5kYXRpb24vVEVBTFNjcmlwdAoKLy8gVGhpcyBjb250cmFjdCBpcyBjb21wbGlhbnQgd2l0aCBhbmQvb3IgaW1wbGVtZW50cyB0aGUgZm9sbG93aW5nIEFSQ3M6IFsgQVJDNCBdCgovLyBUaGUgZm9sbG93aW5nIHRlbiBsaW5lcyBvZiBURUFMIGhhbmRsZSBpbml0aWFsIHByb2dyYW0gZmxvdwovLyBUaGlzIHBhdHRlcm4gaXMgdXNlZCB0byBtYWtlIGl0IGVhc3kgZm9yIGFueW9uZSB0byBwYXJzZSB0aGUgc3RhcnQgb2YgdGhlIHByb2dyYW0gYW5kIGRldGVybWluZSBpZiBhIHNwZWNpZmljIGFjdGlvbiBpcyBhbGxvd2VkCi8vIEhlcmUsIGFjdGlvbiByZWZlcnMgdG8gdGhlIE9uQ29tcGxldGUgaW4gY29tYmluYXRpb24gd2l0aCB3aGV0aGVyIHRoZSBhcHAgaXMgYmVpbmcgY3JlYXRlZCBvciBjYWxsZWQKLy8gRXZlcnkgcG9zc2libGUgYWN0aW9uIGZvciB0aGlzIGNvbnRyYWN0IGlzIHJlcHJlc2VudGVkIGluIHRoZSBzd2l0Y2ggc3RhdGVtZW50Ci8vIElmIHRoZSBhY3Rpb24gaXMgbm90IGltcGxlbWVudGVkIGluIHRoZSBjb250cmFjdCwgaXRzIHJlc3BlY3RpdmUgYnJhbmNoIHdpbGwgYmUgIipOT1RfSU1QTEVNRU5URUQiIHdoaWNoIGp1c3QgY29udGFpbnMgImVyciIKdHhuIEFwcGxpY2F0aW9uSUQKIQpwdXNoaW50IDYKKgp0eG4gT25Db21wbGV0aW9uCisKc3dpdGNoICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpjcmVhdGVfTm9PcCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQKCipOT1RfSU1QTEVNRU5URUQ6CgkvLyBUaGUgcmVxdWVzdGVkIGFjdGlvbiBpcyBub3QgaW1wbGVtZW50ZWQgaW4gdGhpcyBjb250cmFjdC4gQXJlIHlvdSB1c2luZyB0aGUgY29ycmVjdCBPbkNvbXBsZXRlPyBEaWQgeW91IHNldCB5b3VyIGFwcCBJRD8KCWVycgoKKmFiaV9yb3V0ZV9jcmVhdGVBcHBsaWNhdGlvbjoKCXB1c2hpbnQgMQoJcmV0dXJuCgoqY3JlYXRlX05vT3A6CglwdXNoYnl0ZXMgMHhiODQ0N2IzNiAvLyBtZXRob2QgImNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkIgoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMAoJbWF0Y2ggKmFiaV9yb3V0ZV9jcmVhdGVBcHBsaWNhdGlvbgoKCS8vIHRoaXMgY29udHJhY3QgZG9lcyBub3QgaW1wbGVtZW50IHRoZSBnaXZlbiBBQkkgbWV0aG9kIGZvciBjcmVhdGUgTm9PcAoJZXJy",
+    "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCmludGNibG9jayAxCgovLyBUaGlzIFRFQUwgd2FzIGdlbmVyYXRlZCBieSBURUFMU2NyaXB0IHYwLjEwNi4yCi8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hbGdvcmFuZGZvdW5kYXRpb24vVEVBTFNjcmlwdAoKLy8gVGhpcyBjb250cmFjdCBpcyBjb21wbGlhbnQgd2l0aCBhbmQvb3IgaW1wbGVtZW50cyB0aGUgZm9sbG93aW5nIEFSQ3M6IFsgQVJDNCBdCgovLyBUaGUgZm9sbG93aW5nIHRlbiBsaW5lcyBvZiBURUFMIGhhbmRsZSBpbml0aWFsIHByb2dyYW0gZmxvdwovLyBUaGlzIHBhdHRlcm4gaXMgdXNlZCB0byBtYWtlIGl0IGVhc3kgZm9yIGFueW9uZSB0byBwYXJzZSB0aGUgc3RhcnQgb2YgdGhlIHByb2dyYW0gYW5kIGRldGVybWluZSBpZiBhIHNwZWNpZmljIGFjdGlvbiBpcyBhbGxvd2VkCi8vIEhlcmUsIGFjdGlvbiByZWZlcnMgdG8gdGhlIE9uQ29tcGxldGUgaW4gY29tYmluYXRpb24gd2l0aCB3aGV0aGVyIHRoZSBhcHAgaXMgYmVpbmcgY3JlYXRlZCBvciBjYWxsZWQKLy8gRXZlcnkgcG9zc2libGUgYWN0aW9uIGZvciB0aGlzIGNvbnRyYWN0IGlzIHJlcHJlc2VudGVkIGluIHRoZSBzd2l0Y2ggc3RhdGVtZW50Ci8vIElmIHRoZSBhY3Rpb24gaXMgbm90IGltcGxlbWVudGVkIGluIHRoZSBjb250cmFjdCwgaXRzIHJlc3BlY3RpdmUgYnJhbmNoIHdpbGwgYmUgIipOT1RfSU1QTEVNRU5URUQiIHdoaWNoIGp1c3QgY29udGFpbnMgImVyciIKdHhuIEFwcGxpY2F0aW9uSUQKIQpwdXNoaW50IDYKKgp0eG4gT25Db21wbGV0aW9uCisKc3dpdGNoICpjYWxsX05vT3AgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpjcmVhdGVfTm9PcCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQKCipOT1RfSU1QTEVNRU5URUQ6CgkvLyBUaGUgcmVxdWVzdGVkIGFjdGlvbiBpcyBub3QgaW1wbGVtZW50ZWQgaW4gdGhpcyBjb250cmFjdC4gQXJlIHlvdSB1c2luZyB0aGUgY29ycmVjdCBPbkNvbXBsZXRlPyBEaWQgeW91IHNldCB5b3VyIGFwcCBJRD8KCWVycgoKLy8gcmVnaXN0ZXJQcm9wb3NhbCh1aW50NjQpdm9pZAoqYWJpX3JvdXRlX3JlZ2lzdGVyUHJvcG9zYWw6CgkvLyBhcHBJZDogdWludDY0Cgl0eG5hIEFwcGxpY2F0aW9uQXJncyAxCglidG9pCgoJLy8gZXhlY3V0ZSByZWdpc3RlclByb3Bvc2FsKHVpbnQ2NCl2b2lkCgljYWxsc3ViIHJlZ2lzdGVyUHJvcG9zYWwKCWludGMgMCAvLyAxCglyZXR1cm4KCi8vIHJlZ2lzdGVyUHJvcG9zYWwoYXBwSWQ6IEFwcElEKTogdm9pZApyZWdpc3RlclByb3Bvc2FsOgoJcHJvdG8gMSAwCgoJLy8gY29udHJhY3RzL1Byb3Bvc2FsUmVnaXN0cnkuYWxnby50czozMQoJLy8gdGhpcy5jb21weF9wcm9wb3NhbF9jb250cmFjdC52YWx1ZSA9IGFwcElkCglwdXNoYnl0ZXMgMHg2MzZmNmQ3MDc4NWY3MDcyNmY3MDZmNzM2MTZjNWY2MzZmNmU3NDcyNjE2Mzc0IC8vICJjb21weF9wcm9wb3NhbF9jb250cmFjdCIKCWZyYW1lX2RpZyAtMSAvLyBhcHBJZDogQXBwSUQKCWFwcF9nbG9iYWxfcHV0CglyZXRzdWIKCiphYmlfcm91dGVfY3JlYXRlQXBwbGljYXRpb246CglpbnRjIDAgLy8gMQoJcmV0dXJuCgoqY3JlYXRlX05vT3A6CglwdXNoYnl0ZXMgMHhiODQ0N2IzNiAvLyBtZXRob2QgImNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkIgoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMAoJbWF0Y2ggKmFiaV9yb3V0ZV9jcmVhdGVBcHBsaWNhdGlvbgoKCS8vIHRoaXMgY29udHJhY3QgZG9lcyBub3QgaW1wbGVtZW50IHRoZSBnaXZlbiBBQkkgbWV0aG9kIGZvciBjcmVhdGUgTm9PcAoJZXJyCgoqY2FsbF9Ob09wOgoJcHVzaGJ5dGVzIDB4ZWRmOTYxMTggLy8gbWV0aG9kICJyZWdpc3RlclByb3Bvc2FsKHVpbnQ2NCl2b2lkIgoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMAoJbWF0Y2ggKmFiaV9yb3V0ZV9yZWdpc3RlclByb3Bvc2FsCgoJLy8gdGhpcyBjb250cmFjdCBkb2VzIG5vdCBpbXBsZW1lbnQgdGhlIGdpdmVuIEFCSSBtZXRob2QgZm9yIGNhbGwgTm9PcAoJZXJy",
     "clear": "I3ByYWdtYSB2ZXJzaW9uIDEw"
   },
   "byteCode": {
-    "approval": "CjEYFIEGCzEZCI0MAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIEBQ4AEuER7NjYaAI4B//AA",
+    "approval": "CiABATEYFIEGCzEZCI0MADoAAAAAAAAAAAAAACwAAAAAAAAAAAAAADYaAReIAAIiQ4oBAIAXY29tcHhfcHJvcG9zYWxfY29udHJhY3SL/2eJIkOABLhEezY2GgCOAf/xAIAE7flhGDYaAI4B/7oA",
     "clear": "Cg=="
   },
   "compilerInfo": {

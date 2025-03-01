@@ -12,7 +12,7 @@ export class CompxProposalRegistry extends Contract {
     prefix: 'reg_proposal_',
   });
 
-  compx_proposal_contract = GlobalStateKey<Address>();
+  compx_proposal_contract = GlobalStateKey<AppID>();
 
   //   createApplication(): void {
   //     // Only allow deployment once, without restrictions
@@ -26,4 +26,8 @@ export class CompxProposalRegistry extends Contract {
 
   //     this.registered_proposals({ proposal_id: proposal_id }).value = proposalData;
   //   }
+
+  registerProposal(appId: AppID) {
+    this.compx_proposal_contract.value = appId;
+  }
 }

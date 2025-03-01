@@ -3,6 +3,18 @@
   "desc": "",
   "methods": [
     {
+      "name": "registerProposal",
+      "args": [
+        {
+          "name": "appId",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
       "name": "createApplication",
       "args": [],
       "returns": {

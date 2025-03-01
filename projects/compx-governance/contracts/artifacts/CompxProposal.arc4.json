@@ -21,6 +21,18 @@
       "returns": {
         "type": "void"
       }
+    },
+    {
+      "name": "makeProposalVote",
+      "args": [
+        {
+          "name": "mbrTxn",
+          "type": "pay"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
     }
   ]
 }
