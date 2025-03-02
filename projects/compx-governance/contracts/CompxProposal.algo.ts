@@ -54,5 +54,28 @@ export class CompxProposal extends Contract {
   //   });
   // }
 
-  public makeProposalVote(mbrTxn: PayTxn) {}
+  public makeProposalVote(mbrTxn: PayTxn, voteYes: boolean): void {
+    //Check if the MBR transaction is being sent to the contract address
+    assert(mbrTxn.receiver === this.app.address, 'Invalid receiver');
+
+    //Check if the method call is correctly being sent to the contract address
+
+    const voterAddress: Address = this.txn.sender;
+
+    //Check if MBR transaction is enough in order to create the vote box
+    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: vote_mbr } });
+
+    //Check if user haven't already voted
+    assert(!this.vote({ voter_address: voterAddress }).exists, 'Already voted');
+
+    //Check if proposal is still active
+    assert(globals.latestTimestamp < this.expiry_timestamp.value, 'Proposal expired');
+
+    this.vote({ voter_address: voterAddress }).value = { vote_yes: voteYes };
+
+    this.total_votes.value += 1;
+    if (voteYes) {
+      this.yes_votes.value += 1;
+    }
+  }
 }

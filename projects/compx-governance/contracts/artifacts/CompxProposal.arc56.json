@@ -34,6 +34,10 @@
         {
           "name": "mbrTxn",
           "type": "pay"
+        },
+        {
+          "name": "voteYes",
+          "type": "bool"
         }
       ],
       "returns": {
@@ -158,54 +162,18 @@
           ]
         },
         {
-          "teal": 14,
+          "teal": 3,
           "source": "contracts/CompxProposal.algo.ts:22",
           "pc": [
             5,
-            6
-          ]
-        },
-        {
-          "teal": 15,
-          "source": "contracts/CompxProposal.algo.ts:22",
-          "pc": [
-            7
-          ]
-        },
-        {
-          "teal": 16,
-          "source": "contracts/CompxProposal.algo.ts:22",
-          "pc": [
+            6,
+            7,
             8,
-            9
-          ]
-        },
-        {
-          "teal": 17,
-          "source": "contracts/CompxProposal.algo.ts:22",
-          "pc": [
-            10
-          ]
-        },
-        {
-          "teal": 18,
-          "source": "contracts/CompxProposal.algo.ts:22",
-          "pc": [
+            9,
+            10,
             11,
-            12
-          ]
-        },
-        {
-          "teal": 19,
-          "source": "contracts/CompxProposal.algo.ts:22",
-          "pc": [
-            13
-          ]
-        },
-        {
-          "teal": 20,
-          "source": "contracts/CompxProposal.algo.ts:22",
-          "pc": [
+            12,
+            13,
             14,
             15,
             16,
@@ -231,105 +199,74 @@
             36,
             37,
             38,
-            39
-          ]
-        },
-        {
-          "teal": 24,
-          "source": "contracts/CompxProposal.algo.ts:22",
-          "errorMessage": "The requested action is not implemented in this contract. Are you using the correct OnComplete? Did you set your app ID?",
-          "pc": [
-            40
-          ]
-        },
-        {
-          "teal": 29,
-          "source": "contracts/CompxProposal.algo.ts:36",
-          "pc": [
+            39,
+            40,
             41,
             42,
-            43
+            43,
+            44,
+            45
           ]
         },
         {
-          "teal": 30,
-          "source": "contracts/CompxProposal.algo.ts:36",
+          "teal": 15,
+          "source": "contracts/CompxProposal.algo.ts:22",
           "pc": [
-            44
-          ]
-        },
-        {
-          "teal": 33,
-          "source": "contracts/CompxProposal.algo.ts:36",
-          "pc": [
-            45,
             46,
             47
           ]
         },
         {
-          "teal": 34,
-          "source": "contracts/CompxProposal.algo.ts:36",
+          "teal": 16,
+          "source": "contracts/CompxProposal.algo.ts:22",
           "pc": [
-            48,
+            48
+          ]
+        },
+        {
+          "teal": 17,
+          "source": "contracts/CompxProposal.algo.ts:22",
+          "pc": [
             49,
             50
           ]
         },
         {
-          "teal": 37,
-          "source": "contracts/CompxProposal.algo.ts:36",
+          "teal": 18,
+          "source": "contracts/CompxProposal.algo.ts:22",
           "pc": [
-            51,
+            51
+          ]
+        },
+        {
+          "teal": 19,
+          "source": "contracts/CompxProposal.algo.ts:22",
+          "pc": [
             52,
             53
           ]
         },
         {
-          "teal": 38,
-          "source": "contracts/CompxProposal.algo.ts:36",
+          "teal": 20,
+          "source": "contracts/CompxProposal.algo.ts:22",
           "pc": [
-            54,
-            55,
-            56
+            54
           ]
         },
         {
-          "teal": 41,
-          "source": "contracts/CompxProposal.algo.ts:36",
+          "teal": 21,
+          "source": "contracts/CompxProposal.algo.ts:22",
           "pc": [
+            55,
+            56,
             57,
             58,
-            59
-          ]
-        },
-        {
-          "teal": 42,
-          "source": "contracts/CompxProposal.algo.ts:36",
-          "pc": [
-            60
-          ]
-        },
-        {
-          "teal": 43,
-          "source": "contracts/CompxProposal.algo.ts:36",
-          "pc": [
-            61
-          ]
-        },
-        {
-          "teal": 47,
-          "source": "contracts/CompxProposal.algo.ts:36",
-          "pc": [
+            59,
+            60,
+            61,
             62,
             63,
-            64
-          ]
-        },
-        {
-          "teal": 51,
-          "source": "contracts/CompxProposal.algo.ts:39",
-          "pc": [
+            64,
             65,
             66,
             67,
@@ -342,139 +279,158 @@
             74,
             75,
             76,
-            77
+            77,
+            78,
+            79,
+            80
+          ]
+        },
+        {
+          "teal": 25,
+          "source": "contracts/CompxProposal.algo.ts:22",
+          "errorMessage": "The requested action is not implemented in this contract. Are you using the correct OnComplete? Did you set your app ID?",
+          "pc": [
+            81
+          ]
+        },
+        {
+          "teal": 30,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
+            82,
+            83,
+            84
+          ]
+        },
+        {
+          "teal": 31,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
+            85
+          ]
+        },
+        {
+          "teal": 34,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
+            86,
+            87,
+            88
+          ]
+        },
+        {
+          "teal": 35,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
+            89,
+            90,
+            91
+          ]
+        },
+        {
+          "teal": 38,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
+            92,
+            93,
+            94
+          ]
+        },
+        {
+          "teal": 39,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
+            95,
+            96,
+            97
+          ]
+        },
+        {
+          "teal": 42,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
+            98,
+            99,
+            100
+          ]
+        },
+        {
+          "teal": 43,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
+            101
+          ]
+        },
+        {
+          "teal": 44,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
+            102
+          ]
+        },
+        {
+          "teal": 48,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
+            103,
+            104,
+            105
           ]
         },
         {
           "teal": 52,
           "source": "contracts/CompxProposal.algo.ts:39",
           "pc": [
-            78
+            106
           ]
         },
         {
           "teal": 53,
           "source": "contracts/CompxProposal.algo.ts:39",
           "pc": [
-            79
+            107
           ]
         },
         {
-          "teal": 57,
-          "source": "contracts/CompxProposal.algo.ts:40",
+          "teal": 54,
+          "source": "contracts/CompxProposal.algo.ts:39",
           "pc": [
-            80,
-            81,
-            82,
-            83,
-            84,
-            85,
-            86,
-            87,
-            88,
-            89,
-            90
+            108
           ]
         },
         {
           "teal": 58,
           "source": "contracts/CompxProposal.algo.ts:40",
           "pc": [
-            91
+            109
           ]
         },
         {
           "teal": 59,
           "source": "contracts/CompxProposal.algo.ts:40",
           "pc": [
-            92
+            110
           ]
         },
         {
-          "teal": 63,
-          "source": "contracts/CompxProposal.algo.ts:41",
+          "teal": 60,
+          "source": "contracts/CompxProposal.algo.ts:40",
           "pc": [
-            93,
-            94,
-            95,
-            96,
-            97,
-            98,
-            99,
-            100,
-            101,
-            102,
-            103,
-            104,
-            105,
-            106,
-            107,
-            108
+            111
           ]
         },
         {
           "teal": 64,
           "source": "contracts/CompxProposal.algo.ts:41",
           "pc": [
-            109,
-            110
-          ]
-        },
-        {
-          "teal": 65,
-          "source": "contracts/CompxProposal.algo.ts:41",
-          "pc": [
-            111
-          ]
-        },
-        {
-          "teal": 66,
-          "source": "contracts/CompxProposal.algo.ts:41",
-          "pc": [
-            112
-          ]
-        },
-        {
-          "teal": 67,
-          "source": "contracts/CompxProposal.algo.ts:41",
-          "pc": [
-            113
-          ]
-        },
-        {
-          "teal": 68,
-          "source": "contracts/CompxProposal.algo.ts:41",
-          "pc": [
+            112,
+            113,
             114,
             115,
-            116
-          ]
-        },
-        {
-          "teal": 69,
-          "source": "contracts/CompxProposal.algo.ts:41",
-          "pc": [
-            117
-          ]
-        },
-        {
-          "teal": 70,
-          "source": "contracts/CompxProposal.algo.ts:41",
-          "pc": [
-            118
-          ]
-        },
-        {
-          "teal": 71,
-          "source": "contracts/CompxProposal.algo.ts:41",
-          "pc": [
-            119
-          ]
-        },
-        {
-          "teal": 75,
-          "source": "contracts/CompxProposal.algo.ts:42",
-          "pc": [
+            116,
+            117,
+            118,
+            119,
             120,
             121,
             122,
@@ -482,86 +438,86 @@
             124,
             125,
             126,
-            127,
+            127
+          ]
+        },
+        {
+          "teal": 65,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
             128,
-            129,
-            130,
-            131,
-            132,
+            129
+          ]
+        },
+        {
+          "teal": 66,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
+            130
+          ]
+        },
+        {
+          "teal": 67,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
+            131
+          ]
+        },
+        {
+          "teal": 68,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
+            132
+          ]
+        },
+        {
+          "teal": 69,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
             133,
             134,
-            135,
-            136,
-            137,
-            138,
-            139,
-            140,
-            141
+            135
+          ]
+        },
+        {
+          "teal": 70,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
+            136
+          ]
+        },
+        {
+          "teal": 71,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
+            137
+          ]
+        },
+        {
+          "teal": 72,
+          "source": "contracts/CompxProposal.algo.ts:41",
+          "pc": [
+            138
           ]
         },
         {
           "teal": 76,
           "source": "contracts/CompxProposal.algo.ts:42",
           "pc": [
+            139,
+            140,
+            141,
             142,
-            143
-          ]
-        },
-        {
-          "teal": 77,
-          "source": "contracts/CompxProposal.algo.ts:42",
-          "pc": [
-            144
-          ]
-        },
-        {
-          "teal": 78,
-          "source": "contracts/CompxProposal.algo.ts:42",
-          "pc": [
-            145
-          ]
-        },
-        {
-          "teal": 79,
-          "source": "contracts/CompxProposal.algo.ts:42",
-          "pc": [
-            146
-          ]
-        },
-        {
-          "teal": 80,
-          "source": "contracts/CompxProposal.algo.ts:42",
-          "pc": [
+            143,
+            144,
+            145,
+            146,
             147,
             148,
-            149
-          ]
-        },
-        {
-          "teal": 81,
-          "source": "contracts/CompxProposal.algo.ts:42",
-          "pc": [
-            150
-          ]
-        },
-        {
-          "teal": 82,
-          "source": "contracts/CompxProposal.algo.ts:42",
-          "pc": [
-            151
-          ]
-        },
-        {
-          "teal": 83,
-          "source": "contracts/CompxProposal.algo.ts:42",
-          "pc": [
-            152
-          ]
-        },
-        {
-          "teal": 87,
-          "source": "contracts/CompxProposal.algo.ts:43",
-          "pc": [
+            149,
+            150,
+            151,
+            152,
             153,
             154,
             155,
@@ -569,24 +525,72 @@
             157,
             158,
             159,
-            160,
+            160
+          ]
+        },
+        {
+          "teal": 77,
+          "source": "contracts/CompxProposal.algo.ts:42",
+          "pc": [
             161,
-            162,
-            163,
-            164,
-            165,
+            162
+          ]
+        },
+        {
+          "teal": 78,
+          "source": "contracts/CompxProposal.algo.ts:42",
+          "pc": [
+            163
+          ]
+        },
+        {
+          "teal": 79,
+          "source": "contracts/CompxProposal.algo.ts:42",
+          "pc": [
+            164
+          ]
+        },
+        {
+          "teal": 80,
+          "source": "contracts/CompxProposal.algo.ts:42",
+          "pc": [
+            165
+          ]
+        },
+        {
+          "teal": 81,
+          "source": "contracts/CompxProposal.algo.ts:42",
+          "pc": [
             166,
             167,
-            168,
-            169,
+            168
+          ]
+        },
+        {
+          "teal": 82,
+          "source": "contracts/CompxProposal.algo.ts:42",
+          "pc": [
+            169
+          ]
+        },
+        {
+          "teal": 83,
+          "source": "contracts/CompxProposal.algo.ts:42",
+          "pc": [
             170
+          ]
+        },
+        {
+          "teal": 84,
+          "source": "contracts/CompxProposal.algo.ts:42",
+          "pc": [
+            171
           ]
         },
         {
           "teal": 88,
           "source": "contracts/CompxProposal.algo.ts:43",
           "pc": [
-            171,
             172
           ]
         },
@@ -602,22 +606,28 @@
           "teal": 90,
           "source": "contracts/CompxProposal.algo.ts:43",
           "pc": [
-            175
+            175,
+            176
           ]
         },
         {
           "teal": 91,
           "source": "contracts/CompxProposal.algo.ts:43",
           "pc": [
-            176
+            177
           ]
         },
         {
-          "teal": 95,
+          "teal": 92,
+          "source": "contracts/CompxProposal.algo.ts:43",
+          "pc": [
+            178
+          ]
+        },
+        {
+          "teal": 96,
           "source": "contracts/CompxProposal.algo.ts:44",
           "pc": [
-            177,
-            178,
             179,
             180,
             181,
@@ -627,13 +637,7 @@
             185,
             186,
             187,
-            188
-          ]
-        },
-        {
-          "teal": 96,
-          "source": "contracts/CompxProposal.algo.ts:44",
-          "pc": [
+            188,
             189,
             190
           ]
@@ -642,21 +646,21 @@
           "teal": 97,
           "source": "contracts/CompxProposal.algo.ts:44",
           "pc": [
-            191
-          ]
-        },
-        {
-          "teal": 98,
-          "source": "contracts/CompxProposal.algo.ts:36",
-          "pc": [
+            191,
             192
           ]
         },
         {
-          "teal": 103,
-          "source": "contracts/CompxProposal.algo.ts:57",
+          "teal": 98,
+          "source": "contracts/CompxProposal.algo.ts:44",
           "pc": [
-            193,
+            193
+          ]
+        },
+        {
+          "teal": 99,
+          "source": "contracts/CompxProposal.algo.ts:36",
+          "pc": [
             194
           ]
         },
@@ -664,66 +668,66 @@
           "teal": 104,
           "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
-            195
+            195,
+            196,
+            197
           ]
         },
         {
           "teal": 105,
           "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
-            196
+            198
           ]
         },
         {
           "teal": 106,
           "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
-            197
+            199
           ]
         },
         {
           "teal": 107,
           "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
-            198,
-            199
+            200
           ]
         },
         {
           "teal": 108,
           "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
-            200
-          ]
-        },
-        {
-          "teal": 109,
-          "source": "contracts/CompxProposal.algo.ts:57",
-          "pc": [
             201
           ]
         },
         {
-          "teal": 112,
+          "teal": 111,
           "source": "contracts/CompxProposal.algo.ts:57",
-          "errorMessage": "argument 0 (mbrTxn) for makeProposalVote must be a pay transaction",
+          "errorMessage": "argument 0 (voteYes) for makeProposalVote must be a bool",
           "pc": [
             202
           ]
         },
         {
-          "teal": 115,
+          "teal": 112,
           "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
-            203,
-            204,
-            205
+            203
+          ]
+        },
+        {
+          "teal": 113,
+          "source": "contracts/CompxProposal.algo.ts:57",
+          "pc": [
+            204
           ]
         },
         {
           "teal": 116,
           "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
+            205,
             206
           ]
         },
@@ -735,97 +739,509 @@
           ]
         },
         {
+          "teal": 118,
+          "source": "contracts/CompxProposal.algo.ts:57",
+          "pc": [
+            208
+          ]
+        },
+        {
+          "teal": 119,
+          "source": "contracts/CompxProposal.algo.ts:57",
+          "pc": [
+            209
+          ]
+        },
+        {
+          "teal": 120,
+          "source": "contracts/CompxProposal.algo.ts:57",
+          "pc": [
+            210,
+            211
+          ]
+        },
+        {
           "teal": 121,
           "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
-            208,
-            209,
-            210
+            212
           ]
         },
         {
           "teal": 122,
           "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
-            211
+            213
           ]
         },
         {
           "teal": 125,
-          "source": "contracts/CompxProposal.algo.ts:22",
+          "source": "contracts/CompxProposal.algo.ts:57",
+          "errorMessage": "argument 1 (mbrTxn) for makeProposalVote must be a pay transaction",
           "pc": [
-            212,
-            213,
-            214,
+            214
+          ]
+        },
+        {
+          "teal": 128,
+          "source": "contracts/CompxProposal.algo.ts:57",
+          "pc": [
             215,
             216,
             217
           ]
         },
         {
-          "teal": 126,
-          "source": "contracts/CompxProposal.algo.ts:22",
+          "teal": 129,
+          "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
-            218,
-            219,
-            220
+            218
           ]
         },
         {
-          "teal": 127,
-          "source": "contracts/CompxProposal.algo.ts:22",
+          "teal": 130,
+          "source": "contracts/CompxProposal.algo.ts:57",
           "pc": [
+            219
+          ]
+        },
+        {
+          "teal": 134,
+          "source": "contracts/CompxProposal.algo.ts:57",
+          "pc": [
+            220,
             221,
-            222,
+            222
+          ]
+        },
+        {
+          "teal": 137,
+          "source": "contracts/CompxProposal.algo.ts:57",
+          "pc": [
             223,
             224
           ]
         },
         {
-          "teal": 130,
-          "source": "contracts/CompxProposal.algo.ts:22",
-          "errorMessage": "this contract does not implement the given ABI method for create NoOp",
+          "teal": 141,
+          "source": "contracts/CompxProposal.algo.ts:59",
           "pc": [
-            225
+            225,
+            226
           ]
         },
         {
-          "teal": 133,
-          "source": "contracts/CompxProposal.algo.ts:22",
+          "teal": 142,
+          "source": "contracts/CompxProposal.algo.ts:59",
           "pc": [
-            226,
             227,
-            228,
+            228
+          ]
+        },
+        {
+          "teal": 143,
+          "source": "contracts/CompxProposal.algo.ts:59",
+          "pc": [
             229,
-            230,
+            230
+          ]
+        },
+        {
+          "teal": 144,
+          "source": "contracts/CompxProposal.algo.ts:59",
+          "pc": [
             231
           ]
         },
         {
-          "teal": 134,
-          "source": "contracts/CompxProposal.algo.ts:22",
+          "teal": 147,
+          "source": "contracts/CompxProposal.algo.ts:59",
+          "errorMessage": "Invalid receiver",
           "pc": [
-            232,
+            232
+          ]
+        },
+        {
+          "teal": 151,
+          "source": "contracts/CompxProposal.algo.ts:63",
+          "pc": [
             233,
             234
           ]
         },
         {
-          "teal": 135,
-          "source": "contracts/CompxProposal.algo.ts:22",
+          "teal": 152,
+          "source": "contracts/CompxProposal.algo.ts:63",
           "pc": [
             235,
-            236,
+            236
+          ]
+        },
+        {
+          "teal": 157,
+          "source": "contracts/CompxProposal.algo.ts:66",
+          "pc": [
             237,
             238
           ]
         },
         {
-          "teal": 138,
+          "teal": 158,
+          "source": "contracts/CompxProposal.algo.ts:66",
+          "pc": [
+            239,
+            240
+          ]
+        },
+        {
+          "teal": 159,
+          "source": "contracts/CompxProposal.algo.ts:66",
+          "pc": [
+            241,
+            242,
+            243
+          ]
+        },
+        {
+          "teal": 160,
+          "source": "contracts/CompxProposal.algo.ts:66",
+          "pc": [
+            244
+          ]
+        },
+        {
+          "teal": 163,
+          "source": "contracts/CompxProposal.algo.ts:66",
+          "errorMessage": "transaction verification failed: {\"txn\":\"mbrTxn\",\"field\":\"amount\",\"condition\":\"greaterThanEqualTo\",\"expected\":\">=vote_mbr\"}",
+          "pc": [
+            245
+          ]
+        },
+        {
+          "teal": 167,
+          "source": "contracts/CompxProposal.algo.ts:69",
+          "pc": [
+            246,
+            247
+          ]
+        },
+        {
+          "teal": 168,
+          "source": "contracts/CompxProposal.algo.ts:69",
+          "pc": [
+            248
+          ]
+        },
+        {
+          "teal": 169,
+          "source": "contracts/CompxProposal.algo.ts:69",
+          "pc": [
+            249
+          ]
+        },
+        {
+          "teal": 170,
+          "source": "contracts/CompxProposal.algo.ts:69",
+          "pc": [
+            250
+          ]
+        },
+        {
+          "teal": 171,
+          "source": "contracts/CompxProposal.algo.ts:69",
+          "pc": [
+            251
+          ]
+        },
+        {
+          "teal": 174,
+          "source": "contracts/CompxProposal.algo.ts:69",
+          "errorMessage": "Already voted",
+          "pc": [
+            252
+          ]
+        },
+        {
+          "teal": 178,
+          "source": "contracts/CompxProposal.algo.ts:72",
+          "pc": [
+            253,
+            254
+          ]
+        },
+        {
+          "teal": 179,
+          "source": "contracts/CompxProposal.algo.ts:72",
+          "pc": [
+            255
+          ]
+        },
+        {
+          "teal": 180,
+          "source": "contracts/CompxProposal.algo.ts:72",
+          "pc": [
+            256
+          ]
+        },
+        {
+          "teal": 181,
+          "source": "contracts/CompxProposal.algo.ts:72",
+          "pc": [
+            257
+          ]
+        },
+        {
+          "teal": 184,
+          "source": "contracts/CompxProposal.algo.ts:72",
+          "errorMessage": "Proposal expired",
+          "pc": [
+            258
+          ]
+        },
+        {
+          "teal": 188,
+          "source": "contracts/CompxProposal.algo.ts:74",
+          "pc": [
+            259,
+            260
+          ]
+        },
+        {
+          "teal": 189,
+          "source": "contracts/CompxProposal.algo.ts:74",
+          "pc": [
+            261,
+            262,
+            263
+          ]
+        },
+        {
+          "teal": 190,
+          "source": "contracts/CompxProposal.algo.ts:74",
+          "pc": [
+            264
+          ]
+        },
+        {
+          "teal": 191,
+          "source": "contracts/CompxProposal.algo.ts:74",
+          "pc": [
+            265,
+            266
+          ]
+        },
+        {
+          "teal": 192,
+          "source": "contracts/CompxProposal.algo.ts:74",
+          "pc": [
+            267
+          ]
+        },
+        {
+          "teal": 193,
+          "source": "contracts/CompxProposal.algo.ts:74",
+          "pc": [
+            268
+          ]
+        },
+        {
+          "teal": 197,
+          "source": "contracts/CompxProposal.algo.ts:76",
+          "pc": [
+            269
+          ]
+        },
+        {
+          "teal": 198,
+          "source": "contracts/CompxProposal.algo.ts:76",
+          "pc": [
+            270
+          ]
+        },
+        {
+          "teal": 199,
+          "source": "contracts/CompxProposal.algo.ts:76",
+          "pc": [
+            271
+          ]
+        },
+        {
+          "teal": 200,
+          "source": "contracts/CompxProposal.algo.ts:76",
+          "pc": [
+            272
+          ]
+        },
+        {
+          "teal": 201,
+          "source": "contracts/CompxProposal.algo.ts:76",
+          "pc": [
+            273
+          ]
+        },
+        {
+          "teal": 202,
+          "source": "contracts/CompxProposal.algo.ts:76",
+          "pc": [
+            274
+          ]
+        },
+        {
+          "teal": 203,
+          "source": "contracts/CompxProposal.algo.ts:76",
+          "pc": [
+            275
+          ]
+        },
+        {
+          "teal": 208,
+          "source": "contracts/CompxProposal.algo.ts:77",
+          "pc": [
+            276,
+            277
+          ]
+        },
+        {
+          "teal": 209,
+          "source": "contracts/CompxProposal.algo.ts:77",
+          "pc": [
+            278,
+            279,
+            280
+          ]
+        },
+        {
+          "teal": 214,
+          "source": "contracts/CompxProposal.algo.ts:78",
+          "pc": [
+            281
+          ]
+        },
+        {
+          "teal": 215,
+          "source": "contracts/CompxProposal.algo.ts:78",
+          "pc": [
+            282
+          ]
+        },
+        {
+          "teal": 216,
+          "source": "contracts/CompxProposal.algo.ts:78",
+          "pc": [
+            283
+          ]
+        },
+        {
+          "teal": 217,
+          "source": "contracts/CompxProposal.algo.ts:78",
+          "pc": [
+            284
+          ]
+        },
+        {
+          "teal": 218,
+          "source": "contracts/CompxProposal.algo.ts:78",
+          "pc": [
+            285
+          ]
+        },
+        {
+          "teal": 219,
+          "source": "contracts/CompxProposal.algo.ts:78",
+          "pc": [
+            286
+          ]
+        },
+        {
+          "teal": 220,
+          "source": "contracts/CompxProposal.algo.ts:78",
+          "pc": [
+            287
+          ]
+        },
+        {
+          "teal": 223,
+          "source": "contracts/CompxProposal.algo.ts:57",
+          "pc": [
+            288
+          ]
+        },
+        {
+          "teal": 226,
+          "source": "contracts/CompxProposal.algo.ts:22",
+          "pc": [
+            289,
+            290,
+            291,
+            292,
+            293,
+            294
+          ]
+        },
+        {
+          "teal": 227,
+          "source": "contracts/CompxProposal.algo.ts:22",
+          "pc": [
+            295,
+            296,
+            297
+          ]
+        },
+        {
+          "teal": 228,
+          "source": "contracts/CompxProposal.algo.ts:22",
+          "pc": [
+            298,
+            299,
+            300,
+            301
+          ]
+        },
+        {
+          "teal": 231,
+          "source": "contracts/CompxProposal.algo.ts:22",
+          "errorMessage": "this contract does not implement the given ABI method for create NoOp",
+          "pc": [
+            302
+          ]
+        },
+        {
+          "teal": 234,
+          "source": "contracts/CompxProposal.algo.ts:22",
+          "pc": [
+            303,
+            304,
+            305,
+            306,
+            307,
+            308
+          ]
+        },
+        {
+          "teal": 235,
+          "source": "contracts/CompxProposal.algo.ts:22",
+          "pc": [
+            309,
+            310,
+            311
+          ]
+        },
+        {
+          "teal": 236,
+          "source": "contracts/CompxProposal.algo.ts:22",
+          "pc": [
+            312,
+            313,
+            314,
+            315
+          ]
+        },
+        {
+          "teal": 239,
           "source": "contracts/CompxProposal.algo.ts:22",
           "errorMessage": "this contract does not implement the given ABI method for call NoOp",
           "pc": [
-            239
+            316
           ]
         }
       ],
@@ -837,11 +1253,11 @@
     }
   },
   "source": {
-    "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCmludGNibG9jayAxIDAKCi8vIFRoaXMgVEVBTCB3YXMgZ2VuZXJhdGVkIGJ5IFRFQUxTY3JpcHQgdjAuMTA2LjIKLy8gaHR0cHM6Ly9naXRodWIuY29tL2FsZ29yYW5kZm91bmRhdGlvbi9URUFMU2NyaXB0CgovLyBUaGlzIGNvbnRyYWN0IGlzIGNvbXBsaWFudCB3aXRoIGFuZC9vciBpbXBsZW1lbnRzIHRoZSBmb2xsb3dpbmcgQVJDczogWyBBUkM0IF0KCi8vIFRoZSBmb2xsb3dpbmcgdGVuIGxpbmVzIG9mIFRFQUwgaGFuZGxlIGluaXRpYWwgcHJvZ3JhbSBmbG93Ci8vIFRoaXMgcGF0dGVybiBpcyB1c2VkIHRvIG1ha2UgaXQgZWFzeSBmb3IgYW55b25lIHRvIHBhcnNlIHRoZSBzdGFydCBvZiB0aGUgcHJvZ3JhbSBhbmQgZGV0ZXJtaW5lIGlmIGEgc3BlY2lmaWMgYWN0aW9uIGlzIGFsbG93ZWQKLy8gSGVyZSwgYWN0aW9uIHJlZmVycyB0byB0aGUgT25Db21wbGV0ZSBpbiBjb21iaW5hdGlvbiB3aXRoIHdoZXRoZXIgdGhlIGFwcCBpcyBiZWluZyBjcmVhdGVkIG9yIGNhbGxlZAovLyBFdmVyeSBwb3NzaWJsZSBhY3Rpb24gZm9yIHRoaXMgY29udHJhY3QgaXMgcmVwcmVzZW50ZWQgaW4gdGhlIHN3aXRjaCBzdGF0ZW1lbnQKLy8gSWYgdGhlIGFjdGlvbiBpcyBub3QgaW1wbGVtZW50ZWQgaW4gdGhlIGNvbnRyYWN0LCBpdHMgcmVzcGVjdGl2ZSBicmFuY2ggd2lsbCBiZSAiKk5PVF9JTVBMRU1FTlRFRCIgd2hpY2gganVzdCBjb250YWlucyAiZXJyIgp0eG4gQXBwbGljYXRpb25JRAohCnB1c2hpbnQgNgoqCnR4biBPbkNvbXBsZXRpb24KKwpzd2l0Y2ggKmNhbGxfTm9PcCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKmNyZWF0ZV9Ob09wICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRAoKKk5PVF9JTVBMRU1FTlRFRDoKCS8vIFRoZSByZXF1ZXN0ZWQgYWN0aW9uIGlzIG5vdCBpbXBsZW1lbnRlZCBpbiB0aGlzIGNvbnRyYWN0LiBBcmUgeW91IHVzaW5nIHRoZSBjb3JyZWN0IE9uQ29tcGxldGU/IERpZCB5b3Ugc2V0IHlvdXIgYXBwIElEPwoJZXJyCgovLyBjcmVhdGVBcHBsaWNhdGlvbihzdHJpbmcsc3RyaW5nLHVpbnQ2NCl2b2lkCiphYmlfcm91dGVfY3JlYXRlQXBwbGljYXRpb246CgkvLyBleHBpcmVzX2luOiB1aW50NjQKCXR4bmEgQXBwbGljYXRpb25BcmdzIDMKCWJ0b2kKCgkvLyBwcm9wb3NhbERlc2NyaXB0aW9uOiBzdHJpbmcKCXR4bmEgQXBwbGljYXRpb25BcmdzIDIKCWV4dHJhY3QgMiAwCgoJLy8gcHJvcG9zYWxUaXRsZTogc3RyaW5nCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAxCglleHRyYWN0IDIgMAoKCS8vIGV4ZWN1dGUgY3JlYXRlQXBwbGljYXRpb24oc3RyaW5nLHN0cmluZyx1aW50NjQpdm9pZAoJY2FsbHN1YiBjcmVhdGVBcHBsaWNhdGlvbgoJaW50YyAwIC8vIDEKCXJldHVybgoKLy8gY3JlYXRlQXBwbGljYXRpb24ocHJvcG9zYWxUaXRsZTogc3RyaW5nLCBwcm9wb3NhbERlc2NyaXB0aW9uOiBzdHJpbmcsIGV4cGlyZXNfaW46IHVpbnQ2NCk6IHZvaWQKY3JlYXRlQXBwbGljYXRpb246Cglwcm90byAzIDAKCgkvLyBjb250cmFjdHMvQ29tcHhQcm9wb3NhbC5hbGdvLnRzOjM5CgkvLyB0aGlzLnRvdGFsX3ZvdGVzLnZhbHVlID0gMAoJcHVzaGJ5dGVzIDB4NzQ2Zjc0NjE2YzVmNzY2Zjc0NjU3MyAvLyAidG90YWxfdm90ZXMiCglpbnRjIDEgLy8gMAoJYXBwX2dsb2JhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhQcm9wb3NhbC5hbGdvLnRzOjQwCgkvLyB0aGlzLnllc192b3Rlcy52YWx1ZSA9IDAKCXB1c2hieXRlcyAweDc5NjU3MzVmNzY2Zjc0NjU3MyAvLyAieWVzX3ZvdGVzIgoJaW50YyAxIC8vIDAKCWFwcF9nbG9iYWxfcHV0CgoJLy8gY29udHJhY3RzL0NvbXB4UHJvcG9zYWwuYWxnby50czo0MQoJLy8gdGhpcy5wcm9wb3NhbF90aXRsZS52YWx1ZSA9IHByb3Bvc2FsVGl0bGUKCXB1c2hieXRlcyAweDcwNzI2ZjcwNmY3MzYxNmM1Zjc0Njk3NDZjNjUgLy8gInByb3Bvc2FsX3RpdGxlIgoJZnJhbWVfZGlnIC0xIC8vIHByb3Bvc2FsVGl0bGU6IHN0cmluZwoJZHVwCglsZW4KCWl0b2IKCWV4dHJhY3QgNiAyCglzd2FwCgljb25jYXQKCWFwcF9nbG9iYWxfcHV0CgoJLy8gY29udHJhY3RzL0NvbXB4UHJvcG9zYWwuYWxnby50czo0MgoJLy8gdGhpcy5wcm9wb3NhbF9kZXNjcmlwdGlvbi52YWx1ZSA9IHByb3Bvc2FsRGVzY3JpcHRpb24KCXB1c2hieXRlcyAweDcwNzI2ZjcwNmY3MzYxNmM1ZjY0NjU3MzYzNzI2OTcwNzQ2OTZmNmUgLy8gInByb3Bvc2FsX2Rlc2NyaXB0aW9uIgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsRGVzY3JpcHRpb246IHN0cmluZwoJZHVwCglsZW4KCWl0b2IKCWV4dHJhY3QgNiAyCglzd2FwCgljb25jYXQKCWFwcF9nbG9iYWxfcHV0CgoJLy8gY29udHJhY3RzL0NvbXB4UHJvcG9zYWwuYWxnby50czo0MwoJLy8gdGhpcy5leHBpcnlfdGltZXN0YW1wLnZhbHVlID0gZ2xvYmFscy5sYXRlc3RUaW1lc3RhbXAgKyBleHBpcmVzX2luCglwdXNoYnl0ZXMgMHg2NTc4NzA2OTcyNzk1Zjc0Njk2ZDY1NzM3NDYxNmQ3MCAvLyAiZXhwaXJ5X3RpbWVzdGFtcCIKCWdsb2JhbCBMYXRlc3RUaW1lc3RhbXAKCWZyYW1lX2RpZyAtMyAvLyBleHBpcmVzX2luOiB1aW50NjQKCSsKCWFwcF9nbG9iYWxfcHV0CgoJLy8gY29udHJhY3RzL0NvbXB4UHJvcG9zYWwuYWxnby50czo0NAoJLy8gdGhpcy5jcmVhdGVkX2F0LnZhbHVlID0gZ2xvYmFscy5sYXRlc3RUaW1lc3RhbXAKCXB1c2hieXRlcyAweDYzNzI2NTYxNzQ2NTY0NWY2MTc0IC8vICJjcmVhdGVkX2F0IgoJZ2xvYmFsIExhdGVzdFRpbWVzdGFtcAoJYXBwX2dsb2JhbF9wdXQKCXJldHN1YgoKLy8gbWFrZVByb3Bvc2FsVm90ZShwYXkpdm9pZAoqYWJpX3JvdXRlX21ha2VQcm9wb3NhbFZvdGU6CgkvLyBtYnJUeG46IHBheQoJdHhuIEdyb3VwSW5kZXgKCWludGMgMCAvLyAxCgktCglkdXAKCWd0eG5zIFR5cGVFbnVtCglpbnRjIDAgLy8gIHBheQoJPT0KCgkvLyBhcmd1bWVudCAwIChtYnJUeG4pIGZvciBtYWtlUHJvcG9zYWxWb3RlIG11c3QgYmUgYSBwYXkgdHJhbnNhY3Rpb24KCWFzc2VydAoKCS8vIGV4ZWN1dGUgbWFrZVByb3Bvc2FsVm90ZShwYXkpdm9pZAoJY2FsbHN1YiBtYWtlUHJvcG9zYWxWb3RlCglpbnRjIDAgLy8gMQoJcmV0dXJuCgovLyBtYWtlUHJvcG9zYWxWb3RlKG1iclR4bjogUGF5VHhuKTogdm9pZAptYWtlUHJvcG9zYWxWb3RlOgoJcHJvdG8gMSAwCglyZXRzdWIKCipjcmVhdGVfTm9PcDoKCXB1c2hieXRlcyAweGMwNGI3NWY0IC8vIG1ldGhvZCAiY3JlYXRlQXBwbGljYXRpb24oc3RyaW5nLHN0cmluZyx1aW50NjQpdm9pZCIKCXR4bmEgQXBwbGljYXRpb25BcmdzIDAKCW1hdGNoICphYmlfcm91dGVfY3JlYXRlQXBwbGljYXRpb24KCgkvLyB0aGlzIGNvbnRyYWN0IGRvZXMgbm90IGltcGxlbWVudCB0aGUgZ2l2ZW4gQUJJIG1ldGhvZCBmb3IgY3JlYXRlIE5vT3AKCWVycgoKKmNhbGxfTm9PcDoKCXB1c2hieXRlcyAweDAzZGJhZTg2IC8vIG1ldGhvZCAibWFrZVByb3Bvc2FsVm90ZShwYXkpdm9pZCIKCXR4bmEgQXBwbGljYXRpb25BcmdzIDAKCW1hdGNoICphYmlfcm91dGVfbWFrZVByb3Bvc2FsVm90ZQoKCS8vIHRoaXMgY29udHJhY3QgZG9lcyBub3QgaW1wbGVtZW50IHRoZSBnaXZlbiBBQkkgbWV0aG9kIGZvciBjYWxsIE5vT3AKCWVycg==",
+    "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCmludGNibG9jayAxIDAKYnl0ZWNibG9jayAweDc0NmY3NDYxNmM1Zjc2NmY3NDY1NzMgMHg3OTY1NzM1Zjc2NmY3NDY1NzMgMHg2NTc4NzA2OTcyNzk1Zjc0Njk2ZDY1NzM3NDYxNmQ3MAoKLy8gVGhpcyBURUFMIHdhcyBnZW5lcmF0ZWQgYnkgVEVBTFNjcmlwdCB2MC4xMDYuMgovLyBodHRwczovL2dpdGh1Yi5jb20vYWxnb3JhbmRmb3VuZGF0aW9uL1RFQUxTY3JpcHQKCi8vIFRoaXMgY29udHJhY3QgaXMgY29tcGxpYW50IHdpdGggYW5kL29yIGltcGxlbWVudHMgdGhlIGZvbGxvd2luZyBBUkNzOiBbIEFSQzQgXQoKLy8gVGhlIGZvbGxvd2luZyB0ZW4gbGluZXMgb2YgVEVBTCBoYW5kbGUgaW5pdGlhbCBwcm9ncmFtIGZsb3cKLy8gVGhpcyBwYXR0ZXJuIGlzIHVzZWQgdG8gbWFrZSBpdCBlYXN5IGZvciBhbnlvbmUgdG8gcGFyc2UgdGhlIHN0YXJ0IG9mIHRoZSBwcm9ncmFtIGFuZCBkZXRlcm1pbmUgaWYgYSBzcGVjaWZpYyBhY3Rpb24gaXMgYWxsb3dlZAovLyBIZXJlLCBhY3Rpb24gcmVmZXJzIHRvIHRoZSBPbkNvbXBsZXRlIGluIGNvbWJpbmF0aW9uIHdpdGggd2hldGhlciB0aGUgYXBwIGlzIGJlaW5nIGNyZWF0ZWQgb3IgY2FsbGVkCi8vIEV2ZXJ5IHBvc3NpYmxlIGFjdGlvbiBmb3IgdGhpcyBjb250cmFjdCBpcyByZXByZXNlbnRlZCBpbiB0aGUgc3dpdGNoIHN0YXRlbWVudAovLyBJZiB0aGUgYWN0aW9uIGlzIG5vdCBpbXBsZW1lbnRlZCBpbiB0aGUgY29udHJhY3QsIGl0cyByZXNwZWN0aXZlIGJyYW5jaCB3aWxsIGJlICIqTk9UX0lNUExFTUVOVEVEIiB3aGljaCBqdXN0IGNvbnRhaW5zICJlcnIiCnR4biBBcHBsaWNhdGlvbklECiEKcHVzaGludCA2CioKdHhuIE9uQ29tcGxldGlvbgorCnN3aXRjaCAqY2FsbF9Ob09wICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqY3JlYXRlX05vT3AgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVECgoqTk9UX0lNUExFTUVOVEVEOgoJLy8gVGhlIHJlcXVlc3RlZCBhY3Rpb24gaXMgbm90IGltcGxlbWVudGVkIGluIHRoaXMgY29udHJhY3QuIEFyZSB5b3UgdXNpbmcgdGhlIGNvcnJlY3QgT25Db21wbGV0ZT8gRGlkIHlvdSBzZXQgeW91ciBhcHAgSUQ/CgllcnIKCi8vIGNyZWF0ZUFwcGxpY2F0aW9uKHN0cmluZyxzdHJpbmcsdWludDY0KXZvaWQKKmFiaV9yb3V0ZV9jcmVhdGVBcHBsaWNhdGlvbjoKCS8vIGV4cGlyZXNfaW46IHVpbnQ2NAoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMwoJYnRvaQoKCS8vIHByb3Bvc2FsRGVzY3JpcHRpb246IHN0cmluZwoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMgoJZXh0cmFjdCAyIDAKCgkvLyBwcm9wb3NhbFRpdGxlOiBzdHJpbmcKCXR4bmEgQXBwbGljYXRpb25BcmdzIDEKCWV4dHJhY3QgMiAwCgoJLy8gZXhlY3V0ZSBjcmVhdGVBcHBsaWNhdGlvbihzdHJpbmcsc3RyaW5nLHVpbnQ2NCl2b2lkCgljYWxsc3ViIGNyZWF0ZUFwcGxpY2F0aW9uCglpbnRjIDAgLy8gMQoJcmV0dXJuCgovLyBjcmVhdGVBcHBsaWNhdGlvbihwcm9wb3NhbFRpdGxlOiBzdHJpbmcsIHByb3Bvc2FsRGVzY3JpcHRpb246IHN0cmluZywgZXhwaXJlc19pbjogdWludDY0KTogdm9pZApjcmVhdGVBcHBsaWNhdGlvbjoKCXByb3RvIDMgMAoKCS8vIGNvbnRyYWN0cy9Db21weFByb3Bvc2FsLmFsZ28udHM6MzkKCS8vIHRoaXMudG90YWxfdm90ZXMudmFsdWUgPSAwCglieXRlYyAwIC8vICAidG90YWxfdm90ZXMiCglpbnRjIDEgLy8gMAoJYXBwX2dsb2JhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhQcm9wb3NhbC5hbGdvLnRzOjQwCgkvLyB0aGlzLnllc192b3Rlcy52YWx1ZSA9IDAKCWJ5dGVjIDEgLy8gICJ5ZXNfdm90ZXMiCglpbnRjIDEgLy8gMAoJYXBwX2dsb2JhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhQcm9wb3NhbC5hbGdvLnRzOjQxCgkvLyB0aGlzLnByb3Bvc2FsX3RpdGxlLnZhbHVlID0gcHJvcG9zYWxUaXRsZQoJcHVzaGJ5dGVzIDB4NzA3MjZmNzA2ZjczNjE2YzVmNzQ2OTc0NmM2NSAvLyAicHJvcG9zYWxfdGl0bGUiCglmcmFtZV9kaWcgLTEgLy8gcHJvcG9zYWxUaXRsZTogc3RyaW5nCglkdXAKCWxlbgoJaXRvYgoJZXh0cmFjdCA2IDIKCXN3YXAKCWNvbmNhdAoJYXBwX2dsb2JhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhQcm9wb3NhbC5hbGdvLnRzOjQyCgkvLyB0aGlzLnByb3Bvc2FsX2Rlc2NyaXB0aW9uLnZhbHVlID0gcHJvcG9zYWxEZXNjcmlwdGlvbgoJcHVzaGJ5dGVzIDB4NzA3MjZmNzA2ZjczNjE2YzVmNjQ2NTczNjM3MjY5NzA3NDY5NmY2ZSAvLyAicHJvcG9zYWxfZGVzY3JpcHRpb24iCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxEZXNjcmlwdGlvbjogc3RyaW5nCglkdXAKCWxlbgoJaXRvYgoJZXh0cmFjdCA2IDIKCXN3YXAKCWNvbmNhdAoJYXBwX2dsb2JhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhQcm9wb3NhbC5hbGdvLnRzOjQzCgkvLyB0aGlzLmV4cGlyeV90aW1lc3RhbXAudmFsdWUgPSBnbG9iYWxzLmxhdGVzdFRpbWVzdGFtcCArIGV4cGlyZXNfaW4KCWJ5dGVjIDIgLy8gICJleHBpcnlfdGltZXN0YW1wIgoJZ2xvYmFsIExhdGVzdFRpbWVzdGFtcAoJZnJhbWVfZGlnIC0zIC8vIGV4cGlyZXNfaW46IHVpbnQ2NAoJKwoJYXBwX2dsb2JhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhQcm9wb3NhbC5hbGdvLnRzOjQ0CgkvLyB0aGlzLmNyZWF0ZWRfYXQudmFsdWUgPSBnbG9iYWxzLmxhdGVzdFRpbWVzdGFtcAoJcHVzaGJ5dGVzIDB4NjM3MjY1NjE3NDY1NjQ1ZjYxNzQgLy8gImNyZWF0ZWRfYXQiCglnbG9iYWwgTGF0ZXN0VGltZXN0YW1wCglhcHBfZ2xvYmFsX3B1dAoJcmV0c3ViCgovLyBtYWtlUHJvcG9zYWxWb3RlKHBheSxib29sKXZvaWQKKmFiaV9yb3V0ZV9tYWtlUHJvcG9zYWxWb3RlOgoJLy8gdm90ZVllczogYm9vbAoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQoJZHVwCglsZW4KCWludGMgMCAvLyAxCgk9PQoKCS8vIGFyZ3VtZW50IDAgKHZvdGVZZXMpIGZvciBtYWtlUHJvcG9zYWxWb3RlIG11c3QgYmUgYSBib29sCglhc3NlcnQKCWludGMgMSAvLyAwCglnZXRiaXQKCgkvLyBtYnJUeG46IHBheQoJdHhuIEdyb3VwSW5kZXgKCWludGMgMCAvLyAxCgktCglkdXAKCWd0eG5zIFR5cGVFbnVtCglpbnRjIDAgLy8gIHBheQoJPT0KCgkvLyBhcmd1bWVudCAxIChtYnJUeG4pIGZvciBtYWtlUHJvcG9zYWxWb3RlIG11c3QgYmUgYSBwYXkgdHJhbnNhY3Rpb24KCWFzc2VydAoKCS8vIGV4ZWN1dGUgbWFrZVByb3Bvc2FsVm90ZShwYXksYm9vbCl2b2lkCgljYWxsc3ViIG1ha2VQcm9wb3NhbFZvdGUKCWludGMgMCAvLyAxCglyZXR1cm4KCi8vIG1ha2VQcm9wb3NhbFZvdGUobWJyVHhuOiBQYXlUeG4sIHZvdGVZZXM6IGJvb2xlYW4pOiB2b2lkCm1ha2VQcm9wb3NhbFZvdGU6Cglwcm90byAyIDAKCgkvLyBQdXNoIGVtcHR5IGJ5dGVzIGFmdGVyIHRoZSBmcmFtZSBwb2ludGVyIHRvIHJlc2VydmUgc3BhY2UgZm9yIGxvY2FsIHZhcmlhYmxlcwoJcHVzaGJ5dGVzIDB4CgoJLy8gY29udHJhY3RzL0NvbXB4UHJvcG9zYWwuYWxnby50czo1OQoJLy8gYXNzZXJ0KG1iclR4bi5yZWNlaXZlciA9PT0gdGhpcy5hcHAuYWRkcmVzcywgJ0ludmFsaWQgcmVjZWl2ZXInKQoJZnJhbWVfZGlnIC0xIC8vIG1iclR4bjogUGF5VHhuCglndHhucyBSZWNlaXZlcgoJZ2xvYmFsIEN1cnJlbnRBcHBsaWNhdGlvbkFkZHJlc3MKCT09CgoJLy8gSW52YWxpZCByZWNlaXZlcgoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL0NvbXB4UHJvcG9zYWwuYWxnby50czo2MwoJLy8gdm90ZXJBZGRyZXNzOiBBZGRyZXNzID0gdGhpcy50eG4uc2VuZGVyCgl0eG4gU2VuZGVyCglmcmFtZV9idXJ5IDAgLy8gdm90ZXJBZGRyZXNzOiBBZGRyZXNzCgoJLy8gY29udHJhY3RzL0NvbXB4UHJvcG9zYWwuYWxnby50czo2NgoJLy8gdmVyaWZ5UGF5VHhuKG1iclR4biwgeyBhbW91bnQ6IHsgZ3JlYXRlclRoYW5FcXVhbFRvOiB2b3RlX21iciB9IH0pCgkvLyB2ZXJpZnkgYW1vdW50CglmcmFtZV9kaWcgLTEgLy8gbWJyVHhuOiBQYXlUeG4KCWd0eG5zIEFtb3VudAoJcHVzaGludCAxOTUyCgk+PQoKCS8vIHRyYW5zYWN0aW9uIHZlcmlmaWNhdGlvbiBmYWlsZWQ6IHsidHhuIjoibWJyVHhuIiwiZmllbGQiOiJhbW91bnQiLCJjb25kaXRpb24iOiJncmVhdGVyVGhhbkVxdWFsVG8iLCJleHBlY3RlZCI6Ij49dm90ZV9tYnIifQoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL0NvbXB4UHJvcG9zYWwuYWxnby50czo2OQoJLy8gYXNzZXJ0KCF0aGlzLnZvdGUoeyB2b3Rlcl9hZGRyZXNzOiB2b3RlckFkZHJlc3MgfSkuZXhpc3RzLCAnQWxyZWFkeSB2b3RlZCcpCglmcmFtZV9kaWcgMCAvLyB2b3RlckFkZHJlc3M6IEFkZHJlc3MKCWJveF9sZW4KCXN3YXAKCXBvcAoJIQoKCS8vIEFscmVhZHkgdm90ZWQKCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weFByb3Bvc2FsLmFsZ28udHM6NzIKCS8vIGFzc2VydChnbG9iYWxzLmxhdGVzdFRpbWVzdGFtcCA8IHRoaXMuZXhwaXJ5X3RpbWVzdGFtcC52YWx1ZSwgJ1Byb3Bvc2FsIGV4cGlyZWQnKQoJZ2xvYmFsIExhdGVzdFRpbWVzdGFtcAoJYnl0ZWMgMiAvLyAgImV4cGlyeV90aW1lc3RhbXAiCglhcHBfZ2xvYmFsX2dldAoJPAoKCS8vIFByb3Bvc2FsIGV4cGlyZWQKCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weFByb3Bvc2FsLmFsZ28udHM6NzQKCS8vIHRoaXMudm90ZSh7IHZvdGVyX2FkZHJlc3M6IHZvdGVyQWRkcmVzcyB9KS52YWx1ZSA9IHsgdm90ZV95ZXM6IHZvdGVZZXMgfQoJZnJhbWVfZGlnIDAgLy8gdm90ZXJBZGRyZXNzOiBBZGRyZXNzCglwdXNoYnl0ZXMgMHgwMAoJaW50YyAxIC8vIDAKCWZyYW1lX2RpZyAtMiAvLyB2b3RlWWVzOiBib29sZWFuCglzZXRiaXQKCWJveF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhQcm9wb3NhbC5hbGdvLnRzOjc2CgkvLyB0aGlzLnRvdGFsX3ZvdGVzLnZhbHVlICs9IDEKCWJ5dGVjIDAgLy8gICJ0b3RhbF92b3RlcyIKCWFwcF9nbG9iYWxfZ2V0CglpbnRjIDAgLy8gMQoJKwoJYnl0ZWMgMCAvLyAgInRvdGFsX3ZvdGVzIgoJc3dhcAoJYXBwX2dsb2JhbF9wdXQKCgkvLyAqaWYwX2NvbmRpdGlvbgoJLy8gY29udHJhY3RzL0NvbXB4UHJvcG9zYWwuYWxnby50czo3NwoJLy8gdm90ZVllcwoJZnJhbWVfZGlnIC0yIC8vIHZvdGVZZXM6IGJvb2xlYW4KCWJ6ICppZjBfZW5kCgoJLy8gKmlmMF9jb25zZXF1ZW50CgkvLyBjb250cmFjdHMvQ29tcHhQcm9wb3NhbC5hbGdvLnRzOjc4CgkvLyB0aGlzLnllc192b3Rlcy52YWx1ZSArPSAxCglieXRlYyAxIC8vICAieWVzX3ZvdGVzIgoJYXBwX2dsb2JhbF9nZXQKCWludGMgMCAvLyAxCgkrCglieXRlYyAxIC8vICAieWVzX3ZvdGVzIgoJc3dhcAoJYXBwX2dsb2JhbF9wdXQKCippZjBfZW5kOgoJcmV0c3ViCgoqY3JlYXRlX05vT3A6CglwdXNoYnl0ZXMgMHhjMDRiNzVmNCAvLyBtZXRob2QgImNyZWF0ZUFwcGxpY2F0aW9uKHN0cmluZyxzdHJpbmcsdWludDY0KXZvaWQiCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAwCgltYXRjaCAqYWJpX3JvdXRlX2NyZWF0ZUFwcGxpY2F0aW9uCgoJLy8gdGhpcyBjb250cmFjdCBkb2VzIG5vdCBpbXBsZW1lbnQgdGhlIGdpdmVuIEFCSSBtZXRob2QgZm9yIGNyZWF0ZSBOb09wCgllcnIKCipjYWxsX05vT3A6CglwdXNoYnl0ZXMgMHgzOWUwY2ViOCAvLyBtZXRob2QgIm1ha2VQcm9wb3NhbFZvdGUocGF5LGJvb2wpdm9pZCIKCXR4bmEgQXBwbGljYXRpb25BcmdzIDAKCW1hdGNoICphYmlfcm91dGVfbWFrZVByb3Bvc2FsVm90ZQoKCS8vIHRoaXMgY29udHJhY3QgZG9lcyBub3QgaW1wbGVtZW50IHRoZSBnaXZlbiBBQkkgbWV0aG9kIGZvciBjYWxsIE5vT3AKCWVycg==",
     "clear": "I3ByYWdtYSB2ZXJzaW9uIDEw"
   },
   "byteCode": {
-    "approval": "CiACAQAxGBSBBgsxGQiNDAC6AAAAAAAAAAAAAACsAAAAAAAAAAAAAAA2GgMXNhoCVwIANhoBVwIAiAACIkOKAwCAC3RvdGFsX3ZvdGVzI2eACXllc192b3RlcyNngA5wcm9wb3NhbF90aXRsZYv/SRUWVwYCTFBngBRwcm9wb3NhbF9kZXNjcmlwdGlvbov+SRUWVwYCTFBngBBleHBpcnlfdGltZXN0YW1wMgeL/QhngApjcmVhdGVkX2F0MgdniTEWIglJOBAiEkSIAAIiQ4oBAImABMBLdfQ2GgCOAf9IAIAEA9uuhjYaAI4B/9IA",
+    "approval": "CiACAQAmAwt0b3RhbF92b3Rlcwl5ZXNfdm90ZXMQZXhwaXJ5X3RpbWVzdGFtcDEYFIEGCzEZCI0MAN4AAAAAAAAAAAAAANAAAAAAAAAAAAAAADYaAxc2GgJXAgA2GgFXAgCIAAIiQ4oDACgjZykjZ4AOcHJvcG9zYWxfdGl0bGWL/0kVFlcGAkxQZ4AUcHJvcG9zYWxfZGVzY3JpcHRpb26L/kkVFlcGAkxQZyoyB4v9CGeACmNyZWF0ZWRfYXQyB2eJNhoBSRUiEkQjUzEWIglJOBAiEkSIAAIiQ4oCAIAAi/84BzIKEkQxAIwAi/84CIGgDw9EiwC9TEgURDIHKmQMRIsAgAEAI4v+VL8oZCIIKExni/5BAAcpZCIIKUxniYAEwEt19DYaAI4B/yQAgAQ54M64NhoAjgH/hwA=",
     "clear": "Cg=="
   },
   "compilerInfo": {

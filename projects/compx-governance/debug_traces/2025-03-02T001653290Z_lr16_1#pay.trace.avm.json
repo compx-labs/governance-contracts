@@ -1,0 +1,44 @@
+{
+  "last-round": 16,
+  "txn-groups": [
+    {
+      "txn-results": [
+        {
+          "txn-result": {
+            "pool-error": "",
+            "txn": {
+              "txn": {
+                "amt": 1000000000,
+                "fee": 1000,
+                "fv": 15,
+                "gen": "dockernet-v1",
+                "gh": "gcwTgmeArr/R4uaTa8xiheOncwDcoNNT3M12I2bzbt0=",
+                "lv": 1015,
+                "rcv": "0GD/3blEP+OPMQHSqMYxJ2AaLWh6KlZ+7LghCufvimI=",
+                "snd": "OopxJbsrhxx27CPpEhealT1cNih8xAr3O7ESBe6AGGo=",
+                "type": "pay"
+              }
+            }
+          }
+        }
+      ],
+      "failed-at": [
+        0
+      ],
+      "failure-message": "transaction SUZF7UOAWZNFUXU6SPF7FICO3HQMVB2MMC2W6LYWXC4DCUFNIOVQ: overspend (account HKFHCJN3FODRY5XMEPUREF42SU6VYNRIPTCAV5Z3WEJAL3UADBVCBOK4OU, data {AccountBaseData:{Status:Offline MicroAlgos:{Raw:9999000} RewardsBase:0 RewardedMicroAlgos:{Raw:0} AuthAddr:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ IncentiveEligible:false TotalAppSchema:{_struct:{} NumUint:0 NumByteSlice:0} TotalExtraAppPages:0 TotalAppParams:0 TotalAppLocalStates:0 TotalAssetParams:0 TotalAssets:0 TotalBoxes:0 TotalBoxBytes:0 LastProposed:0 LastHeartbeat:0} VotingData:{VoteID:[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] SelectionID:[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] StateProofID:[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] VoteFirstValid:0 VoteLastValid:0 VoteKeyDilution:0}}, tried to spend {1000000000})"
+    }
+  ],
+  "version": 2,
+  "eval-overrides": {
+    "allow-empty-signatures": true,
+    "max-log-calls": 2048,
+    "max-log-size": 65536
+  },
+  "exec-trace-config": {
+    "enable": true,
+    "scratch-change": true,
+    "stack-change": true,
+    "state-change": true
+  },
+  "initial-states": {}
+}

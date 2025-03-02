@@ -28,6 +28,10 @@
         {
           "name": "mbrTxn",
           "type": "pay"
+        },
+        {
+          "name": "voteYes",
+          "type": "bool"
         }
       ],
       "returns": {
