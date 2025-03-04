@@ -42,17 +42,17 @@ export class CompxProposal extends Contract {
     this.proposal_description.value = proposalDescription;
     this.expiry_timestamp.value = globals.latestTimestamp + expires_in;
     this.created_at.value = globals.latestTimestamp;
+    // const appId: AppID = AppID.fromUint64(this.app.id);
+
+    // sendMethodCall<[uint64, uint64, uint64], bytes>({
+    //   name: 'registerProposal',
+    //   methodArgs: [420420420, 1000, 1000],
+    //   applicationID: AppID.fromUint64(735052553),
+    //   fee: 1,
+    // });
   }
 
-  // public getRandomBytes(): bytes {
-  //   const appId = AppID.fromUint64(734847958);
-  //   return sendMethodCall<[uint64], bytes>({
-  //     name: 'registerProposal',
-  //     methodArgs: [420420420],
-  //     applicationID: appId,
-  //     fee: 1,
-  //   });
-  // }
+  public createProposal(proposalTitle: string, proposalDescription: string, expires_in: uint64): void {}
 
   public makeProposalVote(mbrTxn: PayTxn, voteYes: boolean): void {
     //Check if the MBR transaction is being sent to the contract address
@@ -70,6 +70,9 @@ export class CompxProposal extends Contract {
 
     //Check if proposal is still active
     assert(globals.latestTimestamp < this.expiry_timestamp.value, 'Proposal expired');
+
+    //Assure its not compx governance address voting
+    // assert(this.txn.sender != this.compx_governance_address.value, 'Compx address cannot vote to this proposal');
 
     this.vote({ voter_address: voterAddress }).value = { vote_yes: voteYes };
 

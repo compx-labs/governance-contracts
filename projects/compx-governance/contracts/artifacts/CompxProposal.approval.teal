@@ -98,6 +98,30 @@ createApplication:
 	app_global_put
 	retsub
 
+// createProposal(string,string,uint64)void
+*abi_route_createProposal:
+	// expires_in: uint64
+	txna ApplicationArgs 3
+	btoi
+
+	// proposalDescription: string
+	txna ApplicationArgs 2
+	extract 2 0
+
+	// proposalTitle: string
+	txna ApplicationArgs 1
+	extract 2 0
+
+	// execute createProposal(string,string,uint64)void
+	callsub createProposal
+	intc 0 // 1
+	return
+
+// createProposal(proposalTitle: string, proposalDescription: string, expires_in: uint64): void
+createProposal:
+	proto 3 0
+	retsub
+
 // makeProposalVote(pay,bool)void
 *abi_route_makeProposalVote:
 	// voteYes: bool
@@ -183,7 +207,7 @@ makeProposalVote:
 	// Proposal expired
 	assert
 
-	// contracts/CompxProposal.algo.ts:74
+	// contracts/CompxProposal.algo.ts:77
 	// this.vote({ voter_address: voterAddress }).value = { vote_yes: voteYes }
 	frame_dig 0 // voterAddress: Address
 	pushbytes 0x00
@@ -192,7 +216,7 @@ makeProposalVote:
 	setbit
 	box_put
 
-	// contracts/CompxProposal.algo.ts:76
+	// contracts/CompxProposal.algo.ts:79
 	// this.total_votes.value += 1
 	bytec 0 //  "total_votes"
 	app_global_get
@@ -203,13 +227,13 @@ makeProposalVote:
 	app_global_put
 
 	// *if0_condition
-	// contracts/CompxProposal.algo.ts:77
+	// contracts/CompxProposal.algo.ts:80
 	// voteYes
 	frame_dig -2 // voteYes: boolean
 	bz *if0_end
 
 	// *if0_consequent
-	// contracts/CompxProposal.algo.ts:78
+	// contracts/CompxProposal.algo.ts:81
 	// this.yes_votes.value += 1
 	bytec 1 //  "yes_votes"
 	app_global_get
@@ -231,9 +255,10 @@ makeProposalVote:
 	err
 
 *call_NoOp:
+	pushbytes 0x44eed410 // method "createProposal(string,string,uint64)void"
 	pushbytes 0x39e0ceb8 // method "makeProposalVote(pay,bool)void"
 	txna ApplicationArgs 0
-	match *abi_route_makeProposalVote
+	match *abi_route_createProposal *abi_route_makeProposalVote
 
 	// this contract does not implement the given ABI method for call NoOp
 	err

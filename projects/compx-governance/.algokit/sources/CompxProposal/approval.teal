@@ -136,7 +136,7 @@ makeProposalVote:
 	// Push empty bytes after the frame pointer to reserve space for local variables
 	pushbytes 0x
 
-	// contracts/CompxProposal.algo.ts:59
+	// contracts/CompxProposal.algo.ts:57
 	// assert(mbrTxn.receiver === this.app.address, 'Invalid receiver')
 	frame_dig -1 // mbrTxn: PayTxn
 	gtxns Receiver
@@ -146,12 +146,12 @@ makeProposalVote:
 	// Invalid receiver
 	assert
 
-	// contracts/CompxProposal.algo.ts:63
+	// contracts/CompxProposal.algo.ts:61
 	// voterAddress: Address = this.txn.sender
 	txn Sender
 	frame_bury 0 // voterAddress: Address
 
-	// contracts/CompxProposal.algo.ts:66
+	// contracts/CompxProposal.algo.ts:64
 	// verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: vote_mbr } })
 	// verify amount
 	frame_dig -1 // mbrTxn: PayTxn
@@ -162,7 +162,7 @@ makeProposalVote:
 	// transaction verification failed: {"txn":"mbrTxn","field":"amount","condition":"greaterThanEqualTo","expected":">=vote_mbr"}
 	assert
 
-	// contracts/CompxProposal.algo.ts:69
+	// contracts/CompxProposal.algo.ts:67
 	// assert(!this.vote({ voter_address: voterAddress }).exists, 'Already voted')
 	frame_dig 0 // voterAddress: Address
 	box_len
@@ -173,7 +173,7 @@ makeProposalVote:
 	// Already voted
 	assert
 
-	// contracts/CompxProposal.algo.ts:72
+	// contracts/CompxProposal.algo.ts:70
 	// assert(globals.latestTimestamp < this.expiry_timestamp.value, 'Proposal expired')
 	global LatestTimestamp
 	bytec 2 //  "expiry_timestamp"
@@ -183,7 +183,7 @@ makeProposalVote:
 	// Proposal expired
 	assert
 
-	// contracts/CompxProposal.algo.ts:74
+	// contracts/CompxProposal.algo.ts:75
 	// this.vote({ voter_address: voterAddress }).value = { vote_yes: voteYes }
 	frame_dig 0 // voterAddress: Address
 	pushbytes 0x00
@@ -192,7 +192,7 @@ makeProposalVote:
 	setbit
 	box_put
 
-	// contracts/CompxProposal.algo.ts:76
+	// contracts/CompxProposal.algo.ts:77
 	// this.total_votes.value += 1
 	bytec 0 //  "total_votes"
 	app_global_get
@@ -203,13 +203,13 @@ makeProposalVote:
 	app_global_put
 
 	// *if0_condition
-	// contracts/CompxProposal.algo.ts:77
+	// contracts/CompxProposal.algo.ts:78
 	// voteYes
 	frame_dig -2 // voteYes: boolean
 	bz *if0_end
 
 	// *if0_consequent
-	// contracts/CompxProposal.algo.ts:78
+	// contracts/CompxProposal.algo.ts:79
 	// this.yes_votes.value += 1
 	bytec 1 //  "yes_votes"
 	app_global_get

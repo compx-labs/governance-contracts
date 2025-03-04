@@ -1,33 +1,38 @@
 import { Contract } from '@algorandfoundation/tealscript';
 
-type RegistryProposalId = { proposal_id: uint64 };
+type RegistryProposalId = { proposal_id: AppID };
 
 type RegistryProposalInfo = {
-  start_date: uint64;
-  expiry_date: uint64;
+  start_timestamp: uint64;
+  expiry_timestamp: uint64;
 };
 
+const proposalRegistryMbr = 1_000;
+
 export class CompxProposalRegistry extends Contract {
+  compx_governance_address = GlobalStateKey<Address>();
+
   registered_proposals = BoxMap<RegistryProposalId, RegistryProposalInfo>({
     prefix: 'reg_proposal_',
   });
 
-  compx_proposal_contract = GlobalStateKey<AppID>();
+  createApplication(): void {
+    this.compx_governance_address.value = this.txn.sender;
+  }
 
-  //   createApplication(): void {
-  //     // Only allow deployment once, without restrictions
-  //   }
+  registerProposal(appId: AppID, mbrTxn: PayTxn, start_timestamp: uint64, expiry_timestamp: uint64) {
+    //This assert is only used if we make the app call to register the new proposal manually
+    //assert(this.txn.sender === this.compx_governance_address.value, 'Only the compx governance address can register a new proposal to this registry')
+    // const proposalAddress: Address = this.txn.sender;
 
-  //   registerProposal(proposal_id: uint64, start_date: uint64, expiry_date: uint64): void {
-  //     // Ensure only the main proposal contract can register
-  //     assert(this.txn.sender === this.compx_proposal_contract.value, 'Only the proposal contract can register');
+    //Assert that the mbrTxn is enough to cover the creation of the proposal box into the registry
+    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: proposalRegistryMbr } });
 
-  //     const proposalData: RegistryProposalInfo = { start_date, expiry_date };
-
-  //     this.registered_proposals({ proposal_id: proposal_id }).value = proposalData;
-  //   }
-
-  registerProposal(appId: AppID) {
-    this.compx_proposal_contract.value = appId;
+    //Assert that the current register being created into the registry does not already exists
+    assert(!this.registered_proposals({ proposal_id: appId }).exists);
+    this.registered_proposals({ proposal_id: appId }).value = {
+      start_timestamp: start_timestamp,
+      expiry_timestamp: expiry_timestamp,
+    };
   }
 }

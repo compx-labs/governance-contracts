@@ -3,20 +3,32 @@
   "desc": "",
   "methods": [
     {
-      "name": "registerProposal",
-      "args": [
-        {
-          "name": "appId",
-          "type": "uint64"
-        }
-      ],
+      "name": "createApplication",
+      "args": [],
       "returns": {
         "type": "void"
       }
     },
     {
-      "name": "createApplication",
-      "args": [],
+      "name": "registerProposal",
+      "args": [
+        {
+          "name": "appId",
+          "type": "uint64"
+        },
+        {
+          "name": "mbrTxn",
+          "type": "pay"
+        },
+        {
+          "name": "start_timestamp",
+          "type": "uint64"
+        },
+        {
+          "name": "expiry_timestamp",
+          "type": "uint64"
+        }
+      ],
       "returns": {
         "type": "void"
       }

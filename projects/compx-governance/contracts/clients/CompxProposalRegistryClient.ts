@@ -29,14 +29,14 @@ import type { ABIResult, TransactionWithSigner } from 'algosdk'
 import { Algodv2, OnApplicationComplete, Transaction, AtomicTransactionComposer, modelsv2 } from 'algosdk'
 export const APP_SPEC: AppSpec = {
   "hints": {
-    "registerProposal(uint64)void": {
-      "call_config": {
-        "no_op": "CALL"
-      }
-    },
     "createApplication()void": {
       "call_config": {
         "no_op": "CREATE"
+      }
+    },
+    "registerProposal(uint64,pay,uint64,uint64)void": {
+      "call_config": {
+        "no_op": "CALL"
       }
     }
   },
@@ -54,9 +54,9 @@ export const APP_SPEC: AppSpec = {
     },
     "global": {
       "declared": {
-        "compx_proposal_contract": {
-          "type": "uint64",
-          "key": "compx_proposal_contract"
+        "compx_governance_address": {
+          "type": "bytes",
+          "key": "compx_governance_address"
         }
       },
       "reserved": {}
@@ -64,8 +64,8 @@ export const APP_SPEC: AppSpec = {
   },
   "state": {
     "global": {
-      "num_byte_slices": 0,
-      "num_uints": 1
+      "num_byte_slices": 1,
+      "num_uints": 0
     },
     "local": {
       "num_byte_slices": 0,
@@ -73,7 +73,7 @@ export const APP_SPEC: AppSpec = {
     }
   },
   "source": {
-    "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCmludGNibG9jayAxCgovLyBUaGlzIFRFQUwgd2FzIGdlbmVyYXRlZCBieSBURUFMU2NyaXB0IHYwLjEwNi4yCi8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hbGdvcmFuZGZvdW5kYXRpb24vVEVBTFNjcmlwdAoKLy8gVGhpcyBjb250cmFjdCBpcyBjb21wbGlhbnQgd2l0aCBhbmQvb3IgaW1wbGVtZW50cyB0aGUgZm9sbG93aW5nIEFSQ3M6IFsgQVJDNCBdCgovLyBUaGUgZm9sbG93aW5nIHRlbiBsaW5lcyBvZiBURUFMIGhhbmRsZSBpbml0aWFsIHByb2dyYW0gZmxvdwovLyBUaGlzIHBhdHRlcm4gaXMgdXNlZCB0byBtYWtlIGl0IGVhc3kgZm9yIGFueW9uZSB0byBwYXJzZSB0aGUgc3RhcnQgb2YgdGhlIHByb2dyYW0gYW5kIGRldGVybWluZSBpZiBhIHNwZWNpZmljIGFjdGlvbiBpcyBhbGxvd2VkCi8vIEhlcmUsIGFjdGlvbiByZWZlcnMgdG8gdGhlIE9uQ29tcGxldGUgaW4gY29tYmluYXRpb24gd2l0aCB3aGV0aGVyIHRoZSBhcHAgaXMgYmVpbmcgY3JlYXRlZCBvciBjYWxsZWQKLy8gRXZlcnkgcG9zc2libGUgYWN0aW9uIGZvciB0aGlzIGNvbnRyYWN0IGlzIHJlcHJlc2VudGVkIGluIHRoZSBzd2l0Y2ggc3RhdGVtZW50Ci8vIElmIHRoZSBhY3Rpb24gaXMgbm90IGltcGxlbWVudGVkIGluIHRoZSBjb250cmFjdCwgaXRzIHJlc3BlY3RpdmUgYnJhbmNoIHdpbGwgYmUgIipOT1RfSU1QTEVNRU5URUQiIHdoaWNoIGp1c3QgY29udGFpbnMgImVyciIKdHhuIEFwcGxpY2F0aW9uSUQKIQpwdXNoaW50IDYKKgp0eG4gT25Db21wbGV0aW9uCisKc3dpdGNoICpjYWxsX05vT3AgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpjcmVhdGVfTm9PcCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQKCipOT1RfSU1QTEVNRU5URUQ6CgkvLyBUaGUgcmVxdWVzdGVkIGFjdGlvbiBpcyBub3QgaW1wbGVtZW50ZWQgaW4gdGhpcyBjb250cmFjdC4gQXJlIHlvdSB1c2luZyB0aGUgY29ycmVjdCBPbkNvbXBsZXRlPyBEaWQgeW91IHNldCB5b3VyIGFwcCBJRD8KCWVycgoKLy8gcmVnaXN0ZXJQcm9wb3NhbCh1aW50NjQpdm9pZAoqYWJpX3JvdXRlX3JlZ2lzdGVyUHJvcG9zYWw6CgkvLyBhcHBJZDogdWludDY0Cgl0eG5hIEFwcGxpY2F0aW9uQXJncyAxCglidG9pCgoJLy8gZXhlY3V0ZSByZWdpc3RlclByb3Bvc2FsKHVpbnQ2NCl2b2lkCgljYWxsc3ViIHJlZ2lzdGVyUHJvcG9zYWwKCWludGMgMCAvLyAxCglyZXR1cm4KCi8vIHJlZ2lzdGVyUHJvcG9zYWwoYXBwSWQ6IEFwcElEKTogdm9pZApyZWdpc3RlclByb3Bvc2FsOgoJcHJvdG8gMSAwCgoJLy8gY29udHJhY3RzL1Byb3Bvc2FsUmVnaXN0cnkuYWxnby50czozMQoJLy8gdGhpcy5jb21weF9wcm9wb3NhbF9jb250cmFjdC52YWx1ZSA9IGFwcElkCglwdXNoYnl0ZXMgMHg2MzZmNmQ3MDc4NWY3MDcyNmY3MDZmNzM2MTZjNWY2MzZmNmU3NDcyNjE2Mzc0IC8vICJjb21weF9wcm9wb3NhbF9jb250cmFjdCIKCWZyYW1lX2RpZyAtMSAvLyBhcHBJZDogQXBwSUQKCWFwcF9nbG9iYWxfcHV0CglyZXRzdWIKCiphYmlfcm91dGVfY3JlYXRlQXBwbGljYXRpb246CglpbnRjIDAgLy8gMQoJcmV0dXJuCgoqY3JlYXRlX05vT3A6CglwdXNoYnl0ZXMgMHhiODQ0N2IzNiAvLyBtZXRob2QgImNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkIgoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMAoJbWF0Y2ggKmFiaV9yb3V0ZV9jcmVhdGVBcHBsaWNhdGlvbgoKCS8vIHRoaXMgY29udHJhY3QgZG9lcyBub3QgaW1wbGVtZW50IHRoZSBnaXZlbiBBQkkgbWV0aG9kIGZvciBjcmVhdGUgTm9PcAoJZXJyCgoqY2FsbF9Ob09wOgoJcHVzaGJ5dGVzIDB4ZWRmOTYxMTggLy8gbWV0aG9kICJyZWdpc3RlclByb3Bvc2FsKHVpbnQ2NCl2b2lkIgoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMAoJbWF0Y2ggKmFiaV9yb3V0ZV9yZWdpc3RlclByb3Bvc2FsCgoJLy8gdGhpcyBjb250cmFjdCBkb2VzIG5vdCBpbXBsZW1lbnQgdGhlIGdpdmVuIEFCSSBtZXRob2QgZm9yIGNhbGwgTm9PcAoJZXJy",
+    "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCmludGNibG9jayAxCmJ5dGVjYmxvY2sgMHg3MjY1Njc1ZjcwNzI2ZjcwNmY3MzYxNmM1ZgoKLy8gVGhpcyBURUFMIHdhcyBnZW5lcmF0ZWQgYnkgVEVBTFNjcmlwdCB2MC4xMDYuMgovLyBodHRwczovL2dpdGh1Yi5jb20vYWxnb3JhbmRmb3VuZGF0aW9uL1RFQUxTY3JpcHQKCi8vIFRoaXMgY29udHJhY3QgaXMgY29tcGxpYW50IHdpdGggYW5kL29yIGltcGxlbWVudHMgdGhlIGZvbGxvd2luZyBBUkNzOiBbIEFSQzQgXQoKLy8gVGhlIGZvbGxvd2luZyB0ZW4gbGluZXMgb2YgVEVBTCBoYW5kbGUgaW5pdGlhbCBwcm9ncmFtIGZsb3cKLy8gVGhpcyBwYXR0ZXJuIGlzIHVzZWQgdG8gbWFrZSBpdCBlYXN5IGZvciBhbnlvbmUgdG8gcGFyc2UgdGhlIHN0YXJ0IG9mIHRoZSBwcm9ncmFtIGFuZCBkZXRlcm1pbmUgaWYgYSBzcGVjaWZpYyBhY3Rpb24gaXMgYWxsb3dlZAovLyBIZXJlLCBhY3Rpb24gcmVmZXJzIHRvIHRoZSBPbkNvbXBsZXRlIGluIGNvbWJpbmF0aW9uIHdpdGggd2hldGhlciB0aGUgYXBwIGlzIGJlaW5nIGNyZWF0ZWQgb3IgY2FsbGVkCi8vIEV2ZXJ5IHBvc3NpYmxlIGFjdGlvbiBmb3IgdGhpcyBjb250cmFjdCBpcyByZXByZXNlbnRlZCBpbiB0aGUgc3dpdGNoIHN0YXRlbWVudAovLyBJZiB0aGUgYWN0aW9uIGlzIG5vdCBpbXBsZW1lbnRlZCBpbiB0aGUgY29udHJhY3QsIGl0cyByZXNwZWN0aXZlIGJyYW5jaCB3aWxsIGJlICIqTk9UX0lNUExFTUVOVEVEIiB3aGljaCBqdXN0IGNvbnRhaW5zICJlcnIiCnR4biBBcHBsaWNhdGlvbklECiEKcHVzaGludCA2CioKdHhuIE9uQ29tcGxldGlvbgorCnN3aXRjaCAqY2FsbF9Ob09wICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqY3JlYXRlX05vT3AgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVECgoqTk9UX0lNUExFTUVOVEVEOgoJLy8gVGhlIHJlcXVlc3RlZCBhY3Rpb24gaXMgbm90IGltcGxlbWVudGVkIGluIHRoaXMgY29udHJhY3QuIEFyZSB5b3UgdXNpbmcgdGhlIGNvcnJlY3QgT25Db21wbGV0ZT8gRGlkIHlvdSBzZXQgeW91ciBhcHAgSUQ/CgllcnIKCi8vIGNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkCiphYmlfcm91dGVfY3JlYXRlQXBwbGljYXRpb246CgkvLyBleGVjdXRlIGNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkCgljYWxsc3ViIGNyZWF0ZUFwcGxpY2F0aW9uCglpbnRjIDAgLy8gMQoJcmV0dXJuCgovLyBjcmVhdGVBcHBsaWNhdGlvbigpOiB2b2lkCmNyZWF0ZUFwcGxpY2F0aW9uOgoJcHJvdG8gMCAwCgoJLy8gY29udHJhY3RzL1Byb3Bvc2FsUmVnaXN0cnkuYWxnby50czoyMAoJLy8gdGhpcy5jb21weF9nb3Zlcm5hbmNlX2FkZHJlc3MudmFsdWUgPSB0aGlzLnR4bi5zZW5kZXIKCXB1c2hieXRlcyAweDYzNmY2ZDcwNzg1ZjY3NmY3NjY1NzI2ZTYxNmU2MzY1NWY2MTY0NjQ3MjY1NzM3MyAvLyAiY29tcHhfZ292ZXJuYW5jZV9hZGRyZXNzIgoJdHhuIFNlbmRlcgoJYXBwX2dsb2JhbF9wdXQKCXJldHN1YgoKLy8gcmVnaXN0ZXJQcm9wb3NhbCh1aW50NjQscGF5LHVpbnQ2NCx1aW50NjQpdm9pZAoqYWJpX3JvdXRlX3JlZ2lzdGVyUHJvcG9zYWw6CgkvLyBleHBpcnlfdGltZXN0YW1wOiB1aW50NjQKCXR4bmEgQXBwbGljYXRpb25BcmdzIDMKCWJ0b2kKCgkvLyBzdGFydF90aW1lc3RhbXA6IHVpbnQ2NAoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMgoJYnRvaQoKCS8vIG1iclR4bjogcGF5Cgl0eG4gR3JvdXBJbmRleAoJaW50YyAwIC8vIDEKCS0KCWR1cAoJZ3R4bnMgVHlwZUVudW0KCWludGMgMCAvLyAgcGF5Cgk9PQoKCS8vIGFyZ3VtZW50IDIgKG1iclR4bikgZm9yIHJlZ2lzdGVyUHJvcG9zYWwgbXVzdCBiZSBhIHBheSB0cmFuc2FjdGlvbgoJYXNzZXJ0CgoJLy8gYXBwSWQ6IHVpbnQ2NAoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQoJYnRvaQoKCS8vIGV4ZWN1dGUgcmVnaXN0ZXJQcm9wb3NhbCh1aW50NjQscGF5LHVpbnQ2NCx1aW50NjQpdm9pZAoJY2FsbHN1YiByZWdpc3RlclByb3Bvc2FsCglpbnRjIDAgLy8gMQoJcmV0dXJuCgovLyByZWdpc3RlclByb3Bvc2FsKGFwcElkOiBBcHBJRCwgbWJyVHhuOiBQYXlUeG4sIHN0YXJ0X3RpbWVzdGFtcDogdWludDY0LCBleHBpcnlfdGltZXN0YW1wOiB1aW50NjQpOiB2b2lkCnJlZ2lzdGVyUHJvcG9zYWw6Cglwcm90byA0IDAKCgkvLyBjb250cmFjdHMvUHJvcG9zYWxSZWdpc3RyeS5hbGdvLnRzOjI5CgkvLyB2ZXJpZnlQYXlUeG4obWJyVHhuLCB7IGFtb3VudDogeyBncmVhdGVyVGhhbkVxdWFsVG86IHByb3Bvc2FsUmVnaXN0cnlNYnIgfSB9KQoJLy8gdmVyaWZ5IGFtb3VudAoJZnJhbWVfZGlnIC0yIC8vIG1iclR4bjogUGF5VHhuCglndHhucyBBbW91bnQKCXB1c2hpbnQgMTAwMAoJPj0KCgkvLyB0cmFuc2FjdGlvbiB2ZXJpZmljYXRpb24gZmFpbGVkOiB7InR4biI6Im1iclR4biIsImZpZWxkIjoiYW1vdW50IiwiY29uZGl0aW9uIjoiZ3JlYXRlclRoYW5FcXVhbFRvIiwiZXhwZWN0ZWQiOiI+PXByb3Bvc2FsUmVnaXN0cnlNYnIifQoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL1Byb3Bvc2FsUmVnaXN0cnkuYWxnby50czozMgoJLy8gYXNzZXJ0KCF0aGlzLnJlZ2lzdGVyZWRfcHJvcG9zYWxzKHsgcHJvcG9zYWxfaWQ6IGFwcElkIH0pLmV4aXN0cykKCWJ5dGVjIDAgLy8gICJyZWdfcHJvcG9zYWxfIgoJZnJhbWVfZGlnIC0xIC8vIGFwcElkOiBBcHBJRAoJaXRvYgoJY29uY2F0Cglib3hfbGVuCglzd2FwCglwb3AKCSEKCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Qcm9wb3NhbFJlZ2lzdHJ5LmFsZ28udHM6MzMKCS8vIHRoaXMucmVnaXN0ZXJlZF9wcm9wb3NhbHMoeyBwcm9wb3NhbF9pZDogYXBwSWQgfSkudmFsdWUgPSB7CgkvLyAgICAgICBzdGFydF90aW1lc3RhbXA6IHN0YXJ0X3RpbWVzdGFtcCwKCS8vICAgICAgIGV4cGlyeV90aW1lc3RhbXA6IGV4cGlyeV90aW1lc3RhbXAsCgkvLyAgICAgfQoJYnl0ZWMgMCAvLyAgInJlZ19wcm9wb3NhbF8iCglmcmFtZV9kaWcgLTEgLy8gYXBwSWQ6IEFwcElECglpdG9iCgljb25jYXQKCWZyYW1lX2RpZyAtMyAvLyBzdGFydF90aW1lc3RhbXA6IHVpbnQ2NAoJaXRvYgoJZnJhbWVfZGlnIC00IC8vIGV4cGlyeV90aW1lc3RhbXA6IHVpbnQ2NAoJaXRvYgoJY29uY2F0Cglib3hfcHV0CglyZXRzdWIKCipjcmVhdGVfTm9PcDoKCXB1c2hieXRlcyAweGI4NDQ3YjM2IC8vIG1ldGhvZCAiY3JlYXRlQXBwbGljYXRpb24oKXZvaWQiCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAwCgltYXRjaCAqYWJpX3JvdXRlX2NyZWF0ZUFwcGxpY2F0aW9uCgoJLy8gdGhpcyBjb250cmFjdCBkb2VzIG5vdCBpbXBsZW1lbnQgdGhlIGdpdmVuIEFCSSBtZXRob2QgZm9yIGNyZWF0ZSBOb09wCgllcnIKCipjYWxsX05vT3A6CglwdXNoYnl0ZXMgMHhhOTY3NTI5ZiAvLyBtZXRob2QgInJlZ2lzdGVyUHJvcG9zYWwodWludDY0LHBheSx1aW50NjQsdWludDY0KXZvaWQiCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAwCgltYXRjaCAqYWJpX3JvdXRlX3JlZ2lzdGVyUHJvcG9zYWwKCgkvLyB0aGlzIGNvbnRyYWN0IGRvZXMgbm90IGltcGxlbWVudCB0aGUgZ2l2ZW4gQUJJIG1ldGhvZCBmb3IgY2FsbCBOb09wCgllcnI=",
     "clear": "I3ByYWdtYSB2ZXJzaW9uIDEw"
   },
   "contract": {
@@ -81,20 +81,32 @@ export const APP_SPEC: AppSpec = {
     "desc": "",
     "methods": [
       {
-        "name": "registerProposal",
-        "args": [
-          {
-            "name": "appId",
-            "type": "uint64"
-          }
-        ],
+        "name": "createApplication",
+        "args": [],
         "returns": {
           "type": "void"
         }
       },
       {
-        "name": "createApplication",
-        "args": [],
+        "name": "registerProposal",
+        "args": [
+          {
+            "name": "appId",
+            "type": "uint64"
+          },
+          {
+            "name": "mbrTxn",
+            "type": "pay"
+          },
+          {
+            "name": "start_timestamp",
+            "type": "uint64"
+          },
+          {
+            "name": "expiry_timestamp",
+            "type": "uint64"
+          }
+        ],
         "returns": {
           "type": "void"
         }
@@ -166,17 +178,20 @@ export type CompxProposalRegistry = {
    * Maps method signatures / names to their argument and return types.
    */
   methods:
-    & Record<'registerProposal(uint64)void' | 'registerProposal', {
-      argsObj: {
-        appId: bigint | number
-      }
-      argsTuple: [appId: bigint | number]
-      returns: void
-    }>
     & Record<'createApplication()void' | 'createApplication', {
       argsObj: {
       }
       argsTuple: []
+      returns: void
+    }>
+    & Record<'registerProposal(uint64,pay,uint64,uint64)void' | 'registerProposal', {
+      argsObj: {
+        appId: bigint | number
+        mbrTxn: TransactionToSign | Transaction | Promise<SendTransactionResult>
+        start_timestamp: bigint | number
+        expiry_timestamp: bigint | number
+      }
+      argsTuple: [appId: bigint | number, mbrTxn: TransactionToSign | Transaction | Promise<SendTransactionResult>, start_timestamp: bigint | number, expiry_timestamp: bigint | number]
       returns: void
     }>
   /**
@@ -184,7 +199,7 @@ export type CompxProposalRegistry = {
    */
   state: {
     global: {
-      'compx_proposal_contract'?: IntegerState
+      'compx_governance_address'?: BinaryState
     }
   }
 }
@@ -260,16 +275,16 @@ export abstract class CompxProposalRegistryCallFactory {
   }
 
   /**
-   * Constructs a no op call for the registerProposal(uint64)void ABI method
+   * Constructs a no op call for the registerProposal(uint64,pay,uint64,uint64)void ABI method
    *
    * @param args Any args for the contract call
    * @param params Any additional parameters for the call
    * @returns A TypedCallParams object for the call
    */
-  static registerProposal(args: MethodArgs<'registerProposal(uint64)void'>, params: AppClientCallCoreParams & CoreAppCallArgs) {
+  static registerProposal(args: MethodArgs<'registerProposal(uint64,pay,uint64,uint64)void'>, params: AppClientCallCoreParams & CoreAppCallArgs) {
     return {
-      method: 'registerProposal(uint64)void' as const,
-      methodArgs: Array.isArray(args) ? args : [args.appId],
+      method: 'registerProposal(uint64,pay,uint64,uint64)void' as const,
+      methodArgs: Array.isArray(args) ? args : [args.appId, args.mbrTxn, args.start_timestamp, args.expiry_timestamp],
       ...params,
     }
   }
@@ -373,13 +388,13 @@ export class CompxProposalRegistryClient {
   }
 
   /**
-   * Calls the registerProposal(uint64)void ABI method.
+   * Calls the registerProposal(uint64,pay,uint64,uint64)void ABI method.
    *
    * @param args The arguments for the contract call
    * @param params Any additional parameters for the call
    * @returns The result of the call
    */
-  public registerProposal(args: MethodArgs<'registerProposal(uint64)void'>, params: AppClientCallCoreParams & CoreAppCallArgs = {}) {
+  public registerProposal(args: MethodArgs<'registerProposal(uint64,pay,uint64,uint64)void'>, params: AppClientCallCoreParams & CoreAppCallArgs = {}) {
     return this.call(CompxProposalRegistryCallFactory.registerProposal(args, params))
   }
 
@@ -433,8 +448,8 @@ export class CompxProposalRegistryClient {
   public async getGlobalState(): Promise<CompxProposalRegistry['state']['global']> {
     const state = await this.appClient.getGlobalState()
     return {
-      get compx_proposal_contract() {
-        return CompxProposalRegistryClient.getIntegerState(state, 'compx_proposal_contract')
+      get compx_governance_address() {
+        return CompxProposalRegistryClient.getBinaryState(state, 'compx_governance_address')
       },
     }
   }
@@ -445,7 +460,7 @@ export class CompxProposalRegistryClient {
     let promiseChain:Promise<unknown> = Promise.resolve()
     const resultMappers: Array<undefined | ((x: any) => any)> = []
     return {
-      registerProposal(args: MethodArgs<'registerProposal(uint64)void'>, params?: AppClientComposeCallCoreParams & CoreAppCallArgs) {
+      registerProposal(args: MethodArgs<'registerProposal(uint64,pay,uint64,uint64)void'>, params?: AppClientComposeCallCoreParams & CoreAppCallArgs) {
         promiseChain = promiseChain.then(() => client.registerProposal(args, {...params, sendParams: {...params?.sendParams, skipSending: true, atc}}))
         resultMappers.push(undefined)
         return this
@@ -484,13 +499,13 @@ export class CompxProposalRegistryClient {
 }
 export type CompxProposalRegistryComposer<TReturns extends [...any[]] = []> = {
   /**
-   * Calls the registerProposal(uint64)void ABI method.
+   * Calls the registerProposal(uint64,pay,uint64,uint64)void ABI method.
    *
    * @param args The arguments for the contract call
    * @param params Any additional parameters for the call
    * @returns The typed transaction composer so you can fluently chain multiple calls or call execute to execute all queued up transactions
    */
-  registerProposal(args: MethodArgs<'registerProposal(uint64)void'>, params?: AppClientComposeCallCoreParams & CoreAppCallArgs): CompxProposalRegistryComposer<[...TReturns, MethodReturn<'registerProposal(uint64)void'>]>
+  registerProposal(args: MethodArgs<'registerProposal(uint64,pay,uint64,uint64)void'>, params?: AppClientComposeCallCoreParams & CoreAppCallArgs): CompxProposalRegistryComposer<[...TReturns, MethodReturn<'registerProposal(uint64,pay,uint64,uint64)void'>]>
 
   /**
    * Makes a clear_state call to an existing instance of the CompxProposalRegistry smart contract.
