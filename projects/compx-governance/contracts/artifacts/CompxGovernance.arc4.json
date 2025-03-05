@@ -1,0 +1,37 @@
+{
+  "name": "CompxGovernance",
+  "desc": "",
+  "methods": [
+    {
+      "name": "createApplication",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "createNewProposal",
+      "desc": "Create a new proposal",
+      "args": [
+        {
+          "name": "proposalTitle",
+          "type": "string",
+          "desc": "Title of the proposal"
+        },
+        {
+          "name": "proposalDescription",
+          "type": "string",
+          "desc": "Description of the proposal"
+        },
+        {
+          "name": "expiresIn",
+          "type": "uint64",
+          "desc": "Time in seconds for the proposal to expire"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    }
+  ]
+}
