@@ -14,6 +14,11 @@
       "desc": "Create a new proposal",
       "args": [
         {
+          "name": "proposalType",
+          "type": "string",
+          "desc": "Type of the proposal - can be reg or pool"
+        },
+        {
           "name": "proposalTitle",
           "type": "string",
           "desc": "Title of the proposal"
@@ -27,6 +32,10 @@
           "name": "expiresIn",
           "type": "uint64",
           "desc": "Time in seconds for the proposal to expire"
+        },
+        {
+          "name": "mbrTxn",
+          "type": "pay"
         }
       ],
       "returns": {

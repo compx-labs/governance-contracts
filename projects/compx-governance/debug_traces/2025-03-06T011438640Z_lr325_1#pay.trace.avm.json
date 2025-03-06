@@ -1,0 +1,44 @@
+{
+  "last-round": 325,
+  "txn-groups": [
+    {
+      "txn-results": [
+        {
+          "txn-result": {
+            "pool-error": "",
+            "txn": {
+              "txn": {
+                "amt": 12915,
+                "fee": 2000,
+                "fv": 325,
+                "gen": "dockernet-v1",
+                "gh": "gcwTgmeArr/R4uaTa8xiheOncwDcoNNT3M12I2bzbt0=",
+                "lv": 1325,
+                "rcv": "POAB3Pi8pVo5QfPCZ+VgUHgKwUx17Q8GX0MLfMZMiXM=",
+                "snd": "7kMZMk4aKv+bHeKhPqOZLgx2R6YK8JqTu7xTJkXTm5Q=",
+                "type": "pay"
+              }
+            }
+          }
+        }
+      ],
+      "failed-at": [
+        0
+      ],
+      "failure-message": "transaction O5K2RHJDV7HT3UVGIBACJGKYU4ZLSWMSI3M5RBELYYMXQDPPB5KA: account HTQADXHYXSSVUOKB6PBGPZLAKB4AVQKMOXWQ6BS7IMFXZRSMRFZWPOXXHM balance 12915 below min 100000 (0 assets)"
+    }
+  ],
+  "version": 2,
+  "eval-overrides": {
+    "allow-empty-signatures": true,
+    "max-log-calls": 2048,
+    "max-log-size": 65536
+  },
+  "exec-trace-config": {
+    "enable": true,
+    "scratch-change": true,
+    "stack-change": true,
+    "state-change": true
+  },
+  "initial-states": {}
+}

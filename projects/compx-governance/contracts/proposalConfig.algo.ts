@@ -1,4 +1,4 @@
-export type ProposalIdType = { nonce: uint64 };
+export type ProposalIdType = { nonce: uint64; proposalType: string };
 
 /**
  * Represents a unique key for identifying validator pool entries.
