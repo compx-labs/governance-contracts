@@ -52,18 +52,17 @@
     },
     {
       "name": "makeProposalVote",
+      "desc": "Add one to the user contribution once it votes on a pool proposal",
       "args": [
         {
           "name": "proposalId",
-          "type": "(uint64)"
+          "type": "(uint64)",
+          "desc": "The id of the proposal to be voted on"
         },
         {
           "name": "inFavor",
-          "type": "bool"
-        },
-        {
-          "name": "mbrTxn",
-          "type": "pay"
+          "type": "bool",
+          "desc": "If the vote is a yes or no vote"
         }
       ],
       "returns": {

@@ -273,7 +273,9 @@ createNewProposal:
 // addOneToUserVotes(voterAddress: Address, proposalId: ProposalIdType, inFavor: boolean): void
 //
 // Create a new proposal
-// @param Address Type of the proposal - can be reg or pool
+// @param voterAddress Type of the proposal - can be 0 regular or 1 pool
+// @param proposalId Id of the proposal to be voted on
+// @param inFavor If the vote is a yes or a no
 addOneToUserVotes:
 	proto 3 0
 
@@ -281,26 +283,26 @@ addOneToUserVotes:
 	bytec 0 // 0x
 	dupn 2
 
-	// contracts/CompxGovernance.algo.ts:96
+	// contracts/CompxGovernance.algo.ts:98
 	// voteTimestamp = globals.latestTimestamp
 	global LatestTimestamp
 	frame_bury 0 // voteTimestamp: uint64
 
-	// contracts/CompxGovernance.algo.ts:98
+	// contracts/CompxGovernance.algo.ts:100
 	// userVotesCount: uint64 = this.user_votes(voterAddress).value
 	frame_dig -1 // voterAddress: Address
 	bytec 4 //  "user_votes"
 	app_local_get
 	frame_bury 1 // userVotesCount: uint64
 
-	// contracts/CompxGovernance.algo.ts:99
+	// contracts/CompxGovernance.algo.ts:101
 	// userContribution: uint64 = this.user_contribution(voterAddress).value
 	frame_dig -1 // voterAddress: Address
 	bytec 2 //  "user_contribution"
 	app_local_get
 	frame_bury 2 // userContribution: uint64
 
-	// contracts/CompxGovernance.algo.ts:102
+	// contracts/CompxGovernance.algo.ts:104
 	// assert(!(userContribution === 0), 'User has not opted in to the contract')
 	frame_dig 2 // userContribution: uint64
 	intc 1 // 0
@@ -310,7 +312,7 @@ addOneToUserVotes:
 	// User has not opted in to the contract
 	assert
 
-	// contracts/CompxGovernance.algo.ts:106
+	// contracts/CompxGovernance.algo.ts:108
 	// assert(
 	//       !this.votes({ proposalId: proposalId, voterAddress: voterAddress }).exists,
 	//       'User already voted on this proposal'
@@ -328,7 +330,7 @@ addOneToUserVotes:
 	// User already voted on this proposal
 	assert
 
-	// contracts/CompxGovernance.algo.ts:110
+	// contracts/CompxGovernance.algo.ts:112
 	// this.proposals(proposalId).value.proposalTotalVotes += 1
 	bytec 1 //  "_p"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -365,13 +367,13 @@ addOneToUserVotes:
 	box_put
 
 	// *if0_condition
-	// contracts/CompxGovernance.algo.ts:111
+	// contracts/CompxGovernance.algo.ts:113
 	// inFavor
 	frame_dig -3 // inFavor: boolean
 	bz *if0_end
 
 	// *if0_consequent
-	// contracts/CompxGovernance.algo.ts:112
+	// contracts/CompxGovernance.algo.ts:114
 	// this.proposals(proposalId).value.proposalYesVotes += 1
 	bytec 1 //  "_p"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -408,7 +410,7 @@ addOneToUserVotes:
 	box_put
 
 *if0_end:
-	// contracts/CompxGovernance.algo.ts:114
+	// contracts/CompxGovernance.algo.ts:116
 	// this.user_votes(voterAddress).value += 1
 	frame_dig -1 // voterAddress: Address
 	bytec 4 //  "user_votes"
@@ -420,7 +422,7 @@ addOneToUserVotes:
 	uncover 2
 	app_local_put
 
-	// contracts/CompxGovernance.algo.ts:116
+	// contracts/CompxGovernance.algo.ts:118
 	// this.votes({ proposalId: proposalId, voterAddress: voterAddress }).value = { voteTimestamp: voteTimestamp }
 	bytec 8 //  "_v"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -432,7 +434,7 @@ addOneToUserVotes:
 	box_put
 
 	// *if1_condition
-	// contracts/CompxGovernance.algo.ts:119
+	// contracts/CompxGovernance.algo.ts:121
 	// this.proposals(proposalId).value.proposalType === 1
 	bytec 1 //  "_p"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -450,12 +452,12 @@ addOneToUserVotes:
 	bz *if1_end
 
 	// *if1_consequent
-	// contracts/CompxGovernance.algo.ts:120
+	// contracts/CompxGovernance.algo.ts:122
 	// this.addOneToUserContribution(voterAddress)
 	frame_dig -1 // voterAddress: Address
 	callsub addOneToUserContribution
 
-	// contracts/CompxGovernance.algo.ts:121
+	// contracts/CompxGovernance.algo.ts:123
 	// this.addOneToUserSpecialVotes(voterAddress)
 	frame_dig -1 // voterAddress: Address
 	callsub addOneToUserSpecialVotes
@@ -465,22 +467,31 @@ addOneToUserVotes:
 
 // addOneToUserContribution(userAddress: Address): void
 //
-// Create a new proposal
-// @param Address Type of the proposal - can be reg or pool
+// Add one to the user contribution once it votes on a pool proposal
+// @param userAddress address of the user to add the contribution
 addOneToUserContribution:
 	proto 1 0
 
 	// Push empty bytes after the frame pointer to reserve space for local variables
 	bytec 0 // 0x
 
-	// contracts/CompxGovernance.algo.ts:134
+	// contracts/CompxGovernance.algo.ts:136
 	// userContribution: uint64 = this.user_contribution(userAddress).value
 	frame_dig -1 // userAddress: Address
 	bytec 2 //  "user_contribution"
 	app_local_get
 	frame_bury 0 // userContribution: uint64
 
-	// contracts/CompxGovernance.algo.ts:138
+	// contracts/CompxGovernance.algo.ts:139
+	// assert(userContribution >= 1, 'User has not opted in to the contract')
+	frame_dig 0 // userContribution: uint64
+	intc 0 // 1
+	>=
+
+	// User has not opted in to the contract
+	assert
+
+	// contracts/CompxGovernance.algo.ts:140
 	// this.user_contribution(userAddress).value += 1
 	frame_dig -1 // userAddress: Address
 	bytec 2 //  "user_contribution"
@@ -494,20 +505,23 @@ addOneToUserContribution:
 	retsub
 
 // addOneToUserSpecialVotes(userAddress: Address): void
+//
+// Add one to the user contribution once it votes on a pool proposal
+// @param userAddress address of the user to add the special vote
 addOneToUserSpecialVotes:
 	proto 1 0
 
 	// Push empty bytes after the frame pointer to reserve space for local variables
 	bytec 0 // 0x
 
-	// contracts/CompxGovernance.algo.ts:146
+	// contracts/CompxGovernance.algo.ts:152
 	// userContribution: uint64 = this.user_contribution(userAddress).value
 	frame_dig -1 // userAddress: Address
 	bytec 2 //  "user_contribution"
 	app_local_get
 	frame_bury 0 // userContribution: uint64
 
-	// contracts/CompxGovernance.algo.ts:151
+	// contracts/CompxGovernance.algo.ts:157
 	// this.user_special_votes(userAddress).value += 1
 	frame_dig -1 // userAddress: Address
 	bytec 5 //  "user_special_votes"
@@ -550,6 +564,10 @@ addOneToUserSpecialVotes:
 	return
 
 // makeProposalVote(proposalId: ProposalIdType, inFavor: boolean): void
+//
+// Add one to the user contribution once it votes on a pool proposal
+// @param proposalId The id of the proposal to be voted on
+// @param inFavor If the vote is a yes or no vote
 makeProposalVote:
 	proto 2 0
 
@@ -557,19 +575,19 @@ makeProposalVote:
 	bytec 0 // 0x
 	dup
 
-	// contracts/CompxGovernance.algo.ts:155
+	// contracts/CompxGovernance.algo.ts:167
 	// voterAddress: Address = this.txn.sender
 	txn Sender
 	frame_bury 0 // voterAddress: Address
 
-	// contracts/CompxGovernance.algo.ts:156
+	// contracts/CompxGovernance.algo.ts:168
 	// currentProposal: ProposalDataType = this.proposals(proposalId).value
 	bytec 1 //  "_p"
 	frame_dig -1 // proposalId: ProposalIdType
 	concat
 	frame_bury 1 // storage key//currentProposal
 
-	// contracts/CompxGovernance.algo.ts:158
+	// contracts/CompxGovernance.algo.ts:170
 	// this.addOneToUserVotes(voterAddress, proposalId, inFavor)
 	frame_dig -2 // inFavor: boolean
 	frame_dig -1 // proposalId: ProposalIdType
@@ -607,7 +625,7 @@ makeProposalVote:
 getProposalsById:
 	proto 1 1
 
-	// contracts/CompxGovernance.algo.ts:167
+	// contracts/CompxGovernance.algo.ts:179
 	// return this.proposals(proposalId).value;
 	bytec 1 //  "_p"
 	frame_dig -1 // proposalId: ProposalIdType

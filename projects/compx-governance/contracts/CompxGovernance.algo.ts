@@ -87,7 +87,9 @@ export class CompxGovernance extends Contract {
 
   /**
    * Create a new proposal
-   * @param Address Type of the proposal - can be reg or pool
+   * @param voterAddress Type of the proposal - can be 0 regular or 1 pool
+   * @param proposalId Id of the proposal to be voted on
+   * @param inFavor If the vote is a yes or a no
    */
   private addOneToUserVotes(voterAddress: Address, proposalId: ProposalIdType, inFavor: boolean) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
@@ -123,8 +125,8 @@ export class CompxGovernance extends Contract {
   }
 
   /**
-   * Create a new proposal
-   * @param Address Type of the proposal - can be reg or pool
+   * Add one to the user contribution once it votes on a pool proposal
+   * @param userAddress address of the user to add the contribution
    */
   private addOneToUserContribution(userAddress: Address) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
@@ -133,11 +135,15 @@ export class CompxGovernance extends Contract {
     //Check if the voter has a local state - optedin to the contract
     const userContribution: uint64 = this.user_contribution(userAddress).value;
 
-    // //Check if the user has opted in to the contract
-    // assert(userContribution >= 1, 'User has not opted in to the contract');
+    //Check if the user has opted in to the contract
+    assert(userContribution >= 1, 'User has not opted in to the contract');
     this.user_contribution(userAddress).value += 1;
   }
 
+  /**
+   * Add one to the user contribution once it votes on a pool proposal
+   * @param userAddress address of the user to add the special vote
+   */
   private addOneToUserSpecialVotes(userAddress: Address) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
@@ -151,8 +157,13 @@ export class CompxGovernance extends Contract {
     this.user_special_votes(userAddress).value += 1;
   }
 
-  makeProposalVote(proposalId: ProposalIdType, inFavor: boolean, mbrTxn: PayTxn) {
-    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
+  /**
+   * Add one to the user contribution once it votes on a pool proposal
+   * @param proposalId The id of the proposal to be voted on
+   * @param inFavor If the vote is a yes or no vote
+   */
+  makeProposalVote(proposalId: ProposalIdType, inFavor: boolean) {
+    // verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
     const voterAddress: Address = this.txn.sender;
     const currentProposal: ProposalDataType = this.proposals(proposalId).value;
     //Check if the proposal is still active
