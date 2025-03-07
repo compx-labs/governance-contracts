@@ -61,6 +61,20 @@
       "returns": {
         "type": "void"
       }
+    },
+    {
+      "name": "getProposalsById",
+      "args": [
+        {
+          "name": "proposalId",
+          "type": "(uint64)",
+          "desc": "used to define state of proposals to return"
+        }
+      ],
+      "returns": {
+        "type": "(uint64,string,string,uint64,uint64,uint64,uint64)",
+        "desc": "Returns active or expired proposals and its information"
+      }
     }
   ]
 }

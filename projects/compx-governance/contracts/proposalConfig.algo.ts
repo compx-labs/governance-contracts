@@ -14,9 +14,9 @@ export type ProposalIdType = { nonce: uint64 };
  * @property {string} poposalTitle - Title of the proposal.
  * @property {string} ProposalDescription - Description of the proposal.
  * @property {uint64} ProposalTotalVotes - Total votes on this proposal.
- * @property {uint64} ProposalYesVotes - Description of the proposal.
- * @property {uint64} CreatedAtTimestamp - Description of the proposal.
- * @property {uint64} expiryTimestamp - Description of the proposal.
+ * @property {uint64} ProposalYesVotes - Total yes votes on this proposal.
+ * @property {uint64} CreatedAtTimestamp - Timestamp the proposal was created.
+ * @property {uint64} expiryTimestamp - When the proposal will expire.
  */
 
 export type ProposalDataType = {

@@ -97,6 +97,8 @@ export class CompxGovernance extends Contract {
 
     const userVotesCount: uint64 = this.user_votes(voterAddress).value;
 
+    assert(this.proposals(proposalId).exists, 'Proposal does not exist');
+
     // //Check if the user has opted in to the contract
     // assert(userVotesCount >= 1, 'User has not opted in to the contract');
     // assert(!this.proposals(proposalId).exists, 'Proposal does not exist');
@@ -143,20 +145,16 @@ export class CompxGovernance extends Contract {
   makeProposalVote(proposalId: ProposalIdType) {
     const voterAddress: Address = this.txn.sender;
     const currentProposal: ProposalDataType = this.proposals(proposalId).value;
-
     //Check if the proposal is still active
-    // assert(currentProposal.expiryTimestamp <= globals.latestTimestamp, 'Proposal already expired');
-    // Check if this sender haven't voted before
-
     this.addOneToUserVotes(voterAddress, proposalId);
   }
 
-  //   /**
-  //    *
-  //    * @param proposalState used to define state of proposals to return
-  //    * @returns Returns active or expired proposals and its information
-  //    */
-  //   getProposalsCounter(proposalState: string): uint64[] {
-  //     return [];
-  //   }
+  /**
+   *
+   * @param proposalId used to define state of proposals to return
+   * @returns Returns active or expired proposals and its information
+   */
+  getProposalsById(proposalId: ProposalIdType): ProposalDataType {
+    return this.proposals(proposalId).value;
+  }
 }

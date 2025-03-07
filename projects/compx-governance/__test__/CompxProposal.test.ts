@@ -192,9 +192,12 @@ describe('CompxProposal', () => {
 
   //---------------------------------------------------------
 
-  test('Get all boxes', async () => {
-    const allBoxes = await governanceAppClient.appClient.getBoxNames();
+  test('Get all proposals by id', async () => {
+    const totalProposals = (await governanceAppClient.getGlobalState()).total_proposals?.asNumber()!;
 
-    console.log('all boxes', allBoxes);
+    for (let i = 0; i < totalProposals; i++) {
+      const proposal = (await governanceAppClient.getProposalsById({ proposalId: [i + 1] })).return;
+      console.log('proposal', proposal);
+    }
   });
 });
