@@ -1,6 +1,5 @@
-import { ProposalIdType, ProposalDataType, ProposalVoteDataType, ProposalVoteIdType } from './proposalConfig.algo';
-
 import { Contract } from '@algorandfoundation/tealscript';
+import { ProposalIdType, ProposalDataType, ProposalVoteDataType, ProposalVoteIdType } from './proposalConfig.algo';
 
 // (8+8) => 8+8+8+8+8+8 = 16 => 48 = 64bits * 0.0004 + 0.00352 = 0.02912
 const proposalMbr = 2_912;
@@ -17,10 +16,12 @@ export class CompxGovernance extends Contract {
   // Boxes to store proposal votes
   votes = BoxMap<ProposalVoteIdType, ProposalVoteDataType>({ prefix: '_v' });
 
-  //User contribution on governance - Requires user to optin to the contract
-  user_contribution = LocalStateKey<uint64>();
-  user_votes = LocalStateKey<uint64>();
-  user_special_votes = LocalStateKey<uint64>();
+  // User contribution on governance - Requires user to optin to the contract
+  user_contribution = LocalStateKey<uint64>(); // @p2arthur what is this for?
+
+  user_votes = LocalStateKey<uint64>(); // @p2arthur what is this for? if this is to track who has and hasn't voted, should we not be saving the proposal Id for the user to indicate they have voted?
+
+  user_special_votes = LocalStateKey<uint64>(); // @p2arthur same as above.
 
   public createApplication() {
     this.total_proposals.value = 0;
@@ -33,7 +34,7 @@ export class CompxGovernance extends Contract {
    */
 
   public optInToApplication(): void {
-    //Optin in to this contract will add 1 to the user contribution
+    // Optin in to this contract will add 1 to the user contribution
     const userAddress: Address = this.txn.sender;
     this.user_contribution(userAddress).value = 1;
     this.user_votes(userAddress).value = 0;
@@ -44,7 +45,7 @@ export class CompxGovernance extends Contract {
    * Create a new proposal
    * @param proposalType Type of the proposal - can be reg or pool
    * @param proposalTitle Title of the proposal
-   * @param proposalDescription Description of the proposal
+   * @param proposalDescription Description of the proposal - @p2arthur not sure if we want to have the description into the contract as they may be very long
    * @param expiresIn Time in seconds for the proposal to expire
    */
 
@@ -57,11 +58,11 @@ export class CompxGovernance extends Contract {
   ) {
     const proposerAddress: Address = this.txn.sender;
 
-    //The nonce of each proposal auto increments by 1
+    // The nonce of each proposal auto increments by 1 - @p2arthur I dont think 'nonce' is the right word here - should it be proposalId?
     const proposalNonce: uint64 = this.total_proposals.value + 1;
     const currentTimestamp: uint64 = globals.latestTimestamp;
 
-    //Defines the expiry time of the proposal
+    // Defines the expiry time of the proposal
     const expiryTimestamp: uint64 = currentTimestamp + expiresIn;
 
     // Only the deployer can create proposals - We can change this so anyone can create a proposal
@@ -86,8 +87,10 @@ export class CompxGovernance extends Contract {
   }
 
   /**
-   * Create a new proposal
-   * @param Address Type of the proposal - can be reg or pool
+   * Add a vote to a proposal
+   * @param voterAddress Address of the voter
+   * @param proposalId Id of the proposal to vote on
+   * @p2arthur - votes should be calcualted as their governance power - not just adding one. We'll need to be able to find that out in contract somehow.
    */
   private addOneToUserVotes(voterAddress: Address, proposalId: ProposalIdType) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
@@ -95,13 +98,14 @@ export class CompxGovernance extends Contract {
 
     const voteTimestamp = globals.latestTimestamp;
 
-    const userVotesCount: uint64 = this.user_votes(voterAddress).value;
+    // const userVotesCount: uint64 = this.user_votes(voterAddress).value;// @p2arthur is this required?
+    // could we not use this.user_votes(voterAddress).exists to confirm if the user has opted in?
 
     assert(this.proposals(proposalId).exists, 'Proposal does not exist');
 
     // //Check if the user has opted in to the contract
-    // assert(userVotesCount >= 1, 'User has not opted in to the contract');
-    // assert(!this.proposals(proposalId).exists, 'Proposal does not exist');
+    assert(this.user_votes(voterAddress).exists, 'User has not opted in to the contract');
+
     this.user_votes(voterAddress).value += 1;
     // Save the vote adding the timestamp
     this.votes({ proposalId: proposalId, voter: voterAddress }).value = { voteTimestamp: voteTimestamp };
@@ -121,7 +125,7 @@ export class CompxGovernance extends Contract {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
 
-    //Check if the voter has a local state - optedin to the contract
+    // Check if the voter has a local state - optedin to the contract
     const userContribution: uint64 = this.user_contribution(userAddress).value;
 
     // //Check if the user has opted in to the contract
@@ -133,7 +137,7 @@ export class CompxGovernance extends Contract {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
 
-    //Check if the voter has a local state - optedin to the contract
+    // Check if the voter has a local state - optedin to the contract
     const userContribution: uint64 = this.user_contribution(userAddress).value;
 
     // //Check if the user has opted in to the contract
@@ -145,7 +149,7 @@ export class CompxGovernance extends Contract {
   makeProposalVote(proposalId: ProposalIdType) {
     const voterAddress: Address = this.txn.sender;
     const currentProposal: ProposalDataType = this.proposals(proposalId).value;
-    //Check if the proposal is still active
+    // Check if the proposal is still active
     this.addOneToUserVotes(voterAddress, proposalId);
   }
 

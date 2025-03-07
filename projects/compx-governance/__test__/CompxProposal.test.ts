@@ -1,10 +1,13 @@
+/* eslint-disable no-console */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-plusplus */
 import { describe, test, expect, beforeAll, beforeEach } from '@jest/globals';
 import { algorandFixture } from '@algorandfoundation/algokit-utils/testing';
 import * as algokit from '@algorandfoundation/algokit-utils';
-import { CompxGovernanceClient } from '../contracts/clients/CompxGovernanceClient';
-import algosdk, { Algodv2, Transaction } from 'algosdk';
+import algosdk from 'algosdk';
 import { TransactionSignerAccount } from '@algorandfoundation/algokit-utils/types/account';
 import { algos } from '@algorandfoundation/algokit-utils';
+import { CompxGovernanceClient } from '../contracts/clients/CompxGovernanceClient';
 
 const fixture = algorandFixture();
 algokit.Config.configure({ populateAppCallResources: true });
@@ -13,7 +16,7 @@ algokit.Config.configure({ populateAppCallResources: true });
 let governanceAppClient: CompxGovernanceClient;
 //--------------------------------------------------------
 
-//Environment clients ------------------------------------
+// Environment clients ------------------------------------
 let algorandClient: algokit.AlgorandClient;
 //--------------------------------------------------------
 
@@ -46,7 +49,7 @@ describe('CompxProposal', () => {
   beforeAll(async () => {
     await fixture.beforeEach();
     const { algorand } = fixture;
-    //Setup environment clients ------------------------------
+    // Setup environment clients ------------------------------
     algorandClient = algorand;
     //-------------------------------------------------------
 
@@ -62,7 +65,7 @@ describe('CompxProposal', () => {
     voterAddress = voterAccount.addr;
     //-------------------------------------------------------
 
-    //Fund the voter account --------------------------------
+    // Fund the voter account --------------------------------
     await algorandClient.send.payment({
       sender: deployerAddress,
       receiver: voterAddress,
@@ -70,7 +73,7 @@ describe('CompxProposal', () => {
     });
     //-------------------------------------------------------
 
-    //Setup app clients -------------------------------------
+    // Setup app clients -------------------------------------
     governanceAppClient = new CompxGovernanceClient(
       { sender: deployerAccount, resolveBy: 'id', id: 0 },
       algorand.client.algod
@@ -88,14 +91,14 @@ describe('CompxProposal', () => {
     //-------------------------------------------------------
   });
 
-  //Test if the application was created successfully---------
+  // Test if the application was created successfully---------
   test('Should create the application successfully', async () => {
     const appState = await governanceAppClient.appClient.getGlobalState();
     expect(appState.total_proposals.value).toBe(0);
   });
   //----------------------------------------------------------
 
-  //Test if deployer can create a new proposal----------------
+  // Test if deployer can create a new proposal----------------
   test('Deployer should be able to create a new proposal', async () => {
     const mbrTxn = algorandClient.send.payment({
       sender: proposerAddress,
@@ -105,13 +108,13 @@ describe('CompxProposal', () => {
     });
 
     await governanceAppClient.createNewProposal(
-      { proposalTitle, proposalType: 1, proposalDescription, expiresIn, mbrTxn: mbrTxn },
+      { proposalTitle, proposalType: 1, proposalDescription, expiresIn, mbrTxn },
       { sender: deployerAccount }
     );
   });
   //----------------------------------------------------------
 
-  //Test if deployer can create a second proposal but with a type of 'reg'
+  // Test if deployer can create a second proposal but with a type of 'reg'
   test('Deployer should be able to create a new proposal', async () => {
     const mbrTxn = algorandClient.send.payment({
       sender: proposerAddress,
@@ -121,7 +124,7 @@ describe('CompxProposal', () => {
     });
 
     await governanceAppClient.createNewProposal(
-      { proposalTitle, proposalType: 0, proposalDescription, expiresIn, mbrTxn: mbrTxn },
+      { proposalTitle, proposalType: 0, proposalDescription, expiresIn, mbrTxn },
       { sender: deployerAccount }
     );
   });
@@ -151,7 +154,7 @@ describe('CompxProposal', () => {
   //---------------------------------------------------------
   // User should be able to vote on a  reg (0) proposal with Id 0
   test('User should be able to vote on a regular proposal', async () => {
-    //Make proposal vote
+    // Make proposal vote
     await governanceAppClient.makeProposalVote({ proposalId: [2] }, { sender: voterAccount });
     // Verify that the user is opted-in by checking their local state exists
     const accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
@@ -172,7 +175,7 @@ describe('CompxProposal', () => {
   //---------------------------------------------------------
   // User should be able to vote on a pool (1) proposal with Id 0
   test('User should be able to vote on a pool proposal', async () => {
-    //Make proposal vote
+    // Make proposal vote
     await governanceAppClient.makeProposalVote({ proposalId: [1] }, { sender: voterAccount });
     // Verify that the user is opted-in by checking their local state exists
     const accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
