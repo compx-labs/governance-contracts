@@ -56,6 +56,14 @@
         {
           "name": "proposalId",
           "type": "(uint64)"
+        },
+        {
+          "name": "inFavor",
+          "type": "bool"
+        },
+        {
+          "name": "mbrTxn",
+          "type": "pay"
         }
       ],
       "returns": {

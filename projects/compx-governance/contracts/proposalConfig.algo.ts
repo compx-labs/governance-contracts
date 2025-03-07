@@ -33,16 +33,15 @@ export type ProposalDataType = {
  * Defines the vote box Ids
  * @typedef
  * @property {ProposalIdType} proposalId
- * @property {Address} voter
+ * @property {Address} voterAddress
  */
 
-export type ProposalVoteIdType = { proposalId: ProposalIdType; voter: Address };
+export type ProposalVoteIdType = { proposalId: ProposalIdType; voterAddress: Address };
 
 /**
  * Reprensents the Proposal Data Object
  *
  * @typedef {object} ProposalVoteDataType
- * @property {Address} voterAddress - Who voted to the given proposal
  * @property {uint64} voteTimestamp - Who voted to the given proposal
  */
 

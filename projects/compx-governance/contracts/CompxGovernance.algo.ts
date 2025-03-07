@@ -89,22 +89,31 @@ export class CompxGovernance extends Contract {
    * Create a new proposal
    * @param Address Type of the proposal - can be reg or pool
    */
-  private addOneToUserVotes(voterAddress: Address, proposalId: ProposalIdType) {
+  private addOneToUserVotes(voterAddress: Address, proposalId: ProposalIdType, inFavor: boolean) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
 
     const voteTimestamp = globals.latestTimestamp;
 
     const userVotesCount: uint64 = this.user_votes(voterAddress).value;
-
-    assert(this.proposals(proposalId).exists, 'Proposal does not exist');
+    const userContribution: uint64 = this.user_contribution(voterAddress).value;
 
     // //Check if the user has opted in to the contract
-    // assert(userVotesCount >= 1, 'User has not opted in to the contract');
-    // assert(!this.proposals(proposalId).exists, 'Proposal does not exist');
+    assert(!(userContribution === 0), 'User has not opted in to the contract');
+
+    // const currentVoteValue: ProposalVoteDataType = ;
+
+    assert(
+      !this.votes({ proposalId: proposalId, voterAddress: voterAddress }).exists,
+      'User already voted on this proposal'
+    );
+    this.proposals(proposalId).value.proposalTotalVotes += 1;
+    if (inFavor) {
+      this.proposals(proposalId).value.proposalYesVotes += 1;
+    }
     this.user_votes(voterAddress).value += 1;
     // Save the vote adding the timestamp
-    this.votes({ proposalId: proposalId, voter: voterAddress }).value = { voteTimestamp: voteTimestamp };
+    this.votes({ proposalId: proposalId, voterAddress: voterAddress }).value = { voteTimestamp: voteTimestamp };
 
     // Using numbers to make it easy - any vote made to an special proposal should be 1
     if (this.proposals(proposalId).value.proposalType === 1) {
@@ -142,11 +151,12 @@ export class CompxGovernance extends Contract {
     this.user_special_votes(userAddress).value += 1;
   }
 
-  makeProposalVote(proposalId: ProposalIdType) {
+  makeProposalVote(proposalId: ProposalIdType, inFavor: boolean, mbrTxn: PayTxn) {
+    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
     const voterAddress: Address = this.txn.sender;
     const currentProposal: ProposalDataType = this.proposals(proposalId).value;
     //Check if the proposal is still active
-    this.addOneToUserVotes(voterAddress, proposalId);
+    this.addOneToUserVotes(voterAddress, proposalId, inFavor);
   }
 
   /**

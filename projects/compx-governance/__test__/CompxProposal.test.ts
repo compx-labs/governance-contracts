@@ -34,8 +34,10 @@ let proposalAppId: number;
 //--------------------------------------------------------
 
 // Proposal data -----------------------------------------
-const proposalTitle = 'Test Proposal 123';
-const proposalDescription = 'This is a test proposal';
+const poolProposalTitle = 'Pool proposal title';
+const poolProposalDescription = 'This is the pool proposal description';
+const regularProposalTitle = 'Regular proposal title';
+const regularProposalDescription = 'This is the regular proposal description';
 const expiresIn = 100000;
 const proposalMbrValue = 2_915;
 //--------------------------------------------------------
@@ -97,33 +99,34 @@ describe('CompxProposal', () => {
 
   //Test if deployer can create a new proposal----------------
   test('Deployer should be able to create a new proposal', async () => {
-    const mbrTxn = algorandClient.send.payment({
-      sender: proposerAddress,
-      amount: algokit.microAlgos(proposalMbrValue),
-      receiver: governanceAppAddress,
-      extraFee: algokit.algos(0.001),
-    });
+    const numberOfProposals = 4;
+    for (let i = 1; i <= numberOfProposals; i++) {
+      const mbrTxn = algorandClient.send.payment({
+        sender: proposerAddress,
+        amount: algokit.microAlgos(proposalMbrValue),
+        receiver: governanceAppAddress,
+        extraFee: algokit.algos(0.001),
+      });
 
-    await governanceAppClient.createNewProposal(
-      { proposalTitle, proposalType: 1, proposalDescription, expiresIn, mbrTxn: mbrTxn },
-      { sender: deployerAccount }
-    );
-  });
-  //----------------------------------------------------------
-
-  //Test if deployer can create a second proposal but with a type of 'reg'
-  test('Deployer should be able to create a new proposal', async () => {
-    const mbrTxn = algorandClient.send.payment({
-      sender: proposerAddress,
-      amount: algokit.microAlgos(proposalMbrValue),
-      receiver: governanceAppAddress,
-      extraFee: algokit.algos(0.001),
-    });
-
-    await governanceAppClient.createNewProposal(
-      { proposalTitle, proposalType: 0, proposalDescription, expiresIn, mbrTxn: mbrTxn },
-      { sender: deployerAccount }
-    );
+      let proposalTypeTest = 0;
+      let proposalTitleTest = regularProposalTitle;
+      let proposalDescritpionTest = regularProposalDescription;
+      if (i % 2 === 0) {
+        proposalTypeTest = 1;
+        proposalTitleTest = poolProposalTitle;
+        proposalDescritpionTest = poolProposalDescription;
+      }
+      await governanceAppClient.createNewProposal(
+        {
+          proposalTitle: proposalTitleTest,
+          proposalType: proposalTypeTest,
+          proposalDescription: proposalDescritpionTest,
+          expiresIn,
+          mbrTxn: mbrTxn,
+        },
+        { sender: deployerAccount }
+      );
+    }
   });
   //----------------------------------------------------------
 
@@ -149,10 +152,10 @@ describe('CompxProposal', () => {
   });
 
   //---------------------------------------------------------
-  // User should be able to vote on a  reg (0) proposal with Id 0
+  // User should be able to vote on a  reg (0) proposal with Id 3
   test('User should be able to vote on a regular proposal', async () => {
     //Make proposal vote
-    await governanceAppClient.makeProposalVote({ proposalId: [2] }, { sender: voterAccount });
+    await governanceAppClient.makeProposalVote({ proposalId: [1], inFavor: true }, { sender: voterAccount });
     // Verify that the user is opted-in by checking their local state exists
     const accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
     const userContribution = accountInfo.user_contribution?.asBigInt();
@@ -170,10 +173,10 @@ describe('CompxProposal', () => {
   });
 
   //---------------------------------------------------------
-  // User should be able to vote on a pool (1) proposal with Id 0
+  // User should be able to vote on a pool (1) proposal with Id 1
   test('User should be able to vote on a pool proposal', async () => {
     //Make proposal vote
-    await governanceAppClient.makeProposalVote({ proposalId: [1] }, { sender: voterAccount });
+    await governanceAppClient.makeProposalVote({ proposalId: [2], inFavor: true }, { sender: voterAccount });
     // Verify that the user is opted-in by checking their local state exists
     const accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
     const userContribution = accountInfo.user_contribution?.asBigInt();
