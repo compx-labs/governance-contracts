@@ -1,4 +1,4 @@
-import { ProposalIdType, ProposalDataType } from './proposalConfig.algo';
+import { ProposalIdType, ProposalDataType, ProposalVoteDataType, ProposalVoteIdType } from './proposalConfig.algo';
 
 import { Contract } from '@algorandfoundation/tealscript';
 
@@ -12,12 +12,32 @@ export class CompxGovernance extends Contract {
   total_proposals = GlobalStateKey<uint64>();
 
   // Boxes to store proposal information
-  proposals = BoxMap<ProposalIdType, ProposalDataType>({ prefix: '_proposals' });
+  proposals = BoxMap<ProposalIdType, ProposalDataType>({ prefix: '_p' });
+
+  // Boxes to store proposal votes
+  votes = BoxMap<ProposalVoteIdType, ProposalVoteDataType>({ prefix: '_v' });
+
+  //User contribution on governance - Requires user to optin to the contract
+  user_contribution = LocalStateKey<uint64>();
+  user_votes = LocalStateKey<uint64>();
+  user_special_votes = LocalStateKey<uint64>();
 
   public createApplication() {
     this.total_proposals.value = 0;
     this.deployer_address.value = this.txn.sender;
     this.total_proposals.value = 0;
+  }
+
+  /**
+   * OPT-IN to the application
+   */
+
+  public optInToApplication(): void {
+    //Optin in to this contract will add 1 to the user contribution
+    const userAddress: Address = this.txn.sender;
+    this.user_contribution(userAddress).value = 1;
+    this.user_votes(userAddress).value = 0;
+    this.user_special_votes(userAddress).value = 0;
   }
 
   /**
@@ -29,7 +49,7 @@ export class CompxGovernance extends Contract {
    */
 
   public createNewProposal(
-    proposalType: string,
+    proposalType: uint64,
     proposalTitle: string,
     proposalDescription: string,
     expiresIn: uint64,
@@ -46,22 +66,89 @@ export class CompxGovernance extends Contract {
 
     // Only the deployer can create proposals - We can change this so anyone can create a proposal
     assert(proposerAddress === this.deployer_address.value, 'Only the deployer can create proposals');
-    assert(!this.proposals({ nonce: proposalNonce, proposalType: proposalType }).exists, 'Proposal already exists');
+    assert(!this.proposals({ nonce: proposalNonce }).exists, 'Proposal already exists');
 
     // Contract account will need 2_912 microAlgos to create a proposal box
     verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: proposalMbr } });
 
     // Create a new proposal with title and description and zero votes
-    this.proposals({ nonce: proposalNonce, proposalType: proposalType }).value = {
+    this.proposals({ nonce: proposalNonce }).value = {
+      proposalType: proposalType,
       proposalTitle: proposalTitle,
       proposalDescription: proposalDescription,
-      ProposalTotalVotes: 0,
-      ProposalYesVotes: 0,
-      CreatedAtTimestamp: currentTimestamp,
-      ExpiryTimestamp: expiryTimestamp,
+      proposalTotalVotes: 0,
+      proposalYesVotes: 0,
+      createdAtTimestamp: currentTimestamp,
+      expiryTimestamp: expiryTimestamp,
     };
 
     this.total_proposals.value += 1;
+  }
+
+  /**
+   * Create a new proposal
+   * @param Address Type of the proposal - can be reg or pool
+   */
+  private addOneToUserVotes(voterAddress: Address, proposalId: ProposalIdType) {
+    // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
+    // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
+
+    const voteTimestamp = globals.latestTimestamp;
+
+    const userVotesCount: uint64 = this.user_votes(voterAddress).value;
+
+    // //Check if the user has opted in to the contract
+    // assert(userVotesCount >= 1, 'User has not opted in to the contract');
+    // assert(!this.proposals(proposalId).exists, 'Proposal does not exist');
+    this.user_votes(voterAddress).value += 1;
+    // Save the vote adding the timestamp
+    this.votes({ proposalId: proposalId, voter: voterAddress }).value = { voteTimestamp: voteTimestamp };
+
+    // Using numbers to make it easy - any vote made to an special proposal should be 1
+    if (this.proposals(proposalId).value.proposalType === 1) {
+      this.addOneToUserContribution(voterAddress);
+      this.addOneToUserSpecialVotes(voterAddress);
+    }
+  }
+
+  /**
+   * Create a new proposal
+   * @param Address Type of the proposal - can be reg or pool
+   */
+  private addOneToUserContribution(userAddress: Address) {
+    // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
+    // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
+
+    //Check if the voter has a local state - optedin to the contract
+    const userContribution: uint64 = this.user_contribution(userAddress).value;
+
+    // //Check if the user has opted in to the contract
+    // assert(userContribution >= 1, 'User has not opted in to the contract');
+    this.user_contribution(userAddress).value += 1;
+  }
+
+  private addOneToUserSpecialVotes(userAddress: Address) {
+    // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
+    // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
+
+    //Check if the voter has a local state - optedin to the contract
+    const userContribution: uint64 = this.user_contribution(userAddress).value;
+
+    // //Check if the user has opted in to the contract
+    // assert(userContribution >= 1, 'User has not opted in to the contract');
+
+    this.user_special_votes(userAddress).value += 1;
+  }
+
+  makeProposalVote(proposalId: ProposalIdType) {
+    const voterAddress: Address = this.txn.sender;
+    const currentProposal: ProposalDataType = this.proposals(proposalId).value;
+
+    //Check if the proposal is still active
+    // assert(currentProposal.expiryTimestamp <= globals.latestTimestamp, 'Proposal already expired');
+    // Check if this sender haven't voted before
+
+    this.addOneToUserVotes(voterAddress, proposalId);
   }
 
   //   /**

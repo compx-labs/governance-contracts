@@ -10,12 +10,20 @@
       }
     },
     {
+      "name": "optInToApplication",
+      "desc": "OPT-IN to the application",
+      "args": [],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
       "name": "createNewProposal",
       "desc": "Create a new proposal",
       "args": [
         {
           "name": "proposalType",
-          "type": "string",
+          "type": "uint64",
           "desc": "Type of the proposal - can be reg or pool"
         },
         {
@@ -36,6 +44,18 @@
         {
           "name": "mbrTxn",
           "type": "pay"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "makeProposalVote",
+      "args": [
+        {
+          "name": "proposalId",
+          "type": "(uint64)"
         }
       ],
       "returns": {

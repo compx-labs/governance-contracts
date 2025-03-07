@@ -36,7 +36,7 @@ let proposalAppId: number;
 // Proposal data -----------------------------------------
 const proposalTitle = 'Test Proposal 123';
 const proposalDescription = 'This is a test proposal';
-const expiresIn = 1000;
+const expiresIn = 100000;
 const proposalMbrValue = 2_915;
 //--------------------------------------------------------
 
@@ -105,7 +105,7 @@ describe('CompxProposal', () => {
     });
 
     await governanceAppClient.createNewProposal(
-      { proposalTitle, proposalType: 'pool', proposalDescription, expiresIn, mbrTxn: mbrTxn },
+      { proposalTitle, proposalType: 1, proposalDescription, expiresIn, mbrTxn: mbrTxn },
       { sender: deployerAccount }
     );
   });
@@ -121,11 +121,76 @@ describe('CompxProposal', () => {
     });
 
     await governanceAppClient.createNewProposal(
-      { proposalTitle, proposalType: 'reg', proposalDescription, expiresIn, mbrTxn: mbrTxn },
+      { proposalTitle, proposalType: 0, proposalDescription, expiresIn, mbrTxn: mbrTxn },
       { sender: deployerAccount }
     );
   });
   //----------------------------------------------------------
+
+  //----------------------------------------------------------
+  // User should be able to opt-in to the smart contract by excuting the opt in method
+
+  test('User should be able to opt-in to the smart contract', async () => {
+    await governanceAppClient.optIn.optInToApplication({}, { sender: voterAccount });
+
+    // Verify that the user is opted-in by checking their local state exists
+    const accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
+    const userContribution = accountInfo.user_contribution?.asBigInt();
+    const userVotes = accountInfo.user_votes?.asBigInt();
+    const userSpecialVotes = accountInfo.user_special_votes?.asBigInt();
+
+    console.log(
+      'account info after optin in to the application',
+      `user_contribution:${userContribution}, user_votes:${userVotes}, user_special_votes:${userSpecialVotes}`
+    );
+
+    //
+    expect(Number(userContribution)).toBe(1);
+  });
+
+  //---------------------------------------------------------
+  // User should be able to vote on a  reg (0) proposal with Id 0
+  test('User should be able to vote on a regular proposal', async () => {
+    //Make proposal vote
+    await governanceAppClient.makeProposalVote({ proposalId: [2] }, { sender: voterAccount });
+    // Verify that the user is opted-in by checking their local state exists
+    const accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
+    const userContribution = accountInfo.user_contribution?.asBigInt();
+    const userVotes = accountInfo.user_votes?.asBigInt();
+    const userSpecialVotes = accountInfo.user_special_votes?.asBigInt();
+
+    console.log(
+      'account info after voting on a regular proposal',
+      `user_contribution:${userContribution}, user_votes:${userVotes}, user_special_votes:${userSpecialVotes}`
+    );
+
+    expect(Number(userVotes)).toBe(1);
+    expect(Number(userContribution)).toBe(1);
+    expect(Number(userSpecialVotes)).toBe(0);
+  });
+
+  //---------------------------------------------------------
+  // User should be able to vote on a pool (1) proposal with Id 0
+  test('User should be able to vote on a pool proposal', async () => {
+    //Make proposal vote
+    await governanceAppClient.makeProposalVote({ proposalId: [1] }, { sender: voterAccount });
+    // Verify that the user is opted-in by checking their local state exists
+    const accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
+    const userContribution = accountInfo.user_contribution?.asBigInt();
+    const userVotes = accountInfo.user_votes?.asBigInt();
+    const userSpecialVotes = accountInfo.user_special_votes?.asBigInt();
+
+    console.log(
+      'account info after voting on a pool proposal',
+      `user_contribution:${userContribution}, user_votes:${userVotes}, user_special_votes:${userSpecialVotes}`
+    );
+
+    expect(Number(userVotes)).toBe(2);
+    expect(Number(userContribution)).toBe(2);
+    expect(Number(userSpecialVotes)).toBe(1);
+  });
+
+  //---------------------------------------------------------
 
   test('Get all boxes', async () => {
     const allBoxes = await governanceAppClient.appClient.getBoxNames();
