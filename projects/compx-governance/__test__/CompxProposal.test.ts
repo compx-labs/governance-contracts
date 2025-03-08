@@ -21,6 +21,7 @@ let algorandClient: algokit.AlgorandClient;
 let deployerAccount: algosdk.Account;
 let proposerAccount: algosdk.Account;
 let voterAccount: TransactionSignerAccount;
+let votingPower = 42000;
 //--------------------------------------------------------
 
 // Relevant addresses ------------------------------------
@@ -38,7 +39,7 @@ const poolProposalTitle = 'Pool proposal title';
 const poolProposalDescription = 'This is the pool proposal description';
 const regularProposalTitle = 'Regular proposal title';
 const regularProposalDescription = 'This is the regular proposal description';
-const expiresIn = 100000;
+const expiresIn = 1000;
 const proposalMbrValue = 2_915;
 //--------------------------------------------------------
 
@@ -155,7 +156,10 @@ describe('CompxProposal', () => {
   // User should be able to vote on a  reg (0) proposal with Id 3
   test('User should be able to vote on a regular proposal', async () => {
     //Make proposal vote
-    await governanceAppClient.makeProposalVote({ proposalId: [1], inFavor: true }, { sender: voterAccount });
+    await governanceAppClient.makeProposalVote(
+      { proposalId: [1], voterAddress: voterAddress, votingPower: votingPower, inFavor: true },
+      { sender: deployerAccount }
+    );
     // Verify that the user is opted-in by checking their local state exists
     const accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
     const userContribution = accountInfo.user_contribution?.asBigInt();
@@ -175,22 +179,27 @@ describe('CompxProposal', () => {
   //---------------------------------------------------------
   // User should be able to vote on a pool (1) proposal with Id 1
   test('User should be able to vote on a pool proposal', async () => {
-    //Make proposal vote
-    await governanceAppClient.makeProposalVote({ proposalId: [2], inFavor: true }, { sender: voterAccount });
     // Verify that the user is opted-in by checking their local state exists
-    const accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
+    let accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
     const userContribution = accountInfo.user_contribution?.asBigInt();
     const userVotes = accountInfo.user_votes?.asBigInt();
-    const userSpecialVotes = accountInfo.user_special_votes?.asBigInt();
 
-    console.log(
-      'account info after voting on a pool proposal',
-      `user_contribution:${userContribution}, user_votes:${userVotes}, user_special_votes:${userSpecialVotes}`
+    console.log('account info before being slashed', `user_contribution:${userContribution}, user_votes:${userVotes}`);
+    // If this user doesn't vote it will get slashed
+    const slashResult = await governanceAppClient.slashUserContribution({ userAddress: voterAddress, amount: 1 });
+
+    // Verify that the user is opted-in by checking their local state exists
+    accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
+
+    console.log('user contribution after slashing', accountInfo.user_contribution?.asBigInt());
+
+    //Make proposal vote
+    const result = await governanceAppClient.makeProposalVote(
+      { proposalId: [2], inFavor: true, voterAddress: voterAddress, votingPower: votingPower },
+      { sender: voterAccount }
     );
 
-    expect(Number(userVotes)).toBe(2);
-    expect(Number(userContribution)).toBe(2);
-    expect(Number(userSpecialVotes)).toBe(1);
+    expect(result).toThrow();
   });
 
   //---------------------------------------------------------

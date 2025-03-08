@@ -12,10 +12,12 @@ export type ProposalIdType = { nonce: uint64 };
  * @typedef {object} ProposalDataType
  * @property {uint64} proposalType - Type of the proposal
  * @property {string} poposalTitle - Title of the proposal.
- * @property {string} ProposalDescription - Description of the proposal.
- * @property {uint64} ProposalTotalVotes - Total votes on this proposal.
- * @property {uint64} ProposalYesVotes - Total yes votes on this proposal.
- * @property {uint64} CreatedAtTimestamp - Timestamp the proposal was created.
+ * @property {string} proposalDescription - Description of the proposal.
+ * @property {uint64} proposalTotalVotes - Total votes on this proposal.
+ * @property {uint64} proposalYesVotes - Total yes votes on this proposal.
+ * @property {uint64} proposalTotalPower - Total governance power on this proposal.
+ * @property {uint64} proposalYesPower - Total governance power on this proposal.
+ * @property {uint64} createdAtTimestamp - Timestamp the proposal was created.
  * @property {uint64} expiryTimestamp - When the proposal will expire.
  */
 
@@ -25,6 +27,8 @@ export type ProposalDataType = {
   proposalDescription: string;
   proposalTotalVotes: uint64;
   proposalYesVotes: uint64;
+  proposalTotalPower: uint64;
+  proposalYesPower: uint64;
   createdAtTimestamp: uint64;
   expiryTimestamp: uint64;
 };

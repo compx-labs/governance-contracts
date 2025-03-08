@@ -78,6 +78,8 @@ export class CompxGovernance extends Contract {
       proposalDescription: proposalDescription,
       proposalTotalVotes: 0,
       proposalYesVotes: 0,
+      proposalTotalPower: 0,
+      proposalYesPower: 0,
       createdAtTimestamp: currentTimestamp,
       expiryTimestamp: expiryTimestamp,
     };
@@ -87,11 +89,12 @@ export class CompxGovernance extends Contract {
 
   /**
    * Create a new proposal
-   * @param voterAddress Type of the proposal - can be 0 regular or 1 pool
+   * @param voterAddress The address of who is voting
    * @param proposalId Id of the proposal to be voted on
+   * @param votingPower The voting power of the voter
    * @param inFavor If the vote is a yes or a no
    */
-  private addOneToUserVotes(voterAddress: Address, proposalId: ProposalIdType, inFavor: boolean) {
+  private addOneToUserVotes(voterAddress: Address, proposalId: ProposalIdType, votingPower: uint64, inFavor: boolean) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
 
@@ -103,15 +106,17 @@ export class CompxGovernance extends Contract {
     // //Check if the user has opted in to the contract
     assert(!(userContribution === 0), 'User has not opted in to the contract');
 
-    // const currentVoteValue: ProposalVoteDataType = ;
+    assert(this.proposals(proposalId).value.expiryTimestamp >= voteTimestamp, 'Proposal already expired');
 
     assert(
       !this.votes({ proposalId: proposalId, voterAddress: voterAddress }).exists,
       'User already voted on this proposal'
     );
     this.proposals(proposalId).value.proposalTotalVotes += 1;
+    this.proposals(proposalId).value.proposalTotalPower += votingPower;
     if (inFavor) {
       this.proposals(proposalId).value.proposalYesVotes += 1;
+      this.proposals(proposalId).value.proposalYesPower += votingPower;
     }
     this.user_votes(voterAddress).value += 1;
     // Save the vote adding the timestamp
@@ -161,13 +166,29 @@ export class CompxGovernance extends Contract {
    * Add one to the user contribution once it votes on a pool proposal
    * @param proposalId The id of the proposal to be voted on
    * @param inFavor If the vote is a yes or no vote
+   * @param voterAddress The address for the voter - Meant for v1.0 while deployer "server" will be responsible to execute
    */
-  makeProposalVote(proposalId: ProposalIdType, inFavor: boolean) {
+  makeProposalVote(proposalId: ProposalIdType, inFavor: boolean, voterAddress: Address, votingPower: uint64) {
+    assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
     // verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
-    const voterAddress: Address = this.txn.sender;
-    const currentProposal: ProposalDataType = this.proposals(proposalId).value;
     //Check if the proposal is still active
-    this.addOneToUserVotes(voterAddress, proposalId, inFavor);
+    this.addOneToUserVotes(voterAddress, proposalId, votingPower, inFavor);
+  }
+
+  /**
+   * Add one to the user contribution once it votes on a pool proposal
+   * @param userAddress The address of the user to get its contribution slashed
+   * @param amount The amount to be slashed
+   */
+  slashUserContribution(userAddress: Address, amount: uint64) {
+    const minContribution: uint64 = 1;
+
+    assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can slash user contribution');
+    assert(
+      this.user_contribution(userAddress).value > minContribution,
+      'User does not have enough contribution to be slashed'
+    );
+    this.user_contribution(userAddress).value -= amount;
   }
 
   /**
