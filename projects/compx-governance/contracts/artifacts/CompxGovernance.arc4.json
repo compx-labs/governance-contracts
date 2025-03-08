@@ -108,7 +108,7 @@
       ],
       "returns": {
         "type": "(uint64,string,string,uint64,uint64,uint64,uint64,uint64,uint64)",
-        "desc": "Returns active or expired proposals and its information"
+        "desc": "ProposalDataType Returns the proposal by id"
       }
     }
   ]

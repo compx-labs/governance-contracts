@@ -10,6 +10,8 @@ export class CompxGovernance extends Contract {
 
   // // Keeps track of the total number of proposals
   total_proposals = GlobalStateKey<uint64>();
+  // // Keeps track of the total number of votes on all proposals
+  total_votes = GlobalStateKey<uint64>();
 
   // Boxes to store proposal information
   proposals = BoxMap<ProposalIdType, ProposalDataType>({ prefix: '_p' });
@@ -96,7 +98,7 @@ export class CompxGovernance extends Contract {
    */
   private addOneToUserVotes(voterAddress: Address, proposalId: ProposalIdType, votingPower: uint64, inFavor: boolean) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
-    // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
+    assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
 
     const voteTimestamp = globals.latestTimestamp;
 
@@ -127,6 +129,8 @@ export class CompxGovernance extends Contract {
       this.addOneToUserContribution(voterAddress);
       this.addOneToUserSpecialVotes(voterAddress);
     }
+
+    this.total_votes.value += 1;
   }
 
   /**
@@ -194,7 +198,7 @@ export class CompxGovernance extends Contract {
   /**
    *
    * @param proposalId used to define state of proposals to return
-   * @returns Returns active or expired proposals and its information
+   * @returns {ProposalDataType} Returns the proposal by id
    */
   getProposalsById(proposalId: ProposalIdType): ProposalDataType {
     return this.proposals(proposalId).value;

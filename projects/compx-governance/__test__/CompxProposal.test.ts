@@ -155,11 +155,19 @@ describe('CompxProposal', () => {
   //---------------------------------------------------------
   // User should be able to vote on a  reg (0) proposal with Id 3
   test('User should be able to vote on a regular proposal', async () => {
-    //Make proposal vote
-    await governanceAppClient.makeProposalVote(
-      { proposalId: [1], voterAddress: voterAddress, votingPower: votingPower, inFavor: true },
-      { sender: deployerAccount }
-    );
+    for (let i = 1; i <= 4; i++) {
+      //Make proposal vote
+      await governanceAppClient.makeProposalVote(
+        {
+          proposalId: [i],
+          voterAddress: voterAddress,
+          votingPower: votingPower + i * 1000,
+          inFavor: i % 2 ? true : false,
+        },
+        { sender: deployerAccount }
+      );
+    }
+
     // Verify that the user is opted-in by checking their local state exists
     const accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
     const userContribution = accountInfo.user_contribution?.asBigInt();
@@ -171,14 +179,14 @@ describe('CompxProposal', () => {
       `user_contribution:${userContribution}, user_votes:${userVotes}, user_special_votes:${userSpecialVotes}`
     );
 
-    expect(Number(userVotes)).toBe(1);
-    expect(Number(userContribution)).toBe(1);
-    expect(Number(userSpecialVotes)).toBe(0);
+    expect(Number(userVotes)).toBe(4);
+    expect(Number(userContribution)).toBe(3);
+    expect(Number(userSpecialVotes)).toBe(2);
   });
 
   //---------------------------------------------------------
-  // User should be able to vote on a pool (1) proposal with Id 1
-  test('User should be able to vote on a pool proposal', async () => {
+  // User should not be be able to vote on a pool (2) proposal with Id - sender is not deployer
+  test('User should not be able to vote on a pool proposal! Gets its contribution points slashed for it', async () => {
     // Verify that the user is opted-in by checking their local state exists
     let accountInfo = await governanceAppClient.getLocalState(voterAccount.addr);
     const userContribution = accountInfo.user_contribution?.asBigInt();
