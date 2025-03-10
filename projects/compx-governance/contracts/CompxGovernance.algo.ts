@@ -13,7 +13,7 @@ export class CompxGovernance extends Contract {
   // // Keeps track of the total number of votes on all proposals
   total_votes = GlobalStateKey<uint64>();
 
-  // // Total current voting power on the compx governance system
+  // // Total current voting power on the compx governance system - Gets added once per user after voting for the first time - used for participants to know onchain how much voting power is currently at stake
   total_current_voting_power = GlobalStateKey<uint64>();
   // Boxes to store proposal information
   proposals = BoxMap<ProposalIdType, ProposalDataType>({ prefix: '_p' });
@@ -21,6 +21,7 @@ export class CompxGovernance extends Contract {
   // Boxes to store proposal votes
   votes = BoxMap<ProposalVoteIdType, ProposalVoteDataType>({ prefix: '_v' });
 
+  //User current voting power - Gets added once per user after voting for the first time and updated everytime a new vote is casted
   user_current_voting_power = LocalStateKey<uint64>();
   //User contribution on governance - Requires user to optin to the contract
   user_contribution = LocalStateKey<uint64>();
