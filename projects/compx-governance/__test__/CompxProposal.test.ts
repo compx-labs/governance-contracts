@@ -78,6 +78,7 @@ describe('CompxProposal', () => {
       args: [],
       sender: deployerAccount.addr,
     });
+
     governanceAppClient = appClient;
 
     await algorand.send.payment({
@@ -141,15 +142,12 @@ describe('CompxProposal', () => {
 
     // Verify that the user is opted-in by checking their local state exists
     const accountInfo = governanceAppClient.state.local(voterAccount.addr);
-    const { userSpecialVotes, userContribution, userVotes } = await accountInfo.getAll();
+    const { userVotes } = await accountInfo.getAll();
 
-    consoleLogger.debug(
-      'account info after optin in to the application',
-      `user_contribution:${userContribution}, user_votes:${userVotes}, user_special_votes:${userSpecialVotes}`
-    );
+    consoleLogger.debug('account info after optin in to the application', ` user_votes:${userVotes}, `);
 
     //
-    expect(userContribution).toBe(1n);
+    expect(userVotes).toBe(1n);
   });
 
   //---------------------------------------------------------
@@ -169,40 +167,24 @@ describe('CompxProposal', () => {
     }
 
     // Verify that the user is opted-in by checking their local state exists
-    const { userContribution, userVotes, userSpecialVotes } = await governanceAppClient.state
-      .local(voterAccount.addr)
-      .getAll();
+    const { userVotes } = await governanceAppClient.state.local(voterAccount.addr).getAll();
     const totalCurrentVotingPower = governanceAppClient.state.global.totalCurrentVotingPower();
 
-    consoleLogger.debug(
-      'account info after voting on a regular proposal',
-      `user_contribution:${userContribution}, user_votes:${userVotes}, user_special_votes:${userSpecialVotes}`
-    );
+    consoleLogger.debug('account info after voting on a regular proposal', `user_votes:${userVotes}, `);
 
     expect(userVotes).toBe(4n);
-    expect(userContribution).toBe(3n);
-    expect(userSpecialVotes).toBe(2n);
   });
 
   //---------------------------------------------------------
   // User should not be be able to vote on a pool (2) proposal with Id - sender is not deployer
   test.skip('User should not be able to vote on a pool proposal! Gets its contribution points slashed for it', async () => {
     // Verify that the user is opted-in by checking their local state exists
-    const { userContribution, userVotes } = await governanceAppClient.state.local(voterAccount.addr).getAll();
+    const { userVotes } = await governanceAppClient.state.local(voterAccount.addr).getAll();
 
-    consoleLogger.debug(
-      'account info before being slashed',
-      `user_contribution:${userContribution}, user_votes:${userVotes}`
-    );
     // If this user doesn't vote it will get slashed
     const slashResult = await governanceAppClient.send.slashUserContribution({
       args: { userAddress: voterAccount.addr.toString(), amount: 1n },
     });
-
-    // Verify that the user is opted-in by checking their local state exists
-    const userContributionAfter = await governanceAppClient.state.local(voterAccount.addr).userContribution();
-    consoleLogger.debug('user contribution after slashing', userContributionAfter);
-    expect(userContributionAfter).toBe(2n);
 
     // Make proposal vote
     const result = await governanceAppClient.send.makeProposalVote({
