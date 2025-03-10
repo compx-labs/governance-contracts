@@ -186,9 +186,9 @@ describe('CompxProposal', () => {
 
   //---------------------------------------------------------
   // User should not be be able to vote on a pool (2) proposal with Id - sender is not deployer
-  test.skip('User should not be able to vote on a pool proposal! Gets its contribution points slashed for it', async () => {
+  test.skip('Slash user vote', async () => {
     // Verify that the user is opted-in by checking their local state exists
-    const { userContribution, userVotes } = await governanceAppClient.state.local(voterAccount.addr).getAll();
+    /* const { userSlashed } = await governanceAppClient.state.local(voterAccount.addr).getAll();
 
     consoleLogger.debug(
       'account info before being slashed',
@@ -210,7 +210,7 @@ describe('CompxProposal', () => {
       sender: deployerAccount.addr,
     });
 
-    expect(result).toThrow();
+    expect(result).toThrow(); */
   });
 
   //---------------------------------------------------------

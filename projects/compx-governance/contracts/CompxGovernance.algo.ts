@@ -123,15 +123,11 @@ export class CompxGovernance extends Contract {
       !this.votes({ proposalId: proposalId, voterAddress: voterAddress }).exists,
       'User already voted on this proposal'
     );
-    let flux = votingPower;
-    if (this.user_slashed(voterAddress).value > 0) {
-      flux = wideRatio([votingPower], [this.user_slashed(voterAddress).value + 1]);
-    }
     this.proposals(proposalId).value.proposalTotalVotes += 1;
-    this.proposals(proposalId).value.proposalTotalPower += flux;
+    this.proposals(proposalId).value.proposalTotalPower += votingPower;
     if (inFavor) {
       this.proposals(proposalId).value.proposalYesVotes += 1;
-      this.proposals(proposalId).value.proposalYesPower += flux;
+      this.proposals(proposalId).value.proposalYesPower += votingPower;
     }
     this.user_votes(voterAddress).value += 1;
     // Save the vote adding the timestamp
@@ -188,10 +184,14 @@ export class CompxGovernance extends Contract {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
     // assert(this.user_contribution(userAddress).value >= 1, 'User has not opted in to the contract');
+    let flux = newVotingPower;
+    if (this.user_slashed(userAddress).value > 0) {
+      flux = wideRatio([newVotingPower], [this.user_slashed(userAddress).value + 1]);
+    }
     const currentVotingPower: uint64 = this.user_current_voting_power(userAddress).value;
-    this.user_current_voting_power(userAddress).value = newVotingPower;
+    this.user_current_voting_power(userAddress).value = flux;
 
-    this.total_current_voting_power.value += newVotingPower - currentVotingPower;
+    this.total_current_voting_power.value += flux - currentVotingPower;
   }
 
   /**
