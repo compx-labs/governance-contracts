@@ -13,21 +13,24 @@ export class CompxGovernance extends Contract {
   // // Keeps track of the total number of votes on all proposals
   total_votes = GlobalStateKey<uint64>();
 
+  // // Total current voting power on the compx governance system
+  total_current_voting_power = GlobalStateKey<uint64>();
   // Boxes to store proposal information
   proposals = BoxMap<ProposalIdType, ProposalDataType>({ prefix: '_p' });
 
   // Boxes to store proposal votes
   votes = BoxMap<ProposalVoteIdType, ProposalVoteDataType>({ prefix: '_v' });
 
+  user_current_voting_power = LocalStateKey<uint64>();
   //User contribution on governance - Requires user to optin to the contract
   user_contribution = LocalStateKey<uint64>();
   user_votes = LocalStateKey<uint64>();
   user_special_votes = LocalStateKey<uint64>();
 
   public createApplication() {
-    this.total_proposals.value = 0;
     this.deployer_address.value = this.txn.sender;
     this.total_proposals.value = 0;
+    this.total_current_voting_power.value = 0;
   }
 
   /**
@@ -40,6 +43,7 @@ export class CompxGovernance extends Contract {
     this.user_contribution(userAddress).value = 1;
     this.user_votes(userAddress).value = 0;
     this.user_special_votes(userAddress).value = 0;
+    this.user_current_voting_power(userAddress).value = 0;
   }
 
   /**
@@ -101,8 +105,6 @@ export class CompxGovernance extends Contract {
     assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
 
     const voteTimestamp = globals.latestTimestamp;
-
-    const userVotesCount: uint64 = this.user_votes(voterAddress).value;
     const userContribution: uint64 = this.user_contribution(voterAddress).value;
 
     // //Check if the user has opted in to the contract
@@ -165,18 +167,34 @@ export class CompxGovernance extends Contract {
 
     this.user_special_votes(userAddress).value += 1;
   }
+  /**
+   * Add one to the user contribution once it votes on a pool proposal
+   * @param userAddress address of the user to add the special vote
+   * @param newVotingPower The voting power of the voter
+   */
+  private updateUserCurrentVotingPower(userAddress: Address, newVotingPower: uint64) {
+    // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
+    // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
+    // assert(this.user_contribution(userAddress).value >= 1, 'User has not opted in to the contract');
+    const currentVotingPower: uint64 = this.user_current_voting_power(userAddress).value;
+    this.user_current_voting_power(userAddress).value = newVotingPower;
+
+    this.total_current_voting_power.value += newVotingPower - currentVotingPower;
+  }
 
   /**
    * Add one to the user contribution once it votes on a pool proposal
    * @param proposalId The id of the proposal to be voted on
    * @param inFavor If the vote is a yes or no vote
    * @param voterAddress The address for the voter - Meant for v1.0 while deployer "server" will be responsible to execute
+   * @param votingPower The voting power of the voter
    */
   makeProposalVote(proposalId: ProposalIdType, inFavor: boolean, voterAddress: Address, votingPower: uint64) {
     assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
     // verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
     //Check if the proposal is still active
-    this.addOneToUserVotes(voterAddress, proposalId, votingPower, inFavor);
+    this.updateUserCurrentVotingPower(voterAddress, votingPower);
+    this.addOneToUserVotes(voterAddress, proposalId, this.user_current_voting_power(voterAddress).value, inFavor);
   }
 
   /**

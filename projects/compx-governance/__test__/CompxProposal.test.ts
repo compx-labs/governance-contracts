@@ -173,6 +173,7 @@ describe('CompxProposal', () => {
     const userContribution = accountInfo.user_contribution?.asBigInt();
     const userVotes = accountInfo.user_votes?.asBigInt();
     const userSpecialVotes = accountInfo.user_special_votes?.asBigInt();
+    const totalCurrentVotingPower = (await governanceAppClient.getGlobalState()).total_current_voting_power;
 
     console.log(
       'account info after voting on a regular proposal',

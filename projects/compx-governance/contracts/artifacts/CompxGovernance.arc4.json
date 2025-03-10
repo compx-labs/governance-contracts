@@ -71,7 +71,8 @@
         },
         {
           "name": "votingPower",
-          "type": "uint64"
+          "type": "uint64",
+          "desc": "The voting power of the voter"
         }
       ],
       "returns": {
