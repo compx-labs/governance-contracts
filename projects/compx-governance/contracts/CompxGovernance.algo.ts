@@ -1,6 +1,5 @@
-import { ProposalIdType, ProposalDataType, ProposalVoteDataType, ProposalVoteIdType } from './proposalConfig.algo';
-
 import { Contract } from '@algorandfoundation/tealscript';
+import { ProposalIdType, ProposalDataType, ProposalVoteDataType, ProposalVoteIdType } from './proposalConfig.algo';
 
 // (8+8) => 8+8+8+8+8+8 = 16 => 48 = 64bits * 0.0004 + 0.00352 = 0.02912
 const proposalMbr = 2_912;
@@ -10,22 +9,27 @@ export class CompxGovernance extends Contract {
 
   // // Keeps track of the total number of proposals
   total_proposals = GlobalStateKey<uint64>();
+
   // // Keeps track of the total number of votes on all proposals
   total_votes = GlobalStateKey<uint64>();
 
   // // Total current voting power on the compx governance system - Gets added once per user after voting for the first time - used for participants to know onchain how much voting power is currently at stake
   total_current_voting_power = GlobalStateKey<uint64>();
+
   // Boxes to store proposal information
   proposals = BoxMap<ProposalIdType, ProposalDataType>({ prefix: '_p' });
 
   // Boxes to store proposal votes
   votes = BoxMap<ProposalVoteIdType, ProposalVoteDataType>({ prefix: '_v' });
 
-  //User current voting power - Gets added once per user after voting for the first time and updated everytime a new vote is casted
+  // User current voting power - Gets added once per user after voting for the first time and updated everytime a new vote is casted
   user_current_voting_power = LocalStateKey<uint64>();
-  //User contribution on governance - Requires user to optin to the contract
+
+  // User contribution on governance - Requires user to optin to the contract
   user_contribution = LocalStateKey<uint64>();
+
   user_votes = LocalStateKey<uint64>();
+
   user_special_votes = LocalStateKey<uint64>();
 
   public createApplication() {
@@ -39,7 +43,7 @@ export class CompxGovernance extends Contract {
    */
 
   public optInToApplication(): void {
-    //Optin in to this contract will add 1 to the user contribution
+    // Optin in to this contract will add 1 to the user contribution
     const userAddress: Address = this.txn.sender;
     this.user_contribution(userAddress).value = 1;
     this.user_votes(userAddress).value = 0;
@@ -64,11 +68,11 @@ export class CompxGovernance extends Contract {
   ) {
     const proposerAddress: Address = this.txn.sender;
 
-    //The nonce of each proposal auto increments by 1
+    // The nonce of each proposal auto increments by 1
     const proposalNonce: uint64 = this.total_proposals.value + 1;
     const currentTimestamp: uint64 = globals.latestTimestamp;
 
-    //Defines the expiry time of the proposal
+    // Defines the expiry time of the proposal
     const expiryTimestamp: uint64 = currentTimestamp + expiresIn;
 
     // Only the deployer can create proposals - We can change this so anyone can create a proposal
@@ -144,10 +148,10 @@ export class CompxGovernance extends Contract {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
 
-    //Check if the voter has a local state - optedin to the contract
+    // Check if the voter has a local state - optedin to the contract
     const userContribution: uint64 = this.user_contribution(userAddress).value;
 
-    //Check if the user has opted in to the contract
+    // Check if the user has opted in to the contract
     assert(userContribution >= 1, 'User has not opted in to the contract');
     this.user_contribution(userAddress).value += 1;
   }
@@ -160,14 +164,15 @@ export class CompxGovernance extends Contract {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     // assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
 
-    //Check if the voter has a local state - optedin to the contract
-    const userContribution: uint64 = this.user_contribution(userAddress).value;
+    // Check if the voter has a local state - optedin to the contract
+    // const userContribution: uint64 = this.user_contribution(userAddress).value;
 
     // //Check if the user has opted in to the contract
     // assert(userContribution >= 1, 'User has not opted in to the contract');
 
     this.user_special_votes(userAddress).value += 1;
   }
+
   /**
    * Add one to the user contribution once it votes on a pool proposal
    * @param userAddress address of the user to add the special vote
@@ -193,7 +198,7 @@ export class CompxGovernance extends Contract {
   makeProposalVote(proposalId: ProposalIdType, inFavor: boolean, voterAddress: Address, votingPower: uint64) {
     assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
     // verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
-    //Check if the proposal is still active
+    // Check if the proposal is still active
     this.updateUserCurrentVotingPower(voterAddress, votingPower);
     this.addOneToUserVotes(voterAddress, proposalId, this.user_current_voting_power(voterAddress).value, inFavor);
   }
