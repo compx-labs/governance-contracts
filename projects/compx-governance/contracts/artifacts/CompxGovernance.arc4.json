@@ -73,6 +73,10 @@
           "name": "votingPower",
           "type": "uint64",
           "desc": "The voting power of the voter"
+        },
+        {
+          "name": "mbrTxn",
+          "type": "pay"
         }
       ],
       "returns": {
@@ -80,7 +84,7 @@
       }
     },
     {
-      "name": "slashUserContribution",
+      "name": "slashUserVotingPower",
       "desc": "Add one to the user contribution once it votes on a pool proposal",
       "args": [
         {

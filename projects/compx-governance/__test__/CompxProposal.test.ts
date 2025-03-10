@@ -9,6 +9,7 @@ import { TransactionSignerAccount } from '@algorandfoundation/algokit-utils/type
 import { AlgorandClient, algos } from '@algorandfoundation/algokit-utils';
 import { consoleLogger } from '@algorandfoundation/algokit-utils/types/logging';
 import { CompxGovernanceClient, CompxGovernanceFactory } from '../contracts/clients/CompxGovernanceClient';
+import { PROPOSAL_MBR, VOTE_MBR } from '../contracts/constants.algo';
 
 const fixture = algorandFixture();
 algokit.Config.configure({ populateAppCallResources: true });
@@ -103,7 +104,7 @@ describe('CompxProposal', () => {
     for (let i = 1; i <= numberOfProposals; i++) {
       const mbrTxn = algorand.createTransaction.payment({
         sender: proposerAccount.addr,
-        amount: algokit.microAlgos(proposalMbrValue),
+        amount: algokit.microAlgos(PROPOSAL_MBR),
         receiver: governanceAppClient.appAddress,
         extraFee: algokit.microAlgos(1000n),
       });
@@ -153,6 +154,13 @@ describe('CompxProposal', () => {
   //---------------------------------------------------------
   // User should be able to vote on a  reg (0) proposal with Id 3
   test('User should be able to vote on a regular proposal', async () => {
+    const mbrTxn = algorand.createTransaction.payment({
+      sender: proposerAccount.addr,
+      amount: algokit.microAlgos(VOTE_MBR),
+      receiver: governanceAppClient.appAddress,
+      extraFee: algokit.microAlgos(1000n),
+    });
+
     for (let i = 1; i <= 4; i++) {
       // Make proposal vote
       await governanceAppClient.send.makeProposalVote({
@@ -161,6 +169,7 @@ describe('CompxProposal', () => {
           voterAddress: voterAccount.addr.toString(),
           votingPower: votingPower + i * 1000,
           inFavor: i % 2 ? true : false,
+          mbrTxn,
         },
         sender: deployerAccount.addr,
       });
@@ -181,14 +190,25 @@ describe('CompxProposal', () => {
     // Verify that the user is opted-in by checking their local state exists
     const { userVotes } = await governanceAppClient.state.local(voterAccount.addr).getAll();
 
-    // If this user doesn't vote it will get slashed
-    const slashResult = await governanceAppClient.send.slashUserContribution({
-      args: { userAddress: voterAccount.addr.toString(), amount: 1n },
+    // // If this user doesn't vote it will get slashed
+    // const slashResult = await governanceAppClient.send.slashUserContribution({
+    //   args: { userAddress: voterAccount.addr.toString(), amount: 1n },
+    // });
+    const mbrTxn = algorand.createTransaction.payment({
+      sender: proposerAccount.addr,
+      amount: algokit.microAlgos(VOTE_MBR),
+      receiver: governanceAppClient.appAddress,
+      extraFee: algokit.microAlgos(1000n),
     });
-
     // Make proposal vote
     const result = await governanceAppClient.send.makeProposalVote({
-      args: { proposalId: { nonce: 2n }, inFavor: true, voterAddress: voterAccount.addr.toString(), votingPower },
+      args: {
+        proposalId: { nonce: 2n },
+        inFavor: true,
+        voterAddress: voterAccount.addr.toString(),
+        votingPower,
+        mbrTxn,
+      },
       sender: deployerAccount.addr,
     });
 

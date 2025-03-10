@@ -1,8 +1,7 @@
 import { Contract } from '@algorandfoundation/tealscript';
 import { ProposalIdType, ProposalDataType, ProposalVoteDataType, ProposalVoteIdType } from './proposalConfig.algo';
+import { PROPOSAL_MBR, VOTE_MBR } from './constants.algo';
 
-// (8+8) => 8+8+8+8+8+8 = 16 => 48 = 64bits * 0.0004 + 0.00352 = 0.02912
-const proposalMbr = 2_912;
 export class CompxGovernance extends Contract {
   // Address of the deployer of this contract
   deployer_address = GlobalStateKey<Address>();
@@ -25,6 +24,7 @@ export class CompxGovernance extends Contract {
   // User current voting power - Gets added once per user after voting for the first time and updated everytime a new vote is casted
   user_current_voting_power = LocalStateKey<uint64>();
 
+  //User votes - Keeps track of the number of votes a user has created
   user_votes = LocalStateKey<uint64>();
 
   public createApplication() {
@@ -74,7 +74,7 @@ export class CompxGovernance extends Contract {
     assert(!this.proposals({ nonce: proposalNonce }).exists, 'Proposal already exists');
 
     // Contract account will need 2_912 microAlgos to create a proposal box
-    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: proposalMbr } });
+    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: PROPOSAL_MBR } });
 
     // Create a new proposal with title and description and zero votes
     this.proposals({ nonce: proposalNonce }).value = {
@@ -99,19 +99,27 @@ export class CompxGovernance extends Contract {
    * @param votingPower The voting power of the voter
    * @param inFavor If the vote is a yes or a no
    */
-  private recordUserVotes(voterAddress: Address, proposalId: ProposalIdType, votingPower: uint64, inFavor: boolean) {
+  private recordUserVotes(
+    voterAddress: Address,
+    proposalId: ProposalIdType,
+    votingPower: uint64,
+    inFavor: boolean,
+    mbrTxn: PayTxn
+  ) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
-
+    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
     const voteTimestamp = globals.latestTimestamp;
 
     assert(this.proposals(proposalId).value.expiryTimestamp >= voteTimestamp, 'Proposal already expired');
 
+    //STOP if box with that vote already exists
     assert(
-      !this.votes({ proposalId: proposalId, voterAddress: voterAddress }).exists,
+      this.votes({ proposalId: proposalId, voterAddress: voterAddress }).exists === false,
       'User already voted on this proposal'
     );
 
+    //Check if the user is opted in to the contract before casting a vote - This is to prevent users from voting without opting in
     assert(voterAddress.isOptedInToApp(this.app.id), 'User has not opted in to the contract');
 
     this.proposals(proposalId).value.proposalTotalVotes += 1;
@@ -154,12 +162,21 @@ export class CompxGovernance extends Contract {
    * @param voterAddress The address for the voter - Meant for v1.0 while deployer "server" will be responsible to execute
    * @param votingPower The voting power of the voter
    */
-  makeProposalVote(proposalId: ProposalIdType, inFavor: boolean, voterAddress: Address, votingPower: uint64) {
+  makeProposalVote(
+    proposalId: ProposalIdType,
+    inFavor: boolean,
+    voterAddress: Address,
+    votingPower: uint64,
+    mbrTxn: PayTxn
+  ) {
     assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
-    // verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
+
+    //Check if the MBR is enough to pay for creating a vote box
+    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: VOTE_MBR } });
+
     // Check if the proposal is still active
     this.updateUserCurrentVotingPower(voterAddress, votingPower);
-    this.recordUserVotes(voterAddress, proposalId, this.user_current_voting_power(voterAddress).value, inFavor);
+    this.recordUserVotes(voterAddress, proposalId, this.user_current_voting_power(voterAddress).value, inFavor, mbrTxn);
   }
 
   /**
@@ -167,10 +184,10 @@ export class CompxGovernance extends Contract {
    * @param userAddress The address of the user to get its contribution slashed
    * @param amount The amount to be slashed
    */
-  slashUserContribution(userAddress: Address, amount: uint64) {
-    const minContribution: uint64 = 1;
-
+  slashUserVotingPower(userAddress: Address, amount: uint64) {
     assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can slash user contribution');
+    assert(this.user_current_voting_power(userAddress).value >= amount, 'User does not have enough voting power');
+    this.user_current_voting_power(userAddress).value -= amount;
   }
 
   /**

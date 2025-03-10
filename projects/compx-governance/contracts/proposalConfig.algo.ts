@@ -35,7 +35,7 @@ export type ProposalDataType = {
 
 /**
  * Defines the vote box Ids
- * @typedef
+ * @typedef {object} ProposalVoteIdType
  * @property {ProposalIdType} proposalId
  * @property {Address} voterAddress
  */
