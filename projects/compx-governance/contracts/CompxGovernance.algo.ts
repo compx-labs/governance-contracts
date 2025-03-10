@@ -40,7 +40,6 @@ export class CompxGovernance extends Contract {
   public optInToApplication(): void {
     // Optin in to this contract will add 1 to the user contribution
     const userAddress: Address = this.txn.sender;
-    assert(!this.txn.sender.isOptedInToApp(this.app.id));
     this.user_votes(userAddress).value = 0;
     this.user_current_voting_power(userAddress).value = 0;
   }
@@ -108,7 +107,9 @@ export class CompxGovernance extends Contract {
   ) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users');
+
     verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
+
     const voteTimestamp = globals.latestTimestamp;
 
     assert(this.proposals(proposalId).value.expiryTimestamp >= voteTimestamp, 'Proposal already expired');
@@ -152,7 +153,7 @@ export class CompxGovernance extends Contract {
     const currentVotingPower: uint64 = this.user_current_voting_power(userAddress).value;
     this.user_current_voting_power(userAddress).value = newVotingPower;
 
-    this.total_current_voting_power.value += newVotingPower - currentVotingPower;
+    this.total_current_voting_power.value = newVotingPower + this.total_current_voting_power.value - currentVotingPower;
   }
 
   /**
