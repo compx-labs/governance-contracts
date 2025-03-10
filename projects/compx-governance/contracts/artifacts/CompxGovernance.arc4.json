@@ -80,18 +80,27 @@
       }
     },
     {
-      "name": "slashUserContribution",
+      "name": "slashUser",
       "desc": "Add one to the user contribution once it votes on a pool proposal",
       "args": [
         {
           "name": "userAddress",
           "type": "address",
           "desc": "The address of the user to get its contribution slashed"
-        },
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "removeSlashing",
+      "desc": "Remove user slashing from user account",
+      "args": [
         {
-          "name": "amount",
-          "type": "uint64",
-          "desc": "The amount to be slashed"
+          "name": "userAddress",
+          "type": "address",
+          "desc": "The address of the user to get its power returned"
         }
       ],
       "returns": {
