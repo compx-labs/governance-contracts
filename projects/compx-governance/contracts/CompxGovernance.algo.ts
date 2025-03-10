@@ -40,7 +40,7 @@ export class CompxGovernance extends Contract {
   public optInToApplication(): void {
     // Optin in to this contract will add 1 to the user contribution
     const userAddress: Address = this.txn.sender;
-
+    assert(!this.txn.sender.isOptedInToApp(this.app.id));
     this.user_votes(userAddress).value = 0;
     this.user_current_voting_power(userAddress).value = 0;
   }
@@ -111,6 +111,9 @@ export class CompxGovernance extends Contract {
       !this.votes({ proposalId: proposalId, voterAddress: voterAddress }).exists,
       'User already voted on this proposal'
     );
+
+    assert(voterAddress.isOptedInToApp(this.app.id), 'User has not opted in to the contract');
+
     this.proposals(proposalId).value.proposalTotalVotes += 1;
     this.proposals(proposalId).value.proposalTotalPower += votingPower;
     if (inFavor) {

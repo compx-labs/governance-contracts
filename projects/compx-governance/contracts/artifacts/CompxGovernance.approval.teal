@@ -75,6 +75,14 @@ optInToApplication:
 	txn Sender
 	frame_bury 0 // userAddress: Address
 
+	// contracts\CompxGovernance.algo.ts:43
+	// assert(!this.txn.sender.isOptedInToApp(this.app.id))
+	txn Sender
+	txna Applications 0
+	app_opted_in
+	!
+	assert
+
 	// contracts\CompxGovernance.algo.ts:44
 	// this.user_votes(userAddress).value = 0
 	frame_dig 0 // userAddress: Address
@@ -334,7 +342,16 @@ recordUserVotes:
 	// User already voted on this proposal
 	assert
 
-	// contracts\CompxGovernance.algo.ts:114
+	// contracts\CompxGovernance.algo.ts:115
+	// assert(voterAddress.isOptedInToApp(this.app.id), 'User has not opted in to the contract')
+	frame_dig -1 // voterAddress: Address
+	txna Applications 0
+	app_opted_in
+
+	// User has not opted in to the contract
+	assert
+
+	// contracts\CompxGovernance.algo.ts:117
 	// this.proposals(proposalId).value.proposalTotalVotes += 1
 	bytec 0 //  "_p"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -370,7 +387,7 @@ recordUserVotes:
 	swap
 	box_put
 
-	// contracts\CompxGovernance.algo.ts:115
+	// contracts\CompxGovernance.algo.ts:118
 	// this.proposals(proposalId).value.proposalTotalPower += votingPower
 	bytec 0 //  "_p"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -407,13 +424,13 @@ recordUserVotes:
 	box_put
 
 	// *if0_condition
-	// contracts\CompxGovernance.algo.ts:116
+	// contracts\CompxGovernance.algo.ts:119
 	// inFavor
 	frame_dig -4 // inFavor: boolean
 	bz *if0_end
 
 	// *if0_consequent
-	// contracts\CompxGovernance.algo.ts:117
+	// contracts\CompxGovernance.algo.ts:120
 	// this.proposals(proposalId).value.proposalYesVotes += 1
 	bytec 0 //  "_p"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -449,7 +466,7 @@ recordUserVotes:
 	swap
 	box_put
 
-	// contracts\CompxGovernance.algo.ts:118
+	// contracts\CompxGovernance.algo.ts:121
 	// this.proposals(proposalId).value.proposalYesPower += votingPower
 	bytec 0 //  "_p"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -486,7 +503,7 @@ recordUserVotes:
 	box_put
 
 *if0_end:
-	// contracts\CompxGovernance.algo.ts:120
+	// contracts\CompxGovernance.algo.ts:123
 	// this.user_votes(voterAddress).value += 1
 	frame_dig -1 // voterAddress: Address
 	bytec 7 //  "user_votes"
@@ -498,7 +515,7 @@ recordUserVotes:
 	uncover 2
 	app_local_put
 
-	// contracts\CompxGovernance.algo.ts:122
+	// contracts\CompxGovernance.algo.ts:125
 	// this.votes({ proposalId: proposalId, voterAddress: voterAddress }).value = { voteTimestamp: voteTimestamp }
 	bytec 9 //  "_v"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -509,7 +526,7 @@ recordUserVotes:
 	itob
 	box_put
 
-	// contracts\CompxGovernance.algo.ts:124
+	// contracts\CompxGovernance.algo.ts:127
 	// this.total_votes.value += 1
 	bytec 8 //  "total_votes"
 	app_global_get
@@ -535,21 +552,21 @@ updateUserCurrentVotingPower:
 	// Push empty bytes after the frame pointer to reserve space for local variables
 	bytec 1 // 0x
 
-	// contracts\CompxGovernance.algo.ts:141
+	// contracts\CompxGovernance.algo.ts:144
 	// currentVotingPower: uint64 = this.user_current_voting_power(userAddress).value
 	frame_dig -1 // userAddress: Address
 	bytec 3 //  "user_current_voting_power"
 	app_local_get
 	frame_bury 0 // currentVotingPower: uint64
 
-	// contracts\CompxGovernance.algo.ts:142
+	// contracts\CompxGovernance.algo.ts:145
 	// this.user_current_voting_power(userAddress).value = newVotingPower
 	frame_dig -1 // userAddress: Address
 	bytec 3 //  "user_current_voting_power"
 	frame_dig -2 // newVotingPower: uint64
 	app_local_put
 
-	// contracts\CompxGovernance.algo.ts:144
+	// contracts\CompxGovernance.algo.ts:147
 	// this.total_current_voting_power.value += newVotingPower - currentVotingPower
 	bytec 6 //  "total_current_voting_power"
 	app_global_get
@@ -615,7 +632,7 @@ updateUserCurrentVotingPower:
 makeProposalVote:
 	proto 4 0
 
-	// contracts\CompxGovernance.algo.ts:155
+	// contracts\CompxGovernance.algo.ts:158
 	// assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users')
 	txn Sender
 	bytec 2 //  "deployer_address"
@@ -625,13 +642,13 @@ makeProposalVote:
 	// Only the deployer can add votes to users
 	assert
 
-	// contracts\CompxGovernance.algo.ts:158
+	// contracts\CompxGovernance.algo.ts:161
 	// this.updateUserCurrentVotingPower(voterAddress, votingPower)
 	frame_dig -4 // votingPower: uint64
 	frame_dig -3 // voterAddress: Address
 	callsub updateUserCurrentVotingPower
 
-	// contracts\CompxGovernance.algo.ts:159
+	// contracts\CompxGovernance.algo.ts:162
 	// this.recordUserVotes(voterAddress, proposalId, this.user_current_voting_power(voterAddress).value, inFavor)
 	frame_dig -2 // inFavor: boolean
 	frame_dig -3 // voterAddress: Address
@@ -674,12 +691,12 @@ slashUserContribution:
 	// Push empty bytes after the frame pointer to reserve space for local variables
 	bytec 1 // 0x
 
-	// contracts\CompxGovernance.algo.ts:168
+	// contracts\CompxGovernance.algo.ts:171
 	// minContribution: uint64 = 1
 	intc 0 // 1
 	frame_bury 0 // minContribution: uint64
 
-	// contracts\CompxGovernance.algo.ts:170
+	// contracts\CompxGovernance.algo.ts:173
 	// assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can slash user contribution')
 	txn Sender
 	bytec 2 //  "deployer_address"
@@ -720,7 +737,7 @@ slashUserContribution:
 getProposalsById:
 	proto 1 1
 
-	// contracts\CompxGovernance.algo.ts:179
+	// contracts\CompxGovernance.algo.ts:182
 	// return this.proposals(proposalId).value;
 	bytec 0 //  "_p"
 	frame_dig -1 // proposalId: ProposalIdType
