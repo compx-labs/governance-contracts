@@ -32,6 +32,8 @@ export class CompxGovernance extends Contract {
 
   user_special_votes = LocalStateKey<uint64>();
 
+  user_slashed = LocalStateKey<uint64>();
+
   public createApplication() {
     this.deployer_address.value = this.txn.sender;
     this.total_proposals.value = 0;
@@ -121,11 +123,15 @@ export class CompxGovernance extends Contract {
       !this.votes({ proposalId: proposalId, voterAddress: voterAddress }).exists,
       'User already voted on this proposal'
     );
+    let flux = votingPower;
+    if (this.user_slashed(voterAddress).value > 0) {
+      flux = wideRatio([votingPower], [this.user_slashed(voterAddress).value + 1]);
+    }
     this.proposals(proposalId).value.proposalTotalVotes += 1;
-    this.proposals(proposalId).value.proposalTotalPower += votingPower;
+    this.proposals(proposalId).value.proposalTotalPower += flux;
     if (inFavor) {
       this.proposals(proposalId).value.proposalYesVotes += 1;
-      this.proposals(proposalId).value.proposalYesPower += votingPower;
+      this.proposals(proposalId).value.proposalYesPower += flux;
     }
     this.user_votes(voterAddress).value += 1;
     // Save the vote adding the timestamp
@@ -206,17 +212,19 @@ export class CompxGovernance extends Contract {
   /**
    * Add one to the user contribution once it votes on a pool proposal
    * @param userAddress The address of the user to get its contribution slashed
-   * @param amount The amount to be slashed
    */
-  slashUserContribution(userAddress: Address, amount: uint64) {
-    const minContribution: uint64 = 1;
-
+  slashUser(userAddress: Address) {
     assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can slash user contribution');
-    assert(
-      this.user_contribution(userAddress).value > minContribution,
-      'User does not have enough contribution to be slashed'
-    );
-    this.user_contribution(userAddress).value -= amount;
+    this.user_slashed(userAddress).value += 1;
+  }
+
+  /**
+   * Remove user slashing from user account
+   *  @param userAddress The address of the user to get its power returned
+   */
+  removeSlashing(userAddress: Address) {
+    assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can remove slashing');
+    this.user_slashed(userAddress).value = 0;
   }
 
   /**
