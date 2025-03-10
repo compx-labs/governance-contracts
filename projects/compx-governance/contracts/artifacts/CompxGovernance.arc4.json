@@ -63,6 +63,35 @@
           "name": "inFavor",
           "type": "bool",
           "desc": "If the vote is a yes or no vote"
+        },
+        {
+          "name": "voterAddress",
+          "type": "address",
+          "desc": "The address for the voter - Meant for v1.0 while deployer \"server\" will be responsible to execute"
+        },
+        {
+          "name": "votingPower",
+          "type": "uint64",
+          "desc": "The voting power of the voter"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
+      "name": "slashUserContribution",
+      "desc": "Add one to the user contribution once it votes on a pool proposal",
+      "args": [
+        {
+          "name": "userAddress",
+          "type": "address",
+          "desc": "The address of the user to get its contribution slashed"
+        },
+        {
+          "name": "amount",
+          "type": "uint64",
+          "desc": "The amount to be slashed"
         }
       ],
       "returns": {
@@ -79,8 +108,8 @@
         }
       ],
       "returns": {
-        "type": "(uint64,string,string,uint64,uint64,uint64,uint64)",
-        "desc": "Returns active or expired proposals and its information"
+        "type": "(uint64,string,string,uint64,uint64,uint64,uint64,uint64,uint64)",
+        "desc": "ProposalDataType Returns the proposal by id"
       }
     }
   ]
