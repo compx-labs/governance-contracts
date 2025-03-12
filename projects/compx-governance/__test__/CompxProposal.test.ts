@@ -25,8 +25,10 @@ let algorand: algokit.AlgorandClient;
 // Relevant user accounts ------------------------------------
 let deployerAccount: TransactionSignerAccount;
 let proposerAccount: TransactionSignerAccount;
-let voterAccount: TransactionSignerAccount;
-const votingPower = 42000;
+let voterOneAccount: TransactionSignerAccount;
+let voterTwoAccount: TransactionSignerAccount;
+const votingPowerOne = 42000;
+const votingPowerTwo = 30000;
 //--------------------------------------------------------
 
 // Proposal data -----------------------------------------
@@ -35,7 +37,6 @@ const poolProposalDescription = 'This is the pool proposal description';
 const regularProposalTitle = 'Regular proposal title';
 const regularProposalDescription = 'This is the regular proposal description';
 const expiresIn = 1000n;
-const proposalMbrValue = 2_915n;
 //--------------------------------------------------------
 
 describe('CompxProposal', () => {
@@ -52,14 +53,16 @@ describe('CompxProposal', () => {
     algorand.account.setSignerFromAccount(deployerAccount);
     await algorand.account.ensureFundedFromEnvironment(deployerAccount.addr, algokit.algos(100));
     proposerAccount = deployerAccount;
-    voterAccount = await algorand.account.kmd.getOrCreateWalletAccount('governance-voter-account', algos(100));
-    algorand.account.setSignerFromAccount(voterAccount);
-    await algorand.account.ensureFundedFromEnvironment(voterAccount.addr, algokit.algos(100));
+    voterOneAccount = await algorand.account.kmd.getOrCreateWalletAccount('governance-voter-account', algos(100));
+    voterTwoAccount = await algorand.account.kmd.getOrCreateWalletAccount('governance-voter-account-2', algos(100));
+    algorand.account.setSignerFromAccount(voterOneAccount);
+    algorand.account.setSignerFromAccount(voterTwoAccount);
+    await algorand.account.ensureFundedFromEnvironment(voterOneAccount.addr, algokit.algos(100));
 
     //-------------------------------------------------------
 
     const deployerInfo = await algorand.account.getInformation(deployerAccount.addr);
-    const voterInfo = await algorand.account.getInformation(voterAccount.addr);
+    const voterInfo = await algorand.account.getInformation(voterOneAccount.addr);
     consoleLogger.debug('deployer account balance', deployerInfo.balance.microAlgos);
     consoleLogger.debug('voter account balance', voterInfo.balance.microAlgos);
     expect(deployerInfo.balance.microAlgos).toBeGreaterThan(0);
@@ -67,7 +70,14 @@ describe('CompxProposal', () => {
     // Fund the voter account --------------------------------
     await algorand.send.payment({
       sender: deployerAccount.addr,
-      receiver: voterAccount.addr,
+      receiver: voterOneAccount.addr,
+      amount: algokit.microAlgos(1_000_000), // Send 1 Algo to the new wallet
+    });
+
+    //Adding funds to the new voter
+    await algorand.send.payment({
+      sender: deployerAccount.addr,
+      receiver: voterTwoAccount.addr,
       amount: algokit.microAlgos(1_000_000), // Send 1 Algo to the new wallet
     });
     //-------------------------------------------------------
@@ -120,7 +130,6 @@ describe('CompxProposal', () => {
       await governanceAppClient.send.createNewProposal({
         args: {
           proposalTitle: proposalTitleTest,
-          proposalType: proposalTypeTest,
           proposalDescription: proposalDescritpionTest,
           expiresIn,
           mbrTxn,
@@ -138,57 +147,67 @@ describe('CompxProposal', () => {
     await governanceAppClient.send.optIn.optInToApplication({
       args: [],
       populateAppCallResources: true,
-      sender: voterAccount.addr,
+      sender: voterOneAccount.addr,
+    });
+
+    await governanceAppClient.send.optIn.optInToApplication({
+      args: [],
+      populateAppCallResources: true,
+      sender: voterTwoAccount.addr,
     });
 
     // Verify that the user is opted-in by checking their local state exists
-    const accountInfo = governanceAppClient.state.local(voterAccount.addr);
+    const accountInfo = governanceAppClient.state.local(voterOneAccount.addr);
     const { userVotes } = await accountInfo.getAll();
 
     consoleLogger.debug('account info after optin in to the application', ` user_votes:${userVotes}, `);
 
     //
-    expect(userVotes).toBe(1n);
+    expect(userVotes).toBe(0n);
   });
 
   //---------------------------------------------------------
-  // User should be able to vote on a  reg (0) proposal with Id 3
-  test('User should be able to vote on a regular proposal', async () => {
-    const mbrTxn = algorand.createTransaction.payment({
-      sender: proposerAccount.addr,
-      amount: algokit.microAlgos(VOTE_MBR),
-      receiver: governanceAppClient.appAddress,
-      extraFee: algokit.microAlgos(1000n),
-    });
-
+  // User 1 should be able to vote on a  reg (0) proposal with Id 3
+  test('User 1 should be able to vote on all four regular proposal', async () => {
     for (let i = 1; i <= 4; i++) {
+
+      const mbrTxn = algorand.createTransaction.payment({
+        sender: proposerAccount.addr,
+        amount: algokit.microAlgos(VOTE_MBR),
+        receiver: governanceAppClient.appAddress,
+        extraFee: algokit.microAlgos(1000n),
+      });
+  
       // Make proposal vote
       await governanceAppClient.send.makeProposalVote({
         args: {
           proposalId: { nonce: BigInt(i) },
-          voterAddress: voterAccount.addr.toString(),
-          votingPower: votingPower + i * 1000,
+          voterAddress: voterOneAccount.addr.toString(),
+          votingPower: votingPowerOne,
           inFavor: i % 2 ? true : false,
           mbrTxn,
         },
         sender: deployerAccount.addr,
       });
-    }
+
 
     // Verify that the user is opted-in by checking their local state exists
-    const { userVotes } = await governanceAppClient.state.local(voterAccount.addr).getAll();
-    const totalCurrentVotingPower = governanceAppClient.state.global.totalCurrentVotingPower();
+    const { userVotes } = await governanceAppClient.state.local(voterOneAccount.addr).getAll();
+    const totalCurrentVotingPower = await governanceAppClient.state.global.totalCurrentVotingPower();
+  
+    consoleLogger.info('totalCurrentVotingPower', totalCurrentVotingPower)
+     expect(totalCurrentVotingPower).toBe(BigInt(votingPowerOne))
 
-    consoleLogger.debug('account info after voting on a regular proposal', `user_votes:${userVotes}, `);
+    expect(userVotes).toBe(BigInt(i));
+    }
 
-    expect(userVotes).toBe(4n);
   });
 
   //---------------------------------------------------------
   // User should not be be able to vote on a pool (2) proposal with Id - sender is not deployer
-  test.skip('User should not be able to vote on a pool proposal! Gets its contribution points slashed for it', async () => {
+  test('User should not be able to vote on a proposal, because it already voted and voting power to be 4600', async () => {
     // Verify that the user is opted-in by checking their local state exists
-    const { userVotes } = await governanceAppClient.state.local(voterAccount.addr).getAll();
+    const { userVotes } = await governanceAppClient.state.local(voterOneAccount.addr).getAll();
 
     // // If this user doesn't vote it will get slashed
     // const slashResult = await governanceAppClient.send.slashUserContribution({
@@ -200,23 +219,62 @@ describe('CompxProposal', () => {
       receiver: governanceAppClient.appAddress,
       extraFee: algokit.microAlgos(1000n),
     });
-    // Make proposal vote
-    const result = await governanceAppClient.send.makeProposalVote({
-      args: {
-        proposalId: { nonce: 2n },
-        inFavor: true,
-        voterAddress: voterAccount.addr.toString(),
-        votingPower,
-        mbrTxn,
-      },
-      sender: deployerAccount.addr,
-    });
 
-    expect(result).toThrow();
+    const totalCurrentVotingPower = await governanceAppClient.state.global.totalCurrentVotingPower()
+
+    // Make proposal vote
+    await expect(
+      governanceAppClient.send.makeProposalVote({
+        args: {
+          proposalId: { nonce: 2n },
+          inFavor: true,
+          voterAddress: voterOneAccount.addr.toString(),
+          votingPower:votingPowerOne,
+          mbrTxn,
+        },
+        sender: deployerAccount.addr,
+      })
+    ).rejects.toThrowError('User already voted on this proposal');
   });
 
   //---------------------------------------------------------
 
+  // --------------------------------------------------------
+   // User should be able to vote on a  reg (0) proposal with Id 3
+    test('User 2 should be able to vote on all four regular proposal', async () => {
+      for (let i = 1; i <= 4; i++) {
+  
+        const mbrTxn = algorand.createTransaction.payment({
+          sender: proposerAccount.addr,
+          amount: algokit.microAlgos(VOTE_MBR),
+          receiver: governanceAppClient.appAddress,
+          extraFee: algokit.microAlgos(1000n),
+        });
+    
+        // Make proposal vote
+        await governanceAppClient.send.makeProposalVote({
+          args: {
+            proposalId: { nonce: BigInt(i) },
+            voterAddress: voterTwoAccount.addr.toString(),
+            votingPower: votingPowerTwo,
+            inFavor: i % 2 ? true : false,
+            mbrTxn,
+          },
+          sender: deployerAccount.addr,
+        });
+  
+  
+      // Verify that the user is opted-in by checking their local state exists
+      const { userVotes } = await governanceAppClient.state.local(voterTwoAccount.addr).getAll();
+      const totalCurrentVotingPower = await governanceAppClient.state.global.totalCurrentVotingPower();
+  
+     consoleLogger.info('totalCurrentVotingPower', totalCurrentVotingPower)
+      expect(totalCurrentVotingPower).toBe(BigInt(votingPowerOne+votingPowerTwo))
+      expect(userVotes).toBe(BigInt(i));
+      }
+  
+    });
+// --------------------------------------------------------
   test('Get all proposals by id', async () => {
     const totalProposals = await governanceAppClient.state.global.totalProposals();
 

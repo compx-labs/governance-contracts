@@ -10,7 +10,6 @@ export type ProposalIdType = { nonce: uint64 };
  * Reprensents the Proposal Data Object
  *
  * @typedef {object} ProposalDataType
- * @property {uint64} proposalType - Type of the proposal
  * @property {string} poposalTitle - Title of the proposal.
  * @property {string} proposalDescription - Description of the proposal.
  * @property {uint64} proposalTotalVotes - Total votes on this proposal.
@@ -22,7 +21,6 @@ export type ProposalIdType = { nonce: uint64 };
  */
 
 export type ProposalDataType = {
-  proposalType: uint64;
   proposalTitle: string;
   proposalDescription: string;
   proposalTotalVotes: uint64;

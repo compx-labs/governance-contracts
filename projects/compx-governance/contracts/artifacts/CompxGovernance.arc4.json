@@ -22,24 +22,16 @@
       "desc": "Create a new proposal",
       "args": [
         {
-          "name": "proposalType",
-          "type": "uint64",
-          "desc": "Type of the proposal - can be reg or pool"
-        },
-        {
           "name": "proposalTitle",
-          "type": "string",
-          "desc": "Title of the proposal"
+          "type": "string"
         },
         {
           "name": "proposalDescription",
-          "type": "string",
-          "desc": "Description of the proposal"
+          "type": "string"
         },
         {
           "name": "expiresIn",
-          "type": "uint64",
-          "desc": "Time in seconds for the proposal to expire"
+          "type": "uint64"
         },
         {
           "name": "mbrTxn",
@@ -112,7 +104,7 @@
         }
       ],
       "returns": {
-        "type": "(uint64,string,string,uint64,uint64,uint64,uint64,uint64,uint64)",
+        "type": "(string,string,uint64,uint64,uint64,uint64,uint64,uint64)",
         "desc": "ProposalDataType Returns the proposal by id"
       }
     }

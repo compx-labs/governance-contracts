@@ -53,7 +53,6 @@ export class CompxGovernance extends Contract {
    */
 
   public createNewProposal(
-    proposalType: uint64,
     proposalTitle: string,
     proposalDescription: string,
     expiresIn: uint64,
@@ -77,7 +76,6 @@ export class CompxGovernance extends Contract {
 
     // Create a new proposal with title and description and zero votes
     this.proposals({ nonce: proposalNonce }).value = {
-      proposalType: proposalType,
       proposalTitle: proposalTitle,
       proposalDescription: proposalDescription,
       proposalTotalVotes: 0,

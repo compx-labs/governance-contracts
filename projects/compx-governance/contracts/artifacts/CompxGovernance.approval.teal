@@ -35,19 +35,19 @@ switch *call_NoOp *call_OptIn *NOT_IMPLEMENTED *NOT_IMPLEMENTED *NOT_IMPLEMENTED
 createApplication:
 	proto 0 0
 
-	// contracts\CompxGovernance.algo.ts:31
+	// contracts/CompxGovernance.algo.ts:31
 	// this.deployer_address.value = this.txn.sender
 	bytec 3 //  "deployer_address"
 	txn Sender
 	app_global_put
 
-	// contracts\CompxGovernance.algo.ts:32
+	// contracts/CompxGovernance.algo.ts:32
 	// this.total_proposals.value = 0
 	bytec 4 //  "total_proposals"
 	intc 1 // 0
 	app_global_put
 
-	// contracts\CompxGovernance.algo.ts:33
+	// contracts/CompxGovernance.algo.ts:33
 	// this.total_current_voting_power.value = 0
 	bytec 6 //  "total_current_voting_power"
 	intc 1 // 0
@@ -70,19 +70,19 @@ optInToApplication:
 	// Push empty bytes after the frame pointer to reserve space for local variables
 	bytec 1 // 0x
 
-	// contracts\CompxGovernance.algo.ts:42
+	// contracts/CompxGovernance.algo.ts:42
 	// userAddress: Address = this.txn.sender
 	txn Sender
 	frame_bury 0 // userAddress: Address
 
-	// contracts\CompxGovernance.algo.ts:43
+	// contracts/CompxGovernance.algo.ts:43
 	// this.user_votes(userAddress).value = 0
 	frame_dig 0 // userAddress: Address
 	bytec 7 //  "user_votes"
 	intc 1 // 0
 	app_local_put
 
-	// contracts\CompxGovernance.algo.ts:44
+	// contracts/CompxGovernance.algo.ts:44
 	// this.user_current_voting_power(userAddress).value = 0
 	frame_dig 0 // userAddress: Address
 	bytec 2 //  "user_current_voting_power"
@@ -90,7 +90,7 @@ optInToApplication:
 	app_local_put
 	retsub
 
-// createNewProposal(uint64,string,string,uint64,pay)void
+// createNewProposal(string,string,uint64,pay)void
 *abi_route_createNewProposal:
 	// mbrTxn: pay
 	txn GroupIndex
@@ -105,27 +105,23 @@ optInToApplication:
 	assert
 
 	// expiresIn: uint64
-	txna ApplicationArgs 4
+	txna ApplicationArgs 3
 	btoi
 
 	// proposalDescription: string
-	txna ApplicationArgs 3
-	extract 2 0
-
-	// proposalTitle: string
 	txna ApplicationArgs 2
 	extract 2 0
 
-	// proposalType: uint64
+	// proposalTitle: string
 	txna ApplicationArgs 1
-	btoi
+	extract 2 0
 
-	// execute createNewProposal(uint64,string,string,uint64,pay)void
+	// execute createNewProposal(string,string,uint64,pay)void
 	callsub createNewProposal
 	intc 0 // 1
 	return
 
-// createNewProposal(proposalType: uint64, proposalTitle: string, proposalDescription: string, expiresIn: uint64, mbrTxn: PayTxn): void
+// createNewProposal(proposalTitle: string, proposalDescription: string, expiresIn: uint64, mbrTxn: PayTxn): void
 //
 // Create a new proposal
 // @param proposalType Type of the proposal - can be reg or pool
@@ -133,18 +129,18 @@ optInToApplication:
 // @param proposalDescription Description of the proposal
 // @param expiresIn Time in seconds for the proposal to expire
 createNewProposal:
-	proto 5 0
+	proto 4 0
 
 	// Push empty bytes after the frame pointer to reserve space for local variables
 	bytec 1 // 0x
 	dupn 3
 
-	// contracts\CompxGovernance.algo.ts:62
+	// contracts/CompxGovernance.algo.ts:61
 	// proposerAddress: Address = this.txn.sender
 	txn Sender
 	frame_bury 0 // proposerAddress: Address
 
-	// contracts\CompxGovernance.algo.ts:65
+	// contracts/CompxGovernance.algo.ts:64
 	// proposalNonce: uint64 = this.total_proposals.value + 1
 	bytec 4 //  "total_proposals"
 	app_global_get
@@ -152,19 +148,19 @@ createNewProposal:
 	+
 	frame_bury 1 // proposalNonce: uint64
 
-	// contracts\CompxGovernance.algo.ts:66
+	// contracts/CompxGovernance.algo.ts:65
 	// currentTimestamp: uint64 = globals.latestTimestamp
 	global LatestTimestamp
 	frame_bury 2 // currentTimestamp: uint64
 
-	// contracts\CompxGovernance.algo.ts:69
+	// contracts/CompxGovernance.algo.ts:68
 	// expiryTimestamp: uint64 = currentTimestamp + expiresIn
 	frame_dig 2 // currentTimestamp: uint64
-	frame_dig -4 // expiresIn: uint64
+	frame_dig -3 // expiresIn: uint64
 	+
 	frame_bury 3 // expiryTimestamp: uint64
 
-	// contracts\CompxGovernance.algo.ts:72
+	// contracts/CompxGovernance.algo.ts:71
 	// assert(proposerAddress === this.deployer_address.value, 'Only the deployer can create proposals')
 	frame_dig 0 // proposerAddress: Address
 	bytec 3 //  "deployer_address"
@@ -174,7 +170,7 @@ createNewProposal:
 	// Only the deployer can create proposals
 	assert
 
-	// contracts\CompxGovernance.algo.ts:73
+	// contracts/CompxGovernance.algo.ts:72
 	// assert(!this.proposals({ nonce: proposalNonce }).exists, 'Proposal already exists')
 	bytec 0 //  "_p"
 	frame_dig 1 // proposalNonce: uint64
@@ -188,10 +184,10 @@ createNewProposal:
 	// Proposal already exists
 	assert
 
-	// contracts\CompxGovernance.algo.ts:76
+	// contracts/CompxGovernance.algo.ts:75
 	// verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: PROPOSAL_MBR } })
 	// verify amount
-	frame_dig -5 // mbrTxn: PayTxn
+	frame_dig -4 // mbrTxn: PayTxn
 	gtxns Amount
 	pushint 4215
 	>=
@@ -199,9 +195,8 @@ createNewProposal:
 	// transaction verification failed: {"txn":"mbrTxn","field":"amount","condition":"greaterThanEqualTo","expected":">=PROPOSAL_MBR"}
 	assert
 
-	// contracts\CompxGovernance.algo.ts:79
+	// contracts/CompxGovernance.algo.ts:78
 	// this.proposals({ nonce: proposalNonce }).value = {
-	//       proposalType: proposalType,
 	//       proposalTitle: proposalTitle,
 	//       proposalDescription: proposalDescription,
 	//       proposalTotalVotes: 0,
@@ -220,11 +215,8 @@ createNewProposal:
 	pop
 	bytec 1 //  initial head
 	bytec 1 //  initial tail
-	pushbytes 0x003c // initial head offset
-	frame_dig -1 // proposalType: uint64
-	itob
-	callsub *process_static_tuple_element
-	frame_dig -2 // proposalTitle: string
+	pushbytes 0x0034 // initial head offset
+	frame_dig -1 // proposalTitle: string
 	dup
 	len
 	itob
@@ -232,7 +224,7 @@ createNewProposal:
 	swap
 	concat
 	callsub *process_dynamic_tuple_element
-	frame_dig -3 // proposalDescription: string
+	frame_dig -2 // proposalDescription: string
 	dup
 	len
 	itob
@@ -258,7 +250,7 @@ createNewProposal:
 	concat // concat head and tail
 	box_put
 
-	// contracts\CompxGovernance.algo.ts:91
+	// contracts/CompxGovernance.algo.ts:89
 	// this.total_proposals.value += 1
 	bytec 4 //  "total_proposals"
 	app_global_get
@@ -282,7 +274,7 @@ recordUserVotes:
 	// Push empty bytes after the frame pointer to reserve space for local variables
 	bytec 1 // 0x
 
-	// contracts\CompxGovernance.algo.ts:109
+	// contracts/CompxGovernance.algo.ts:107
 	// assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users')
 	txn Sender
 	bytec 3 //  "deployer_address"
@@ -292,7 +284,7 @@ recordUserVotes:
 	// Only the deployer can add votes to users
 	assert
 
-	// contracts\CompxGovernance.algo.ts:111
+	// contracts/CompxGovernance.algo.ts:109
 	// verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } })
 	// verify amount
 	frame_dig -5 // mbrTxn: PayTxn
@@ -303,12 +295,12 @@ recordUserVotes:
 	// transaction verification failed: {"txn":"mbrTxn","field":"amount","condition":"greaterThanEqualTo","expected":">=2_120"}
 	assert
 
-	// contracts\CompxGovernance.algo.ts:113
+	// contracts/CompxGovernance.algo.ts:111
 	// voteTimestamp = globals.latestTimestamp
 	global LatestTimestamp
 	frame_bury 0 // voteTimestamp: uint64
 
-	// contracts\CompxGovernance.algo.ts:115
+	// contracts/CompxGovernance.algo.ts:113
 	// assert(this.proposals(proposalId).value.expiryTimestamp >= voteTimestamp, 'Proposal already expired')
 	bytec 0 //  "_p"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -319,7 +311,7 @@ recordUserVotes:
 	assert
 	store 255 // full array
 	load 255 // full array
-	extract 52 8
+	extract 44 8
 	btoi
 	frame_dig 0 // voteTimestamp: uint64
 	>=
@@ -327,7 +319,7 @@ recordUserVotes:
 	// Proposal already expired
 	assert
 
-	// contracts\CompxGovernance.algo.ts:118
+	// contracts/CompxGovernance.algo.ts:116
 	// assert(
 	//       this.votes({ proposalId: proposalId, voterAddress: voterAddress }).exists === false,
 	//       'User already voted on this proposal'
@@ -346,7 +338,7 @@ recordUserVotes:
 	// User already voted on this proposal
 	assert
 
-	// contracts\CompxGovernance.algo.ts:124
+	// contracts/CompxGovernance.algo.ts:122
 	// assert(voterAddress.isOptedInToApp(this.app.id), 'User has not opted in to the contract')
 	frame_dig -1 // voterAddress: Address
 	txna Applications 0
@@ -355,8 +347,87 @@ recordUserVotes:
 	// User has not opted in to the contract
 	assert
 
-	// contracts\CompxGovernance.algo.ts:126
+	// contracts/CompxGovernance.algo.ts:124
 	// this.proposals(proposalId).value.proposalTotalVotes += 1
+	bytec 0 //  "_p"
+	frame_dig -2 // proposalId: ProposalIdType
+	concat
+	box_get
+
+	// box value does not exist: this.proposals(proposalId).value
+	assert
+	store 255 // full array
+	load 255 // full array
+	pushint 4
+	bytec 0 //  "_p"
+	frame_dig -2 // proposalId: ProposalIdType
+	concat
+	box_get
+
+	// box value does not exist: this.proposals(proposalId).value
+	assert
+	store 255 // full array
+	load 255 // full array
+	extract 4 8
+	btoi
+	intc 0 // 1
+	+
+	itob
+	replace3
+	bytec 0 //  "_p"
+	frame_dig -2 // proposalId: ProposalIdType
+	concat
+	dup
+	box_del
+	pop
+	swap
+	box_put
+
+	// contracts/CompxGovernance.algo.ts:125
+	// this.proposals(proposalId).value.proposalTotalPower += votingPower
+	bytec 0 //  "_p"
+	frame_dig -2 // proposalId: ProposalIdType
+	concat
+	box_get
+
+	// box value does not exist: this.proposals(proposalId).value
+	assert
+	store 255 // full array
+	load 255 // full array
+	pushint 20
+	bytec 0 //  "_p"
+	frame_dig -2 // proposalId: ProposalIdType
+	concat
+	box_get
+
+	// box value does not exist: this.proposals(proposalId).value
+	assert
+	store 255 // full array
+	load 255 // full array
+	extract 20 8
+	btoi
+	frame_dig -3 // votingPower: uint64
+	+
+	itob
+	replace3
+	bytec 0 //  "_p"
+	frame_dig -2 // proposalId: ProposalIdType
+	concat
+	dup
+	box_del
+	pop
+	swap
+	box_put
+
+	// *if0_condition
+	// contracts/CompxGovernance.algo.ts:126
+	// inFavor
+	frame_dig -4 // inFavor: boolean
+	bz *if0_end
+
+	// *if0_consequent
+	// contracts/CompxGovernance.algo.ts:127
+	// this.proposals(proposalId).value.proposalYesVotes += 1
 	bytec 0 //  "_p"
 	frame_dig -2 // proposalId: ProposalIdType
 	concat
@@ -391,8 +462,8 @@ recordUserVotes:
 	swap
 	box_put
 
-	// contracts\CompxGovernance.algo.ts:127
-	// this.proposals(proposalId).value.proposalTotalPower += votingPower
+	// contracts/CompxGovernance.algo.ts:128
+	// this.proposals(proposalId).value.proposalYesPower += votingPower
 	bytec 0 //  "_p"
 	frame_dig -2 // proposalId: ProposalIdType
 	concat
@@ -427,87 +498,8 @@ recordUserVotes:
 	swap
 	box_put
 
-	// *if0_condition
-	// contracts\CompxGovernance.algo.ts:128
-	// inFavor
-	frame_dig -4 // inFavor: boolean
-	bz *if0_end
-
-	// *if0_consequent
-	// contracts\CompxGovernance.algo.ts:129
-	// this.proposals(proposalId).value.proposalYesVotes += 1
-	bytec 0 //  "_p"
-	frame_dig -2 // proposalId: ProposalIdType
-	concat
-	box_get
-
-	// box value does not exist: this.proposals(proposalId).value
-	assert
-	store 255 // full array
-	load 255 // full array
-	pushint 20
-	bytec 0 //  "_p"
-	frame_dig -2 // proposalId: ProposalIdType
-	concat
-	box_get
-
-	// box value does not exist: this.proposals(proposalId).value
-	assert
-	store 255 // full array
-	load 255 // full array
-	extract 20 8
-	btoi
-	intc 0 // 1
-	+
-	itob
-	replace3
-	bytec 0 //  "_p"
-	frame_dig -2 // proposalId: ProposalIdType
-	concat
-	dup
-	box_del
-	pop
-	swap
-	box_put
-
-	// contracts\CompxGovernance.algo.ts:130
-	// this.proposals(proposalId).value.proposalYesPower += votingPower
-	bytec 0 //  "_p"
-	frame_dig -2 // proposalId: ProposalIdType
-	concat
-	box_get
-
-	// box value does not exist: this.proposals(proposalId).value
-	assert
-	store 255 // full array
-	load 255 // full array
-	pushint 36
-	bytec 0 //  "_p"
-	frame_dig -2 // proposalId: ProposalIdType
-	concat
-	box_get
-
-	// box value does not exist: this.proposals(proposalId).value
-	assert
-	store 255 // full array
-	load 255 // full array
-	extract 36 8
-	btoi
-	frame_dig -3 // votingPower: uint64
-	+
-	itob
-	replace3
-	bytec 0 //  "_p"
-	frame_dig -2 // proposalId: ProposalIdType
-	concat
-	dup
-	box_del
-	pop
-	swap
-	box_put
-
 *if0_end:
-	// contracts\CompxGovernance.algo.ts:132
+	// contracts/CompxGovernance.algo.ts:130
 	// this.user_votes(voterAddress).value += 1
 	frame_dig -1 // voterAddress: Address
 	bytec 7 //  "user_votes"
@@ -519,7 +511,7 @@ recordUserVotes:
 	uncover 2
 	app_local_put
 
-	// contracts\CompxGovernance.algo.ts:134
+	// contracts/CompxGovernance.algo.ts:132
 	// this.votes({ proposalId: proposalId, voterAddress: voterAddress }).value = { voteTimestamp: voteTimestamp }
 	bytec 9 //  "_v"
 	frame_dig -2 // proposalId: ProposalIdType
@@ -530,7 +522,7 @@ recordUserVotes:
 	itob
 	box_put
 
-	// contracts\CompxGovernance.algo.ts:136
+	// contracts/CompxGovernance.algo.ts:134
 	// this.total_votes.value += 1
 	bytec 8 //  "total_votes"
 	app_global_get
@@ -556,21 +548,21 @@ updateUserCurrentVotingPower:
 	// Push empty bytes after the frame pointer to reserve space for local variables
 	bytec 1 // 0x
 
-	// contracts\CompxGovernance.algo.ts:153
+	// contracts/CompxGovernance.algo.ts:151
 	// currentVotingPower: uint64 = this.user_current_voting_power(userAddress).value
 	frame_dig -1 // userAddress: Address
 	bytec 2 //  "user_current_voting_power"
 	app_local_get
 	frame_bury 0 // currentVotingPower: uint64
 
-	// contracts\CompxGovernance.algo.ts:154
+	// contracts/CompxGovernance.algo.ts:152
 	// this.user_current_voting_power(userAddress).value = newVotingPower
 	frame_dig -1 // userAddress: Address
 	bytec 2 //  "user_current_voting_power"
 	frame_dig -2 // newVotingPower: uint64
 	app_local_put
 
-	// contracts\CompxGovernance.algo.ts:156
+	// contracts/CompxGovernance.algo.ts:154
 	// this.total_current_voting_power.value = newVotingPower + this.total_current_voting_power.value - currentVotingPower
 	bytec 6 //  "total_current_voting_power"
 	frame_dig -2 // newVotingPower: uint64
@@ -647,7 +639,7 @@ updateUserCurrentVotingPower:
 makeProposalVote:
 	proto 5 0
 
-	// contracts\CompxGovernance.algo.ts:173
+	// contracts/CompxGovernance.algo.ts:171
 	// assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can add votes to users')
 	txn Sender
 	bytec 3 //  "deployer_address"
@@ -657,7 +649,7 @@ makeProposalVote:
 	// Only the deployer can add votes to users
 	assert
 
-	// contracts\CompxGovernance.algo.ts:176
+	// contracts/CompxGovernance.algo.ts:174
 	// verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: VOTE_MBR } })
 	// verify amount
 	frame_dig -5 // mbrTxn: PayTxn
@@ -668,13 +660,13 @@ makeProposalVote:
 	// transaction verification failed: {"txn":"mbrTxn","field":"amount","condition":"greaterThanEqualTo","expected":">=VOTE_MBR"}
 	assert
 
-	// contracts\CompxGovernance.algo.ts:179
+	// contracts/CompxGovernance.algo.ts:177
 	// this.updateUserCurrentVotingPower(voterAddress, votingPower)
 	frame_dig -4 // votingPower: uint64
 	frame_dig -3 // voterAddress: Address
 	callsub updateUserCurrentVotingPower
 
-	// contracts\CompxGovernance.algo.ts:180
+	// contracts/CompxGovernance.algo.ts:178
 	// this.recordUserVotes(voterAddress, proposalId, this.user_current_voting_power(voterAddress).value, inFavor, mbrTxn)
 	frame_dig -5 // mbrTxn: PayTxn
 	frame_dig -2 // inFavor: boolean
@@ -715,7 +707,7 @@ makeProposalVote:
 slashUserVotingPower:
 	proto 2 0
 
-	// contracts\CompxGovernance.algo.ts:189
+	// contracts/CompxGovernance.algo.ts:187
 	// assert(this.txn.sender === this.deployer_address.value, 'Only the deployer can slash user contribution')
 	txn Sender
 	bytec 3 //  "deployer_address"
@@ -725,7 +717,7 @@ slashUserVotingPower:
 	// Only the deployer can slash user contribution
 	assert
 
-	// contracts\CompxGovernance.algo.ts:190
+	// contracts/CompxGovernance.algo.ts:188
 	// assert(this.user_current_voting_power(userAddress).value >= amount, 'User does not have enough voting power')
 	frame_dig -1 // userAddress: Address
 	bytec 2 //  "user_current_voting_power"
@@ -736,7 +728,7 @@ slashUserVotingPower:
 	// User does not have enough voting power
 	assert
 
-	// contracts\CompxGovernance.algo.ts:191
+	// contracts/CompxGovernance.algo.ts:189
 	// this.user_current_voting_power(userAddress).value -= amount
 	frame_dig -1 // userAddress: Address
 	bytec 2 //  "user_current_voting_power"
@@ -749,7 +741,7 @@ slashUserVotingPower:
 	app_local_put
 	retsub
 
-// getProposalsById((uint64))(uint64,string,string,uint64,uint64,uint64,uint64,uint64,uint64)
+// getProposalsById((uint64))(string,string,uint64,uint64,uint64,uint64,uint64,uint64)
 *abi_route_getProposalsById:
 	// The ABI return prefix
 	pushbytes 0x151f7c75
@@ -764,7 +756,7 @@ slashUserVotingPower:
 	// argument 0 (proposalId) for getProposalsById must be a (uint64)
 	assert
 
-	// execute getProposalsById((uint64))(uint64,string,string,uint64,uint64,uint64,uint64,uint64,uint64)
+	// execute getProposalsById((uint64))(string,string,uint64,uint64,uint64,uint64,uint64,uint64)
 	callsub getProposalsById
 	concat
 	log
@@ -779,7 +771,7 @@ slashUserVotingPower:
 getProposalsById:
 	proto 1 1
 
-	// contracts\CompxGovernance.algo.ts:200
+	// contracts/CompxGovernance.algo.ts:198
 	// return this.proposals(proposalId).value;
 	bytec 0 //  "_p"
 	frame_dig -1 // proposalId: ProposalIdType
@@ -799,10 +791,10 @@ getProposalsById:
 	err
 
 *call_NoOp:
-	pushbytes 0x8aed2362 // method "createNewProposal(uint64,string,string,uint64,pay)void"
+	pushbytes 0x8af2c7cf // method "createNewProposal(string,string,uint64,pay)void"
 	pushbytes 0x98f2fe08 // method "makeProposalVote((uint64),bool,address,uint64,pay)void"
 	pushbytes 0x5f3481ac // method "slashUserVotingPower(address,uint64)void"
-	pushbytes 0xe493c4a3 // method "getProposalsById((uint64))(uint64,string,string,uint64,uint64,uint64,uint64,uint64,uint64)"
+	pushbytes 0xb51429e2 // method "getProposalsById((uint64))(string,string,uint64,uint64,uint64,uint64,uint64,uint64)"
 	txna ApplicationArgs 0
 	match *abi_route_createNewProposal *abi_route_makeProposalVote *abi_route_slashUserVotingPower *abi_route_getProposalsById
 
