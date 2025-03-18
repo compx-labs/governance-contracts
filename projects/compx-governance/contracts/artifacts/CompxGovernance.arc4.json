@@ -18,20 +18,37 @@
       }
     },
     {
+      "name": "updateAppManager",
+      "desc": "Updates the",
+      "args": [
+        {
+          "name": "newManagerAddress",
+          "type": "address",
+          "desc": "The address of the new manager"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
       "name": "createNewProposal",
       "desc": "Create a new proposal",
       "args": [
         {
           "name": "proposalTitle",
-          "type": "string"
+          "type": "string",
+          "desc": "Title of the proposal"
         },
         {
           "name": "proposalDescription",
-          "type": "string"
+          "type": "string",
+          "desc": "Description of the proposal"
         },
         {
           "name": "expiresIn",
-          "type": "uint64"
+          "type": "uint64",
+          "desc": "Time in seconds for the proposal to expire"
         },
         {
           "name": "mbrTxn",
@@ -59,7 +76,7 @@
         {
           "name": "voterAddress",
           "type": "address",
-          "desc": "The address for the voter - Meant for v1.0 while deployer \"server\" will be responsible to execute"
+          "desc": "The address for the voter - Meant for v1.0 while manager \"server\" will be responsible to execute"
         },
         {
           "name": "votingPower",

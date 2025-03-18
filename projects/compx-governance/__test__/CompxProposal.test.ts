@@ -23,7 +23,8 @@ let algorand: algokit.AlgorandClient;
 //--------------------------------------------------------
 
 // Relevant user accounts ------------------------------------
-let deployerAccount: TransactionSignerAccount;
+let managerAccount: TransactionSignerAccount;
+let secondmanagerAccount: TransactionSignerAccount;
 let proposerAccount: TransactionSignerAccount;
 let voterOneAccount: TransactionSignerAccount;
 let voterTwoAccount: TransactionSignerAccount;
@@ -49,10 +50,13 @@ describe('CompxProposal', () => {
     //-------------------------------------------------------
 
     // Setup relevant accounts and addresses ----------------
-    deployerAccount = await algorand.account.kmd.getOrCreateWalletAccount('deployer-account', algos(100));
-    algorand.account.setSignerFromAccount(deployerAccount);
-    await algorand.account.ensureFundedFromEnvironment(deployerAccount.addr, algokit.algos(100));
-    proposerAccount = deployerAccount;
+    managerAccount = await algorand.account.kmd.getOrCreateWalletAccount('manager-account', algos(100));
+    secondmanagerAccount = await algorand.account.kmd.getOrCreateWalletAccount('manager-account', algos(100));
+
+    algorand.account.setSignerFromAccount(managerAccount);
+    algorand.account.setSignerFromAccount(secondmanagerAccount);
+    await algorand.account.ensureFundedFromEnvironment(managerAccount.addr, algokit.algos(100));
+    proposerAccount = managerAccount;
     voterOneAccount = await algorand.account.kmd.getOrCreateWalletAccount('governance-voter-account', algos(100));
     voterTwoAccount = await algorand.account.kmd.getOrCreateWalletAccount('governance-voter-account-2', algos(100));
     algorand.account.setSignerFromAccount(voterOneAccount);
@@ -61,33 +65,35 @@ describe('CompxProposal', () => {
 
     //-------------------------------------------------------
 
-    const deployerInfo = await algorand.account.getInformation(deployerAccount.addr);
+    const managerInfo = await algorand.account.getInformation(managerAccount.addr);
+    const secondManagerInfo = await algorand.account.getInformation(secondmanagerAccount.addr);
     const voterInfo = await algorand.account.getInformation(voterOneAccount.addr);
-    consoleLogger.debug('deployer account balance', deployerInfo.balance.microAlgos);
+    consoleLogger.debug('manager account balance', managerInfo.balance.microAlgos);
+    consoleLogger.debug('second manager account balance', secondManagerInfo.balance.microAlgos);
     consoleLogger.debug('voter account balance', voterInfo.balance.microAlgos);
-    expect(deployerInfo.balance.microAlgos).toBeGreaterThan(0);
+    expect(managerInfo.balance.microAlgos).toBeGreaterThan(0);
     expect(voterInfo.balance.microAlgos).toBeGreaterThan(0);
     // Fund the voter account --------------------------------
     await algorand.send.payment({
-      sender: deployerAccount.addr,
+      sender: managerAccount.addr,
       receiver: voterOneAccount.addr,
       amount: algokit.microAlgos(1_000_000), // Send 1 Algo to the new wallet
     });
 
     //Adding funds to the new voter
     await algorand.send.payment({
-      sender: deployerAccount.addr,
+      sender: managerAccount.addr,
       receiver: voterTwoAccount.addr,
       amount: algokit.microAlgos(1_000_000), // Send 1 Algo to the new wallet
     });
     //-------------------------------------------------------
 
     // Setup app clients -------------------------------------
-    const factory = algorand.client.getTypedAppFactory(CompxGovernanceFactory, { defaultSender: deployerAccount.addr });
+    const factory = algorand.client.getTypedAppFactory(CompxGovernanceFactory, { defaultSender: managerAccount.addr });
 
     const { appClient } = await factory.send.create.createApplication({
       args: [],
-      sender: deployerAccount.addr,
+      sender: managerAccount.addr,
     });
 
     governanceAppClient = appClient;
@@ -123,7 +129,6 @@ describe('CompxProposal', () => {
       let proposalTitleTest = regularProposalTitle;
       let proposalDescritpionTest = regularProposalDescription;
       if (i % 2 === 0) {
-        proposalTypeTest = 1;
         proposalTitleTest = poolProposalTitle;
         proposalDescritpionTest = poolProposalDescription;
       }
@@ -170,14 +175,13 @@ describe('CompxProposal', () => {
   // User 1 should be able to vote on a  reg (0) proposal with Id 3
   test('User 1 should be able to vote on all four regular proposal', async () => {
     for (let i = 1; i <= 4; i++) {
-
       const mbrTxn = algorand.createTransaction.payment({
         sender: proposerAccount.addr,
         amount: algokit.microAlgos(VOTE_MBR),
         receiver: governanceAppClient.appAddress,
         extraFee: algokit.microAlgos(1000n),
       });
-  
+
       // Make proposal vote
       await governanceAppClient.send.makeProposalVote({
         args: {
@@ -187,20 +191,18 @@ describe('CompxProposal', () => {
           inFavor: i % 2 ? true : false,
           mbrTxn,
         },
-        sender: deployerAccount.addr,
+        sender: managerAccount.addr,
       });
 
+      // Verify that the user is opted-in by checking their local state exists
+      const { userVotes } = await governanceAppClient.state.local(voterOneAccount.addr).getAll();
+      const totalCurrentVotingPower = await governanceAppClient.state.global.totalCurrentVotingPower();
 
-    // Verify that the user is opted-in by checking their local state exists
-    const { userVotes } = await governanceAppClient.state.local(voterOneAccount.addr).getAll();
-    const totalCurrentVotingPower = await governanceAppClient.state.global.totalCurrentVotingPower();
-  
-    consoleLogger.info('totalCurrentVotingPower', totalCurrentVotingPower)
-     expect(totalCurrentVotingPower).toBe(BigInt(votingPowerOne))
+      consoleLogger.info('totalCurrentVotingPower', totalCurrentVotingPower);
+      expect(totalCurrentVotingPower).toBe(BigInt(votingPowerOne));
 
-    expect(userVotes).toBe(BigInt(i));
+      expect(userVotes).toBe(BigInt(i));
     }
-
   });
 
   //---------------------------------------------------------
@@ -220,7 +222,7 @@ describe('CompxProposal', () => {
       extraFee: algokit.microAlgos(1000n),
     });
 
-    const totalCurrentVotingPower = await governanceAppClient.state.global.totalCurrentVotingPower()
+    const totalCurrentVotingPower = await governanceAppClient.state.global.totalCurrentVotingPower();
 
     // Make proposal vote
     await expect(
@@ -229,10 +231,10 @@ describe('CompxProposal', () => {
           proposalId: { nonce: 2n },
           inFavor: true,
           voterAddress: voterOneAccount.addr.toString(),
-          votingPower:votingPowerOne,
+          votingPower: votingPowerOne,
           mbrTxn,
         },
-        sender: deployerAccount.addr,
+        sender: managerAccount.addr,
       })
     ).rejects.toThrowError('User already voted on this proposal');
   });
@@ -240,41 +242,69 @@ describe('CompxProposal', () => {
   //---------------------------------------------------------
 
   // --------------------------------------------------------
-   // User should be able to vote on a  reg (0) proposal with Id 3
-    test('User 2 should be able to vote on all four regular proposal', async () => {
-      for (let i = 1; i <= 4; i++) {
-  
-        const mbrTxn = algorand.createTransaction.payment({
-          sender: proposerAccount.addr,
-          amount: algokit.microAlgos(VOTE_MBR),
-          receiver: governanceAppClient.appAddress,
-          extraFee: algokit.microAlgos(1000n),
-        });
-    
-        // Make proposal vote
-        await governanceAppClient.send.makeProposalVote({
-          args: {
-            proposalId: { nonce: BigInt(i) },
-            voterAddress: voterTwoAccount.addr.toString(),
-            votingPower: votingPowerTwo,
-            inFavor: i % 2 ? true : false,
-            mbrTxn,
-          },
-          sender: deployerAccount.addr,
-        });
-  
-  
+  // User should be able to vote on a  reg (0) proposal with Id 3
+  test('User 2 should be able to vote on all four regular proposal', async () => {
+    for (let i = 1; i <= 4; i++) {
+      const mbrTxn = algorand.createTransaction.payment({
+        sender: proposerAccount.addr,
+        amount: algokit.microAlgos(VOTE_MBR),
+        receiver: governanceAppClient.appAddress,
+        extraFee: algokit.microAlgos(1000n),
+      });
+
+      // Make proposal vote
+      await governanceAppClient.send.makeProposalVote({
+        args: {
+          proposalId: { nonce: BigInt(i) },
+          voterAddress: voterTwoAccount.addr.toString(),
+          votingPower: votingPowerTwo,
+          inFavor: i % 2 ? true : false,
+          mbrTxn,
+        },
+        sender: managerAccount.addr,
+      });
+
       // Verify that the user is opted-in by checking their local state exists
       const { userVotes } = await governanceAppClient.state.local(voterTwoAccount.addr).getAll();
       const totalCurrentVotingPower = await governanceAppClient.state.global.totalCurrentVotingPower();
-  
-     consoleLogger.info('totalCurrentVotingPower', totalCurrentVotingPower)
-      expect(totalCurrentVotingPower).toBe(BigInt(votingPowerOne+votingPowerTwo))
+
+      consoleLogger.info('totalCurrentVotingPower', totalCurrentVotingPower);
+      expect(totalCurrentVotingPower).toBe(BigInt(votingPowerOne + votingPowerTwo));
       expect(userVotes).toBe(BigInt(i));
-      }
-  
+    }
+  });
+  // --------------------------------------------------------
+
+  // --------------------------------------------------------
+
+  test('Current manager should be able to update the contract manager', async () => {
+    const newManagerAddress = secondmanagerAccount.addr;
+
+    await governanceAppClient.send.updateAppManager({
+      args: { newManagerAddress: String(newManagerAddress) },
+      sender: managerAccount.addr, // A user who is not the contract manager
     });
-// --------------------------------------------------------
+    const newContractManager = await governanceAppClient.state.global.managerAddress();
+
+    expect(newManagerAddress.toString() === newContractManager);
+  });
+  // --------------------------------------------------------
+
+  // --------------------------------------------------------
+
+  test('User should fail to change the contract manager', async () => {
+    const newManagerAddress = secondmanagerAccount.addr;
+
+    await expect(
+      governanceAppClient.send.updateAppManager({
+        args: { newManagerAddress: String(newManagerAddress) },
+        sender: voterOneAccount.addr, // A user who is not the contract manager
+      })
+    ).rejects.toThrowError('User is trying to change the manager of the contract');
+  });
+  // --------------------------------------------------------
+
+  // --------------------------------------------------------
   test('Get all proposals by id', async () => {
     const totalProposals = await governanceAppClient.state.global.totalProposals();
 
@@ -286,4 +316,5 @@ describe('CompxProposal', () => {
       }
     }
   });
+  // --------------------------------------------------------
 });
