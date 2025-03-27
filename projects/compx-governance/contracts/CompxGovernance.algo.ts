@@ -154,8 +154,7 @@ export class CompxGovernance extends Contract {
    */
   public updateUserCurrentVotingPower(userAddress: Address, newVotingPower: uint64) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
-    // assert(this.txn.sender === this.manager_address.value, 'Only the manager can add votes to users');
-    // assert(this.user_contribution(userAddress).value >= 1, 'User has not opted in to the contract');
+    assert(this.txn.sender === this.manager_address.value, 'Only the manager can add votes to users');
     const currentVotingPower: uint64 = this.user_current_voting_power(userAddress).value;
     this.user_current_voting_power(userAddress).value = newVotingPower;
 
