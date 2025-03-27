@@ -84,6 +84,30 @@
       }
     },
     {
+      "name": "updateUserCurrentVotingPower",
+      "desc": "Add one to the user contribution once it votes on a pool proposal",
+      "args": [
+        {
+          "name": "userAddress",
+          "type": "address",
+          "desc": "address of the user to add the contribution"
+        },
+        {
+          "name": "newVotingPower",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      },
+      "actions": {
+        "create": [],
+        "call": [
+          "NoOp"
+        ]
+      }
+    },
+    {
       "name": "makeProposalVote",
       "desc": "Add one to the user contribution once it votes on a pool proposal",
       "args": [
@@ -904,7 +928,7 @@
         {
           "teal": 133,
           "source": "contracts/CompxGovernance.algo.ts:56",
-          "errorMessage": "User is trying to change the manager of the contract",
+          "errorMessage": "User is trying to change the manager of the contractS",
           "pc": [
             241
           ]
@@ -3109,7 +3133,7 @@
           ]
         },
         {
-          "teal": 594,
+          "teal": 587,
           "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
             677,
@@ -3118,653 +3142,653 @@
           ]
         },
         {
-          "teal": 597,
+          "teal": 588,
           "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
             680
           ]
         },
         {
-          "teal": 601,
-          "source": "contracts/CompxGovernance.algo.ts:159",
+          "teal": 591,
+          "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
             681,
-            682
-          ]
-        },
-        {
-          "teal": 602,
-          "source": "contracts/CompxGovernance.algo.ts:159",
-          "pc": [
+            682,
             683
           ]
         },
         {
-          "teal": 603,
-          "source": "contracts/CompxGovernance.algo.ts:159",
+          "teal": 592,
+          "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
             684
           ]
         },
         {
-          "teal": 604,
-          "source": "contracts/CompxGovernance.algo.ts:159",
+          "teal": 593,
+          "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
-            685,
+            685
+          ]
+        },
+        {
+          "teal": 594,
+          "source": "contracts/CompxGovernance.algo.ts:155",
+          "pc": [
             686
           ]
         },
         {
-          "teal": 608,
-          "source": "contracts/CompxGovernance.algo.ts:160",
+          "teal": 595,
+          "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
-            687,
+            687
+          ]
+        },
+        {
+          "teal": 598,
+          "source": "contracts/CompxGovernance.algo.ts:155",
+          "errorMessage": "argument 1 (userAddress) for updateUserCurrentVotingPower must be a address",
+          "pc": [
             688
           ]
         },
         {
-          "teal": 609,
-          "source": "contracts/CompxGovernance.algo.ts:160",
+          "teal": 601,
+          "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
-            689
-          ]
-        },
-        {
-          "teal": 610,
-          "source": "contracts/CompxGovernance.algo.ts:160",
-          "pc": [
+            689,
             690,
             691
           ]
         },
         {
-          "teal": 611,
-          "source": "contracts/CompxGovernance.algo.ts:160",
+          "teal": 602,
+          "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
             692
           ]
         },
         {
-          "teal": 615,
-          "source": "contracts/CompxGovernance.algo.ts:162",
+          "teal": 603,
+          "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
-            693,
-            694
+            693
           ]
         },
         {
-          "teal": 616,
-          "source": "contracts/CompxGovernance.algo.ts:162",
+          "teal": 615,
+          "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
+            694,
             695,
             696
           ]
         },
         {
-          "teal": 617,
-          "source": "contracts/CompxGovernance.algo.ts:162",
+          "teal": 618,
+          "source": "contracts/CompxGovernance.algo.ts:155",
           "pc": [
-            697,
-            698
+            697
           ]
         },
         {
-          "teal": 618,
-          "source": "contracts/CompxGovernance.algo.ts:162",
+          "teal": 622,
+          "source": "contracts/CompxGovernance.algo.ts:159",
           "pc": [
+            698,
             699
           ]
         },
         {
-          "teal": 619,
-          "source": "contracts/CompxGovernance.algo.ts:162",
+          "teal": 623,
+          "source": "contracts/CompxGovernance.algo.ts:159",
           "pc": [
             700
           ]
         },
         {
-          "teal": 620,
-          "source": "contracts/CompxGovernance.algo.ts:162",
+          "teal": 624,
+          "source": "contracts/CompxGovernance.algo.ts:159",
           "pc": [
-            701,
-            702
+            701
           ]
         },
         {
-          "teal": 621,
-          "source": "contracts/CompxGovernance.algo.ts:162",
+          "teal": 625,
+          "source": "contracts/CompxGovernance.algo.ts:159",
           "pc": [
+            702,
             703
           ]
         },
         {
-          "teal": 622,
-          "source": "contracts/CompxGovernance.algo.ts:162",
+          "teal": 629,
+          "source": "contracts/CompxGovernance.algo.ts:160",
           "pc": [
-            704
-          ]
-        },
-        {
-          "teal": 623,
-          "source": "contracts/CompxGovernance.algo.ts:155",
-          "pc": [
+            704,
             705
           ]
         },
         {
-          "teal": 628,
-          "source": "contracts/CompxGovernance.algo.ts:177",
+          "teal": 630,
+          "source": "contracts/CompxGovernance.algo.ts:160",
           "pc": [
-            706,
-            707
+            706
           ]
         },
         {
-          "teal": 629,
-          "source": "contracts/CompxGovernance.algo.ts:177",
+          "teal": 631,
+          "source": "contracts/CompxGovernance.algo.ts:160",
           "pc": [
+            707,
             708
           ]
         },
         {
-          "teal": 630,
-          "source": "contracts/CompxGovernance.algo.ts:177",
+          "teal": 632,
+          "source": "contracts/CompxGovernance.algo.ts:160",
           "pc": [
             709
           ]
         },
         {
-          "teal": 631,
-          "source": "contracts/CompxGovernance.algo.ts:177",
+          "teal": 636,
+          "source": "contracts/CompxGovernance.algo.ts:162",
           "pc": [
-            710
-          ]
-        },
-        {
-          "teal": 632,
-          "source": "contracts/CompxGovernance.algo.ts:177",
-          "pc": [
-            711,
-            712
-          ]
-        },
-        {
-          "teal": 633,
-          "source": "contracts/CompxGovernance.algo.ts:177",
-          "pc": [
-            713
-          ]
-        },
-        {
-          "teal": 634,
-          "source": "contracts/CompxGovernance.algo.ts:177",
-          "pc": [
-            714
+            710,
+            711
           ]
         },
         {
           "teal": 637,
-          "source": "contracts/CompxGovernance.algo.ts:177",
-          "errorMessage": "argument 0 (mbrTxn) for makeProposalVote must be a pay transaction",
+          "source": "contracts/CompxGovernance.algo.ts:162",
           "pc": [
+            712,
+            713
+          ]
+        },
+        {
+          "teal": 638,
+          "source": "contracts/CompxGovernance.algo.ts:162",
+          "pc": [
+            714,
             715
           ]
         },
         {
-          "teal": 640,
-          "source": "contracts/CompxGovernance.algo.ts:176",
+          "teal": 639,
+          "source": "contracts/CompxGovernance.algo.ts:162",
           "pc": [
-            716,
-            717,
-            718
+            716
+          ]
+        },
+        {
+          "teal": 640,
+          "source": "contracts/CompxGovernance.algo.ts:162",
+          "pc": [
+            717
           ]
         },
         {
           "teal": 641,
-          "source": "contracts/CompxGovernance.algo.ts:176",
+          "source": "contracts/CompxGovernance.algo.ts:162",
           "pc": [
+            718,
             719
           ]
         },
         {
-          "teal": 644,
-          "source": "contracts/CompxGovernance.algo.ts:175",
+          "teal": 642,
+          "source": "contracts/CompxGovernance.algo.ts:162",
           "pc": [
-            720,
-            721,
+            720
+          ]
+        },
+        {
+          "teal": 643,
+          "source": "contracts/CompxGovernance.algo.ts:162",
+          "pc": [
+            721
+          ]
+        },
+        {
+          "teal": 644,
+          "source": "contracts/CompxGovernance.algo.ts:155",
+          "pc": [
             722
           ]
         },
         {
-          "teal": 645,
-          "source": "contracts/CompxGovernance.algo.ts:175",
+          "teal": 649,
+          "source": "contracts/CompxGovernance.algo.ts:177",
           "pc": [
-            723
-          ]
-        },
-        {
-          "teal": 646,
-          "source": "contracts/CompxGovernance.algo.ts:175",
-          "pc": [
+            723,
             724
           ]
         },
         {
-          "teal": 647,
-          "source": "contracts/CompxGovernance.algo.ts:175",
+          "teal": 650,
+          "source": "contracts/CompxGovernance.algo.ts:177",
           "pc": [
             725
           ]
         },
         {
-          "teal": 648,
-          "source": "contracts/CompxGovernance.algo.ts:175",
+          "teal": 651,
+          "source": "contracts/CompxGovernance.algo.ts:177",
           "pc": [
             726
           ]
         },
         {
-          "teal": 651,
-          "source": "contracts/CompxGovernance.algo.ts:175",
-          "errorMessage": "argument 2 (voterAddress) for makeProposalVote must be a address",
+          "teal": 652,
+          "source": "contracts/CompxGovernance.algo.ts:177",
           "pc": [
             727
           ]
         },
         {
-          "teal": 654,
-          "source": "contracts/CompxGovernance.algo.ts:174",
+          "teal": 653,
+          "source": "contracts/CompxGovernance.algo.ts:177",
           "pc": [
             728,
-            729,
+            729
+          ]
+        },
+        {
+          "teal": 654,
+          "source": "contracts/CompxGovernance.algo.ts:177",
+          "pc": [
             730
           ]
         },
         {
           "teal": 655,
-          "source": "contracts/CompxGovernance.algo.ts:174",
+          "source": "contracts/CompxGovernance.algo.ts:177",
           "pc": [
             731
           ]
         },
         {
-          "teal": 656,
-          "source": "contracts/CompxGovernance.algo.ts:174",
+          "teal": 658,
+          "source": "contracts/CompxGovernance.algo.ts:177",
+          "errorMessage": "argument 0 (mbrTxn) for makeProposalVote must be a pay transaction",
           "pc": [
             732
           ]
         },
         {
-          "teal": 657,
-          "source": "contracts/CompxGovernance.algo.ts:174",
-          "pc": [
-            733
-          ]
-        },
-        {
-          "teal": 658,
-          "source": "contracts/CompxGovernance.algo.ts:174",
-          "pc": [
-            734
-          ]
-        },
-        {
           "teal": 661,
-          "source": "contracts/CompxGovernance.algo.ts:174",
-          "errorMessage": "argument 3 (inFavor) for makeProposalVote must be a bool",
+          "source": "contracts/CompxGovernance.algo.ts:176",
           "pc": [
+            733,
+            734,
             735
           ]
         },
         {
           "teal": 662,
-          "source": "contracts/CompxGovernance.algo.ts:174",
+          "source": "contracts/CompxGovernance.algo.ts:176",
           "pc": [
             736
           ]
         },
         {
-          "teal": 663,
-          "source": "contracts/CompxGovernance.algo.ts:174",
+          "teal": 665,
+          "source": "contracts/CompxGovernance.algo.ts:175",
           "pc": [
-            737
+            737,
+            738,
+            739
           ]
         },
         {
           "teal": 666,
-          "source": "contracts/CompxGovernance.algo.ts:173",
+          "source": "contracts/CompxGovernance.algo.ts:175",
           "pc": [
-            738,
-            739,
             740
           ]
         },
         {
           "teal": 667,
-          "source": "contracts/CompxGovernance.algo.ts:173",
+          "source": "contracts/CompxGovernance.algo.ts:175",
           "pc": [
             741
           ]
         },
         {
           "teal": 668,
-          "source": "contracts/CompxGovernance.algo.ts:173",
+          "source": "contracts/CompxGovernance.algo.ts:175",
           "pc": [
             742
           ]
         },
         {
           "teal": 669,
-          "source": "contracts/CompxGovernance.algo.ts:173",
+          "source": "contracts/CompxGovernance.algo.ts:175",
           "pc": [
             743
           ]
         },
         {
-          "teal": 670,
-          "source": "contracts/CompxGovernance.algo.ts:173",
+          "teal": 672,
+          "source": "contracts/CompxGovernance.algo.ts:175",
+          "errorMessage": "argument 2 (voterAddress) for makeProposalVote must be a address",
           "pc": [
             744
           ]
         },
         {
-          "teal": 673,
-          "source": "contracts/CompxGovernance.algo.ts:173",
-          "errorMessage": "argument 4 (proposalId) for makeProposalVote must be a (uint64)",
+          "teal": 675,
+          "source": "contracts/CompxGovernance.algo.ts:174",
           "pc": [
-            745
+            745,
+            746,
+            747
           ]
         },
         {
           "teal": 676,
-          "source": "contracts/CompxGovernance.algo.ts:172",
+          "source": "contracts/CompxGovernance.algo.ts:174",
           "pc": [
-            746,
-            747,
             748
           ]
         },
         {
           "teal": 677,
-          "source": "contracts/CompxGovernance.algo.ts:172",
+          "source": "contracts/CompxGovernance.algo.ts:174",
           "pc": [
             749
           ]
         },
         {
           "teal": 678,
-          "source": "contracts/CompxGovernance.algo.ts:172",
+          "source": "contracts/CompxGovernance.algo.ts:174",
           "pc": [
             750
           ]
         },
         {
-          "teal": 688,
-          "source": "contracts/CompxGovernance.algo.ts:172",
+          "teal": 679,
+          "source": "contracts/CompxGovernance.algo.ts:174",
           "pc": [
-            751,
-            752,
+            751
+          ]
+        },
+        {
+          "teal": 682,
+          "source": "contracts/CompxGovernance.algo.ts:174",
+          "errorMessage": "argument 3 (inFavor) for makeProposalVote must be a bool",
+          "pc": [
+            752
+          ]
+        },
+        {
+          "teal": 683,
+          "source": "contracts/CompxGovernance.algo.ts:174",
+          "pc": [
             753
           ]
         },
         {
-          "teal": 692,
-          "source": "contracts/CompxGovernance.algo.ts:179",
+          "teal": 684,
+          "source": "contracts/CompxGovernance.algo.ts:174",
           "pc": [
-            754,
-            755
+            754
           ]
         },
         {
-          "teal": 693,
-          "source": "contracts/CompxGovernance.algo.ts:179",
+          "teal": 687,
+          "source": "contracts/CompxGovernance.algo.ts:173",
           "pc": [
-            756
-          ]
-        },
-        {
-          "teal": 694,
-          "source": "contracts/CompxGovernance.algo.ts:179",
-          "pc": [
+            755,
+            756,
             757
           ]
         },
         {
-          "teal": 695,
-          "source": "contracts/CompxGovernance.algo.ts:179",
+          "teal": 688,
+          "source": "contracts/CompxGovernance.algo.ts:173",
           "pc": [
             758
           ]
         },
         {
-          "teal": 698,
-          "source": "contracts/CompxGovernance.algo.ts:179",
-          "errorMessage": "Only the manager can add votes to users",
+          "teal": 689,
+          "source": "contracts/CompxGovernance.algo.ts:173",
           "pc": [
             759
           ]
         },
         {
-          "teal": 703,
-          "source": "contracts/CompxGovernance.algo.ts:182",
+          "teal": 690,
+          "source": "contracts/CompxGovernance.algo.ts:173",
           "pc": [
-            760,
+            760
+          ]
+        },
+        {
+          "teal": 691,
+          "source": "contracts/CompxGovernance.algo.ts:173",
+          "pc": [
             761
           ]
         },
         {
-          "teal": 704,
-          "source": "contracts/CompxGovernance.algo.ts:182",
+          "teal": 694,
+          "source": "contracts/CompxGovernance.algo.ts:173",
+          "errorMessage": "argument 4 (proposalId) for makeProposalVote must be a (uint64)",
           "pc": [
-            762,
-            763
+            762
           ]
         },
         {
-          "teal": 705,
-          "source": "contracts/CompxGovernance.algo.ts:182",
+          "teal": 697,
+          "source": "contracts/CompxGovernance.algo.ts:172",
           "pc": [
+            763,
             764,
-            765,
+            765
+          ]
+        },
+        {
+          "teal": 698,
+          "source": "contracts/CompxGovernance.algo.ts:172",
+          "pc": [
             766
           ]
         },
         {
-          "teal": 706,
-          "source": "contracts/CompxGovernance.algo.ts:182",
+          "teal": 699,
+          "source": "contracts/CompxGovernance.algo.ts:172",
           "pc": [
             767
           ]
         },
         {
           "teal": 709,
-          "source": "contracts/CompxGovernance.algo.ts:182",
-          "errorMessage": "transaction verification failed: {\"txn\":\"mbrTxn\",\"field\":\"amount\",\"condition\":\"greaterThanEqualTo\",\"expected\":\">=VOTE_MBR\"}",
+          "source": "contracts/CompxGovernance.algo.ts:172",
           "pc": [
-            768
-          ]
-        },
-        {
-          "teal": 713,
-          "source": "contracts/CompxGovernance.algo.ts:185",
-          "pc": [
+            768,
             769,
             770
           ]
         },
         {
-          "teal": 714,
-          "source": "contracts/CompxGovernance.algo.ts:185",
+          "teal": 713,
+          "source": "contracts/CompxGovernance.algo.ts:179",
           "pc": [
             771,
             772
           ]
         },
         {
-          "teal": 715,
-          "source": "contracts/CompxGovernance.algo.ts:185",
+          "teal": 714,
+          "source": "contracts/CompxGovernance.algo.ts:179",
           "pc": [
-            773,
-            774,
+            773
+          ]
+        },
+        {
+          "teal": 715,
+          "source": "contracts/CompxGovernance.algo.ts:179",
+          "pc": [
+            774
+          ]
+        },
+        {
+          "teal": 716,
+          "source": "contracts/CompxGovernance.algo.ts:179",
+          "pc": [
             775
           ]
         },
         {
           "teal": 719,
-          "source": "contracts/CompxGovernance.algo.ts:186",
+          "source": "contracts/CompxGovernance.algo.ts:179",
+          "errorMessage": "Only the manager can add votes to users",
           "pc": [
-            776,
-            777
-          ]
-        },
-        {
-          "teal": 720,
-          "source": "contracts/CompxGovernance.algo.ts:186",
-          "pc": [
-            778,
-            779
-          ]
-        },
-        {
-          "teal": 721,
-          "source": "contracts/CompxGovernance.algo.ts:186",
-          "pc": [
-            780,
-            781
-          ]
-        },
-        {
-          "teal": 722,
-          "source": "contracts/CompxGovernance.algo.ts:186",
-          "pc": [
-            782
-          ]
-        },
-        {
-          "teal": 723,
-          "source": "contracts/CompxGovernance.algo.ts:186",
-          "pc": [
-            783
+            776
           ]
         },
         {
           "teal": 724,
-          "source": "contracts/CompxGovernance.algo.ts:186",
+          "source": "contracts/CompxGovernance.algo.ts:182",
           "pc": [
-            784,
-            785
+            777,
+            778
           ]
         },
         {
           "teal": 725,
-          "source": "contracts/CompxGovernance.algo.ts:186",
+          "source": "contracts/CompxGovernance.algo.ts:182",
+          "pc": [
+            779,
+            780
+          ]
+        },
+        {
+          "teal": 726,
+          "source": "contracts/CompxGovernance.algo.ts:182",
+          "pc": [
+            781,
+            782,
+            783
+          ]
+        },
+        {
+          "teal": 727,
+          "source": "contracts/CompxGovernance.algo.ts:182",
+          "pc": [
+            784
+          ]
+        },
+        {
+          "teal": 730,
+          "source": "contracts/CompxGovernance.algo.ts:182",
+          "errorMessage": "transaction verification failed: {\"txn\":\"mbrTxn\",\"field\":\"amount\",\"condition\":\"greaterThanEqualTo\",\"expected\":\">=VOTE_MBR\"}",
+          "pc": [
+            785
+          ]
+        },
+        {
+          "teal": 734,
+          "source": "contracts/CompxGovernance.algo.ts:185",
           "pc": [
             786,
             787
           ]
         },
         {
-          "teal": 726,
-          "source": "contracts/CompxGovernance.algo.ts:186",
+          "teal": 735,
+          "source": "contracts/CompxGovernance.algo.ts:185",
           "pc": [
             788,
-            789,
-            790
+            789
           ]
         },
         {
-          "teal": 727,
-          "source": "contracts/CompxGovernance.algo.ts:172",
+          "teal": 736,
+          "source": "contracts/CompxGovernance.algo.ts:185",
           "pc": [
-            791
+            790,
+            791,
+            792
           ]
         },
         {
-          "teal": 732,
-          "source": "contracts/CompxGovernance.algo.ts:194",
+          "teal": 740,
+          "source": "contracts/CompxGovernance.algo.ts:186",
           "pc": [
-            792,
             793,
             794
           ]
         },
         {
-          "teal": 733,
-          "source": "contracts/CompxGovernance.algo.ts:194",
+          "teal": 741,
+          "source": "contracts/CompxGovernance.algo.ts:186",
           "pc": [
-            795
+            795,
+            796
           ]
         },
         {
-          "teal": 736,
-          "source": "contracts/CompxGovernance.algo.ts:194",
+          "teal": 742,
+          "source": "contracts/CompxGovernance.algo.ts:186",
           "pc": [
-            796,
             797,
             798
           ]
         },
         {
-          "teal": 737,
-          "source": "contracts/CompxGovernance.algo.ts:194",
+          "teal": 743,
+          "source": "contracts/CompxGovernance.algo.ts:186",
           "pc": [
             799
           ]
         },
         {
-          "teal": 738,
-          "source": "contracts/CompxGovernance.algo.ts:194",
+          "teal": 744,
+          "source": "contracts/CompxGovernance.algo.ts:186",
           "pc": [
             800
           ]
         },
         {
-          "teal": 739,
-          "source": "contracts/CompxGovernance.algo.ts:194",
+          "teal": 745,
+          "source": "contracts/CompxGovernance.algo.ts:186",
           "pc": [
-            801
-          ]
-        },
-        {
-          "teal": 740,
-          "source": "contracts/CompxGovernance.algo.ts:194",
-          "pc": [
+            801,
             802
           ]
         },
         {
-          "teal": 743,
-          "source": "contracts/CompxGovernance.algo.ts:194",
-          "errorMessage": "argument 1 (userAddress) for slashUserVotingPower must be a address",
-          "pc": [
-            803
-          ]
-        },
-        {
           "teal": 746,
-          "source": "contracts/CompxGovernance.algo.ts:194",
+          "source": "contracts/CompxGovernance.algo.ts:186",
           "pc": [
-            804,
-            805,
-            806
+            803,
+            804
           ]
         },
         {
           "teal": 747,
-          "source": "contracts/CompxGovernance.algo.ts:194",
+          "source": "contracts/CompxGovernance.algo.ts:186",
           "pc": [
+            805,
+            806,
             807
           ]
         },
         {
           "teal": 748,
-          "source": "contracts/CompxGovernance.algo.ts:194",
+          "source": "contracts/CompxGovernance.algo.ts:172",
           "pc": [
             808
           ]
         },
         {
-          "teal": 756,
+          "teal": 753,
           "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
             809,
@@ -3773,638 +3797,621 @@
           ]
         },
         {
-          "teal": 760,
-          "source": "contracts/CompxGovernance.algo.ts:195",
+          "teal": 754,
+          "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
-            812,
-            813
+            812
           ]
         },
         {
-          "teal": 761,
-          "source": "contracts/CompxGovernance.algo.ts:195",
+          "teal": 757,
+          "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
-            814
-          ]
-        },
-        {
-          "teal": 762,
-          "source": "contracts/CompxGovernance.algo.ts:195",
-          "pc": [
+            813,
+            814,
             815
           ]
         },
         {
-          "teal": 763,
-          "source": "contracts/CompxGovernance.algo.ts:195",
+          "teal": 758,
+          "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
             816
           ]
         },
         {
-          "teal": 766,
-          "source": "contracts/CompxGovernance.algo.ts:195",
-          "errorMessage": "Only the manager can slash user contribution",
+          "teal": 759,
+          "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
             817
           ]
         },
         {
-          "teal": 770,
-          "source": "contracts/CompxGovernance.algo.ts:196",
+          "teal": 760,
+          "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
-            818,
+            818
+          ]
+        },
+        {
+          "teal": 761,
+          "source": "contracts/CompxGovernance.algo.ts:194",
+          "pc": [
             819
           ]
         },
         {
-          "teal": 771,
-          "source": "contracts/CompxGovernance.algo.ts:196",
+          "teal": 764,
+          "source": "contracts/CompxGovernance.algo.ts:194",
+          "errorMessage": "argument 1 (userAddress) for slashUserVotingPower must be a address",
           "pc": [
             820
           ]
         },
         {
-          "teal": 772,
-          "source": "contracts/CompxGovernance.algo.ts:196",
+          "teal": 767,
+          "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
-            821
-          ]
-        },
-        {
-          "teal": 773,
-          "source": "contracts/CompxGovernance.algo.ts:196",
-          "pc": [
+            821,
             822,
             823
           ]
         },
         {
-          "teal": 774,
-          "source": "contracts/CompxGovernance.algo.ts:196",
+          "teal": 768,
+          "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
             824
           ]
         },
         {
-          "teal": 777,
-          "source": "contracts/CompxGovernance.algo.ts:196",
-          "errorMessage": "User does not have enough voting power",
+          "teal": 769,
+          "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
             825
           ]
         },
         {
-          "teal": 781,
-          "source": "contracts/CompxGovernance.algo.ts:197",
+          "teal": 777,
+          "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
             826,
-            827
-          ]
-        },
-        {
-          "teal": 782,
-          "source": "contracts/CompxGovernance.algo.ts:197",
-          "pc": [
+            827,
             828
           ]
         },
         {
-          "teal": 783,
-          "source": "contracts/CompxGovernance.algo.ts:197",
+          "teal": 781,
+          "source": "contracts/CompxGovernance.algo.ts:195",
           "pc": [
-            829
+            829,
+            830
           ]
         },
         {
-          "teal": 784,
-          "source": "contracts/CompxGovernance.algo.ts:197",
+          "teal": 782,
+          "source": "contracts/CompxGovernance.algo.ts:195",
           "pc": [
-            830,
             831
           ]
         },
         {
-          "teal": 785,
-          "source": "contracts/CompxGovernance.algo.ts:197",
+          "teal": 783,
+          "source": "contracts/CompxGovernance.algo.ts:195",
           "pc": [
             832
           ]
         },
         {
-          "teal": 786,
-          "source": "contracts/CompxGovernance.algo.ts:197",
+          "teal": 784,
+          "source": "contracts/CompxGovernance.algo.ts:195",
           "pc": [
-            833,
-            834
+            833
           ]
         },
         {
           "teal": 787,
-          "source": "contracts/CompxGovernance.algo.ts:197",
+          "source": "contracts/CompxGovernance.algo.ts:195",
+          "errorMessage": "Only the manager can slash user contribution",
           "pc": [
-            835
+            834
           ]
         },
         {
-          "teal": 788,
-          "source": "contracts/CompxGovernance.algo.ts:197",
+          "teal": 791,
+          "source": "contracts/CompxGovernance.algo.ts:196",
           "pc": [
-            836,
+            835,
+            836
+          ]
+        },
+        {
+          "teal": 792,
+          "source": "contracts/CompxGovernance.algo.ts:196",
+          "pc": [
             837
           ]
         },
         {
-          "teal": 789,
-          "source": "contracts/CompxGovernance.algo.ts:197",
+          "teal": 793,
+          "source": "contracts/CompxGovernance.algo.ts:196",
           "pc": [
             838
           ]
         },
         {
-          "teal": 790,
-          "source": "contracts/CompxGovernance.algo.ts:194",
+          "teal": 794,
+          "source": "contracts/CompxGovernance.algo.ts:196",
           "pc": [
-            839
+            839,
+            840
           ]
         },
         {
           "teal": 795,
-          "source": "contracts/CompxGovernance.algo.ts:205",
+          "source": "contracts/CompxGovernance.algo.ts:196",
           "pc": [
-            840,
-            841,
-            842,
-            843,
-            844,
-            845
+            841
           ]
         },
         {
           "teal": 798,
-          "source": "contracts/CompxGovernance.algo.ts:205",
+          "source": "contracts/CompxGovernance.algo.ts:196",
+          "errorMessage": "User does not have enough voting power",
           "pc": [
-            846,
+            842
+          ]
+        },
+        {
+          "teal": 802,
+          "source": "contracts/CompxGovernance.algo.ts:197",
+          "pc": [
+            843,
+            844
+          ]
+        },
+        {
+          "teal": 803,
+          "source": "contracts/CompxGovernance.algo.ts:197",
+          "pc": [
+            845
+          ]
+        },
+        {
+          "teal": 804,
+          "source": "contracts/CompxGovernance.algo.ts:197",
+          "pc": [
+            846
+          ]
+        },
+        {
+          "teal": 805,
+          "source": "contracts/CompxGovernance.algo.ts:197",
+          "pc": [
             847,
             848
           ]
         },
         {
-          "teal": 799,
-          "source": "contracts/CompxGovernance.algo.ts:205",
+          "teal": 806,
+          "source": "contracts/CompxGovernance.algo.ts:197",
           "pc": [
             849
           ]
         },
         {
-          "teal": 800,
-          "source": "contracts/CompxGovernance.algo.ts:205",
+          "teal": 807,
+          "source": "contracts/CompxGovernance.algo.ts:197",
           "pc": [
-            850
-          ]
-        },
-        {
-          "teal": 801,
-          "source": "contracts/CompxGovernance.algo.ts:205",
-          "pc": [
+            850,
             851
           ]
         },
         {
-          "teal": 802,
-          "source": "contracts/CompxGovernance.algo.ts:205",
+          "teal": 808,
+          "source": "contracts/CompxGovernance.algo.ts:197",
           "pc": [
             852
           ]
         },
         {
-          "teal": 805,
-          "source": "contracts/CompxGovernance.algo.ts:205",
-          "errorMessage": "argument 0 (proposalId) for getProposalsById must be a (uint64)",
-          "pc": [
-            853
-          ]
-        },
-        {
-          "teal": 808,
-          "source": "contracts/CompxGovernance.algo.ts:205",
-          "pc": [
-            854,
-            855,
-            856
-          ]
-        },
-        {
           "teal": 809,
-          "source": "contracts/CompxGovernance.algo.ts:205",
+          "source": "contracts/CompxGovernance.algo.ts:197",
           "pc": [
-            857
+            853,
+            854
           ]
         },
         {
           "teal": 810,
-          "source": "contracts/CompxGovernance.algo.ts:205",
+          "source": "contracts/CompxGovernance.algo.ts:197",
           "pc": [
-            858
+            855
           ]
         },
         {
           "teal": 811,
-          "source": "contracts/CompxGovernance.algo.ts:205",
+          "source": "contracts/CompxGovernance.algo.ts:194",
           "pc": [
-            859
+            856
           ]
         },
         {
-          "teal": 812,
+          "teal": 816,
           "source": "contracts/CompxGovernance.algo.ts:205",
           "pc": [
-            860
+            857,
+            858,
+            859,
+            860,
+            861,
+            862
+          ]
+        },
+        {
+          "teal": 819,
+          "source": "contracts/CompxGovernance.algo.ts:205",
+          "pc": [
+            863,
+            864,
+            865
           ]
         },
         {
           "teal": 820,
           "source": "contracts/CompxGovernance.algo.ts:205",
           "pc": [
-            861,
-            862,
-            863
-          ]
-        },
-        {
-          "teal": 824,
-          "source": "contracts/CompxGovernance.algo.ts:206",
-          "pc": [
-            864
-          ]
-        },
-        {
-          "teal": 825,
-          "source": "contracts/CompxGovernance.algo.ts:206",
-          "pc": [
-            865,
             866
           ]
         },
         {
-          "teal": 826,
-          "source": "contracts/CompxGovernance.algo.ts:206",
+          "teal": 821,
+          "source": "contracts/CompxGovernance.algo.ts:205",
           "pc": [
             867
           ]
         },
         {
-          "teal": 827,
-          "source": "contracts/CompxGovernance.algo.ts:206",
+          "teal": 822,
+          "source": "contracts/CompxGovernance.algo.ts:205",
           "pc": [
             868
           ]
         },
         {
-          "teal": 830,
-          "source": "contracts/CompxGovernance.algo.ts:206",
-          "errorMessage": "box value does not exist: this.proposals(proposalId).value",
+          "teal": 823,
+          "source": "contracts/CompxGovernance.algo.ts:205",
           "pc": [
             869
+          ]
+        },
+        {
+          "teal": 826,
+          "source": "contracts/CompxGovernance.algo.ts:205",
+          "errorMessage": "argument 0 (proposalId) for getProposalsById must be a (uint64)",
+          "pc": [
+            870
+          ]
+        },
+        {
+          "teal": 829,
+          "source": "contracts/CompxGovernance.algo.ts:205",
+          "pc": [
+            871,
+            872,
+            873
+          ]
+        },
+        {
+          "teal": 830,
+          "source": "contracts/CompxGovernance.algo.ts:205",
+          "pc": [
+            874
           ]
         },
         {
           "teal": 831,
           "source": "contracts/CompxGovernance.algo.ts:205",
           "pc": [
-            870
+            875
           ]
         },
         {
-          "teal": 834,
-          "source": "contracts/CompxGovernance.algo.ts:5",
+          "teal": 832,
+          "source": "contracts/CompxGovernance.algo.ts:205",
           "pc": [
-            871,
-            872,
-            873,
-            874,
-            875,
             876
           ]
         },
         {
-          "teal": 835,
-          "source": "contracts/CompxGovernance.algo.ts:5",
+          "teal": 833,
+          "source": "contracts/CompxGovernance.algo.ts:205",
           "pc": [
-            877,
-            878,
-            879
+            877
           ]
         },
         {
-          "teal": 836,
-          "source": "contracts/CompxGovernance.algo.ts:5",
+          "teal": 841,
+          "source": "contracts/CompxGovernance.algo.ts:205",
           "pc": [
-            880,
-            881,
+            878,
+            879,
+            880
+          ]
+        },
+        {
+          "teal": 845,
+          "source": "contracts/CompxGovernance.algo.ts:206",
+          "pc": [
+            881
+          ]
+        },
+        {
+          "teal": 846,
+          "source": "contracts/CompxGovernance.algo.ts:206",
+          "pc": [
             882,
             883
           ]
         },
         {
-          "teal": 839,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "errorMessage": "this contract does not implement the given ABI method for create NoOp",
+          "teal": 847,
+          "source": "contracts/CompxGovernance.algo.ts:206",
           "pc": [
             884
           ]
         },
         {
-          "teal": 842,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
-            885,
-            886,
-            887,
-            888,
-            889,
-            890
-          ]
-        },
-        {
-          "teal": 843,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
-            891,
-            892,
-            893,
-            894,
-            895,
-            896
-          ]
-        },
-        {
-          "teal": 844,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
-            897,
-            898,
-            899,
-            900,
-            901,
-            902
-          ]
-        },
-        {
-          "teal": 845,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
-            903,
-            904,
-            905,
-            906,
-            907,
-            908
-          ]
-        },
-        {
-          "teal": 846,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
-            909,
-            910,
-            911,
-            912,
-            913,
-            914
-          ]
-        },
-        {
-          "teal": 847,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
-            915,
-            916,
-            917
-          ]
-        },
-        {
           "teal": 848,
-          "source": "contracts/CompxGovernance.algo.ts:5",
+          "source": "contracts/CompxGovernance.algo.ts:206",
           "pc": [
-            918,
-            919,
-            920,
-            921,
-            922,
-            923,
-            924,
-            925,
-            926,
-            927,
-            928,
-            929
+            885
           ]
         },
         {
           "teal": 851,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "errorMessage": "this contract does not implement the given ABI method for call NoOp",
+          "source": "contracts/CompxGovernance.algo.ts:206",
+          "errorMessage": "box value does not exist: this.proposals(proposalId).value",
           "pc": [
-            930
+            886
           ]
         },
         {
-          "teal": 854,
-          "source": "contracts/CompxGovernance.algo.ts:5",
+          "teal": 852,
+          "source": "contracts/CompxGovernance.algo.ts:205",
           "pc": [
-            931,
-            932,
-            933,
-            934,
-            935,
-            936
+            887
           ]
         },
         {
           "teal": 855,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            937,
-            938,
-            939
+            888,
+            889,
+            890,
+            891,
+            892,
+            893
           ]
         },
         {
           "teal": 856,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            940,
-            941,
-            942,
-            943
+            894,
+            895,
+            896
           ]
         },
         {
-          "teal": 859,
+          "teal": 857,
           "source": "contracts/CompxGovernance.algo.ts:5",
-          "errorMessage": "this contract does not implement the given ABI method for call OptIn",
           "pc": [
-            944
+            897,
+            898,
+            899,
+            900
           ]
         },
         {
-          "teal": 862,
+          "teal": 860,
           "source": "contracts/CompxGovernance.algo.ts:5",
+          "errorMessage": "this contract does not implement the given ABI method for create NoOp",
           "pc": [
-            945,
-            946,
-            947
+            901
           ]
         },
         {
           "teal": 863,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            948,
-            949
+            902,
+            903,
+            904,
+            905,
+            906,
+            907
           ]
         },
         {
           "teal": 864,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            950,
-            951
+            908,
+            909,
+            910,
+            911,
+            912,
+            913
           ]
         },
         {
           "teal": 865,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            952
+            914,
+            915,
+            916,
+            917,
+            918,
+            919
           ]
         },
         {
           "teal": 866,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            953,
-            954
+            920,
+            921,
+            922,
+            923,
+            924,
+            925
           ]
         },
         {
           "teal": 867,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            955,
-            956
+            926,
+            927,
+            928,
+            929,
+            930,
+            931
           ]
         },
         {
           "teal": 868,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            957
+            932,
+            933,
+            934,
+            935,
+            936,
+            937
           ]
         },
         {
-          "teal": 871,
+          "teal": 869,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            958,
-            959,
-            960
+            938,
+            939,
+            940
           ]
         },
         {
-          "teal": 872,
+          "teal": 870,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            961,
-            962
+            941,
+            942,
+            943,
+            944,
+            945,
+            946,
+            947,
+            948,
+            949,
+            950,
+            951,
+            952,
+            953,
+            954
           ]
         },
         {
           "teal": 873,
           "source": "contracts/CompxGovernance.algo.ts:5",
+          "errorMessage": "this contract does not implement the given ABI method for call NoOp",
           "pc": [
-            963,
-            964
-          ]
-        },
-        {
-          "teal": 874,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
-            965
-          ]
-        },
-        {
-          "teal": 875,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
-            966,
-            967
+            955
           ]
         },
         {
           "teal": 876,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            968,
-            969
+            956,
+            957,
+            958,
+            959,
+            960,
+            961
           ]
         },
         {
           "teal": 877,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            970
+            962,
+            963,
+            964
           ]
         },
         {
           "teal": 878,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            971
-          ]
-        },
-        {
-          "teal": 879,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
-            972,
-            973
-          ]
-        },
-        {
-          "teal": 880,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
-            974
+            965,
+            966,
+            967,
+            968
           ]
         },
         {
           "teal": 881,
           "source": "contracts/CompxGovernance.algo.ts:5",
+          "errorMessage": "this contract does not implement the given ABI method for call OptIn",
           "pc": [
-            975
+            969
           ]
         },
         {
-          "teal": 882,
+          "teal": 884,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
+            970,
+            971,
+            972
+          ]
+        },
+        {
+          "teal": 885,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            973,
+            974
+          ]
+        },
+        {
+          "teal": 886,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            975,
             976
           ]
         },
         {
-          "teal": 883,
+          "teal": 887,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            977,
+            977
+          ]
+        },
+        {
+          "teal": 888,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
             978,
             979
           ]
         },
         {
-          "teal": 884,
+          "teal": 889,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
             980,
@@ -4412,29 +4419,23 @@
           ]
         },
         {
-          "teal": 885,
+          "teal": 890,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            982,
-            983
+            982
           ]
         },
         {
-          "teal": 886,
+          "teal": 893,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            984
-          ]
-        },
-        {
-          "teal": 887,
-          "source": "contracts/CompxGovernance.algo.ts:5",
-          "pc": [
+            983,
+            984,
             985
           ]
         },
         {
-          "teal": 888,
+          "teal": 894,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
             986,
@@ -4442,7 +4443,7 @@
           ]
         },
         {
-          "teal": 889,
+          "teal": 895,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
             988,
@@ -4450,26 +4451,147 @@
           ]
         },
         {
-          "teal": 890,
+          "teal": 896,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            990,
-            991
+            990
           ]
         },
         {
-          "teal": 891,
+          "teal": 897,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
-            992,
-            993
+            991,
+            992
           ]
         },
         {
-          "teal": 892,
+          "teal": 898,
           "source": "contracts/CompxGovernance.algo.ts:5",
           "pc": [
+            993,
             994
+          ]
+        },
+        {
+          "teal": 899,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            995
+          ]
+        },
+        {
+          "teal": 900,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            996
+          ]
+        },
+        {
+          "teal": 901,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            997,
+            998
+          ]
+        },
+        {
+          "teal": 902,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            999
+          ]
+        },
+        {
+          "teal": 903,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1000
+          ]
+        },
+        {
+          "teal": 904,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1001
+          ]
+        },
+        {
+          "teal": 905,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1002,
+            1003,
+            1004
+          ]
+        },
+        {
+          "teal": 906,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1005,
+            1006
+          ]
+        },
+        {
+          "teal": 907,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1007,
+            1008
+          ]
+        },
+        {
+          "teal": 908,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1009
+          ]
+        },
+        {
+          "teal": 909,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1010
+          ]
+        },
+        {
+          "teal": 910,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1011,
+            1012
+          ]
+        },
+        {
+          "teal": 911,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1013,
+            1014
+          ]
+        },
+        {
+          "teal": 912,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1015,
+            1016
+          ]
+        },
+        {
+          "teal": 913,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1017,
+            1018
+          ]
+        },
+        {
+          "teal": 914,
+          "source": "contracts/CompxGovernance.algo.ts:5",
+          "pc": [
+            1019
           ]
         }
       ],
@@ -4481,11 +4603,11 @@
     }
   },
   "source": {
-    "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCmludGNibG9jayAxIDAgMzIgOApieXRlY2Jsb2NrIDB4NWY3MCAweCAweDc1NzM2NTcyNWY2Mzc1NzI3MjY1NmU3NDVmNzY2Zjc0Njk2ZTY3NWY3MDZmNzc2NTcyIDB4NmQ2MTZlNjE2NzY1NzI1ZjYxNjQ2NDcyNjU3MzczIDB4NzQ2Zjc0NjE2YzVmNzA3MjZmNzA2ZjczNjE2YzczIDB4MDAwMDAwMDAwMDAwMDAwMCAweDc0NmY3NDYxNmM1ZjYzNzU3MjcyNjU2ZTc0NWY3NjZmNzQ2OTZlNjc1ZjcwNmY3NzY1NzIgMHg3NTczNjU3MjVmNzY2Zjc0NjU3MyAweDc0NmY3NDYxNmM1Zjc2NmY3NDY1NzMgMHg1Zjc2CgovLyBUaGlzIFRFQUwgd2FzIGdlbmVyYXRlZCBieSBURUFMU2NyaXB0IHYwLjEwNi4yCi8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hbGdvcmFuZGZvdW5kYXRpb24vVEVBTFNjcmlwdAoKLy8gVGhpcyBjb250cmFjdCBpcyBjb21wbGlhbnQgd2l0aCBhbmQvb3IgaW1wbGVtZW50cyB0aGUgZm9sbG93aW5nIEFSQ3M6IFsgQVJDNCBdCgovLyBUaGUgZm9sbG93aW5nIHRlbiBsaW5lcyBvZiBURUFMIGhhbmRsZSBpbml0aWFsIHByb2dyYW0gZmxvdwovLyBUaGlzIHBhdHRlcm4gaXMgdXNlZCB0byBtYWtlIGl0IGVhc3kgZm9yIGFueW9uZSB0byBwYXJzZSB0aGUgc3RhcnQgb2YgdGhlIHByb2dyYW0gYW5kIGRldGVybWluZSBpZiBhIHNwZWNpZmljIGFjdGlvbiBpcyBhbGxvd2VkCi8vIEhlcmUsIGFjdGlvbiByZWZlcnMgdG8gdGhlIE9uQ29tcGxldGUgaW4gY29tYmluYXRpb24gd2l0aCB3aGV0aGVyIHRoZSBhcHAgaXMgYmVpbmcgY3JlYXRlZCBvciBjYWxsZWQKLy8gRXZlcnkgcG9zc2libGUgYWN0aW9uIGZvciB0aGlzIGNvbnRyYWN0IGlzIHJlcHJlc2VudGVkIGluIHRoZSBzd2l0Y2ggc3RhdGVtZW50Ci8vIElmIHRoZSBhY3Rpb24gaXMgbm90IGltcGxlbWVudGVkIGluIHRoZSBjb250cmFjdCwgaXRzIHJlc3BlY3RpdmUgYnJhbmNoIHdpbGwgYmUgIipOT1RfSU1QTEVNRU5URUQiIHdoaWNoIGp1c3QgY29udGFpbnMgImVyciIKdHhuIEFwcGxpY2F0aW9uSUQKIQpwdXNoaW50IDYKKgp0eG4gT25Db21wbGV0aW9uCisKc3dpdGNoICpjYWxsX05vT3AgKmNhbGxfT3B0SW4gKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqY3JlYXRlX05vT3AgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVECgoqTk9UX0lNUExFTUVOVEVEOgoJLy8gVGhlIHJlcXVlc3RlZCBhY3Rpb24gaXMgbm90IGltcGxlbWVudGVkIGluIHRoaXMgY29udHJhY3QuIEFyZSB5b3UgdXNpbmcgdGhlIGNvcnJlY3QgT25Db21wbGV0ZT8gRGlkIHlvdSBzZXQgeW91ciBhcHAgSUQ/CgllcnIKCi8vIGNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkCiphYmlfcm91dGVfY3JlYXRlQXBwbGljYXRpb246CgkvLyBleGVjdXRlIGNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkCgljYWxsc3ViIGNyZWF0ZUFwcGxpY2F0aW9uCglpbnRjIDAgLy8gMQoJcmV0dXJuCgovLyBjcmVhdGVBcHBsaWNhdGlvbigpOiB2b2lkCmNyZWF0ZUFwcGxpY2F0aW9uOgoJcHJvdG8gMCAwCgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjMxCgkvLyB0aGlzLm1hbmFnZXJfYWRkcmVzcy52YWx1ZSA9IHRoaXMudHhuLnNlbmRlcgoJYnl0ZWMgMyAvLyAgIm1hbmFnZXJfYWRkcmVzcyIKCXR4biBTZW5kZXIKCWFwcF9nbG9iYWxfcHV0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjMyCgkvLyB0aGlzLnRvdGFsX3Byb3Bvc2Fscy52YWx1ZSA9IDAKCWJ5dGVjIDQgLy8gICJ0b3RhbF9wcm9wb3NhbHMiCglpbnRjIDEgLy8gMAoJYXBwX2dsb2JhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MzMKCS8vIHRoaXMudG90YWxfY3VycmVudF92b3RpbmdfcG93ZXIudmFsdWUgPSAwCglieXRlYyA2IC8vICAidG90YWxfY3VycmVudF92b3RpbmdfcG93ZXIiCglpbnRjIDEgLy8gMAoJYXBwX2dsb2JhbF9wdXQKCXJldHN1YgoKLy8gb3B0SW5Ub0FwcGxpY2F0aW9uKCl2b2lkCiphYmlfcm91dGVfb3B0SW5Ub0FwcGxpY2F0aW9uOgoJLy8gZXhlY3V0ZSBvcHRJblRvQXBwbGljYXRpb24oKXZvaWQKCWNhbGxzdWIgb3B0SW5Ub0FwcGxpY2F0aW9uCglpbnRjIDAgLy8gMQoJcmV0dXJuCgovLyBvcHRJblRvQXBwbGljYXRpb24oKTogdm9pZAovLwovLyBPUFQtSU4gdG8gdGhlIGFwcGxpY2F0aW9uCm9wdEluVG9BcHBsaWNhdGlvbjoKCXByb3RvIDAgMAoKCS8vIFB1c2ggZW1wdHkgYnl0ZXMgYWZ0ZXIgdGhlIGZyYW1lIHBvaW50ZXIgdG8gcmVzZXJ2ZSBzcGFjZSBmb3IgbG9jYWwgdmFyaWFibGVzCglieXRlYyAxIC8vIDB4CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjQyCgkvLyB1c2VyQWRkcmVzczogQWRkcmVzcyA9IHRoaXMudHhuLnNlbmRlcgoJdHhuIFNlbmRlcgoJZnJhbWVfYnVyeSAwIC8vIHVzZXJBZGRyZXNzOiBBZGRyZXNzCgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjQzCgkvLyB0aGlzLnVzZXJfdm90ZXModXNlckFkZHJlc3MpLnZhbHVlID0gMAoJZnJhbWVfZGlnIDAgLy8gdXNlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDcgLy8gICJ1c2VyX3ZvdGVzIgoJaW50YyAxIC8vIDAKCWFwcF9sb2NhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6NDQKCS8vIHRoaXMudXNlcl9jdXJyZW50X3ZvdGluZ19wb3dlcih1c2VyQWRkcmVzcykudmFsdWUgPSAwCglmcmFtZV9kaWcgMCAvLyB1c2VyQWRkcmVzczogQWRkcmVzcwoJYnl0ZWMgMiAvLyAgInVzZXJfY3VycmVudF92b3RpbmdfcG93ZXIiCglpbnRjIDEgLy8gMAoJYXBwX2xvY2FsX3B1dAoJcmV0c3ViCgovLyB1cGRhdGVBcHBNYW5hZ2VyKGFkZHJlc3Mpdm9pZAoqYWJpX3JvdXRlX3VwZGF0ZUFwcE1hbmFnZXI6CgkvLyBuZXdNYW5hZ2VyQWRkcmVzczogYWRkcmVzcwoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQoJZHVwCglsZW4KCWludGMgMiAvLyAzMgoJPT0KCgkvLyBhcmd1bWVudCAwIChuZXdNYW5hZ2VyQWRkcmVzcykgZm9yIHVwZGF0ZUFwcE1hbmFnZXIgbXVzdCBiZSBhIGFkZHJlc3MKCWFzc2VydAoKCS8vIGV4ZWN1dGUgdXBkYXRlQXBwTWFuYWdlcihhZGRyZXNzKXZvaWQKCWNhbGxzdWIgdXBkYXRlQXBwTWFuYWdlcgoJaW50YyAwIC8vIDEKCXJldHVybgoKLy8gdXBkYXRlQXBwTWFuYWdlcihuZXdNYW5hZ2VyQWRkcmVzczogQWRkcmVzcyk6IHZvaWQKLy8KLy8gVXBkYXRlcyB0aGUKLy8gQHBhcmFtIG5ld01hbmFnZXJBZGRyZXNzIFRoZSBhZGRyZXNzIG9mIHRoZSBuZXcgbWFuYWdlcgp1cGRhdGVBcHBNYW5hZ2VyOgoJcHJvdG8gMSAwCgoJLy8gUHVzaCBlbXB0eSBieXRlcyBhZnRlciB0aGUgZnJhbWUgcG9pbnRlciB0byByZXNlcnZlIHNwYWNlIGZvciBsb2NhbCB2YXJpYWJsZXMKCWJ5dGVjIDEgLy8gMHgKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6NTMKCS8vIHNlbmRlcjogQWRkcmVzcyA9IHRoaXMudHhuLnNlbmRlcgoJdHhuIFNlbmRlcgoJZnJhbWVfYnVyeSAwIC8vIHNlbmRlcjogQWRkcmVzcwoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czo1NgoJLy8gYXNzZXJ0KHNlbmRlciA9PT0gdGhpcy5tYW5hZ2VyX2FkZHJlc3MudmFsdWUsICdVc2VyIGlzIHRyeWluZyB0byBjaGFuZ2UgdGhlIG1hbmFnZXIgb2YgdGhlIGNvbnRyYWN0JykKCWZyYW1lX2RpZyAwIC8vIHNlbmRlcjogQWRkcmVzcwoJYnl0ZWMgMyAvLyAgIm1hbmFnZXJfYWRkcmVzcyIKCWFwcF9nbG9iYWxfZ2V0Cgk9PQoKCS8vIFVzZXIgaXMgdHJ5aW5nIHRvIGNoYW5nZSB0aGUgbWFuYWdlciBvZiB0aGUgY29udHJhY3QKCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czo1OAoJLy8gdGhpcy5tYW5hZ2VyX2FkZHJlc3MudmFsdWUgPSBuZXdNYW5hZ2VyQWRkcmVzcwoJYnl0ZWMgMyAvLyAgIm1hbmFnZXJfYWRkcmVzcyIKCWZyYW1lX2RpZyAtMSAvLyBuZXdNYW5hZ2VyQWRkcmVzczogQWRkcmVzcwoJYXBwX2dsb2JhbF9wdXQKCXJldHN1YgoKLy8gY3JlYXRlTmV3UHJvcG9zYWwoc3RyaW5nLHN0cmluZyx1aW50NjQscGF5KXZvaWQKKmFiaV9yb3V0ZV9jcmVhdGVOZXdQcm9wb3NhbDoKCS8vIG1iclR4bjogcGF5Cgl0eG4gR3JvdXBJbmRleAoJaW50YyAwIC8vIDEKCS0KCWR1cAoJZ3R4bnMgVHlwZUVudW0KCWludGMgMCAvLyAgcGF5Cgk9PQoKCS8vIGFyZ3VtZW50IDAgKG1iclR4bikgZm9yIGNyZWF0ZU5ld1Byb3Bvc2FsIG11c3QgYmUgYSBwYXkgdHJhbnNhY3Rpb24KCWFzc2VydAoKCS8vIGV4cGlyZXNJbjogdWludDY0Cgl0eG5hIEFwcGxpY2F0aW9uQXJncyAzCglidG9pCgoJLy8gcHJvcG9zYWxEZXNjcmlwdGlvbjogc3RyaW5nCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAyCglleHRyYWN0IDIgMAoKCS8vIHByb3Bvc2FsVGl0bGU6IHN0cmluZwoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQoJZXh0cmFjdCAyIDAKCgkvLyBleGVjdXRlIGNyZWF0ZU5ld1Byb3Bvc2FsKHN0cmluZyxzdHJpbmcsdWludDY0LHBheSl2b2lkCgljYWxsc3ViIGNyZWF0ZU5ld1Byb3Bvc2FsCglpbnRjIDAgLy8gMQoJcmV0dXJuCgovLyBjcmVhdGVOZXdQcm9wb3NhbChwcm9wb3NhbFRpdGxlOiBzdHJpbmcsIHByb3Bvc2FsRGVzY3JpcHRpb246IHN0cmluZywgZXhwaXJlc0luOiB1aW50NjQsIG1iclR4bjogUGF5VHhuKTogdm9pZAovLwovLyBDcmVhdGUgYSBuZXcgcHJvcG9zYWwKLy8gQHBhcmFtIHByb3Bvc2FsVGl0bGUgVGl0bGUgb2YgdGhlIHByb3Bvc2FsCi8vIEBwYXJhbSBwcm9wb3NhbERlc2NyaXB0aW9uIERlc2NyaXB0aW9uIG9mIHRoZSBwcm9wb3NhbAovLyBAcGFyYW0gZXhwaXJlc0luIFRpbWUgaW4gc2Vjb25kcyBmb3IgdGhlIHByb3Bvc2FsIHRvIGV4cGlyZQpjcmVhdGVOZXdQcm9wb3NhbDoKCXByb3RvIDQgMAoKCS8vIFB1c2ggZW1wdHkgYnl0ZXMgYWZ0ZXIgdGhlIGZyYW1lIHBvaW50ZXIgdG8gcmVzZXJ2ZSBzcGFjZSBmb3IgbG9jYWwgdmFyaWFibGVzCglieXRlYyAxIC8vIDB4CglkdXBuIDMKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6NjkKCS8vIHByb3Bvc2VyQWRkcmVzczogQWRkcmVzcyA9IHRoaXMudHhuLnNlbmRlcgoJdHhuIFNlbmRlcgoJZnJhbWVfYnVyeSAwIC8vIHByb3Bvc2VyQWRkcmVzczogQWRkcmVzcwoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czo3MgoJLy8gcHJvcG9zYWxOb25jZTogdWludDY0ID0gdGhpcy50b3RhbF9wcm9wb3NhbHMudmFsdWUgKyAxCglieXRlYyA0IC8vICAidG90YWxfcHJvcG9zYWxzIgoJYXBwX2dsb2JhbF9nZXQKCWludGMgMCAvLyAxCgkrCglmcmFtZV9idXJ5IDEgLy8gcHJvcG9zYWxOb25jZTogdWludDY0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjczCgkvLyBjdXJyZW50VGltZXN0YW1wOiB1aW50NjQgPSBnbG9iYWxzLmxhdGVzdFRpbWVzdGFtcAoJZ2xvYmFsIExhdGVzdFRpbWVzdGFtcAoJZnJhbWVfYnVyeSAyIC8vIGN1cnJlbnRUaW1lc3RhbXA6IHVpbnQ2NAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czo3NgoJLy8gZXhwaXJ5VGltZXN0YW1wOiB1aW50NjQgPSBjdXJyZW50VGltZXN0YW1wICsgZXhwaXJlc0luCglmcmFtZV9kaWcgMiAvLyBjdXJyZW50VGltZXN0YW1wOiB1aW50NjQKCWZyYW1lX2RpZyAtMyAvLyBleHBpcmVzSW46IHVpbnQ2NAoJKwoJZnJhbWVfYnVyeSAzIC8vIGV4cGlyeVRpbWVzdGFtcDogdWludDY0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjc5CgkvLyBhc3NlcnQocHJvcG9zZXJBZGRyZXNzID09PSB0aGlzLm1hbmFnZXJfYWRkcmVzcy52YWx1ZSwgJ09ubHkgdGhlIG1hbmFnZXIgY2FuIGNyZWF0ZSBwcm9wb3NhbHMnKQoJZnJhbWVfZGlnIDAgLy8gcHJvcG9zZXJBZGRyZXNzOiBBZGRyZXNzCglieXRlYyAzIC8vICAibWFuYWdlcl9hZGRyZXNzIgoJYXBwX2dsb2JhbF9nZXQKCT09CgoJLy8gT25seSB0aGUgbWFuYWdlciBjYW4gY3JlYXRlIHByb3Bvc2FscwoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjgwCgkvLyBhc3NlcnQoIXRoaXMucHJvcG9zYWxzKHsgbm9uY2U6IHByb3Bvc2FsTm9uY2UgfSkuZXhpc3RzLCAnUHJvcG9zYWwgYWxyZWFkeSBleGlzdHMnKQoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIDEgLy8gcHJvcG9zYWxOb25jZTogdWludDY0CglpdG9iCgljb25jYXQKCWJveF9sZW4KCXN3YXAKCXBvcAoJIQoKCS8vIFByb3Bvc2FsIGFscmVhZHkgZXhpc3RzCglhc3NlcnQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6ODMKCS8vIHZlcmlmeVBheVR4bihtYnJUeG4sIHsgYW1vdW50OiB7IGdyZWF0ZXJUaGFuRXF1YWxUbzogUFJPUE9TQUxfTUJSIH0gfSkKCS8vIHZlcmlmeSBhbW91bnQKCWZyYW1lX2RpZyAtNCAvLyBtYnJUeG46IFBheVR4bgoJZ3R4bnMgQW1vdW50CglwdXNoaW50IDQyMTUKCT49CgoJLy8gdHJhbnNhY3Rpb24gdmVyaWZpY2F0aW9uIGZhaWxlZDogeyJ0eG4iOiJtYnJUeG4iLCJmaWVsZCI6ImFtb3VudCIsImNvbmRpdGlvbiI6ImdyZWF0ZXJUaGFuRXF1YWxUbyIsImV4cGVjdGVkIjoiPj1QUk9QT1NBTF9NQlIifQoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjg2CgkvLyB0aGlzLnByb3Bvc2Fscyh7IG5vbmNlOiBwcm9wb3NhbE5vbmNlIH0pLnZhbHVlID0gewoJLy8gICAgICAgcHJvcG9zYWxUaXRsZTogcHJvcG9zYWxUaXRsZSwKCS8vICAgICAgIHByb3Bvc2FsRGVzY3JpcHRpb246IHByb3Bvc2FsRGVzY3JpcHRpb24sCgkvLyAgICAgICBwcm9wb3NhbFRvdGFsVm90ZXM6IDAsCgkvLyAgICAgICBwcm9wb3NhbFllc1ZvdGVzOiAwLAoJLy8gICAgICAgcHJvcG9zYWxUb3RhbFBvd2VyOiAwLAoJLy8gICAgICAgcHJvcG9zYWxZZXNQb3dlcjogMCwKCS8vICAgICAgIGNyZWF0ZWRBdFRpbWVzdGFtcDogY3VycmVudFRpbWVzdGFtcCwKCS8vICAgICAgIGV4cGlyeVRpbWVzdGFtcDogZXhwaXJ5VGltZXN0YW1wLAoJLy8gICAgIH0KCWJ5dGVjIDAgLy8gICJfcCIKCWZyYW1lX2RpZyAxIC8vIHByb3Bvc2FsTm9uY2U6IHVpbnQ2NAoJaXRvYgoJY29uY2F0CglkdXAKCWJveF9kZWwKCXBvcAoJYnl0ZWMgMSAvLyAgaW5pdGlhbCBoZWFkCglieXRlYyAxIC8vICBpbml0aWFsIHRhaWwKCXB1c2hieXRlcyAweDAwMzQgLy8gaW5pdGlhbCBoZWFkIG9mZnNldAoJZnJhbWVfZGlnIC0xIC8vIHByb3Bvc2FsVGl0bGU6IHN0cmluZwoJZHVwCglsZW4KCWl0b2IKCWV4dHJhY3QgNiAyCglzd2FwCgljb25jYXQKCWNhbGxzdWIgKnByb2Nlc3NfZHluYW1pY190dXBsZV9lbGVtZW50CglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxEZXNjcmlwdGlvbjogc3RyaW5nCglkdXAKCWxlbgoJaXRvYgoJZXh0cmFjdCA2IDIKCXN3YXAKCWNvbmNhdAoJY2FsbHN1YiAqcHJvY2Vzc19keW5hbWljX3R1cGxlX2VsZW1lbnQKCWJ5dGVjIDUgLy8gMHgwMDAwMDAwMDAwMDAwMDAwCgljYWxsc3ViICpwcm9jZXNzX3N0YXRpY190dXBsZV9lbGVtZW50CglieXRlYyA1IC8vIDB4MDAwMDAwMDAwMDAwMDAwMAoJY2FsbHN1YiAqcHJvY2Vzc19zdGF0aWNfdHVwbGVfZWxlbWVudAoJYnl0ZWMgNSAvLyAweDAwMDAwMDAwMDAwMDAwMDAKCWNhbGxzdWIgKnByb2Nlc3Nfc3RhdGljX3R1cGxlX2VsZW1lbnQKCWJ5dGVjIDUgLy8gMHgwMDAwMDAwMDAwMDAwMDAwCgljYWxsc3ViICpwcm9jZXNzX3N0YXRpY190dXBsZV9lbGVtZW50CglmcmFtZV9kaWcgMiAvLyBjdXJyZW50VGltZXN0YW1wOiB1aW50NjQKCWl0b2IKCWNhbGxzdWIgKnByb2Nlc3Nfc3RhdGljX3R1cGxlX2VsZW1lbnQKCWZyYW1lX2RpZyAzIC8vIGV4cGlyeVRpbWVzdGFtcDogdWludDY0CglpdG9iCgljYWxsc3ViICpwcm9jZXNzX3N0YXRpY190dXBsZV9lbGVtZW50Cglwb3AgLy8gcG9wIGhlYWQgb2Zmc2V0Cgljb25jYXQgLy8gY29uY2F0IGhlYWQgYW5kIHRhaWwKCWJveF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6OTcKCS8vIHRoaXMudG90YWxfcHJvcG9zYWxzLnZhbHVlICs9IDEKCWJ5dGVjIDQgLy8gICJ0b3RhbF9wcm9wb3NhbHMiCglhcHBfZ2xvYmFsX2dldAoJaW50YyAwIC8vIDEKCSsKCWJ5dGVjIDQgLy8gICJ0b3RhbF9wcm9wb3NhbHMiCglzd2FwCglhcHBfZ2xvYmFsX3B1dAoJcmV0c3ViCgovLyByZWNvcmRVc2VyVm90ZXModm90ZXJBZGRyZXNzOiBBZGRyZXNzLCBwcm9wb3NhbElkOiBQcm9wb3NhbElkVHlwZSwgdm90aW5nUG93ZXI6IHVpbnQ2NCwgaW5GYXZvcjogYm9vbGVhbiwgbWJyVHhuOiBQYXlUeG4pOiB2b2lkCi8vCi8vIENyZWF0ZSBhIG5ldyBwcm9wb3NhbAovLyBAcGFyYW0gdm90ZXJBZGRyZXNzIFRoZSBhZGRyZXNzIG9mIHdobyBpcyB2b3RpbmcKLy8gQHBhcmFtIHByb3Bvc2FsSWQgSWQgb2YgdGhlIHByb3Bvc2FsIHRvIGJlIHZvdGVkIG9uCi8vIEBwYXJhbSB2b3RpbmdQb3dlciBUaGUgdm90aW5nIHBvd2VyIG9mIHRoZSB2b3RlcgovLyBAcGFyYW0gaW5GYXZvciBJZiB0aGUgdm90ZSBpcyBhIHllcyBvciBhIG5vCnJlY29yZFVzZXJWb3RlczoKCXByb3RvIDUgMAoKCS8vIFB1c2ggZW1wdHkgYnl0ZXMgYWZ0ZXIgdGhlIGZyYW1lIHBvaW50ZXIgdG8gcmVzZXJ2ZSBzcGFjZSBmb3IgbG9jYWwgdmFyaWFibGVzCglieXRlYyAxIC8vIDB4CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjExNQoJLy8gYXNzZXJ0KHRoaXMudHhuLnNlbmRlciA9PT0gdGhpcy5tYW5hZ2VyX2FkZHJlc3MudmFsdWUsICdPbmx5IHRoZSBtYW5hZ2VyIGNhbiBhZGQgdm90ZXMgdG8gdXNlcnMnKQoJdHhuIFNlbmRlcgoJYnl0ZWMgMyAvLyAgIm1hbmFnZXJfYWRkcmVzcyIKCWFwcF9nbG9iYWxfZ2V0Cgk9PQoKCS8vIE9ubHkgdGhlIG1hbmFnZXIgY2FuIGFkZCB2b3RlcyB0byB1c2VycwoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjExNwoJLy8gdmVyaWZ5UGF5VHhuKG1iclR4biwgeyBhbW91bnQ6IHsgZ3JlYXRlclRoYW5FcXVhbFRvOiAyXzEyMCB9IH0pCgkvLyB2ZXJpZnkgYW1vdW50CglmcmFtZV9kaWcgLTUgLy8gbWJyVHhuOiBQYXlUeG4KCWd0eG5zIEFtb3VudAoJcHVzaGludCAyXzEyMAoJPj0KCgkvLyB0cmFuc2FjdGlvbiB2ZXJpZmljYXRpb24gZmFpbGVkOiB7InR4biI6Im1iclR4biIsImZpZWxkIjoiYW1vdW50IiwiY29uZGl0aW9uIjoiZ3JlYXRlclRoYW5FcXVhbFRvIiwiZXhwZWN0ZWQiOiI+PTJfMTIwIn0KCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxMTkKCS8vIHZvdGVUaW1lc3RhbXAgPSBnbG9iYWxzLmxhdGVzdFRpbWVzdGFtcAoJZ2xvYmFsIExhdGVzdFRpbWVzdGFtcAoJZnJhbWVfYnVyeSAwIC8vIHZvdGVUaW1lc3RhbXA6IHVpbnQ2NAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxMjEKCS8vIGFzc2VydCh0aGlzLnByb3Bvc2Fscyhwcm9wb3NhbElkKS52YWx1ZS5leHBpcnlUaW1lc3RhbXAgPj0gdm90ZVRpbWVzdGFtcCwgJ1Byb3Bvc2FsIGFscmVhZHkgZXhwaXJlZCcpCglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJYm94X2dldAoKCS8vIGJveCB2YWx1ZSBkb2VzIG5vdCBleGlzdDogdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUKCWFzc2VydAoJc3RvcmUgMjU1IC8vIGZ1bGwgYXJyYXkKCWxvYWQgMjU1IC8vIGZ1bGwgYXJyYXkKCWV4dHJhY3QgNDQgOAoJYnRvaQoJZnJhbWVfZGlnIDAgLy8gdm90ZVRpbWVzdGFtcDogdWludDY0Cgk+PQoKCS8vIFByb3Bvc2FsIGFscmVhZHkgZXhwaXJlZAoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjEyNAoJLy8gYXNzZXJ0KAoJLy8gICAgICAgdGhpcy52b3Rlcyh7IHByb3Bvc2FsSWQ6IHByb3Bvc2FsSWQsIHZvdGVyQWRkcmVzczogdm90ZXJBZGRyZXNzIH0pLmV4aXN0cyA9PT0gZmFsc2UsCgkvLyAgICAgICAnVXNlciBhbHJlYWR5IHZvdGVkIG9uIHRoaXMgcHJvcG9zYWwnCgkvLyAgICAgKQoJYnl0ZWMgOSAvLyAgIl92IgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCglmcmFtZV9kaWcgLTEgLy8gdm90ZXJBZGRyZXNzOiBBZGRyZXNzCgljb25jYXQKCWNvbmNhdAoJYm94X2xlbgoJc3dhcAoJcG9wCglpbnRjIDEgLy8gMAoJPT0KCgkvLyBVc2VyIGFscmVhZHkgdm90ZWQgb24gdGhpcyBwcm9wb3NhbAoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjEzMAoJLy8gYXNzZXJ0KHZvdGVyQWRkcmVzcy5pc09wdGVkSW5Ub0FwcCh0aGlzLmFwcC5pZCksICdVc2VyIGhhcyBub3Qgb3B0ZWQgaW4gdG8gdGhlIGNvbnRyYWN0JykKCWZyYW1lX2RpZyAtMSAvLyB2b3RlckFkZHJlc3M6IEFkZHJlc3MKCXR4bmEgQXBwbGljYXRpb25zIDAKCWFwcF9vcHRlZF9pbgoKCS8vIFVzZXIgaGFzIG5vdCBvcHRlZCBpbiB0byB0aGUgY29udHJhY3QKCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxMzIKCS8vIHRoaXMucHJvcG9zYWxzKHByb3Bvc2FsSWQpLnZhbHVlLnByb3Bvc2FsVG90YWxWb3RlcyArPSAxCglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJYm94X2dldAoKCS8vIGJveCB2YWx1ZSBkb2VzIG5vdCBleGlzdDogdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUKCWFzc2VydAoJc3RvcmUgMjU1IC8vIGZ1bGwgYXJyYXkKCWxvYWQgMjU1IC8vIGZ1bGwgYXJyYXkKCXB1c2hpbnQgNAoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCgljb25jYXQKCWJveF9nZXQKCgkvLyBib3ggdmFsdWUgZG9lcyBub3QgZXhpc3Q6IHRoaXMucHJvcG9zYWxzKHByb3Bvc2FsSWQpLnZhbHVlCglhc3NlcnQKCXN0b3JlIDI1NSAvLyBmdWxsIGFycmF5Cglsb2FkIDI1NSAvLyBmdWxsIGFycmF5CglleHRyYWN0IDQgOAoJYnRvaQoJaW50YyAwIC8vIDEKCSsKCWl0b2IKCXJlcGxhY2UzCglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJZHVwCglib3hfZGVsCglwb3AKCXN3YXAKCWJveF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTMzCgkvLyB0aGlzLnByb3Bvc2Fscyhwcm9wb3NhbElkKS52YWx1ZS5wcm9wb3NhbFRvdGFsUG93ZXIgKz0gdm90aW5nUG93ZXIKCWJ5dGVjIDAgLy8gICJfcCIKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbElkOiBQcm9wb3NhbElkVHlwZQoJY29uY2F0Cglib3hfZ2V0CgoJLy8gYm94IHZhbHVlIGRvZXMgbm90IGV4aXN0OiB0aGlzLnByb3Bvc2Fscyhwcm9wb3NhbElkKS52YWx1ZQoJYXNzZXJ0CglzdG9yZSAyNTUgLy8gZnVsbCBhcnJheQoJbG9hZCAyNTUgLy8gZnVsbCBhcnJheQoJcHVzaGludCAyMAoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCgljb25jYXQKCWJveF9nZXQKCgkvLyBib3ggdmFsdWUgZG9lcyBub3QgZXhpc3Q6IHRoaXMucHJvcG9zYWxzKHByb3Bvc2FsSWQpLnZhbHVlCglhc3NlcnQKCXN0b3JlIDI1NSAvLyBmdWxsIGFycmF5Cglsb2FkIDI1NSAvLyBmdWxsIGFycmF5CglleHRyYWN0IDIwIDgKCWJ0b2kKCWZyYW1lX2RpZyAtMyAvLyB2b3RpbmdQb3dlcjogdWludDY0CgkrCglpdG9iCglyZXBsYWNlMwoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCgljb25jYXQKCWR1cAoJYm94X2RlbAoJcG9wCglzd2FwCglib3hfcHV0CgoJLy8gKmlmMF9jb25kaXRpb24KCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxMzQKCS8vIGluRmF2b3IKCWZyYW1lX2RpZyAtNCAvLyBpbkZhdm9yOiBib29sZWFuCglieiAqaWYwX2VuZAoKCS8vICppZjBfY29uc2VxdWVudAoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjEzNQoJLy8gdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUucHJvcG9zYWxZZXNWb3RlcyArPSAxCglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJYm94X2dldAoKCS8vIGJveCB2YWx1ZSBkb2VzIG5vdCBleGlzdDogdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUKCWFzc2VydAoJc3RvcmUgMjU1IC8vIGZ1bGwgYXJyYXkKCWxvYWQgMjU1IC8vIGZ1bGwgYXJyYXkKCXB1c2hpbnQgMTIKCWJ5dGVjIDAgLy8gICJfcCIKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbElkOiBQcm9wb3NhbElkVHlwZQoJY29uY2F0Cglib3hfZ2V0CgoJLy8gYm94IHZhbHVlIGRvZXMgbm90IGV4aXN0OiB0aGlzLnByb3Bvc2Fscyhwcm9wb3NhbElkKS52YWx1ZQoJYXNzZXJ0CglzdG9yZSAyNTUgLy8gZnVsbCBhcnJheQoJbG9hZCAyNTUgLy8gZnVsbCBhcnJheQoJZXh0cmFjdCAxMiA4CglidG9pCglpbnRjIDAgLy8gMQoJKwoJaXRvYgoJcmVwbGFjZTMKCWJ5dGVjIDAgLy8gICJfcCIKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbElkOiBQcm9wb3NhbElkVHlwZQoJY29uY2F0CglkdXAKCWJveF9kZWwKCXBvcAoJc3dhcAoJYm94X3B1dAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxMzYKCS8vIHRoaXMucHJvcG9zYWxzKHByb3Bvc2FsSWQpLnZhbHVlLnByb3Bvc2FsWWVzUG93ZXIgKz0gdm90aW5nUG93ZXIKCWJ5dGVjIDAgLy8gICJfcCIKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbElkOiBQcm9wb3NhbElkVHlwZQoJY29uY2F0Cglib3hfZ2V0CgoJLy8gYm94IHZhbHVlIGRvZXMgbm90IGV4aXN0OiB0aGlzLnByb3Bvc2Fscyhwcm9wb3NhbElkKS52YWx1ZQoJYXNzZXJ0CglzdG9yZSAyNTUgLy8gZnVsbCBhcnJheQoJbG9hZCAyNTUgLy8gZnVsbCBhcnJheQoJcHVzaGludCAyOAoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCgljb25jYXQKCWJveF9nZXQKCgkvLyBib3ggdmFsdWUgZG9lcyBub3QgZXhpc3Q6IHRoaXMucHJvcG9zYWxzKHByb3Bvc2FsSWQpLnZhbHVlCglhc3NlcnQKCXN0b3JlIDI1NSAvLyBmdWxsIGFycmF5Cglsb2FkIDI1NSAvLyBmdWxsIGFycmF5CglleHRyYWN0IDI4IDgKCWJ0b2kKCWZyYW1lX2RpZyAtMyAvLyB2b3RpbmdQb3dlcjogdWludDY0CgkrCglpdG9iCglyZXBsYWNlMwoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCgljb25jYXQKCWR1cAoJYm94X2RlbAoJcG9wCglzd2FwCglib3hfcHV0CgoqaWYwX2VuZDoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxMzgKCS8vIHRoaXMudXNlcl92b3Rlcyh2b3RlckFkZHJlc3MpLnZhbHVlICs9IDEKCWZyYW1lX2RpZyAtMSAvLyB2b3RlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDcgLy8gICJ1c2VyX3ZvdGVzIgoJYXBwX2xvY2FsX2dldAoJaW50YyAwIC8vIDEKCSsKCWZyYW1lX2RpZyAtMSAvLyB2b3RlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDcgLy8gICJ1c2VyX3ZvdGVzIgoJdW5jb3ZlciAyCglhcHBfbG9jYWxfcHV0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjE0MAoJLy8gdGhpcy52b3Rlcyh7IHByb3Bvc2FsSWQ6IHByb3Bvc2FsSWQsIHZvdGVyQWRkcmVzczogdm90ZXJBZGRyZXNzIH0pLnZhbHVlID0geyB2b3RlVGltZXN0YW1wOiB2b3RlVGltZXN0YW1wIH0KCWJ5dGVjIDkgLy8gICJfdiIKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbElkOiBQcm9wb3NhbElkVHlwZQoJZnJhbWVfZGlnIC0xIC8vIHZvdGVyQWRkcmVzczogQWRkcmVzcwoJY29uY2F0Cgljb25jYXQKCWZyYW1lX2RpZyAwIC8vIHZvdGVUaW1lc3RhbXA6IHVpbnQ2NAoJaXRvYgoJYm94X3B1dAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxNDIKCS8vIHRoaXMudG90YWxfdm90ZXMudmFsdWUgKz0gMQoJYnl0ZWMgOCAvLyAgInRvdGFsX3ZvdGVzIgoJYXBwX2dsb2JhbF9nZXQKCWludGMgMCAvLyAxCgkrCglieXRlYyA4IC8vICAidG90YWxfdm90ZXMiCglzd2FwCglhcHBfZ2xvYmFsX3B1dAoJcmV0c3ViCgovLyB1cGRhdGVVc2VyQ3VycmVudFZvdGluZ1Bvd2VyKHVzZXJBZGRyZXNzOiBBZGRyZXNzLCBuZXdWb3RpbmdQb3dlcjogdWludDY0KTogdm9pZAovLwovLyBBZGQgb25lIHRvIHRoZSB1c2VyIGNvbnRyaWJ1dGlvbiBvbmNlIGl0IHZvdGVzIG9uIGEgcG9vbCBwcm9wb3NhbAovLyBAcGFyYW0gdXNlckFkZHJlc3MgYWRkcmVzcyBvZiB0aGUgdXNlciB0byBhZGQgdGhlIGNvbnRyaWJ1dGlvbgovLwovLwovLyBBZGQgb25lIHRvIHRoZSB1c2VyIGNvbnRyaWJ1dGlvbiBvbmNlIGl0IHZvdGVzIG9uIGEgcG9vbCBwcm9wb3NhbAovLyBAcGFyYW0gdXNlckFkZHJlc3MgYWRkcmVzcyBvZiB0aGUgdXNlciB0byBhZGQgdGhlIHNwZWNpYWwgdm90ZQovLyBAcGFyYW0gbmV3Vm90aW5nUG93ZXIgVGhlIHZvdGluZyBwb3dlciBvZiB0aGUgdm90ZXIKdXBkYXRlVXNlckN1cnJlbnRWb3RpbmdQb3dlcjoKCXByb3RvIDIgMAoKCS8vIFB1c2ggZW1wdHkgYnl0ZXMgYWZ0ZXIgdGhlIGZyYW1lIHBvaW50ZXIgdG8gcmVzZXJ2ZSBzcGFjZSBmb3IgbG9jYWwgdmFyaWFibGVzCglieXRlYyAxIC8vIDB4CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjE1OQoJLy8gY3VycmVudFZvdGluZ1Bvd2VyOiB1aW50NjQgPSB0aGlzLnVzZXJfY3VycmVudF92b3RpbmdfcG93ZXIodXNlckFkZHJlc3MpLnZhbHVlCglmcmFtZV9kaWcgLTEgLy8gdXNlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDIgLy8gICJ1c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyIgoJYXBwX2xvY2FsX2dldAoJZnJhbWVfYnVyeSAwIC8vIGN1cnJlbnRWb3RpbmdQb3dlcjogdWludDY0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjE2MAoJLy8gdGhpcy51c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyKHVzZXJBZGRyZXNzKS52YWx1ZSA9IG5ld1ZvdGluZ1Bvd2VyCglmcmFtZV9kaWcgLTEgLy8gdXNlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDIgLy8gICJ1c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyIgoJZnJhbWVfZGlnIC0yIC8vIG5ld1ZvdGluZ1Bvd2VyOiB1aW50NjQKCWFwcF9sb2NhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTYyCgkvLyB0aGlzLnRvdGFsX2N1cnJlbnRfdm90aW5nX3Bvd2VyLnZhbHVlID0gbmV3Vm90aW5nUG93ZXIgKyB0aGlzLnRvdGFsX2N1cnJlbnRfdm90aW5nX3Bvd2VyLnZhbHVlIC0gY3VycmVudFZvdGluZ1Bvd2VyCglieXRlYyA2IC8vICAidG90YWxfY3VycmVudF92b3RpbmdfcG93ZXIiCglmcmFtZV9kaWcgLTIgLy8gbmV3Vm90aW5nUG93ZXI6IHVpbnQ2NAoJYnl0ZWMgNiAvLyAgInRvdGFsX2N1cnJlbnRfdm90aW5nX3Bvd2VyIgoJYXBwX2dsb2JhbF9nZXQKCSsKCWZyYW1lX2RpZyAwIC8vIGN1cnJlbnRWb3RpbmdQb3dlcjogdWludDY0CgktCglhcHBfZ2xvYmFsX3B1dAoJcmV0c3ViCgovLyBtYWtlUHJvcG9zYWxWb3RlKCh1aW50NjQpLGJvb2wsYWRkcmVzcyx1aW50NjQscGF5KXZvaWQKKmFiaV9yb3V0ZV9tYWtlUHJvcG9zYWxWb3RlOgoJLy8gbWJyVHhuOiBwYXkKCXR4biBHcm91cEluZGV4CglpbnRjIDAgLy8gMQoJLQoJZHVwCglndHhucyBUeXBlRW51bQoJaW50YyAwIC8vICBwYXkKCT09CgoJLy8gYXJndW1lbnQgMCAobWJyVHhuKSBmb3IgbWFrZVByb3Bvc2FsVm90ZSBtdXN0IGJlIGEgcGF5IHRyYW5zYWN0aW9uCglhc3NlcnQKCgkvLyB2b3RpbmdQb3dlcjogdWludDY0Cgl0eG5hIEFwcGxpY2F0aW9uQXJncyA0CglidG9pCgoJLy8gdm90ZXJBZGRyZXNzOiBhZGRyZXNzCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAzCglkdXAKCWxlbgoJaW50YyAyIC8vIDMyCgk9PQoKCS8vIGFyZ3VtZW50IDIgKHZvdGVyQWRkcmVzcykgZm9yIG1ha2VQcm9wb3NhbFZvdGUgbXVzdCBiZSBhIGFkZHJlc3MKCWFzc2VydAoKCS8vIGluRmF2b3I6IGJvb2wKCXR4bmEgQXBwbGljYXRpb25BcmdzIDIKCWR1cAoJbGVuCglpbnRjIDAgLy8gMQoJPT0KCgkvLyBhcmd1bWVudCAzIChpbkZhdm9yKSBmb3IgbWFrZVByb3Bvc2FsVm90ZSBtdXN0IGJlIGEgYm9vbAoJYXNzZXJ0CglpbnRjIDEgLy8gMAoJZ2V0Yml0CgoJLy8gcHJvcG9zYWxJZDogKHVpbnQ2NCkKCXR4bmEgQXBwbGljYXRpb25BcmdzIDEKCWR1cAoJbGVuCglpbnRjIDMgLy8gOAoJPT0KCgkvLyBhcmd1bWVudCA0IChwcm9wb3NhbElkKSBmb3IgbWFrZVByb3Bvc2FsVm90ZSBtdXN0IGJlIGEgKHVpbnQ2NCkKCWFzc2VydAoKCS8vIGV4ZWN1dGUgbWFrZVByb3Bvc2FsVm90ZSgodWludDY0KSxib29sLGFkZHJlc3MsdWludDY0LHBheSl2b2lkCgljYWxsc3ViIG1ha2VQcm9wb3NhbFZvdGUKCWludGMgMCAvLyAxCglyZXR1cm4KCi8vIG1ha2VQcm9wb3NhbFZvdGUocHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUsIGluRmF2b3I6IGJvb2xlYW4sIHZvdGVyQWRkcmVzczogQWRkcmVzcywgdm90aW5nUG93ZXI6IHVpbnQ2NCwgbWJyVHhuOiBQYXlUeG4pOiB2b2lkCi8vCi8vIEFkZCBvbmUgdG8gdGhlIHVzZXIgY29udHJpYnV0aW9uIG9uY2UgaXQgdm90ZXMgb24gYSBwb29sIHByb3Bvc2FsCi8vIEBwYXJhbSBwcm9wb3NhbElkIFRoZSBpZCBvZiB0aGUgcHJvcG9zYWwgdG8gYmUgdm90ZWQgb24KLy8gQHBhcmFtIGluRmF2b3IgSWYgdGhlIHZvdGUgaXMgYSB5ZXMgb3Igbm8gdm90ZQovLyBAcGFyYW0gdm90ZXJBZGRyZXNzIFRoZSBhZGRyZXNzIGZvciB0aGUgdm90ZXIgLSBNZWFudCBmb3IgdjEuMCB3aGlsZSBtYW5hZ2VyICJzZXJ2ZXIiIHdpbGwgYmUgcmVzcG9uc2libGUgdG8gZXhlY3V0ZQovLyBAcGFyYW0gdm90aW5nUG93ZXIgVGhlIHZvdGluZyBwb3dlciBvZiB0aGUgdm90ZXIKbWFrZVByb3Bvc2FsVm90ZToKCXByb3RvIDUgMAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxNzkKCS8vIGFzc2VydCh0aGlzLnR4bi5zZW5kZXIgPT09IHRoaXMubWFuYWdlcl9hZGRyZXNzLnZhbHVlLCAnT25seSB0aGUgbWFuYWdlciBjYW4gYWRkIHZvdGVzIHRvIHVzZXJzJykKCXR4biBTZW5kZXIKCWJ5dGVjIDMgLy8gICJtYW5hZ2VyX2FkZHJlc3MiCglhcHBfZ2xvYmFsX2dldAoJPT0KCgkvLyBPbmx5IHRoZSBtYW5hZ2VyIGNhbiBhZGQgdm90ZXMgdG8gdXNlcnMKCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxODIKCS8vIHZlcmlmeVBheVR4bihtYnJUeG4sIHsgYW1vdW50OiB7IGdyZWF0ZXJUaGFuRXF1YWxUbzogVk9URV9NQlIgfSB9KQoJLy8gdmVyaWZ5IGFtb3VudAoJZnJhbWVfZGlnIC01IC8vIG1iclR4bjogUGF5VHhuCglndHhucyBBbW91bnQKCXB1c2hpbnQgMjI3MgoJPj0KCgkvLyB0cmFuc2FjdGlvbiB2ZXJpZmljYXRpb24gZmFpbGVkOiB7InR4biI6Im1iclR4biIsImZpZWxkIjoiYW1vdW50IiwiY29uZGl0aW9uIjoiZ3JlYXRlclRoYW5FcXVhbFRvIiwiZXhwZWN0ZWQiOiI+PVZPVEVfTUJSIn0KCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxODUKCS8vIHRoaXMudXBkYXRlVXNlckN1cnJlbnRWb3RpbmdQb3dlcih2b3RlckFkZHJlc3MsIHZvdGluZ1Bvd2VyKQoJZnJhbWVfZGlnIC00IC8vIHZvdGluZ1Bvd2VyOiB1aW50NjQKCWZyYW1lX2RpZyAtMyAvLyB2b3RlckFkZHJlc3M6IEFkZHJlc3MKCWNhbGxzdWIgdXBkYXRlVXNlckN1cnJlbnRWb3RpbmdQb3dlcgoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxODYKCS8vIHRoaXMucmVjb3JkVXNlclZvdGVzKHZvdGVyQWRkcmVzcywgcHJvcG9zYWxJZCwgdGhpcy51c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyKHZvdGVyQWRkcmVzcykudmFsdWUsIGluRmF2b3IsIG1iclR4bikKCWZyYW1lX2RpZyAtNSAvLyBtYnJUeG46IFBheVR4bgoJZnJhbWVfZGlnIC0yIC8vIGluRmF2b3I6IGJvb2xlYW4KCWZyYW1lX2RpZyAtMyAvLyB2b3RlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDIgLy8gICJ1c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyIgoJYXBwX2xvY2FsX2dldAoJZnJhbWVfZGlnIC0xIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCglmcmFtZV9kaWcgLTMgLy8gdm90ZXJBZGRyZXNzOiBBZGRyZXNzCgljYWxsc3ViIHJlY29yZFVzZXJWb3RlcwoJcmV0c3ViCgovLyBzbGFzaFVzZXJWb3RpbmdQb3dlcihhZGRyZXNzLHVpbnQ2NCl2b2lkCiphYmlfcm91dGVfc2xhc2hVc2VyVm90aW5nUG93ZXI6CgkvLyBhbW91bnQ6IHVpbnQ2NAoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMgoJYnRvaQoKCS8vIHVzZXJBZGRyZXNzOiBhZGRyZXNzCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAxCglkdXAKCWxlbgoJaW50YyAyIC8vIDMyCgk9PQoKCS8vIGFyZ3VtZW50IDEgKHVzZXJBZGRyZXNzKSBmb3Igc2xhc2hVc2VyVm90aW5nUG93ZXIgbXVzdCBiZSBhIGFkZHJlc3MKCWFzc2VydAoKCS8vIGV4ZWN1dGUgc2xhc2hVc2VyVm90aW5nUG93ZXIoYWRkcmVzcyx1aW50NjQpdm9pZAoJY2FsbHN1YiBzbGFzaFVzZXJWb3RpbmdQb3dlcgoJaW50YyAwIC8vIDEKCXJldHVybgoKLy8gc2xhc2hVc2VyVm90aW5nUG93ZXIodXNlckFkZHJlc3M6IEFkZHJlc3MsIGFtb3VudDogdWludDY0KTogdm9pZAovLwovLyBBZGQgb25lIHRvIHRoZSB1c2VyIGNvbnRyaWJ1dGlvbiBvbmNlIGl0IHZvdGVzIG9uIGEgcG9vbCBwcm9wb3NhbAovLyBAcGFyYW0gdXNlckFkZHJlc3MgVGhlIGFkZHJlc3Mgb2YgdGhlIHVzZXIgdG8gZ2V0IGl0cyBjb250cmlidXRpb24gc2xhc2hlZAovLyBAcGFyYW0gYW1vdW50IFRoZSBhbW91bnQgdG8gYmUgc2xhc2hlZApzbGFzaFVzZXJWb3RpbmdQb3dlcjoKCXByb3RvIDIgMAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxOTUKCS8vIGFzc2VydCh0aGlzLnR4bi5zZW5kZXIgPT09IHRoaXMubWFuYWdlcl9hZGRyZXNzLnZhbHVlLCAnT25seSB0aGUgbWFuYWdlciBjYW4gc2xhc2ggdXNlciBjb250cmlidXRpb24nKQoJdHhuIFNlbmRlcgoJYnl0ZWMgMyAvLyAgIm1hbmFnZXJfYWRkcmVzcyIKCWFwcF9nbG9iYWxfZ2V0Cgk9PQoKCS8vIE9ubHkgdGhlIG1hbmFnZXIgY2FuIHNsYXNoIHVzZXIgY29udHJpYnV0aW9uCglhc3NlcnQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTk2CgkvLyBhc3NlcnQodGhpcy51c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyKHVzZXJBZGRyZXNzKS52YWx1ZSA+PSBhbW91bnQsICdVc2VyIGRvZXMgbm90IGhhdmUgZW5vdWdoIHZvdGluZyBwb3dlcicpCglmcmFtZV9kaWcgLTEgLy8gdXNlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDIgLy8gICJ1c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyIgoJYXBwX2xvY2FsX2dldAoJZnJhbWVfZGlnIC0yIC8vIGFtb3VudDogdWludDY0Cgk+PQoKCS8vIFVzZXIgZG9lcyBub3QgaGF2ZSBlbm91Z2ggdm90aW5nIHBvd2VyCglhc3NlcnQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTk3CgkvLyB0aGlzLnVzZXJfY3VycmVudF92b3RpbmdfcG93ZXIodXNlckFkZHJlc3MpLnZhbHVlIC09IGFtb3VudAoJZnJhbWVfZGlnIC0xIC8vIHVzZXJBZGRyZXNzOiBBZGRyZXNzCglieXRlYyAyIC8vICAidXNlcl9jdXJyZW50X3ZvdGluZ19wb3dlciIKCWFwcF9sb2NhbF9nZXQKCWZyYW1lX2RpZyAtMiAvLyBhbW91bnQ6IHVpbnQ2NAoJLQoJZnJhbWVfZGlnIC0xIC8vIHVzZXJBZGRyZXNzOiBBZGRyZXNzCglieXRlYyAyIC8vICAidXNlcl9jdXJyZW50X3ZvdGluZ19wb3dlciIKCXVuY292ZXIgMgoJYXBwX2xvY2FsX3B1dAoJcmV0c3ViCgovLyBnZXRQcm9wb3NhbHNCeUlkKCh1aW50NjQpKShzdHJpbmcsc3RyaW5nLHVpbnQ2NCx1aW50NjQsdWludDY0LHVpbnQ2NCx1aW50NjQsdWludDY0KQoqYWJpX3JvdXRlX2dldFByb3Bvc2Fsc0J5SWQ6CgkvLyBUaGUgQUJJIHJldHVybiBwcmVmaXgKCXB1c2hieXRlcyAweDE1MWY3Yzc1CgoJLy8gcHJvcG9zYWxJZDogKHVpbnQ2NCkKCXR4bmEgQXBwbGljYXRpb25BcmdzIDEKCWR1cAoJbGVuCglpbnRjIDMgLy8gOAoJPT0KCgkvLyBhcmd1bWVudCAwIChwcm9wb3NhbElkKSBmb3IgZ2V0UHJvcG9zYWxzQnlJZCBtdXN0IGJlIGEgKHVpbnQ2NCkKCWFzc2VydAoKCS8vIGV4ZWN1dGUgZ2V0UHJvcG9zYWxzQnlJZCgodWludDY0KSkoc3RyaW5nLHN0cmluZyx1aW50NjQsdWludDY0LHVpbnQ2NCx1aW50NjQsdWludDY0LHVpbnQ2NCkKCWNhbGxzdWIgZ2V0UHJvcG9zYWxzQnlJZAoJY29uY2F0Cglsb2cKCWludGMgMCAvLyAxCglyZXR1cm4KCi8vIGdldFByb3Bvc2Fsc0J5SWQocHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUpOiBQcm9wb3NhbERhdGFUeXBlCi8vCi8vCi8vIEBwYXJhbSBwcm9wb3NhbElkIHVzZWQgdG8gZGVmaW5lIHN0YXRlIG9mIHByb3Bvc2FscyB0byByZXR1cm4KLy8gQHJldHVybnMge1Byb3Bvc2FsRGF0YVR5cGV9IFJldHVybnMgdGhlIHByb3Bvc2FsIGJ5IGlkCmdldFByb3Bvc2Fsc0J5SWQ6Cglwcm90byAxIDEKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MjA2CgkvLyByZXR1cm4gdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWU7CglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTEgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJYm94X2dldAoKCS8vIGJveCB2YWx1ZSBkb2VzIG5vdCBleGlzdDogdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUKCWFzc2VydAoJcmV0c3ViCgoqY3JlYXRlX05vT3A6CglwdXNoYnl0ZXMgMHhiODQ0N2IzNiAvLyBtZXRob2QgImNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkIgoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMAoJbWF0Y2ggKmFiaV9yb3V0ZV9jcmVhdGVBcHBsaWNhdGlvbgoKCS8vIHRoaXMgY29udHJhY3QgZG9lcyBub3QgaW1wbGVtZW50IHRoZSBnaXZlbiBBQkkgbWV0aG9kIGZvciBjcmVhdGUgTm9PcAoJZXJyCgoqY2FsbF9Ob09wOgoJcHVzaGJ5dGVzIDB4MDIzZWI3ZDQgLy8gbWV0aG9kICJ1cGRhdGVBcHBNYW5hZ2VyKGFkZHJlc3Mpdm9pZCIKCXB1c2hieXRlcyAweDhhZjJjN2NmIC8vIG1ldGhvZCAiY3JlYXRlTmV3UHJvcG9zYWwoc3RyaW5nLHN0cmluZyx1aW50NjQscGF5KXZvaWQiCglwdXNoYnl0ZXMgMHg5OGYyZmUwOCAvLyBtZXRob2QgIm1ha2VQcm9wb3NhbFZvdGUoKHVpbnQ2NCksYm9vbCxhZGRyZXNzLHVpbnQ2NCxwYXkpdm9pZCIKCXB1c2hieXRlcyAweDVmMzQ4MWFjIC8vIG1ldGhvZCAic2xhc2hVc2VyVm90aW5nUG93ZXIoYWRkcmVzcyx1aW50NjQpdm9pZCIKCXB1c2hieXRlcyAweGI1MTQyOWUyIC8vIG1ldGhvZCAiZ2V0UHJvcG9zYWxzQnlJZCgodWludDY0KSkoc3RyaW5nLHN0cmluZyx1aW50NjQsdWludDY0LHVpbnQ2NCx1aW50NjQsdWludDY0LHVpbnQ2NCkiCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAwCgltYXRjaCAqYWJpX3JvdXRlX3VwZGF0ZUFwcE1hbmFnZXIgKmFiaV9yb3V0ZV9jcmVhdGVOZXdQcm9wb3NhbCAqYWJpX3JvdXRlX21ha2VQcm9wb3NhbFZvdGUgKmFiaV9yb3V0ZV9zbGFzaFVzZXJWb3RpbmdQb3dlciAqYWJpX3JvdXRlX2dldFByb3Bvc2Fsc0J5SWQKCgkvLyB0aGlzIGNvbnRyYWN0IGRvZXMgbm90IGltcGxlbWVudCB0aGUgZ2l2ZW4gQUJJIG1ldGhvZCBmb3IgY2FsbCBOb09wCgllcnIKCipjYWxsX09wdEluOgoJcHVzaGJ5dGVzIDB4MDFhM2EzZmYgLy8gbWV0aG9kICJvcHRJblRvQXBwbGljYXRpb24oKXZvaWQiCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAwCgltYXRjaCAqYWJpX3JvdXRlX29wdEluVG9BcHBsaWNhdGlvbgoKCS8vIHRoaXMgY29udHJhY3QgZG9lcyBub3QgaW1wbGVtZW50IHRoZSBnaXZlbiBBQkkgbWV0aG9kIGZvciBjYWxsIE9wdEluCgllcnIKCipwcm9jZXNzX3N0YXRpY190dXBsZV9lbGVtZW50OgoJcHJvdG8gNCAzCglmcmFtZV9kaWcgLTQgLy8gdHVwbGUgaGVhZAoJZnJhbWVfZGlnIC0xIC8vIGVsZW1lbnQKCWNvbmNhdAoJZnJhbWVfZGlnIC0zIC8vIHR1cGxlIHRhaWwKCWZyYW1lX2RpZyAtMiAvLyBoZWFkIG9mZnNldAoJcmV0c3ViCgoqcHJvY2Vzc19keW5hbWljX3R1cGxlX2VsZW1lbnQ6Cglwcm90byA0IDMKCWZyYW1lX2RpZyAtNCAvLyB0dXBsZSBoZWFkCglmcmFtZV9kaWcgLTIgLy8gaGVhZCBvZmZzZXQKCWNvbmNhdAoJZnJhbWVfYnVyeSAtNCAvLyB0dXBsZSBoZWFkCglmcmFtZV9kaWcgLTEgLy8gZWxlbWVudAoJZHVwCglsZW4KCWZyYW1lX2RpZyAtMiAvLyBoZWFkIG9mZnNldAoJYnRvaQoJKwoJaXRvYgoJZXh0cmFjdCA2IDIKCWZyYW1lX2J1cnkgLTIgLy8gaGVhZCBvZmZzZXQKCWZyYW1lX2RpZyAtMyAvLyB0dXBsZSB0YWlsCglzd2FwCgljb25jYXQKCWZyYW1lX2J1cnkgLTMgLy8gdHVwbGUgdGFpbAoJZnJhbWVfZGlnIC00IC8vIHR1cGxlIGhlYWQKCWZyYW1lX2RpZyAtMyAvLyB0dXBsZSB0YWlsCglmcmFtZV9kaWcgLTIgLy8gaGVhZCBvZmZzZXQKCXJldHN1Yg==",
+    "approval": "I3ByYWdtYSB2ZXJzaW9uIDEwCmludGNibG9jayAxIDAgMzIgOApieXRlY2Jsb2NrIDB4NWY3MCAweCAweDc1NzM2NTcyNWY2Mzc1NzI3MjY1NmU3NDVmNzY2Zjc0Njk2ZTY3NWY3MDZmNzc2NTcyIDB4NmQ2MTZlNjE2NzY1NzI1ZjYxNjQ2NDcyNjU3MzczIDB4NzQ2Zjc0NjE2YzVmNzA3MjZmNzA2ZjczNjE2YzczIDB4MDAwMDAwMDAwMDAwMDAwMCAweDc0NmY3NDYxNmM1ZjYzNzU3MjcyNjU2ZTc0NWY3NjZmNzQ2OTZlNjc1ZjcwNmY3NzY1NzIgMHg3NTczNjU3MjVmNzY2Zjc0NjU3MyAweDc0NmY3NDYxNmM1Zjc2NmY3NDY1NzMgMHg1Zjc2CgovLyBUaGlzIFRFQUwgd2FzIGdlbmVyYXRlZCBieSBURUFMU2NyaXB0IHYwLjEwNi4yCi8vIGh0dHBzOi8vZ2l0aHViLmNvbS9hbGdvcmFuZGZvdW5kYXRpb24vVEVBTFNjcmlwdAoKLy8gVGhpcyBjb250cmFjdCBpcyBjb21wbGlhbnQgd2l0aCBhbmQvb3IgaW1wbGVtZW50cyB0aGUgZm9sbG93aW5nIEFSQ3M6IFsgQVJDNCBdCgovLyBUaGUgZm9sbG93aW5nIHRlbiBsaW5lcyBvZiBURUFMIGhhbmRsZSBpbml0aWFsIHByb2dyYW0gZmxvdwovLyBUaGlzIHBhdHRlcm4gaXMgdXNlZCB0byBtYWtlIGl0IGVhc3kgZm9yIGFueW9uZSB0byBwYXJzZSB0aGUgc3RhcnQgb2YgdGhlIHByb2dyYW0gYW5kIGRldGVybWluZSBpZiBhIHNwZWNpZmljIGFjdGlvbiBpcyBhbGxvd2VkCi8vIEhlcmUsIGFjdGlvbiByZWZlcnMgdG8gdGhlIE9uQ29tcGxldGUgaW4gY29tYmluYXRpb24gd2l0aCB3aGV0aGVyIHRoZSBhcHAgaXMgYmVpbmcgY3JlYXRlZCBvciBjYWxsZWQKLy8gRXZlcnkgcG9zc2libGUgYWN0aW9uIGZvciB0aGlzIGNvbnRyYWN0IGlzIHJlcHJlc2VudGVkIGluIHRoZSBzd2l0Y2ggc3RhdGVtZW50Ci8vIElmIHRoZSBhY3Rpb24gaXMgbm90IGltcGxlbWVudGVkIGluIHRoZSBjb250cmFjdCwgaXRzIHJlc3BlY3RpdmUgYnJhbmNoIHdpbGwgYmUgIipOT1RfSU1QTEVNRU5URUQiIHdoaWNoIGp1c3QgY29udGFpbnMgImVyciIKdHhuIEFwcGxpY2F0aW9uSUQKIQpwdXNoaW50IDYKKgp0eG4gT25Db21wbGV0aW9uCisKc3dpdGNoICpjYWxsX05vT3AgKmNhbGxfT3B0SW4gKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqY3JlYXRlX05vT3AgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVEICpOT1RfSU1QTEVNRU5URUQgKk5PVF9JTVBMRU1FTlRFRCAqTk9UX0lNUExFTUVOVEVECgoqTk9UX0lNUExFTUVOVEVEOgoJLy8gVGhlIHJlcXVlc3RlZCBhY3Rpb24gaXMgbm90IGltcGxlbWVudGVkIGluIHRoaXMgY29udHJhY3QuIEFyZSB5b3UgdXNpbmcgdGhlIGNvcnJlY3QgT25Db21wbGV0ZT8gRGlkIHlvdSBzZXQgeW91ciBhcHAgSUQ/CgllcnIKCi8vIGNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkCiphYmlfcm91dGVfY3JlYXRlQXBwbGljYXRpb246CgkvLyBleGVjdXRlIGNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkCgljYWxsc3ViIGNyZWF0ZUFwcGxpY2F0aW9uCglpbnRjIDAgLy8gMQoJcmV0dXJuCgovLyBjcmVhdGVBcHBsaWNhdGlvbigpOiB2b2lkCmNyZWF0ZUFwcGxpY2F0aW9uOgoJcHJvdG8gMCAwCgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjMxCgkvLyB0aGlzLm1hbmFnZXJfYWRkcmVzcy52YWx1ZSA9IHRoaXMudHhuLnNlbmRlcgoJYnl0ZWMgMyAvLyAgIm1hbmFnZXJfYWRkcmVzcyIKCXR4biBTZW5kZXIKCWFwcF9nbG9iYWxfcHV0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjMyCgkvLyB0aGlzLnRvdGFsX3Byb3Bvc2Fscy52YWx1ZSA9IDAKCWJ5dGVjIDQgLy8gICJ0b3RhbF9wcm9wb3NhbHMiCglpbnRjIDEgLy8gMAoJYXBwX2dsb2JhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MzMKCS8vIHRoaXMudG90YWxfY3VycmVudF92b3RpbmdfcG93ZXIudmFsdWUgPSAwCglieXRlYyA2IC8vICAidG90YWxfY3VycmVudF92b3RpbmdfcG93ZXIiCglpbnRjIDEgLy8gMAoJYXBwX2dsb2JhbF9wdXQKCXJldHN1YgoKLy8gb3B0SW5Ub0FwcGxpY2F0aW9uKCl2b2lkCiphYmlfcm91dGVfb3B0SW5Ub0FwcGxpY2F0aW9uOgoJLy8gZXhlY3V0ZSBvcHRJblRvQXBwbGljYXRpb24oKXZvaWQKCWNhbGxzdWIgb3B0SW5Ub0FwcGxpY2F0aW9uCglpbnRjIDAgLy8gMQoJcmV0dXJuCgovLyBvcHRJblRvQXBwbGljYXRpb24oKTogdm9pZAovLwovLyBPUFQtSU4gdG8gdGhlIGFwcGxpY2F0aW9uCm9wdEluVG9BcHBsaWNhdGlvbjoKCXByb3RvIDAgMAoKCS8vIFB1c2ggZW1wdHkgYnl0ZXMgYWZ0ZXIgdGhlIGZyYW1lIHBvaW50ZXIgdG8gcmVzZXJ2ZSBzcGFjZSBmb3IgbG9jYWwgdmFyaWFibGVzCglieXRlYyAxIC8vIDB4CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjQyCgkvLyB1c2VyQWRkcmVzczogQWRkcmVzcyA9IHRoaXMudHhuLnNlbmRlcgoJdHhuIFNlbmRlcgoJZnJhbWVfYnVyeSAwIC8vIHVzZXJBZGRyZXNzOiBBZGRyZXNzCgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjQzCgkvLyB0aGlzLnVzZXJfdm90ZXModXNlckFkZHJlc3MpLnZhbHVlID0gMAoJZnJhbWVfZGlnIDAgLy8gdXNlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDcgLy8gICJ1c2VyX3ZvdGVzIgoJaW50YyAxIC8vIDAKCWFwcF9sb2NhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6NDQKCS8vIHRoaXMudXNlcl9jdXJyZW50X3ZvdGluZ19wb3dlcih1c2VyQWRkcmVzcykudmFsdWUgPSAwCglmcmFtZV9kaWcgMCAvLyB1c2VyQWRkcmVzczogQWRkcmVzcwoJYnl0ZWMgMiAvLyAgInVzZXJfY3VycmVudF92b3RpbmdfcG93ZXIiCglpbnRjIDEgLy8gMAoJYXBwX2xvY2FsX3B1dAoJcmV0c3ViCgovLyB1cGRhdGVBcHBNYW5hZ2VyKGFkZHJlc3Mpdm9pZAoqYWJpX3JvdXRlX3VwZGF0ZUFwcE1hbmFnZXI6CgkvLyBuZXdNYW5hZ2VyQWRkcmVzczogYWRkcmVzcwoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMQoJZHVwCglsZW4KCWludGMgMiAvLyAzMgoJPT0KCgkvLyBhcmd1bWVudCAwIChuZXdNYW5hZ2VyQWRkcmVzcykgZm9yIHVwZGF0ZUFwcE1hbmFnZXIgbXVzdCBiZSBhIGFkZHJlc3MKCWFzc2VydAoKCS8vIGV4ZWN1dGUgdXBkYXRlQXBwTWFuYWdlcihhZGRyZXNzKXZvaWQKCWNhbGxzdWIgdXBkYXRlQXBwTWFuYWdlcgoJaW50YyAwIC8vIDEKCXJldHVybgoKLy8gdXBkYXRlQXBwTWFuYWdlcihuZXdNYW5hZ2VyQWRkcmVzczogQWRkcmVzcyk6IHZvaWQKLy8KLy8gVXBkYXRlcyB0aGUKLy8gQHBhcmFtIG5ld01hbmFnZXJBZGRyZXNzIFRoZSBhZGRyZXNzIG9mIHRoZSBuZXcgbWFuYWdlcgp1cGRhdGVBcHBNYW5hZ2VyOgoJcHJvdG8gMSAwCgoJLy8gUHVzaCBlbXB0eSBieXRlcyBhZnRlciB0aGUgZnJhbWUgcG9pbnRlciB0byByZXNlcnZlIHNwYWNlIGZvciBsb2NhbCB2YXJpYWJsZXMKCWJ5dGVjIDEgLy8gMHgKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6NTMKCS8vIHNlbmRlcjogQWRkcmVzcyA9IHRoaXMudHhuLnNlbmRlcgoJdHhuIFNlbmRlcgoJZnJhbWVfYnVyeSAwIC8vIHNlbmRlcjogQWRkcmVzcwoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czo1NgoJLy8gYXNzZXJ0KHNlbmRlciA9PT0gdGhpcy5tYW5hZ2VyX2FkZHJlc3MudmFsdWUsICdVc2VyIGlzIHRyeWluZyB0byBjaGFuZ2UgdGhlIG1hbmFnZXIgb2YgdGhlIGNvbnRyYWN0UycpCglmcmFtZV9kaWcgMCAvLyBzZW5kZXI6IEFkZHJlc3MKCWJ5dGVjIDMgLy8gICJtYW5hZ2VyX2FkZHJlc3MiCglhcHBfZ2xvYmFsX2dldAoJPT0KCgkvLyBVc2VyIGlzIHRyeWluZyB0byBjaGFuZ2UgdGhlIG1hbmFnZXIgb2YgdGhlIGNvbnRyYWN0UwoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjU4CgkvLyB0aGlzLm1hbmFnZXJfYWRkcmVzcy52YWx1ZSA9IG5ld01hbmFnZXJBZGRyZXNzCglieXRlYyAzIC8vICAibWFuYWdlcl9hZGRyZXNzIgoJZnJhbWVfZGlnIC0xIC8vIG5ld01hbmFnZXJBZGRyZXNzOiBBZGRyZXNzCglhcHBfZ2xvYmFsX3B1dAoJcmV0c3ViCgovLyBjcmVhdGVOZXdQcm9wb3NhbChzdHJpbmcsc3RyaW5nLHVpbnQ2NCxwYXkpdm9pZAoqYWJpX3JvdXRlX2NyZWF0ZU5ld1Byb3Bvc2FsOgoJLy8gbWJyVHhuOiBwYXkKCXR4biBHcm91cEluZGV4CglpbnRjIDAgLy8gMQoJLQoJZHVwCglndHhucyBUeXBlRW51bQoJaW50YyAwIC8vICBwYXkKCT09CgoJLy8gYXJndW1lbnQgMCAobWJyVHhuKSBmb3IgY3JlYXRlTmV3UHJvcG9zYWwgbXVzdCBiZSBhIHBheSB0cmFuc2FjdGlvbgoJYXNzZXJ0CgoJLy8gZXhwaXJlc0luOiB1aW50NjQKCXR4bmEgQXBwbGljYXRpb25BcmdzIDMKCWJ0b2kKCgkvLyBwcm9wb3NhbERlc2NyaXB0aW9uOiBzdHJpbmcKCXR4bmEgQXBwbGljYXRpb25BcmdzIDIKCWV4dHJhY3QgMiAwCgoJLy8gcHJvcG9zYWxUaXRsZTogc3RyaW5nCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAxCglleHRyYWN0IDIgMAoKCS8vIGV4ZWN1dGUgY3JlYXRlTmV3UHJvcG9zYWwoc3RyaW5nLHN0cmluZyx1aW50NjQscGF5KXZvaWQKCWNhbGxzdWIgY3JlYXRlTmV3UHJvcG9zYWwKCWludGMgMCAvLyAxCglyZXR1cm4KCi8vIGNyZWF0ZU5ld1Byb3Bvc2FsKHByb3Bvc2FsVGl0bGU6IHN0cmluZywgcHJvcG9zYWxEZXNjcmlwdGlvbjogc3RyaW5nLCBleHBpcmVzSW46IHVpbnQ2NCwgbWJyVHhuOiBQYXlUeG4pOiB2b2lkCi8vCi8vIENyZWF0ZSBhIG5ldyBwcm9wb3NhbAovLyBAcGFyYW0gcHJvcG9zYWxUaXRsZSBUaXRsZSBvZiB0aGUgcHJvcG9zYWwKLy8gQHBhcmFtIHByb3Bvc2FsRGVzY3JpcHRpb24gRGVzY3JpcHRpb24gb2YgdGhlIHByb3Bvc2FsCi8vIEBwYXJhbSBleHBpcmVzSW4gVGltZSBpbiBzZWNvbmRzIGZvciB0aGUgcHJvcG9zYWwgdG8gZXhwaXJlCmNyZWF0ZU5ld1Byb3Bvc2FsOgoJcHJvdG8gNCAwCgoJLy8gUHVzaCBlbXB0eSBieXRlcyBhZnRlciB0aGUgZnJhbWUgcG9pbnRlciB0byByZXNlcnZlIHNwYWNlIGZvciBsb2NhbCB2YXJpYWJsZXMKCWJ5dGVjIDEgLy8gMHgKCWR1cG4gMwoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czo2OQoJLy8gcHJvcG9zZXJBZGRyZXNzOiBBZGRyZXNzID0gdGhpcy50eG4uc2VuZGVyCgl0eG4gU2VuZGVyCglmcmFtZV9idXJ5IDAgLy8gcHJvcG9zZXJBZGRyZXNzOiBBZGRyZXNzCgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjcyCgkvLyBwcm9wb3NhbE5vbmNlOiB1aW50NjQgPSB0aGlzLnRvdGFsX3Byb3Bvc2Fscy52YWx1ZSArIDEKCWJ5dGVjIDQgLy8gICJ0b3RhbF9wcm9wb3NhbHMiCglhcHBfZ2xvYmFsX2dldAoJaW50YyAwIC8vIDEKCSsKCWZyYW1lX2J1cnkgMSAvLyBwcm9wb3NhbE5vbmNlOiB1aW50NjQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6NzMKCS8vIGN1cnJlbnRUaW1lc3RhbXA6IHVpbnQ2NCA9IGdsb2JhbHMubGF0ZXN0VGltZXN0YW1wCglnbG9iYWwgTGF0ZXN0VGltZXN0YW1wCglmcmFtZV9idXJ5IDIgLy8gY3VycmVudFRpbWVzdGFtcDogdWludDY0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjc2CgkvLyBleHBpcnlUaW1lc3RhbXA6IHVpbnQ2NCA9IGN1cnJlbnRUaW1lc3RhbXAgKyBleHBpcmVzSW4KCWZyYW1lX2RpZyAyIC8vIGN1cnJlbnRUaW1lc3RhbXA6IHVpbnQ2NAoJZnJhbWVfZGlnIC0zIC8vIGV4cGlyZXNJbjogdWludDY0CgkrCglmcmFtZV9idXJ5IDMgLy8gZXhwaXJ5VGltZXN0YW1wOiB1aW50NjQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6NzkKCS8vIGFzc2VydChwcm9wb3NlckFkZHJlc3MgPT09IHRoaXMubWFuYWdlcl9hZGRyZXNzLnZhbHVlLCAnT25seSB0aGUgbWFuYWdlciBjYW4gY3JlYXRlIHByb3Bvc2FscycpCglmcmFtZV9kaWcgMCAvLyBwcm9wb3NlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDMgLy8gICJtYW5hZ2VyX2FkZHJlc3MiCglhcHBfZ2xvYmFsX2dldAoJPT0KCgkvLyBPbmx5IHRoZSBtYW5hZ2VyIGNhbiBjcmVhdGUgcHJvcG9zYWxzCglhc3NlcnQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6ODAKCS8vIGFzc2VydCghdGhpcy5wcm9wb3NhbHMoeyBub25jZTogcHJvcG9zYWxOb25jZSB9KS5leGlzdHMsICdQcm9wb3NhbCBhbHJlYWR5IGV4aXN0cycpCglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgMSAvLyBwcm9wb3NhbE5vbmNlOiB1aW50NjQKCWl0b2IKCWNvbmNhdAoJYm94X2xlbgoJc3dhcAoJcG9wCgkhCgoJLy8gUHJvcG9zYWwgYWxyZWFkeSBleGlzdHMKCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czo4MwoJLy8gdmVyaWZ5UGF5VHhuKG1iclR4biwgeyBhbW91bnQ6IHsgZ3JlYXRlclRoYW5FcXVhbFRvOiBQUk9QT1NBTF9NQlIgfSB9KQoJLy8gdmVyaWZ5IGFtb3VudAoJZnJhbWVfZGlnIC00IC8vIG1iclR4bjogUGF5VHhuCglndHhucyBBbW91bnQKCXB1c2hpbnQgNDIxNQoJPj0KCgkvLyB0cmFuc2FjdGlvbiB2ZXJpZmljYXRpb24gZmFpbGVkOiB7InR4biI6Im1iclR4biIsImZpZWxkIjoiYW1vdW50IiwiY29uZGl0aW9uIjoiZ3JlYXRlclRoYW5FcXVhbFRvIiwiZXhwZWN0ZWQiOiI+PVBST1BPU0FMX01CUiJ9Cglhc3NlcnQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6ODYKCS8vIHRoaXMucHJvcG9zYWxzKHsgbm9uY2U6IHByb3Bvc2FsTm9uY2UgfSkudmFsdWUgPSB7CgkvLyAgICAgICBwcm9wb3NhbFRpdGxlOiBwcm9wb3NhbFRpdGxlLAoJLy8gICAgICAgcHJvcG9zYWxEZXNjcmlwdGlvbjogcHJvcG9zYWxEZXNjcmlwdGlvbiwKCS8vICAgICAgIHByb3Bvc2FsVG90YWxWb3RlczogMCwKCS8vICAgICAgIHByb3Bvc2FsWWVzVm90ZXM6IDAsCgkvLyAgICAgICBwcm9wb3NhbFRvdGFsUG93ZXI6IDAsCgkvLyAgICAgICBwcm9wb3NhbFllc1Bvd2VyOiAwLAoJLy8gICAgICAgY3JlYXRlZEF0VGltZXN0YW1wOiBjdXJyZW50VGltZXN0YW1wLAoJLy8gICAgICAgZXhwaXJ5VGltZXN0YW1wOiBleHBpcnlUaW1lc3RhbXAsCgkvLyAgICAgfQoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIDEgLy8gcHJvcG9zYWxOb25jZTogdWludDY0CglpdG9iCgljb25jYXQKCWR1cAoJYm94X2RlbAoJcG9wCglieXRlYyAxIC8vICBpbml0aWFsIGhlYWQKCWJ5dGVjIDEgLy8gIGluaXRpYWwgdGFpbAoJcHVzaGJ5dGVzIDB4MDAzNCAvLyBpbml0aWFsIGhlYWQgb2Zmc2V0CglmcmFtZV9kaWcgLTEgLy8gcHJvcG9zYWxUaXRsZTogc3RyaW5nCglkdXAKCWxlbgoJaXRvYgoJZXh0cmFjdCA2IDIKCXN3YXAKCWNvbmNhdAoJY2FsbHN1YiAqcHJvY2Vzc19keW5hbWljX3R1cGxlX2VsZW1lbnQKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbERlc2NyaXB0aW9uOiBzdHJpbmcKCWR1cAoJbGVuCglpdG9iCglleHRyYWN0IDYgMgoJc3dhcAoJY29uY2F0CgljYWxsc3ViICpwcm9jZXNzX2R5bmFtaWNfdHVwbGVfZWxlbWVudAoJYnl0ZWMgNSAvLyAweDAwMDAwMDAwMDAwMDAwMDAKCWNhbGxzdWIgKnByb2Nlc3Nfc3RhdGljX3R1cGxlX2VsZW1lbnQKCWJ5dGVjIDUgLy8gMHgwMDAwMDAwMDAwMDAwMDAwCgljYWxsc3ViICpwcm9jZXNzX3N0YXRpY190dXBsZV9lbGVtZW50CglieXRlYyA1IC8vIDB4MDAwMDAwMDAwMDAwMDAwMAoJY2FsbHN1YiAqcHJvY2Vzc19zdGF0aWNfdHVwbGVfZWxlbWVudAoJYnl0ZWMgNSAvLyAweDAwMDAwMDAwMDAwMDAwMDAKCWNhbGxzdWIgKnByb2Nlc3Nfc3RhdGljX3R1cGxlX2VsZW1lbnQKCWZyYW1lX2RpZyAyIC8vIGN1cnJlbnRUaW1lc3RhbXA6IHVpbnQ2NAoJaXRvYgoJY2FsbHN1YiAqcHJvY2Vzc19zdGF0aWNfdHVwbGVfZWxlbWVudAoJZnJhbWVfZGlnIDMgLy8gZXhwaXJ5VGltZXN0YW1wOiB1aW50NjQKCWl0b2IKCWNhbGxzdWIgKnByb2Nlc3Nfc3RhdGljX3R1cGxlX2VsZW1lbnQKCXBvcCAvLyBwb3AgaGVhZCBvZmZzZXQKCWNvbmNhdCAvLyBjb25jYXQgaGVhZCBhbmQgdGFpbAoJYm94X3B1dAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czo5NwoJLy8gdGhpcy50b3RhbF9wcm9wb3NhbHMudmFsdWUgKz0gMQoJYnl0ZWMgNCAvLyAgInRvdGFsX3Byb3Bvc2FscyIKCWFwcF9nbG9iYWxfZ2V0CglpbnRjIDAgLy8gMQoJKwoJYnl0ZWMgNCAvLyAgInRvdGFsX3Byb3Bvc2FscyIKCXN3YXAKCWFwcF9nbG9iYWxfcHV0CglyZXRzdWIKCi8vIHJlY29yZFVzZXJWb3Rlcyh2b3RlckFkZHJlc3M6IEFkZHJlc3MsIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlLCB2b3RpbmdQb3dlcjogdWludDY0LCBpbkZhdm9yOiBib29sZWFuLCBtYnJUeG46IFBheVR4bik6IHZvaWQKLy8KLy8gQ3JlYXRlIGEgbmV3IHByb3Bvc2FsCi8vIEBwYXJhbSB2b3RlckFkZHJlc3MgVGhlIGFkZHJlc3Mgb2Ygd2hvIGlzIHZvdGluZwovLyBAcGFyYW0gcHJvcG9zYWxJZCBJZCBvZiB0aGUgcHJvcG9zYWwgdG8gYmUgdm90ZWQgb24KLy8gQHBhcmFtIHZvdGluZ1Bvd2VyIFRoZSB2b3RpbmcgcG93ZXIgb2YgdGhlIHZvdGVyCi8vIEBwYXJhbSBpbkZhdm9yIElmIHRoZSB2b3RlIGlzIGEgeWVzIG9yIGEgbm8KcmVjb3JkVXNlclZvdGVzOgoJcHJvdG8gNSAwCgoJLy8gUHVzaCBlbXB0eSBieXRlcyBhZnRlciB0aGUgZnJhbWUgcG9pbnRlciB0byByZXNlcnZlIHNwYWNlIGZvciBsb2NhbCB2YXJpYWJsZXMKCWJ5dGVjIDEgLy8gMHgKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTE1CgkvLyBhc3NlcnQodGhpcy50eG4uc2VuZGVyID09PSB0aGlzLm1hbmFnZXJfYWRkcmVzcy52YWx1ZSwgJ09ubHkgdGhlIG1hbmFnZXIgY2FuIGFkZCB2b3RlcyB0byB1c2VycycpCgl0eG4gU2VuZGVyCglieXRlYyAzIC8vICAibWFuYWdlcl9hZGRyZXNzIgoJYXBwX2dsb2JhbF9nZXQKCT09CgoJLy8gT25seSB0aGUgbWFuYWdlciBjYW4gYWRkIHZvdGVzIHRvIHVzZXJzCglhc3NlcnQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTE3CgkvLyB2ZXJpZnlQYXlUeG4obWJyVHhuLCB7IGFtb3VudDogeyBncmVhdGVyVGhhbkVxdWFsVG86IDJfMTIwIH0gfSkKCS8vIHZlcmlmeSBhbW91bnQKCWZyYW1lX2RpZyAtNSAvLyBtYnJUeG46IFBheVR4bgoJZ3R4bnMgQW1vdW50CglwdXNoaW50IDJfMTIwCgk+PQoKCS8vIHRyYW5zYWN0aW9uIHZlcmlmaWNhdGlvbiBmYWlsZWQ6IHsidHhuIjoibWJyVHhuIiwiZmllbGQiOiJhbW91bnQiLCJjb25kaXRpb24iOiJncmVhdGVyVGhhbkVxdWFsVG8iLCJleHBlY3RlZCI6Ij49Ml8xMjAifQoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjExOQoJLy8gdm90ZVRpbWVzdGFtcCA9IGdsb2JhbHMubGF0ZXN0VGltZXN0YW1wCglnbG9iYWwgTGF0ZXN0VGltZXN0YW1wCglmcmFtZV9idXJ5IDAgLy8gdm90ZVRpbWVzdGFtcDogdWludDY0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjEyMQoJLy8gYXNzZXJ0KHRoaXMucHJvcG9zYWxzKHByb3Bvc2FsSWQpLnZhbHVlLmV4cGlyeVRpbWVzdGFtcCA+PSB2b3RlVGltZXN0YW1wLCAnUHJvcG9zYWwgYWxyZWFkeSBleHBpcmVkJykKCWJ5dGVjIDAgLy8gICJfcCIKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbElkOiBQcm9wb3NhbElkVHlwZQoJY29uY2F0Cglib3hfZ2V0CgoJLy8gYm94IHZhbHVlIGRvZXMgbm90IGV4aXN0OiB0aGlzLnByb3Bvc2Fscyhwcm9wb3NhbElkKS52YWx1ZQoJYXNzZXJ0CglzdG9yZSAyNTUgLy8gZnVsbCBhcnJheQoJbG9hZCAyNTUgLy8gZnVsbCBhcnJheQoJZXh0cmFjdCA0NCA4CglidG9pCglmcmFtZV9kaWcgMCAvLyB2b3RlVGltZXN0YW1wOiB1aW50NjQKCT49CgoJLy8gUHJvcG9zYWwgYWxyZWFkeSBleHBpcmVkCglhc3NlcnQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTI0CgkvLyBhc3NlcnQoCgkvLyAgICAgICB0aGlzLnZvdGVzKHsgcHJvcG9zYWxJZDogcHJvcG9zYWxJZCwgdm90ZXJBZGRyZXNzOiB2b3RlckFkZHJlc3MgfSkuZXhpc3RzID09PSBmYWxzZSwKCS8vICAgICAgICdVc2VyIGFscmVhZHkgdm90ZWQgb24gdGhpcyBwcm9wb3NhbCcKCS8vICAgICApCglieXRlYyA5IC8vICAiX3YiCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWZyYW1lX2RpZyAtMSAvLyB2b3RlckFkZHJlc3M6IEFkZHJlc3MKCWNvbmNhdAoJY29uY2F0Cglib3hfbGVuCglzd2FwCglwb3AKCWludGMgMSAvLyAwCgk9PQoKCS8vIFVzZXIgYWxyZWFkeSB2b3RlZCBvbiB0aGlzIHByb3Bvc2FsCglhc3NlcnQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTMwCgkvLyBhc3NlcnQodm90ZXJBZGRyZXNzLmlzT3B0ZWRJblRvQXBwKHRoaXMuYXBwLmlkKSwgJ1VzZXIgaGFzIG5vdCBvcHRlZCBpbiB0byB0aGUgY29udHJhY3QnKQoJZnJhbWVfZGlnIC0xIC8vIHZvdGVyQWRkcmVzczogQWRkcmVzcwoJdHhuYSBBcHBsaWNhdGlvbnMgMAoJYXBwX29wdGVkX2luCgoJLy8gVXNlciBoYXMgbm90IG9wdGVkIGluIHRvIHRoZSBjb250cmFjdAoJYXNzZXJ0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjEzMgoJLy8gdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUucHJvcG9zYWxUb3RhbFZvdGVzICs9IDEKCWJ5dGVjIDAgLy8gICJfcCIKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbElkOiBQcm9wb3NhbElkVHlwZQoJY29uY2F0Cglib3hfZ2V0CgoJLy8gYm94IHZhbHVlIGRvZXMgbm90IGV4aXN0OiB0aGlzLnByb3Bvc2Fscyhwcm9wb3NhbElkKS52YWx1ZQoJYXNzZXJ0CglzdG9yZSAyNTUgLy8gZnVsbCBhcnJheQoJbG9hZCAyNTUgLy8gZnVsbCBhcnJheQoJcHVzaGludCA0CglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJYm94X2dldAoKCS8vIGJveCB2YWx1ZSBkb2VzIG5vdCBleGlzdDogdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUKCWFzc2VydAoJc3RvcmUgMjU1IC8vIGZ1bGwgYXJyYXkKCWxvYWQgMjU1IC8vIGZ1bGwgYXJyYXkKCWV4dHJhY3QgNCA4CglidG9pCglpbnRjIDAgLy8gMQoJKwoJaXRvYgoJcmVwbGFjZTMKCWJ5dGVjIDAgLy8gICJfcCIKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbElkOiBQcm9wb3NhbElkVHlwZQoJY29uY2F0CglkdXAKCWJveF9kZWwKCXBvcAoJc3dhcAoJYm94X3B1dAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxMzMKCS8vIHRoaXMucHJvcG9zYWxzKHByb3Bvc2FsSWQpLnZhbHVlLnByb3Bvc2FsVG90YWxQb3dlciArPSB2b3RpbmdQb3dlcgoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCgljb25jYXQKCWJveF9nZXQKCgkvLyBib3ggdmFsdWUgZG9lcyBub3QgZXhpc3Q6IHRoaXMucHJvcG9zYWxzKHByb3Bvc2FsSWQpLnZhbHVlCglhc3NlcnQKCXN0b3JlIDI1NSAvLyBmdWxsIGFycmF5Cglsb2FkIDI1NSAvLyBmdWxsIGFycmF5CglwdXNoaW50IDIwCglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJYm94X2dldAoKCS8vIGJveCB2YWx1ZSBkb2VzIG5vdCBleGlzdDogdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUKCWFzc2VydAoJc3RvcmUgMjU1IC8vIGZ1bGwgYXJyYXkKCWxvYWQgMjU1IC8vIGZ1bGwgYXJyYXkKCWV4dHJhY3QgMjAgOAoJYnRvaQoJZnJhbWVfZGlnIC0zIC8vIHZvdGluZ1Bvd2VyOiB1aW50NjQKCSsKCWl0b2IKCXJlcGxhY2UzCglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJZHVwCglib3hfZGVsCglwb3AKCXN3YXAKCWJveF9wdXQKCgkvLyAqaWYwX2NvbmRpdGlvbgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjEzNAoJLy8gaW5GYXZvcgoJZnJhbWVfZGlnIC00IC8vIGluRmF2b3I6IGJvb2xlYW4KCWJ6ICppZjBfZW5kCgoJLy8gKmlmMF9jb25zZXF1ZW50CgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTM1CgkvLyB0aGlzLnByb3Bvc2Fscyhwcm9wb3NhbElkKS52YWx1ZS5wcm9wb3NhbFllc1ZvdGVzICs9IDEKCWJ5dGVjIDAgLy8gICJfcCIKCWZyYW1lX2RpZyAtMiAvLyBwcm9wb3NhbElkOiBQcm9wb3NhbElkVHlwZQoJY29uY2F0Cglib3hfZ2V0CgoJLy8gYm94IHZhbHVlIGRvZXMgbm90IGV4aXN0OiB0aGlzLnByb3Bvc2Fscyhwcm9wb3NhbElkKS52YWx1ZQoJYXNzZXJ0CglzdG9yZSAyNTUgLy8gZnVsbCBhcnJheQoJbG9hZCAyNTUgLy8gZnVsbCBhcnJheQoJcHVzaGludCAxMgoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCgljb25jYXQKCWJveF9nZXQKCgkvLyBib3ggdmFsdWUgZG9lcyBub3QgZXhpc3Q6IHRoaXMucHJvcG9zYWxzKHByb3Bvc2FsSWQpLnZhbHVlCglhc3NlcnQKCXN0b3JlIDI1NSAvLyBmdWxsIGFycmF5Cglsb2FkIDI1NSAvLyBmdWxsIGFycmF5CglleHRyYWN0IDEyIDgKCWJ0b2kKCWludGMgMCAvLyAxCgkrCglpdG9iCglyZXBsYWNlMwoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCgljb25jYXQKCWR1cAoJYm94X2RlbAoJcG9wCglzd2FwCglib3hfcHV0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjEzNgoJLy8gdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUucHJvcG9zYWxZZXNQb3dlciArPSB2b3RpbmdQb3dlcgoJYnl0ZWMgMCAvLyAgIl9wIgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCgljb25jYXQKCWJveF9nZXQKCgkvLyBib3ggdmFsdWUgZG9lcyBub3QgZXhpc3Q6IHRoaXMucHJvcG9zYWxzKHByb3Bvc2FsSWQpLnZhbHVlCglhc3NlcnQKCXN0b3JlIDI1NSAvLyBmdWxsIGFycmF5Cglsb2FkIDI1NSAvLyBmdWxsIGFycmF5CglwdXNoaW50IDI4CglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJYm94X2dldAoKCS8vIGJveCB2YWx1ZSBkb2VzIG5vdCBleGlzdDogdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUKCWFzc2VydAoJc3RvcmUgMjU1IC8vIGZ1bGwgYXJyYXkKCWxvYWQgMjU1IC8vIGZ1bGwgYXJyYXkKCWV4dHJhY3QgMjggOAoJYnRvaQoJZnJhbWVfZGlnIC0zIC8vIHZvdGluZ1Bvd2VyOiB1aW50NjQKCSsKCWl0b2IKCXJlcGxhY2UzCglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTIgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJZHVwCglib3hfZGVsCglwb3AKCXN3YXAKCWJveF9wdXQKCippZjBfZW5kOgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjEzOAoJLy8gdGhpcy51c2VyX3ZvdGVzKHZvdGVyQWRkcmVzcykudmFsdWUgKz0gMQoJZnJhbWVfZGlnIC0xIC8vIHZvdGVyQWRkcmVzczogQWRkcmVzcwoJYnl0ZWMgNyAvLyAgInVzZXJfdm90ZXMiCglhcHBfbG9jYWxfZ2V0CglpbnRjIDAgLy8gMQoJKwoJZnJhbWVfZGlnIC0xIC8vIHZvdGVyQWRkcmVzczogQWRkcmVzcwoJYnl0ZWMgNyAvLyAgInVzZXJfdm90ZXMiCgl1bmNvdmVyIDIKCWFwcF9sb2NhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTQwCgkvLyB0aGlzLnZvdGVzKHsgcHJvcG9zYWxJZDogcHJvcG9zYWxJZCwgdm90ZXJBZGRyZXNzOiB2b3RlckFkZHJlc3MgfSkudmFsdWUgPSB7IHZvdGVUaW1lc3RhbXA6IHZvdGVUaW1lc3RhbXAgfQoJYnl0ZWMgOSAvLyAgIl92IgoJZnJhbWVfZGlnIC0yIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCglmcmFtZV9kaWcgLTEgLy8gdm90ZXJBZGRyZXNzOiBBZGRyZXNzCgljb25jYXQKCWNvbmNhdAoJZnJhbWVfZGlnIDAgLy8gdm90ZVRpbWVzdGFtcDogdWludDY0CglpdG9iCglib3hfcHV0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjE0MgoJLy8gdGhpcy50b3RhbF92b3Rlcy52YWx1ZSArPSAxCglieXRlYyA4IC8vICAidG90YWxfdm90ZXMiCglhcHBfZ2xvYmFsX2dldAoJaW50YyAwIC8vIDEKCSsKCWJ5dGVjIDggLy8gICJ0b3RhbF92b3RlcyIKCXN3YXAKCWFwcF9nbG9iYWxfcHV0CglyZXRzdWIKCi8vIHVwZGF0ZVVzZXJDdXJyZW50Vm90aW5nUG93ZXIoYWRkcmVzcyx1aW50NjQpdm9pZAoqYWJpX3JvdXRlX3VwZGF0ZVVzZXJDdXJyZW50Vm90aW5nUG93ZXI6CgkvLyBuZXdWb3RpbmdQb3dlcjogdWludDY0Cgl0eG5hIEFwcGxpY2F0aW9uQXJncyAyCglidG9pCgoJLy8gdXNlckFkZHJlc3M6IGFkZHJlc3MKCXR4bmEgQXBwbGljYXRpb25BcmdzIDEKCWR1cAoJbGVuCglpbnRjIDIgLy8gMzIKCT09CgoJLy8gYXJndW1lbnQgMSAodXNlckFkZHJlc3MpIGZvciB1cGRhdGVVc2VyQ3VycmVudFZvdGluZ1Bvd2VyIG11c3QgYmUgYSBhZGRyZXNzCglhc3NlcnQKCgkvLyBleGVjdXRlIHVwZGF0ZVVzZXJDdXJyZW50Vm90aW5nUG93ZXIoYWRkcmVzcyx1aW50NjQpdm9pZAoJY2FsbHN1YiB1cGRhdGVVc2VyQ3VycmVudFZvdGluZ1Bvd2VyCglpbnRjIDAgLy8gMQoJcmV0dXJuCgovLyB1cGRhdGVVc2VyQ3VycmVudFZvdGluZ1Bvd2VyKHVzZXJBZGRyZXNzOiBBZGRyZXNzLCBuZXdWb3RpbmdQb3dlcjogdWludDY0KTogdm9pZAovLwovLyBBZGQgb25lIHRvIHRoZSB1c2VyIGNvbnRyaWJ1dGlvbiBvbmNlIGl0IHZvdGVzIG9uIGEgcG9vbCBwcm9wb3NhbAovLyBAcGFyYW0gdXNlckFkZHJlc3MgYWRkcmVzcyBvZiB0aGUgdXNlciB0byBhZGQgdGhlIGNvbnRyaWJ1dGlvbgovLwovLwovLyBBZGQgb25lIHRvIHRoZSB1c2VyIGNvbnRyaWJ1dGlvbiBvbmNlIGl0IHZvdGVzIG9uIGEgcG9vbCBwcm9wb3NhbAovLyBAcGFyYW0gdXNlckFkZHJlc3MgYWRkcmVzcyBvZiB0aGUgdXNlciB0byBhZGQgdGhlIHNwZWNpYWwgdm90ZQovLyBAcGFyYW0gbmV3Vm90aW5nUG93ZXIgVGhlIHZvdGluZyBwb3dlciBvZiB0aGUgdm90ZXIKdXBkYXRlVXNlckN1cnJlbnRWb3RpbmdQb3dlcjoKCXByb3RvIDIgMAoKCS8vIFB1c2ggZW1wdHkgYnl0ZXMgYWZ0ZXIgdGhlIGZyYW1lIHBvaW50ZXIgdG8gcmVzZXJ2ZSBzcGFjZSBmb3IgbG9jYWwgdmFyaWFibGVzCglieXRlYyAxIC8vIDB4CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjE1OQoJLy8gY3VycmVudFZvdGluZ1Bvd2VyOiB1aW50NjQgPSB0aGlzLnVzZXJfY3VycmVudF92b3RpbmdfcG93ZXIodXNlckFkZHJlc3MpLnZhbHVlCglmcmFtZV9kaWcgLTEgLy8gdXNlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDIgLy8gICJ1c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyIgoJYXBwX2xvY2FsX2dldAoJZnJhbWVfYnVyeSAwIC8vIGN1cnJlbnRWb3RpbmdQb3dlcjogdWludDY0CgoJLy8gY29udHJhY3RzL0NvbXB4R292ZXJuYW5jZS5hbGdvLnRzOjE2MAoJLy8gdGhpcy51c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyKHVzZXJBZGRyZXNzKS52YWx1ZSA9IG5ld1ZvdGluZ1Bvd2VyCglmcmFtZV9kaWcgLTEgLy8gdXNlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDIgLy8gICJ1c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyIgoJZnJhbWVfZGlnIC0yIC8vIG5ld1ZvdGluZ1Bvd2VyOiB1aW50NjQKCWFwcF9sb2NhbF9wdXQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTYyCgkvLyB0aGlzLnRvdGFsX2N1cnJlbnRfdm90aW5nX3Bvd2VyLnZhbHVlID0gbmV3Vm90aW5nUG93ZXIgKyB0aGlzLnRvdGFsX2N1cnJlbnRfdm90aW5nX3Bvd2VyLnZhbHVlIC0gY3VycmVudFZvdGluZ1Bvd2VyCglieXRlYyA2IC8vICAidG90YWxfY3VycmVudF92b3RpbmdfcG93ZXIiCglmcmFtZV9kaWcgLTIgLy8gbmV3Vm90aW5nUG93ZXI6IHVpbnQ2NAoJYnl0ZWMgNiAvLyAgInRvdGFsX2N1cnJlbnRfdm90aW5nX3Bvd2VyIgoJYXBwX2dsb2JhbF9nZXQKCSsKCWZyYW1lX2RpZyAwIC8vIGN1cnJlbnRWb3RpbmdQb3dlcjogdWludDY0CgktCglhcHBfZ2xvYmFsX3B1dAoJcmV0c3ViCgovLyBtYWtlUHJvcG9zYWxWb3RlKCh1aW50NjQpLGJvb2wsYWRkcmVzcyx1aW50NjQscGF5KXZvaWQKKmFiaV9yb3V0ZV9tYWtlUHJvcG9zYWxWb3RlOgoJLy8gbWJyVHhuOiBwYXkKCXR4biBHcm91cEluZGV4CglpbnRjIDAgLy8gMQoJLQoJZHVwCglndHhucyBUeXBlRW51bQoJaW50YyAwIC8vICBwYXkKCT09CgoJLy8gYXJndW1lbnQgMCAobWJyVHhuKSBmb3IgbWFrZVByb3Bvc2FsVm90ZSBtdXN0IGJlIGEgcGF5IHRyYW5zYWN0aW9uCglhc3NlcnQKCgkvLyB2b3RpbmdQb3dlcjogdWludDY0Cgl0eG5hIEFwcGxpY2F0aW9uQXJncyA0CglidG9pCgoJLy8gdm90ZXJBZGRyZXNzOiBhZGRyZXNzCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAzCglkdXAKCWxlbgoJaW50YyAyIC8vIDMyCgk9PQoKCS8vIGFyZ3VtZW50IDIgKHZvdGVyQWRkcmVzcykgZm9yIG1ha2VQcm9wb3NhbFZvdGUgbXVzdCBiZSBhIGFkZHJlc3MKCWFzc2VydAoKCS8vIGluRmF2b3I6IGJvb2wKCXR4bmEgQXBwbGljYXRpb25BcmdzIDIKCWR1cAoJbGVuCglpbnRjIDAgLy8gMQoJPT0KCgkvLyBhcmd1bWVudCAzIChpbkZhdm9yKSBmb3IgbWFrZVByb3Bvc2FsVm90ZSBtdXN0IGJlIGEgYm9vbAoJYXNzZXJ0CglpbnRjIDEgLy8gMAoJZ2V0Yml0CgoJLy8gcHJvcG9zYWxJZDogKHVpbnQ2NCkKCXR4bmEgQXBwbGljYXRpb25BcmdzIDEKCWR1cAoJbGVuCglpbnRjIDMgLy8gOAoJPT0KCgkvLyBhcmd1bWVudCA0IChwcm9wb3NhbElkKSBmb3IgbWFrZVByb3Bvc2FsVm90ZSBtdXN0IGJlIGEgKHVpbnQ2NCkKCWFzc2VydAoKCS8vIGV4ZWN1dGUgbWFrZVByb3Bvc2FsVm90ZSgodWludDY0KSxib29sLGFkZHJlc3MsdWludDY0LHBheSl2b2lkCgljYWxsc3ViIG1ha2VQcm9wb3NhbFZvdGUKCWludGMgMCAvLyAxCglyZXR1cm4KCi8vIG1ha2VQcm9wb3NhbFZvdGUocHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUsIGluRmF2b3I6IGJvb2xlYW4sIHZvdGVyQWRkcmVzczogQWRkcmVzcywgdm90aW5nUG93ZXI6IHVpbnQ2NCwgbWJyVHhuOiBQYXlUeG4pOiB2b2lkCi8vCi8vIEFkZCBvbmUgdG8gdGhlIHVzZXIgY29udHJpYnV0aW9uIG9uY2UgaXQgdm90ZXMgb24gYSBwb29sIHByb3Bvc2FsCi8vIEBwYXJhbSBwcm9wb3NhbElkIFRoZSBpZCBvZiB0aGUgcHJvcG9zYWwgdG8gYmUgdm90ZWQgb24KLy8gQHBhcmFtIGluRmF2b3IgSWYgdGhlIHZvdGUgaXMgYSB5ZXMgb3Igbm8gdm90ZQovLyBAcGFyYW0gdm90ZXJBZGRyZXNzIFRoZSBhZGRyZXNzIGZvciB0aGUgdm90ZXIgLSBNZWFudCBmb3IgdjEuMCB3aGlsZSBtYW5hZ2VyICJzZXJ2ZXIiIHdpbGwgYmUgcmVzcG9uc2libGUgdG8gZXhlY3V0ZQovLyBAcGFyYW0gdm90aW5nUG93ZXIgVGhlIHZvdGluZyBwb3dlciBvZiB0aGUgdm90ZXIKbWFrZVByb3Bvc2FsVm90ZToKCXByb3RvIDUgMAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxNzkKCS8vIGFzc2VydCh0aGlzLnR4bi5zZW5kZXIgPT09IHRoaXMubWFuYWdlcl9hZGRyZXNzLnZhbHVlLCAnT25seSB0aGUgbWFuYWdlciBjYW4gYWRkIHZvdGVzIHRvIHVzZXJzJykKCXR4biBTZW5kZXIKCWJ5dGVjIDMgLy8gICJtYW5hZ2VyX2FkZHJlc3MiCglhcHBfZ2xvYmFsX2dldAoJPT0KCgkvLyBPbmx5IHRoZSBtYW5hZ2VyIGNhbiBhZGQgdm90ZXMgdG8gdXNlcnMKCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxODIKCS8vIHZlcmlmeVBheVR4bihtYnJUeG4sIHsgYW1vdW50OiB7IGdyZWF0ZXJUaGFuRXF1YWxUbzogVk9URV9NQlIgfSB9KQoJLy8gdmVyaWZ5IGFtb3VudAoJZnJhbWVfZGlnIC01IC8vIG1iclR4bjogUGF5VHhuCglndHhucyBBbW91bnQKCXB1c2hpbnQgMjI3MgoJPj0KCgkvLyB0cmFuc2FjdGlvbiB2ZXJpZmljYXRpb24gZmFpbGVkOiB7InR4biI6Im1iclR4biIsImZpZWxkIjoiYW1vdW50IiwiY29uZGl0aW9uIjoiZ3JlYXRlclRoYW5FcXVhbFRvIiwiZXhwZWN0ZWQiOiI+PVZPVEVfTUJSIn0KCWFzc2VydAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxODUKCS8vIHRoaXMudXBkYXRlVXNlckN1cnJlbnRWb3RpbmdQb3dlcih2b3RlckFkZHJlc3MsIHZvdGluZ1Bvd2VyKQoJZnJhbWVfZGlnIC00IC8vIHZvdGluZ1Bvd2VyOiB1aW50NjQKCWZyYW1lX2RpZyAtMyAvLyB2b3RlckFkZHJlc3M6IEFkZHJlc3MKCWNhbGxzdWIgdXBkYXRlVXNlckN1cnJlbnRWb3RpbmdQb3dlcgoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxODYKCS8vIHRoaXMucmVjb3JkVXNlclZvdGVzKHZvdGVyQWRkcmVzcywgcHJvcG9zYWxJZCwgdGhpcy51c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyKHZvdGVyQWRkcmVzcykudmFsdWUsIGluRmF2b3IsIG1iclR4bikKCWZyYW1lX2RpZyAtNSAvLyBtYnJUeG46IFBheVR4bgoJZnJhbWVfZGlnIC0yIC8vIGluRmF2b3I6IGJvb2xlYW4KCWZyYW1lX2RpZyAtMyAvLyB2b3RlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDIgLy8gICJ1c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyIgoJYXBwX2xvY2FsX2dldAoJZnJhbWVfZGlnIC0xIC8vIHByb3Bvc2FsSWQ6IFByb3Bvc2FsSWRUeXBlCglmcmFtZV9kaWcgLTMgLy8gdm90ZXJBZGRyZXNzOiBBZGRyZXNzCgljYWxsc3ViIHJlY29yZFVzZXJWb3RlcwoJcmV0c3ViCgovLyBzbGFzaFVzZXJWb3RpbmdQb3dlcihhZGRyZXNzLHVpbnQ2NCl2b2lkCiphYmlfcm91dGVfc2xhc2hVc2VyVm90aW5nUG93ZXI6CgkvLyBhbW91bnQ6IHVpbnQ2NAoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMgoJYnRvaQoKCS8vIHVzZXJBZGRyZXNzOiBhZGRyZXNzCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAxCglkdXAKCWxlbgoJaW50YyAyIC8vIDMyCgk9PQoKCS8vIGFyZ3VtZW50IDEgKHVzZXJBZGRyZXNzKSBmb3Igc2xhc2hVc2VyVm90aW5nUG93ZXIgbXVzdCBiZSBhIGFkZHJlc3MKCWFzc2VydAoKCS8vIGV4ZWN1dGUgc2xhc2hVc2VyVm90aW5nUG93ZXIoYWRkcmVzcyx1aW50NjQpdm9pZAoJY2FsbHN1YiBzbGFzaFVzZXJWb3RpbmdQb3dlcgoJaW50YyAwIC8vIDEKCXJldHVybgoKLy8gc2xhc2hVc2VyVm90aW5nUG93ZXIodXNlckFkZHJlc3M6IEFkZHJlc3MsIGFtb3VudDogdWludDY0KTogdm9pZAovLwovLyBBZGQgb25lIHRvIHRoZSB1c2VyIGNvbnRyaWJ1dGlvbiBvbmNlIGl0IHZvdGVzIG9uIGEgcG9vbCBwcm9wb3NhbAovLyBAcGFyYW0gdXNlckFkZHJlc3MgVGhlIGFkZHJlc3Mgb2YgdGhlIHVzZXIgdG8gZ2V0IGl0cyBjb250cmlidXRpb24gc2xhc2hlZAovLyBAcGFyYW0gYW1vdW50IFRoZSBhbW91bnQgdG8gYmUgc2xhc2hlZApzbGFzaFVzZXJWb3RpbmdQb3dlcjoKCXByb3RvIDIgMAoKCS8vIGNvbnRyYWN0cy9Db21weEdvdmVybmFuY2UuYWxnby50czoxOTUKCS8vIGFzc2VydCh0aGlzLnR4bi5zZW5kZXIgPT09IHRoaXMubWFuYWdlcl9hZGRyZXNzLnZhbHVlLCAnT25seSB0aGUgbWFuYWdlciBjYW4gc2xhc2ggdXNlciBjb250cmlidXRpb24nKQoJdHhuIFNlbmRlcgoJYnl0ZWMgMyAvLyAgIm1hbmFnZXJfYWRkcmVzcyIKCWFwcF9nbG9iYWxfZ2V0Cgk9PQoKCS8vIE9ubHkgdGhlIG1hbmFnZXIgY2FuIHNsYXNoIHVzZXIgY29udHJpYnV0aW9uCglhc3NlcnQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTk2CgkvLyBhc3NlcnQodGhpcy51c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyKHVzZXJBZGRyZXNzKS52YWx1ZSA+PSBhbW91bnQsICdVc2VyIGRvZXMgbm90IGhhdmUgZW5vdWdoIHZvdGluZyBwb3dlcicpCglmcmFtZV9kaWcgLTEgLy8gdXNlckFkZHJlc3M6IEFkZHJlc3MKCWJ5dGVjIDIgLy8gICJ1c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyIgoJYXBwX2xvY2FsX2dldAoJZnJhbWVfZGlnIC0yIC8vIGFtb3VudDogdWludDY0Cgk+PQoKCS8vIFVzZXIgZG9lcyBub3QgaGF2ZSBlbm91Z2ggdm90aW5nIHBvd2VyCglhc3NlcnQKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MTk3CgkvLyB0aGlzLnVzZXJfY3VycmVudF92b3RpbmdfcG93ZXIodXNlckFkZHJlc3MpLnZhbHVlIC09IGFtb3VudAoJZnJhbWVfZGlnIC0xIC8vIHVzZXJBZGRyZXNzOiBBZGRyZXNzCglieXRlYyAyIC8vICAidXNlcl9jdXJyZW50X3ZvdGluZ19wb3dlciIKCWFwcF9sb2NhbF9nZXQKCWZyYW1lX2RpZyAtMiAvLyBhbW91bnQ6IHVpbnQ2NAoJLQoJZnJhbWVfZGlnIC0xIC8vIHVzZXJBZGRyZXNzOiBBZGRyZXNzCglieXRlYyAyIC8vICAidXNlcl9jdXJyZW50X3ZvdGluZ19wb3dlciIKCXVuY292ZXIgMgoJYXBwX2xvY2FsX3B1dAoJcmV0c3ViCgovLyBnZXRQcm9wb3NhbHNCeUlkKCh1aW50NjQpKShzdHJpbmcsc3RyaW5nLHVpbnQ2NCx1aW50NjQsdWludDY0LHVpbnQ2NCx1aW50NjQsdWludDY0KQoqYWJpX3JvdXRlX2dldFByb3Bvc2Fsc0J5SWQ6CgkvLyBUaGUgQUJJIHJldHVybiBwcmVmaXgKCXB1c2hieXRlcyAweDE1MWY3Yzc1CgoJLy8gcHJvcG9zYWxJZDogKHVpbnQ2NCkKCXR4bmEgQXBwbGljYXRpb25BcmdzIDEKCWR1cAoJbGVuCglpbnRjIDMgLy8gOAoJPT0KCgkvLyBhcmd1bWVudCAwIChwcm9wb3NhbElkKSBmb3IgZ2V0UHJvcG9zYWxzQnlJZCBtdXN0IGJlIGEgKHVpbnQ2NCkKCWFzc2VydAoKCS8vIGV4ZWN1dGUgZ2V0UHJvcG9zYWxzQnlJZCgodWludDY0KSkoc3RyaW5nLHN0cmluZyx1aW50NjQsdWludDY0LHVpbnQ2NCx1aW50NjQsdWludDY0LHVpbnQ2NCkKCWNhbGxzdWIgZ2V0UHJvcG9zYWxzQnlJZAoJY29uY2F0Cglsb2cKCWludGMgMCAvLyAxCglyZXR1cm4KCi8vIGdldFByb3Bvc2Fsc0J5SWQocHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUpOiBQcm9wb3NhbERhdGFUeXBlCi8vCi8vCi8vIEBwYXJhbSBwcm9wb3NhbElkIHVzZWQgdG8gZGVmaW5lIHN0YXRlIG9mIHByb3Bvc2FscyB0byByZXR1cm4KLy8gQHJldHVybnMge1Byb3Bvc2FsRGF0YVR5cGV9IFJldHVybnMgdGhlIHByb3Bvc2FsIGJ5IGlkCmdldFByb3Bvc2Fsc0J5SWQ6Cglwcm90byAxIDEKCgkvLyBjb250cmFjdHMvQ29tcHhHb3Zlcm5hbmNlLmFsZ28udHM6MjA2CgkvLyByZXR1cm4gdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWU7CglieXRlYyAwIC8vICAiX3AiCglmcmFtZV9kaWcgLTEgLy8gcHJvcG9zYWxJZDogUHJvcG9zYWxJZFR5cGUKCWNvbmNhdAoJYm94X2dldAoKCS8vIGJveCB2YWx1ZSBkb2VzIG5vdCBleGlzdDogdGhpcy5wcm9wb3NhbHMocHJvcG9zYWxJZCkudmFsdWUKCWFzc2VydAoJcmV0c3ViCgoqY3JlYXRlX05vT3A6CglwdXNoYnl0ZXMgMHhiODQ0N2IzNiAvLyBtZXRob2QgImNyZWF0ZUFwcGxpY2F0aW9uKCl2b2lkIgoJdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMAoJbWF0Y2ggKmFiaV9yb3V0ZV9jcmVhdGVBcHBsaWNhdGlvbgoKCS8vIHRoaXMgY29udHJhY3QgZG9lcyBub3QgaW1wbGVtZW50IHRoZSBnaXZlbiBBQkkgbWV0aG9kIGZvciBjcmVhdGUgTm9PcAoJZXJyCgoqY2FsbF9Ob09wOgoJcHVzaGJ5dGVzIDB4MDIzZWI3ZDQgLy8gbWV0aG9kICJ1cGRhdGVBcHBNYW5hZ2VyKGFkZHJlc3Mpdm9pZCIKCXB1c2hieXRlcyAweDhhZjJjN2NmIC8vIG1ldGhvZCAiY3JlYXRlTmV3UHJvcG9zYWwoc3RyaW5nLHN0cmluZyx1aW50NjQscGF5KXZvaWQiCglwdXNoYnl0ZXMgMHg2MTY5YzY5NyAvLyBtZXRob2QgInVwZGF0ZVVzZXJDdXJyZW50Vm90aW5nUG93ZXIoYWRkcmVzcyx1aW50NjQpdm9pZCIKCXB1c2hieXRlcyAweDk4ZjJmZTA4IC8vIG1ldGhvZCAibWFrZVByb3Bvc2FsVm90ZSgodWludDY0KSxib29sLGFkZHJlc3MsdWludDY0LHBheSl2b2lkIgoJcHVzaGJ5dGVzIDB4NWYzNDgxYWMgLy8gbWV0aG9kICJzbGFzaFVzZXJWb3RpbmdQb3dlcihhZGRyZXNzLHVpbnQ2NCl2b2lkIgoJcHVzaGJ5dGVzIDB4YjUxNDI5ZTIgLy8gbWV0aG9kICJnZXRQcm9wb3NhbHNCeUlkKCh1aW50NjQpKShzdHJpbmcsc3RyaW5nLHVpbnQ2NCx1aW50NjQsdWludDY0LHVpbnQ2NCx1aW50NjQsdWludDY0KSIKCXR4bmEgQXBwbGljYXRpb25BcmdzIDAKCW1hdGNoICphYmlfcm91dGVfdXBkYXRlQXBwTWFuYWdlciAqYWJpX3JvdXRlX2NyZWF0ZU5ld1Byb3Bvc2FsICphYmlfcm91dGVfdXBkYXRlVXNlckN1cnJlbnRWb3RpbmdQb3dlciAqYWJpX3JvdXRlX21ha2VQcm9wb3NhbFZvdGUgKmFiaV9yb3V0ZV9zbGFzaFVzZXJWb3RpbmdQb3dlciAqYWJpX3JvdXRlX2dldFByb3Bvc2Fsc0J5SWQKCgkvLyB0aGlzIGNvbnRyYWN0IGRvZXMgbm90IGltcGxlbWVudCB0aGUgZ2l2ZW4gQUJJIG1ldGhvZCBmb3IgY2FsbCBOb09wCgllcnIKCipjYWxsX09wdEluOgoJcHVzaGJ5dGVzIDB4MDFhM2EzZmYgLy8gbWV0aG9kICJvcHRJblRvQXBwbGljYXRpb24oKXZvaWQiCgl0eG5hIEFwcGxpY2F0aW9uQXJncyAwCgltYXRjaCAqYWJpX3JvdXRlX29wdEluVG9BcHBsaWNhdGlvbgoKCS8vIHRoaXMgY29udHJhY3QgZG9lcyBub3QgaW1wbGVtZW50IHRoZSBnaXZlbiBBQkkgbWV0aG9kIGZvciBjYWxsIE9wdEluCgllcnIKCipwcm9jZXNzX3N0YXRpY190dXBsZV9lbGVtZW50OgoJcHJvdG8gNCAzCglmcmFtZV9kaWcgLTQgLy8gdHVwbGUgaGVhZAoJZnJhbWVfZGlnIC0xIC8vIGVsZW1lbnQKCWNvbmNhdAoJZnJhbWVfZGlnIC0zIC8vIHR1cGxlIHRhaWwKCWZyYW1lX2RpZyAtMiAvLyBoZWFkIG9mZnNldAoJcmV0c3ViCgoqcHJvY2Vzc19keW5hbWljX3R1cGxlX2VsZW1lbnQ6Cglwcm90byA0IDMKCWZyYW1lX2RpZyAtNCAvLyB0dXBsZSBoZWFkCglmcmFtZV9kaWcgLTIgLy8gaGVhZCBvZmZzZXQKCWNvbmNhdAoJZnJhbWVfYnVyeSAtNCAvLyB0dXBsZSBoZWFkCglmcmFtZV9kaWcgLTEgLy8gZWxlbWVudAoJZHVwCglsZW4KCWZyYW1lX2RpZyAtMiAvLyBoZWFkIG9mZnNldAoJYnRvaQoJKwoJaXRvYgoJZXh0cmFjdCA2IDIKCWZyYW1lX2J1cnkgLTIgLy8gaGVhZCBvZmZzZXQKCWZyYW1lX2RpZyAtMyAvLyB0dXBsZSB0YWlsCglzd2FwCgljb25jYXQKCWZyYW1lX2J1cnkgLTMgLy8gdHVwbGUgdGFpbAoJZnJhbWVfZGlnIC00IC8vIHR1cGxlIGhlYWQKCWZyYW1lX2RpZyAtMyAvLyB0dXBsZSB0YWlsCglmcmFtZV9kaWcgLTIgLy8gaGVhZCBvZmZzZXQKCXJldHN1Yg==",
     "clear": "I3ByYWdtYSB2ZXJzaW9uIDEw"
   },
   "byteCode": {
-    "approval": "CiAEAQAgCCYKAl9wABl1c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyD21hbmFnZXJfYWRkcmVzcw90b3RhbF9wcm9wb3NhbHMIAAAAAAAAAAAadG90YWxfY3VycmVudF92b3RpbmdfcG93ZXIKdXNlcl92b3Rlcwt0b3RhbF92b3RlcwJfdjEYFIEGCzEZCI0MAs0C+wAAAAAAAAAAAr8AAAAAAAAAAAAAAIgAAiJDigAAKzEAZycEI2cnBiNniYgAAiJDigAAKTEAjACLACcHI2aLACojZok2GgFJFSQSRIgAAiJDigEAKTEAjACLACtkEkQri/9niTEWIglJOBAiEkQ2GgMXNhoCVwIANhoBVwIAiAACIkOKBAApRwMxAIwAJwRkIgiMATIHjAKLAov9CIwDiwArZBJEKIsBFlC9TEgURIv8OAiB9yAPRCiLARZQSbxIKSmAAgA0i/9JFRZXBgJMUIgCWIv+SRUWVwYCTFCIAksnBYgCOScFiAI0JwWIAi8nBYgCKosCFogCJIsDFogCHkhQvycEZCIIJwRMZ4mKBQApMQArZBJEi/s4CIHIEA9EMgeMACiL/lC+RDX/NP9XLAgXiwAPRCcJi/6L/1BQvUxIIxJEi/82MgBhRCiL/lC+RDX/NP+BBCiL/lC+RDX/NP9XBAgXIggWXSiL/lBJvEhMvyiL/lC+RDX/NP+BFCiL/lC+RDX/NP9XFAgXi/0IFl0oi/5QSbxITL+L/EEATyiL/lC+RDX/NP+BDCiL/lC+RDX/NP9XDAgXIggWXSiL/lBJvEhMvyiL/lC+RDX/NP+BHCiL/lC+RDX/NP9XHAgXi/0IFl0oi/5QSbxITL+L/ycHYiIIi/8nB08CZicJi/6L/1BQiwAWvycIZCIIJwhMZ4mKAgApi/8qYowAi/8qi/5mJwaL/icGZAiLAAlniTEWIglJOBAiEkQ2GgQXNhoDSRUkEkQ2GgJJFSISRCNTNhoBSRUlEkSIAAIiQ4oFADEAK2QSRIv7OAiB4BEPRIv8i/2I/52L+4v+i/0qYov/i/2I/omJNhoCFzYaAUkVJBJEiAACIkOKAgAxACtkEkSL/ypii/4PRIv/KmKL/gmL/ypPAmaJgAQVH3x1NhoBSRUlEkSIAARQsCJDigEBKIv/UL5EiYAEuER7NjYaAI4B/TUAgAQCPrfUgASK8sfPgASY8v4IgARfNIGsgAS1FCniNhoAjgX9Nf1V/yD/dv+mAIAEAaOj/zYaAI4B/Q4AigQDi/yL/1CL/Yv+iYoEA4v8i/5QjPyL/0kVi/4XCBZXBgKM/ov9TFCM/Yv8i/2L/ok=",
+    "approval": "CiAEAQAgCCYKAl9wABl1c2VyX2N1cnJlbnRfdm90aW5nX3Bvd2VyD21hbmFnZXJfYWRkcmVzcw90b3RhbF9wcm9wb3NhbHMIAAAAAAAAAAAadG90YWxfY3VycmVudF92b3RpbmdfcG93ZXIKdXNlcl92b3Rlcwt0b3RhbF92b3RlcwJfdjEYFIEGCzEZCI0MAt4DFAAAAAAAAAAAAtAAAAAAAAAAAAAAAIgAAiJDigAAKzEAZycEI2cnBiNniYgAAiJDigAAKTEAjACLACcHI2aLACojZok2GgFJFSQSRIgAAiJDigEAKTEAjACLACtkEkQri/9niTEWIglJOBAiEkQ2GgMXNhoCVwIANhoBVwIAiAACIkOKBAApRwMxAIwAJwRkIgiMATIHjAKLAov9CIwDiwArZBJEKIsBFlC9TEgURIv8OAiB9yAPRCiLARZQSbxIKSmAAgA0i/9JFRZXBgJMUIgCcYv+SRUWVwYCTFCIAmQnBYgCUicFiAJNJwWIAkgnBYgCQ4sCFogCPYsDFogCN0hQvycEZCIIJwRMZ4mKBQApMQArZBJEi/s4CIHIEA9EMgeMACiL/lC+RDX/NP9XLAgXiwAPRCcJi/6L/1BQvUxIIxJEi/82MgBhRCiL/lC+RDX/NP+BBCiL/lC+RDX/NP9XBAgXIggWXSiL/lBJvEhMvyiL/lC+RDX/NP+BFCiL/lC+RDX/NP9XFAgXi/0IFl0oi/5QSbxITL+L/EEATyiL/lC+RDX/NP+BDCiL/lC+RDX/NP9XDAgXIggWXSiL/lBJvEhMvyiL/lC+RDX/NP+BHCiL/lC+RDX/NP9XHAgXi/0IFl0oi/5QSbxITL+L/ycHYiIIi/8nB08CZicJi/6L/1BQiwAWvycIZCIIJwhMZ4k2GgIXNhoBSRUkEkSIAAIiQ4oCACmL/ypijACL/yqL/mYnBov+JwZkCIsACWeJMRYiCUk4ECISRDYaBBc2GgNJFSQSRDYaAkkVIhJEI1M2GgFJFSUSRIgAAiJDigUAMQArZBJEi/s4CIHgEQ9Ei/yL/Yj/nYv7i/6L/Spii/+L/Yj+eIk2GgIXNhoBSRUkEkSIAAIiQ4oCADEAK2QSRIv/KmKL/g9Ei/8qYov+CYv/Kk8CZomABBUffHU2GgFJFSUSRIgABFCwIkOKAQEoi/9QvkSJgAS4RHs2NhoAjgH9JACABAI+t9SABIryx8+ABGFpxpeABJjy/giABF80gayABLUUKeI2GgCOBv0c/Tz+6v8Y/27/ngCABAGjo/82GgCOAfz1AIoEA4v8i/9Qi/2L/omKBAOL/Iv+UIz8i/9JFYv+FwgWVwYCjP6L/UxQjP2L/Iv9i/6J",
     "clear": "Cg=="
   },
   "compilerInfo": {

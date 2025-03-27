@@ -60,6 +60,24 @@
       }
     },
     {
+      "name": "updateUserCurrentVotingPower",
+      "desc": "Add one to the user contribution once it votes on a pool proposal",
+      "args": [
+        {
+          "name": "userAddress",
+          "type": "address",
+          "desc": "address of the user to add the contribution"
+        },
+        {
+          "name": "newVotingPower",
+          "type": "uint64"
+        }
+      ],
+      "returns": {
+        "type": "void"
+      }
+    },
+    {
       "name": "makeProposalVote",
       "desc": "Add one to the user contribution once it votes on a pool proposal",
       "args": [

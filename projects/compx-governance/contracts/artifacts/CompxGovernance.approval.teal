@@ -123,13 +123,13 @@ updateAppManager:
 	frame_bury 0 // sender: Address
 
 	// contracts/CompxGovernance.algo.ts:56
-	// assert(sender === this.manager_address.value, 'User is trying to change the manager of the contract')
+	// assert(sender === this.manager_address.value, 'User is trying to change the manager of the contractS')
 	frame_dig 0 // sender: Address
 	bytec 3 //  "manager_address"
 	app_global_get
 	==
 
-	// User is trying to change the manager of the contract
+	// User is trying to change the manager of the contractS
 	assert
 
 	// contracts/CompxGovernance.algo.ts:58
@@ -581,6 +581,27 @@ recordUserVotes:
 	app_global_put
 	retsub
 
+// updateUserCurrentVotingPower(address,uint64)void
+*abi_route_updateUserCurrentVotingPower:
+	// newVotingPower: uint64
+	txna ApplicationArgs 2
+	btoi
+
+	// userAddress: address
+	txna ApplicationArgs 1
+	dup
+	len
+	intc 2 // 32
+	==
+
+	// argument 1 (userAddress) for updateUserCurrentVotingPower must be a address
+	assert
+
+	// execute updateUserCurrentVotingPower(address,uint64)void
+	callsub updateUserCurrentVotingPower
+	intc 0 // 1
+	return
+
 // updateUserCurrentVotingPower(userAddress: Address, newVotingPower: uint64): void
 //
 // Add one to the user contribution once it votes on a pool proposal
@@ -841,11 +862,12 @@ getProposalsById:
 *call_NoOp:
 	pushbytes 0x023eb7d4 // method "updateAppManager(address)void"
 	pushbytes 0x8af2c7cf // method "createNewProposal(string,string,uint64,pay)void"
+	pushbytes 0x6169c697 // method "updateUserCurrentVotingPower(address,uint64)void"
 	pushbytes 0x98f2fe08 // method "makeProposalVote((uint64),bool,address,uint64,pay)void"
 	pushbytes 0x5f3481ac // method "slashUserVotingPower(address,uint64)void"
 	pushbytes 0xb51429e2 // method "getProposalsById((uint64))(string,string,uint64,uint64,uint64,uint64,uint64,uint64)"
 	txna ApplicationArgs 0
-	match *abi_route_updateAppManager *abi_route_createNewProposal *abi_route_makeProposalVote *abi_route_slashUserVotingPower *abi_route_getProposalsById
+	match *abi_route_updateAppManager *abi_route_createNewProposal *abi_route_updateUserCurrentVotingPower *abi_route_makeProposalVote *abi_route_slashUserVotingPower *abi_route_getProposalsById
 
 	// this contract does not implement the given ABI method for call NoOp
 	err
