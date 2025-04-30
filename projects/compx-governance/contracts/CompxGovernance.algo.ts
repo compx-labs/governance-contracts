@@ -24,9 +24,6 @@ export class CompxGovernance extends Contract {
   // User current voting power - Gets added once per user after voting for the first time and updated everytime a new vote is casted
   user_current_voting_power = LocalStateKey<uint64>();
 
-  //User votes - Keeps track of the number of votes a user has created
-  user_votes = LocalStateKey<uint64>();
-
   public createApplication() {
     this.manager_address.value = this.txn.sender;
     this.total_proposals.value = 0;
@@ -40,7 +37,6 @@ export class CompxGovernance extends Contract {
   public optInToApplication(): void {
     // Optin in to this contract will add 1 to the user contribution
     const userAddress: Address = this.txn.sender;
-    this.user_votes(userAddress).value = 0;
     this.user_current_voting_power(userAddress).value = 0;
   }
 
@@ -135,9 +131,12 @@ export class CompxGovernance extends Contract {
       this.proposals(proposalId).value.proposalYesVotes += 1;
       this.proposals(proposalId).value.proposalYesPower += votingPower;
     }
-    this.user_votes(voterAddress).value += 1;
+
     // Save the vote adding the timestamp
-    this.votes({ proposalId: proposalId, voterAddress: voterAddress }).value = { voteTimestamp: voteTimestamp };
+    this.votes({ proposalId: proposalId, voterAddress: voterAddress }).value = {
+      voteTimestamp: voteTimestamp,
+      votingPower: votingPower,
+    };
 
     this.total_votes.value += 1;
   }

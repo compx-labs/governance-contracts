@@ -49,4 +49,5 @@ export type ProposalVoteIdType = { proposalId: ProposalIdType; voterAddress: Add
 
 export type ProposalVoteDataType = {
   voteTimestamp: uint64;
+  votingPower: uint64;
 };
