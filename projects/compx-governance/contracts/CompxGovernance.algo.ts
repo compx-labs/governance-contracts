@@ -1,5 +1,11 @@
-import { Contract } from '@algorandfoundation/tealscript';
-import { ProposalIdType, ProposalDataType, ProposalVoteDataType, ProposalVoteIdType } from './proposalConfig.algo';
+import { Contract, op } from '@algorandfoundation/tealscript';
+import {
+  ProposalIdType,
+  ProposalDataType,
+  ProposalVoteDataType,
+  ProposalVoteIdType,
+  ProposalDeletionDataType,
+} from './proposalConfig.algo';
 import { PROPOSAL_MBR, VOTE_MBR } from './constants.algo';
 
 export class CompxGovernance extends Contract {
@@ -203,4 +209,53 @@ export class CompxGovernance extends Contract {
   getProposalsById(proposalId: ProposalIdType): ProposalDataType {
     return this.proposals(proposalId).value;
   }
+
+  removeExpiredProposals() {
+    const currentTimestamp: uint64 = globals.latestTimestamp;
+    const assetsToMint: ProposalDeletionDataType[] = [];
+    for (let i = 0; i < this.total_proposals.value; i++) {
+      const proposalId: ProposalIdType = { nonce: i + 1 };
+      if (this.proposals(proposalId).value.expiryTimestamp < currentTimestamp) {
+        assetsToMint.push({
+          proposal: this.proposals(proposalId).value,
+          proposalId: proposalId,
+        });
+      }
+      //assert(payTxn.amount >= assetsToMint.length * 101_000, 'Not enough MBR to mint proposal records');
+
+      const contractAddress = globals.currentApplicationAddress;
+      // Get the current minimum balance for the contract address
+      const currentMinimumBalance = op.minBalance(contractAddress);
+
+      for (const proposal of assetsToMint) {
+        const votesToRemove: ProposalVoteIdType[] = [];
+        //how to iterate over the votes for this proposal to remove the boxes...
+        
+        this.mintProposalRecord(proposal.proposal);
+        this.proposals({ nonce: proposal.proposalId.nonce }).delete();
+      }
+      // Calculate unlocked ALGO
+      
+    }
+  }
+
+  private mintProposalRecord(proposal: ProposalDataType) {
+    const noPower = proposal.proposalTotalPower - proposal.proposalYesPower;
+    const outcome = proposal.proposalYesVotes > noPower ? 'y' : 'n';
+    sendAssetCreation({
+      configAssetTotal: 1,
+      configAssetDecimals: 0,
+      configAssetDefaultFrozen: 0,
+      configAssetUnitName: 'CXPR',
+      configAssetName: proposal.proposalTitle,
+      configAssetURL: `tv:${proposal.proposalTotalPower + ':y' + proposal.proposalYesPower + ':n' + (proposal.proposalTotalPower - proposal.proposalYesPower) + ':o' + outcome}`,
+      configAssetMetadataHash: undefined,
+      configAssetManager: this.manager_address.value,
+      configAssetReserve: undefined,
+      configAssetClawback: undefined,
+      configAssetFreeze: undefined,
+    });
+  }
+
+  gas() {}
 }

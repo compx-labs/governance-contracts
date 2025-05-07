@@ -31,6 +31,11 @@ export type ProposalDataType = {
   expiryTimestamp: uint64;
 };
 
+export type ProposalDeletionDataType = {
+  proposal: ProposalDataType;
+  proposalId: ProposalIdType;
+}
+
 /**
  * Defines the vote box Ids
  * @typedef {object} ProposalVoteIdType
