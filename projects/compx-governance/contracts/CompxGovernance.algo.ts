@@ -1,31 +1,43 @@
-import { Contract } from '@algorandfoundation/tealscript';
 import { ProposalIdType, ProposalDataType, ProposalVoteDataType, ProposalVoteIdType } from './proposalConfig.algo';
 import { PROPOSAL_MBR, VOTE_MBR } from './constants.algo';
+import {
+  Contract,
+  uint64,
+  BoxMap,
+  assert,
+  GlobalState,
+  LocalState,
+  Txn,
+  Account,
+  Global,
+  gtxn,
+} from '@algorandfoundation/algorand-typescript';
+import { Address } from 'algosdk';
 
 export class CompxGovernance extends Contract {
   // Address of the manager of this contract
-  manager_address = GlobalStateKey<Address>();
+  manager_address = GlobalState<Account>();
 
   // // Keeps track of the total number of proposals
-  total_proposals = GlobalStateKey<uint64>();
+  total_proposals = GlobalState<uint64>();
 
   // // Keeps track of the total number of votes on all proposals
-  total_votes = GlobalStateKey<uint64>();
+  total_votes = GlobalState<uint64>();
 
   // // Total current voting power on the compx governance system - Gets added once per user after voting for the first time - used for participants to know onchain how much voting power is currently at stake
-  total_current_voting_power = GlobalStateKey<uint64>();
+  total_current_voting_power = GlobalState<uint64>();
 
   // Boxes to store proposal information
-  proposals = BoxMap<ProposalIdType, ProposalDataType>({ prefix: '_p' });
+  proposals = BoxMap<ProposalIdType, ProposalDataType>({ keyPrefix: '_p' });
 
   // Boxes to store proposal votes
-  votes = BoxMap<ProposalVoteIdType, ProposalVoteDataType>({ prefix: '_v' });
+  votes = BoxMap<ProposalVoteIdType, ProposalVoteDataType>({ keyPrefix: '_v' });
 
   // User current voting power - Gets added once per user after voting for the first time and updated everytime a new vote is casted
-  user_current_voting_power = LocalStateKey<uint64>();
+  user_current_voting_power = LocalState<uint64>();
 
   public createApplication() {
-    this.manager_address.value = this.txn.sender;
+    this.manager_address.value = Txn.sender;
     this.total_proposals.value = 0;
     this.total_current_voting_power.value = 0;
   }
@@ -36,7 +48,7 @@ export class CompxGovernance extends Contract {
 
   public optInToApplication(): void {
     // Optin in to this contract will add 1 to the user contribution
-    const userAddress: Address = this.txn.sender;
+    const userAddress: Account = Txn.sender;
     this.user_current_voting_power(userAddress).value = 0;
   }
 
@@ -45,8 +57,8 @@ export class CompxGovernance extends Contract {
    * @param newManagerAddress The address of the new manager
    */
 
-  public updateAppManager(newManagerAddress: Address): void {
-    const sender: Address = this.txn.sender;
+  public updateAppManager(newManagerAddress: Account): void {
+    const sender: Account = Txn.sender;
 
     //Only the current manager of teh contract can update the manager
     assert(sender === this.manager_address.value, 'User is trying to change the manager of the contractS');
@@ -61,12 +73,17 @@ export class CompxGovernance extends Contract {
    * @param expiresIn Time in seconds for the proposal to expire
    */
 
-  public createNewProposal(proposalTitle: string, proposalDescription: string, expiresIn: uint64, mbrTxn: PayTxn) {
-    const proposerAddress: Address = this.txn.sender;
+  public createNewProposal(
+    proposalTitle: string,
+    proposalDescription: string,
+    expiresIn: uint64,
+    mbrTxn: gtxn.PaymentTxn
+  ) {
+    const proposerAddress: Account = Txn.sender;
 
     // The nonce of each proposal auto increments by 1
     const proposalNonce: uint64 = this.total_proposals.value + 1;
-    const currentTimestamp: uint64 = globals.latestTimestamp;
+    const currentTimestamp: uint64 = Global.latestTimestamp;
 
     // Defines the expiry time of the proposal
     const expiryTimestamp: uint64 = currentTimestamp + expiresIn;
@@ -75,8 +92,8 @@ export class CompxGovernance extends Contract {
     assert(proposerAddress === this.manager_address.value, 'Only the manager can create proposals');
     assert(!this.proposals({ nonce: proposalNonce }).exists, 'Proposal already exists');
 
-    // Contract account will need 2_912 microAlgos to create a proposal box
-    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: PROPOSAL_MBR } });
+    // // Contract account will need 2_912 microAlgos to create a proposal box
+    // verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: PROPOSAL_MBR } });
 
     // Create a new proposal with title and description and zero votes
     this.proposals({ nonce: proposalNonce }).value = {
@@ -101,18 +118,18 @@ export class CompxGovernance extends Contract {
    * @param inFavor If the vote is a yes or a no
    */
   private recordUserVotes(
-    voterAddress: Address,
+    voterAddress: Account,
     proposalId: ProposalIdType,
     votingPower: uint64,
     inFavor: boolean,
-    mbrTxn: PayTxn
+    mbrTxn: gtxn.PaymentTxn
   ) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
-    assert(this.txn.sender === this.manager_address.value, 'Only the manager can add votes to users');
+    assert(Txn.sender === this.manager_address.value, 'Only the manager can add votes to users');
 
-    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
+    // verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
 
-    const voteTimestamp = globals.latestTimestamp;
+    const voteTimestamp = Global.latestTimestamp;
 
     assert(this.proposals(proposalId).value.expiryTimestamp >= voteTimestamp, 'Proposal already expired');
 
@@ -122,8 +139,8 @@ export class CompxGovernance extends Contract {
       'User already voted on this proposal'
     );
 
-    //Check if the user is opted in to the contract before casting a vote - This is to prevent users from voting without opting in
-    assert(voterAddress.isOptedInToApp(this.app.id), 'User has not opted in to the contract');
+    // //Check if the user is opted in to the contract before casting a vote - This is to prevent users from voting without opting in
+    // assert(voterAddres(this.app.id), 'User has not opted in to the contract');
 
     this.proposals(proposalId).value.proposalTotalVotes += 1;
     this.proposals(proposalId).value.proposalTotalPower += votingPower;
@@ -132,7 +149,7 @@ export class CompxGovernance extends Contract {
       this.proposals(proposalId).value.proposalYesPower += votingPower;
     }
 
-    // Save the vote adding the timestamp
+    // Save the vote adding the timestamp and the voting power
     this.votes({ proposalId: proposalId, voterAddress: voterAddress }).value = {
       voteTimestamp: voteTimestamp,
       votingPower: votingPower,
@@ -151,9 +168,9 @@ export class CompxGovernance extends Contract {
    * @param userAddress address of the user to add the special vote
    * @param newVotingPower The voting power of the voter
    */
-  public updateUserCurrentVotingPower(userAddress: Address, newVotingPower: uint64) {
+  public updateUserCurrentVotingPower(userAddress: Account, newVotingPower: uint64) {
     // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
-    assert(this.txn.sender === this.manager_address.value, 'Only the manager can add votes to users');
+    assert(Txn.sender === this.manager_address.value, 'Only the manager can add votes to users');
     const currentVotingPower: uint64 = this.user_current_voting_power(userAddress).value;
     this.user_current_voting_power(userAddress).value = newVotingPower;
 
@@ -170,14 +187,14 @@ export class CompxGovernance extends Contract {
   makeProposalVote(
     proposalId: ProposalIdType,
     inFavor: boolean,
-    voterAddress: Address,
+    voterAddress: Account,
     votingPower: uint64,
-    mbrTxn: PayTxn
+    mbrTxn: gtxn.PaymentTxn
   ) {
-    assert(this.txn.sender === this.manager_address.value, 'Only the manager can add votes to users');
+    assert(Txn.sender === this.manager_address.value, 'Only the manager can add votes to users');
 
     //Check if the MBR is enough to pay for creating a vote box
-    verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: VOTE_MBR } });
+    // verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: VOTE_MBR } });
 
     // Check if the proposal is still active
     this.updateUserCurrentVotingPower(voterAddress, votingPower);
@@ -189,8 +206,8 @@ export class CompxGovernance extends Contract {
    * @param userAddress The address of the user to get its contribution slashed
    * @param amount The amount to be slashed
    */
-  slashUserVotingPower(userAddress: Address, amount: uint64) {
-    assert(this.txn.sender === this.manager_address.value, 'Only the manager can slash user contribution');
+  slashUserVotingPower(userAddress: Account, amount: uint64) {
+    assert(Txn.sender === this.manager_address.value, 'Only the manager can slash user contribution');
     assert(this.user_current_voting_power(userAddress).value >= amount, 'User does not have enough voting power');
     this.user_current_voting_power(userAddress).value -= amount;
   }
