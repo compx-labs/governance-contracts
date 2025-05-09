@@ -1,18 +1,21 @@
 import { ProposalIdType, ProposalDataType, ProposalVoteDataType, ProposalVoteIdType } from './proposalConfig.algo';
-import { PROPOSAL_MBR, VOTE_MBR } from './constants.algo';
 import {
+  arc4,
   Contract,
-  uint64,
-  BoxMap,
-  assert,
+  Global,
   GlobalState,
-  LocalState,
+  gtxn,
+  itxn,
   Txn,
   Account,
-  Global,
-  gtxn,
+  assert,
+  uint64,
+  Application,
+  BoxMap,
+  LocalState,
+  compile,
 } from '@algorandfoundation/algorand-typescript';
-import { Address } from 'algosdk';
+import { TreasuryContract } from './CompxTreasury.algo';
 
 export class CompxGovernance extends Contract {
   // Address of the manager of this contract
@@ -23,6 +26,8 @@ export class CompxGovernance extends Contract {
 
   // // Keeps track of the total number of votes on all proposals
   total_votes = GlobalState<uint64>();
+
+  treasury_app_id = GlobalState<Application>();
 
   // // Total current voting power on the compx governance system - Gets added once per user after voting for the first time - used for participants to know onchain how much voting power is currently at stake
   total_current_voting_power = GlobalState<uint64>();
@@ -66,6 +71,57 @@ export class CompxGovernance extends Contract {
     this.manager_address.value = newManagerAddress;
   }
 
+  createTreasury() {
+    const compiled = compile(TreasuryContract);
+
+    const appTxn = itxn
+      .applicationCall({
+        approvalProgram: compiled.approvalProgram,
+        clearStateProgram: compiled.clearStateProgram,
+        fee: 0,
+        globalNumUint: 2, // <-- Allow 1 uint in global state,
+        globalNumBytes: 2, // <-- Allow 0 byte slices in global state
+      })
+      .submit();
+
+    // Store the created app ID in global state
+    this.treasury_app_id.value = appTxn.createdApp;
+  }
+
+  setupTreasury() {
+    itxn
+      .applicationCall({
+        appArgs: [
+          arc4.methodSelector(TreasuryContract.prototype.setupManager),
+          new arc4.Address(this.manager_address.value),
+        ],
+        appId: this.treasury_app_id.value,
+        fee: 0,
+      })
+      .submit();
+  }
+
+  public depositAvailableAlgoIntoTreasury() {
+    const contractMinBalance = Global.currentApplicationAddress.minBalance;
+    const currentContractBalance = Global.currentApplicationAddress.balance;
+    const amountToDeposit: uint64 = currentContractBalance - contractMinBalance;
+
+    const paymentParams = itxn.payment({
+      amount: amountToDeposit,
+      receiver: this.treasury_app_id.value.address,
+      fee: 0,
+    });
+
+    const appCallParams = itxn.applicationCall({
+      appId: this.treasury_app_id.value,
+      appArgs: [arc4.methodSelector(TreasuryContract.prototype.depositIntoTreasury)],
+      fee: 0,
+    });
+
+    // Submit both as a group
+    itxn.submitGroup(paymentParams, appCallParams);
+  }
+
   /**
    * Create a new proposal
    * @param proposalTitle Title of the proposal
@@ -90,22 +146,25 @@ export class CompxGovernance extends Contract {
 
     // Only the manager can create proposals - We can change this so anyone can create a proposal
     assert(proposerAddress === this.manager_address.value, 'Only the manager can create proposals');
-    assert(!this.proposals({ nonce: proposalNonce }).exists, 'Proposal already exists');
+    assert(!this.proposals(new ProposalIdType({ nonce: new arc4.UintN64(1) })).exists, 'Proposal already exists');
 
     // // Contract account will need 2_912 microAlgos to create a proposal box
     // verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: PROPOSAL_MBR } });
 
+    const newProposal = new ProposalDataType({
+      proposalTitle: new arc4.Str(proposalTitle),
+      proposalDescription: new arc4.Str(proposalDescription),
+      proposalTotalVotes: new arc4.UintN64(0),
+      proposalYesVotes: new arc4.UintN64(0),
+      proposalTotalPower: new arc4.UintN64(0),
+      proposalYesPower: new arc4.UintN64(0),
+
+      createdAtTimestamp: new arc4.UintN64(currentTimestamp),
+      expiryTimestamp: new arc4.UintN64(expiryTimestamp),
+    });
+
     // Create a new proposal with title and description and zero votes
-    this.proposals({ nonce: proposalNonce }).value = {
-      proposalTitle: proposalTitle,
-      proposalDescription: proposalDescription,
-      proposalTotalVotes: 0,
-      proposalYesVotes: 0,
-      proposalTotalPower: 0,
-      proposalYesPower: 0,
-      createdAtTimestamp: currentTimestamp,
-      expiryTimestamp: expiryTimestamp,
-    };
+    this.proposals(new ProposalIdType({ nonce: new arc4.UintN64(this.total_proposals.value + 1) })).value = newProposal;
 
     this.total_proposals.value += 1;
   }
@@ -124,38 +183,34 @@ export class CompxGovernance extends Contract {
     inFavor: boolean,
     mbrTxn: gtxn.PaymentTxn
   ) {
-    // Maybe the server should be the one to add this to the contract? Less decentralized but more secure
     assert(Txn.sender === this.manager_address.value, 'Only the manager can add votes to users');
-
-    // verifyPayTxn(mbrTxn, { amount: { greaterThanEqualTo: 2_120 } });
 
     const voteTimestamp = Global.latestTimestamp;
 
-    assert(this.proposals(proposalId).value.expiryTimestamp >= voteTimestamp, 'Proposal already expired');
+    assert(this.proposals(proposalId).value.expiryTimestamp.native >= voteTimestamp, 'Proposal already expired');
 
-    //STOP if box with that vote already exists
+    // STOP if box with that vote already exists
     assert(
-      this.votes({ proposalId: proposalId, voterAddress: voterAddress }).exists === false,
+      this.votes(new ProposalVoteIdType({ proposalId, voterAddress })).exists === false,
       'User already voted on this proposal'
     );
 
-    // //Check if the user is opted in to the contract before casting a vote - This is to prevent users from voting without opting in
-    // assert(voterAddres(this.app.id), 'User has not opted in to the contract');
-
-    this.proposals(proposalId).value.proposalTotalVotes += 1;
-    this.proposals(proposalId).value.proposalTotalPower += votingPower;
+    // Update proposal vote counts and power
+    const proposal = this.proposals(proposalId).value;
+    proposal.proposalTotalVotes = proposal.proposalTotalVotes.add(new arc4.UintN64(1));
+    proposal.proposalTotalPower = proposal.proposalTotalPower.add(new arc4.UintN64(votingPower));
     if (inFavor) {
-      this.proposals(proposalId).value.proposalYesVotes += 1;
-      this.proposals(proposalId).value.proposalYesPower += votingPower;
+      proposal.proposalYesVotes = proposal.proposalYesVotes.add(new arc4.UintN64(1));
+      proposal.proposalYesPower = proposal.proposalYesPower.add(new arc4.UintN64(votingPower));
     }
 
-    // Save the vote adding the timestamp and the voting power
-    this.votes({ proposalId: proposalId, voterAddress: voterAddress }).value = {
-      voteTimestamp: voteTimestamp,
-      votingPower: votingPower,
-    };
+    // Save the vote, using a struct instance
+    this.votes(new ProposalVoteIdType({ proposalId, voterAddress })).value = new ProposalVoteDataType({
+      voteTimestamp: new arc4.UintN64(voteTimestamp),
+      votingPower: new arc4.UintN64(votingPower),
+    });
 
-    this.total_votes.value += 1;
+    this.total_votes.value = this.total_votes.value += 1;
   }
 
   /**
